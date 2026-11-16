@@ -43,7 +43,7 @@ fbq('track', 'PageView');
 html,body{width:100%;min-height:100%}
 
 body{
-background:#f4ecdf;
+background:#ffffff;
 font-family:"Avenir Next","Helvetica Neue",Arial,sans-serif;
 color:var(--c-46371a);
 }
@@ -54,8 +54,8 @@ position:fixed;
 inset:0;
 z-index:-2;
 background:
-radial-gradient(circle at center,rgba(255,255,255,.72) 0%,rgba(255,255,255,.34) 38%,rgba(244,236,223,.06) 72%),
-#f4ecdf;
+radial-gradient(circle at center,rgba(255,255,255,.72) 0%,rgba(255,255,255,.34) 38%,rgba(255,255,255,.06) 72%),
+#ffffff;
 }
 
 body::after{
@@ -64,9 +64,9 @@ position:fixed;
 inset:0;
 z-index:-1;
 background:
-repeating-linear-gradient(60deg,transparent 0 86px,rgba(188,149,78,.23) 87px,transparent 90px),
-repeating-linear-gradient(-60deg,transparent 0 86px,rgba(188,149,78,.22) 87px,transparent 90px),
-repeating-linear-gradient(0deg,transparent 0 148px,rgba(188,149,78,.13) 149px,transparent 152px);
+repeating-linear-gradient(60deg,transparent 0 86px,rgba(68,68,68,.23) 87px,transparent 90px),
+repeating-linear-gradient(-60deg,transparent 0 86px,rgba(68,68,68,.22) 87px,transparent 90px),
+repeating-linear-gradient(0deg,transparent 0 148px,rgba(68,68,68,.13) 149px,transparent 152px);
 background-size:230px 199px;
 opacity:.30;
 }
@@ -106,13 +106,13 @@ white-space:nowrap;
 .nav-dropdown summary::-webkit-details-marker{display:none}
 .nav-dropdown summary::after{content:"▾";font-size:8px;transition:transform .2s ease}
 .nav-dropdown[open] summary::after{transform:rotate(180deg)}
-.nav-dropdown-menu{position:absolute;top:calc(100% + 16px);left:50%;transform:translateX(-50%);background:#fffaf0;border:1px solid rgba(166,127,52,.22);box-shadow:0 20px 50px rgba(127,100,48,.16);padding:8px 0;min-width:210px;z-index:30}
+.nav-dropdown-menu{position:absolute;top:calc(100% + 16px);left:50%;transform:translateX(-50%);background:#ffffff;border:1px solid rgba(58,58,58,.22);box-shadow:0 20px 50px rgba(45,45,45,.16);padding:8px 0;min-width:210px;z-index:30}
 .nav-dropdown-menu a{display:block;padding:11px 22px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--c-5b461d);text-decoration:none;white-space:nowrap}
-.nav-dropdown-menu a:hover{background:rgba(166,127,52,.08);color:var(--c-46371a)}
+.nav-dropdown-menu a:hover{background:rgba(58,58,58,.08);color:var(--c-46371a)}
 @media(max-width:900px){
-  .nav-dropdown summary{padding:14px 0;border-bottom:1px solid rgba(166,127,52,.10);width:100%}
+  .nav-dropdown summary{padding:14px 0;border-bottom:1px solid rgba(58,58,58,.10);width:100%}
   .nav-dropdown-menu{position:static;transform:none;box-shadow:none;border:none;background:transparent;padding:0 0 0 18px;min-width:0}
-  .nav-dropdown-menu a{padding:12px 0;border-bottom:1px solid rgba(166,127,52,.08)}
+  .nav-dropdown-menu a{padding:12px 0;border-bottom:1px solid rgba(58,58,58,.08)}
 }
 
 .header-right{
@@ -127,7 +127,7 @@ position:relative;
 }
 
 .language-button{
-border:1px solid rgba(166,127,52,.28);
+border:1px solid rgba(58,58,58,.28);
 background:rgba(255,255,255,.20);
 color:var(--c-5b461d);
 padding:10px 13px;
@@ -143,10 +143,10 @@ position:absolute;
 right:0;
 top:calc(100% + 10px);
 min-width:150px;
-border:1px solid rgba(166,127,52,.24);
-background:rgba(244,236,223,.96);
+border:1px solid rgba(58,58,58,.24);
+background:rgba(255,255,255,.96);
 backdrop-filter:blur(14px);
-box-shadow:0 22px 60px rgba(127,100,48,.12);
+box-shadow:0 22px 60px rgba(45,45,45,.12);
 display:none;
 z-index:30;
 }
@@ -158,7 +158,7 @@ display:block;
 .language-menu button{
 width:100%;
 border:0;
-border-bottom:1px solid rgba(166,127,52,.12);
+border-bottom:1px solid rgba(58,58,58,.12);
 background:transparent;
 color:var(--c-5b461d);
 padding:12px 14px;
@@ -182,8 +182,8 @@ position:relative;
 width:38px;
 height:38px;
 border-radius:50%;
-border:1px solid rgba(166,127,52,.34);
-background:rgba(166,127,52,.10);
+border:1px solid rgba(58,58,58,.34);
+background:rgba(58,58,58,.10);
 color:var(--c-5b461d);
 font-size:13px;
 letter-spacing:0;
@@ -200,7 +200,7 @@ padding:0;
 width:38px;
 height:38px;
 border-radius:50%;
-border:1px solid rgba(166,127,52,.34);
+border:1px solid rgba(58,58,58,.34);
 background:transparent;
 color:var(--c-5b461d);
 display:flex;
@@ -216,17 +216,17 @@ fill:none;
 stroke:currentColor;
 stroke-width:1.4;
 }
-.account-icon-link:hover{background:rgba(166,127,52,.08)}
+.account-icon-link:hover{background:rgba(58,58,58,.08)}
 
 .account-menu{
 position:absolute;
 right:0;
 top:calc(100% + 10px);
 min-width:220px;
-border:1px solid rgba(166,127,52,.24);
-background:rgba(244,236,223,.96);
+border:1px solid rgba(58,58,58,.24);
+background:rgba(255,255,255,.96);
 backdrop-filter:blur(14px);
-box-shadow:0 22px 60px rgba(127,100,48,.12);
+box-shadow:0 22px 60px rgba(45,45,45,.12);
 display:none;
 z-index:30;
 }
@@ -239,7 +239,7 @@ display:block;
 padding:14px;
 font-size:11px;
 color:var(--c-4f4125);
-border-bottom:1px solid rgba(166,127,52,.14);
+border-bottom:1px solid rgba(58,58,58,.14);
 word-break:break-all;
 }
 
@@ -248,7 +248,7 @@ word-break:break-all;
 display:block;
 width:100%;
 border:0;
-border-bottom:1px solid rgba(166,127,52,.12);
+border-bottom:1px solid rgba(58,58,58,.12);
 background:transparent;
 color:var(--c-5b461d);
 padding:12px 14px;
@@ -268,7 +268,7 @@ border-bottom:0;
 
 .language-menu button:hover,
 .language-menu button.active{
-background:rgba(166,127,52,.10);
+background:rgba(58,58,58,.10);
 }
 
 .hero{
@@ -314,7 +314,7 @@ gap:35px;
 .card{
 background:rgba(255,255,255,.18);
 backdrop-filter:blur(8px);
-border:1px solid rgba(175,140,75,.18);
+border:1px solid rgba(64,64,64,.18);
 padding:45px;
 transition:.35s ease;
 min-height:270px;
@@ -331,20 +331,20 @@ background-position:center;
 content:"";
 position:absolute;
 inset:0;
-background:linear-gradient(180deg,rgba(31,22,8,.32),rgba(31,22,8,.84));
+background:linear-gradient(180deg,rgba(10,10,10,.32),rgba(10,10,10,.84));
 z-index:0;
 transition:.6s ease;
 }
 .card.has-photo > *{position:relative;z-index:1}
 .card.has-photo h2{color:var(--c-f1d27a)}
-.card.has-photo .count{color:var(--c-f1d27a);border-color:rgba(241,210,122,.4);background:rgba(0,0,0,.18)}
+.card.has-photo .count{color:var(--c-f1d27a);border-color:rgba(171,171,171,.4);background:rgba(0,0,0,.18)}
 .card.has-photo .count-label{color:var(--c-f1d27a)}
 .card.has-photo p{color:rgba(255,255,255,.85)}
 .card.has-photo .explore{color:var(--c-f1d27a)}
 
 .card:hover{
 transform:translateY(-6px);
-border-color:rgba(175,140,75,.45);
+border-color:rgba(64,64,64,.45);
 background:rgba(255,255,255,.28);
 }
 
@@ -369,7 +369,7 @@ height:42px;
 display:flex;
 align-items:center;
 justify-content:center;
-border:1px solid rgba(166,127,52,.30);
+border:1px solid rgba(58,58,58,.30);
 color:var(--c-5b461d);
 font-size:15px;
 font-weight:300;
@@ -456,7 +456,7 @@ text-align:right;
 }
 
 /* ---- Mobile hamburger menu (IMMONOVA standard, adapted for header-right layout) ---- */
-.nav-toggle{display:none;background:none;border:1px solid rgba(166,127,52,.35);color:var(--c-5b461d);font-size:22px;line-height:1;padding:8px 13px;cursor:pointer;font-family:inherit;flex-shrink:0}
+.nav-toggle{display:none;background:none;border:1px solid rgba(58,58,58,.35);color:var(--c-5b461d);font-size:22px;line-height:1;padding:8px 13px;cursor:pointer;font-family:inherit;flex-shrink:0}
 @media(max-width:900px){
   .header{position:relative;flex-wrap:nowrap}
   .nav-toggle{display:block}
@@ -467,17 +467,17 @@ text-align:right;
     flex-direction:column;
     align-items:stretch;
     gap:0;
-    background:rgba(244,236,223,.98);
+    background:rgba(255,255,255,.98);
     backdrop-filter:blur(14px);
-    border-bottom:1px solid rgba(166,127,52,.18);
-    box-shadow:0 24px 50px rgba(127,100,48,.14);
+    border-bottom:1px solid rgba(58,58,58,.18);
+    box-shadow:0 24px 50px rgba(45,45,45,.14);
     padding:8px 24px 22px;
     max-height:80vh;
     overflow-y:auto;
     z-index:25;
   }
   .header-right.open{display:flex}
-  .header-right a.back{padding:14px 0;border-bottom:1px solid rgba(166,127,52,.10);width:100%}
+  .header-right a.back{padding:14px 0;border-bottom:1px solid rgba(58,58,58,.10);width:100%}
   .header-right .language-select{margin-top:14px}
 }
 </style>
@@ -1054,5 +1054,6 @@ document.addEventListener("DOMContentLoaded", function(){
 })();
 </script>
 
+<script src="/js/ip-brand.js?v=2"></script>
 </body>
 </html>

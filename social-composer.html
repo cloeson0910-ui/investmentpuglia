@@ -14,21 +14,21 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Crimson+Text:wght@400;700&family=Lato:wght@400;700&family=Cinzel:wght@400;700&family=Italiana&family=Dancing+Script&family=Abril+Fatface&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#f4ecdf; --gold:#a67f34; --dark:#3c2d15; --dark2:#5a4a2a;
-  --card:#ffffff; --border:rgba(166,127,52,.25);
+  --bg:#ffffff; --gold:#3a3a3a; --dark:#151515; --dark2:#212121;
+  --card:#ffffff; --border:rgba(58,58,58,.25);
 }
 *{box-sizing:border-box}
 body{
   margin:0; font-family:"Avenir Next","Segoe UI",sans-serif; color:var(--dark);
   background:var(--bg);
   background-image:
-    radial-gradient(circle at 10% 10%, rgba(166,127,52,.06), transparent 40%),
-    repeating-linear-gradient(60deg, rgba(166,127,52,.05) 0 2px, transparent 2px 40px),
-    repeating-linear-gradient(-60deg, rgba(166,127,52,.05) 0 2px, transparent 2px 40px);
+    radial-gradient(circle at 10% 10%, rgba(58,58,58,.06), transparent 40%),
+    repeating-linear-gradient(60deg, rgba(58,58,58,.05) 0 2px, transparent 2px 40px),
+    repeating-linear-gradient(-60deg, rgba(58,58,58,.05) 0 2px, transparent 2px 40px);
   min-height:100vh;
 }
 header.top{
-  position:sticky; top:0; z-index:20; background:rgba(244,236,223,.92);
+  position:sticky; top:0; z-index:20; background:rgba(255,255,255,.92);
   backdrop-filter:blur(6px); border-bottom:1px solid var(--border);
   padding:14px 24px; display:flex; align-items:center; justify-content:space-between;
 }
@@ -66,10 +66,10 @@ button:disabled{opacity:.45; cursor:not-allowed}
 .pill-row{display:flex; gap:6px; flex-wrap:wrap}
 .pill{
   font-size:11px; font-weight:700; letter-spacing:.03em; text-transform:uppercase;
-  padding:3px 9px; border-radius:999px; background:rgba(166,127,52,.12); color:var(--gold);
+  padding:3px 9px; border-radius:999px; background:rgba(58,58,58,.12); color:var(--gold);
 }
-.pill.status-draft{background:rgba(90,74,42,.12); color:var(--dark2)}
-.pill.status-ready_to_review{background:rgba(166,127,34,.18); color:var(--c-4c3a11)}
+.pill.status-draft{background:rgba(33,33,33,.12); color:var(--dark2)}
+.pill.status-ready_to_review{background:rgba(57,57,57,.18); color:var(--c-4c3a11)}
 .pill.status-approved{background:rgba(52,120,90,.15); color:var(--c-1a3d2c)}
 .pill.status-published{background:rgba(40,120,60,.18); color:var(--c-134323)}
 .pill.status-archived{background:rgba(150,150,150,.18); color:var(--c-414141)}
@@ -82,7 +82,7 @@ button:disabled{opacity:.45; cursor:not-allowed}
 
 /* Modal */
 .modal-overlay{
-  display:none; position:fixed; inset:0; background:rgba(60,45,21,.45); z-index:50;
+  display:none; position:fixed; inset:0; background:rgba(21,21,21,.45); z-index:50;
   align-items:center; justify-content:center; padding:20px;
 }
 .modal-overlay.open{display:flex}
@@ -100,7 +100,7 @@ button:disabled{opacity:.45; cursor:not-allowed}
 .checkbox-row{display:flex; gap:18px; align-items:center; margin-bottom:14px}
 .checkbox-row label{display:flex; align-items:center; gap:6px; font-size:13.5px}
 .modal-actions{display:flex; justify-content:flex-end; gap:10px; margin-top:18px}
-.preview-frame-wrap{border:1px solid var(--border); border-radius:10px; overflow:hidden; min-height:200px; display:flex; align-items:center; justify-content:center; background:#faf7f1}
+.preview-frame-wrap{border:1px solid var(--border); border-radius:10px; overflow:hidden; min-height:200px; display:flex; align-items:center; justify-content:center; background:#ffffff}
 .preview-tabs{display:flex; gap:8px; margin-bottom:14px; flex-wrap:wrap}
 .preview-tab{
   padding:8px 14px; border-radius:8px; border:1px solid var(--border); background:#fff;
@@ -117,7 +117,7 @@ button:disabled{opacity:.45; cursor:not-allowed}
 .li-mock .li-body{padding:4px 14px 10px;font-size:13.5px;color:var(--c-1a1a1a);white-space:pre-wrap}
 .ig-mock{width:100%; text-align:left; font-family:"Avenir Next","Segoe UI",sans-serif; background:#fff}
 .ig-mock .ig-head{display:flex; align-items:center; gap:10px; padding:10px 12px}
-.ig-mock .ig-avatar{width:32px;height:32px;border-radius:50%;background:radial-gradient(circle at 30% 107%,#fdf497 0%,#fdf497 5%,#fd5949 45%,#d6249f 60%,#285AEB 90%);}
+.ig-mock .ig-avatar{width:32px;height:32px;border-radius:50%;background:radial-gradient(circle at 30% 107%,#c1c1c1 0%,#c1c1c1 5%,#fd5949 45%,#d6249f 60%,#285AEB 90%);}
 .ig-mock .ig-name{font-weight:700;font-size:13px;color:var(--c-1a1a1a)}
 .ig-mock .ig-body{padding:2px 12px 12px;font-size:13px;color:var(--c-1a1a1a)}
 .fb-mock{width:100%; text-align:left; font-family:"Avenir Next","Segoe UI",sans-serif; background:#fff}
@@ -206,7 +206,7 @@ button:disabled{opacity:.45; cursor:not-allowed}
         </div>
         <div class="field" style="margin-bottom:0">
           <label>Colore testo</label>
-          <input type="color" id="fTextColor" value="#d6ab4b" style="height:40px;padding:4px">
+          <input type="color" id="fTextColor" value="#4d4d4d" style="height:40px;padding:4px">
         </div>
       </div>
       <div class="checkbox-row" style="margin-bottom:10px">
@@ -351,7 +351,7 @@ function renderImagePreview(url){
 async function uploadImageFile(file){
   const statusEl = document.getElementById("uploadStatus");
   statusEl.textContent = "Caricamento in corso...";
-  statusEl.style.color = "#5a4a2a";
+  statusEl.style.color = "#212121";
 
   const ext = (file.name.split(".").pop() || "jpg").toLowerCase();
   const safeExt = /^[a-z0-9]+$/.test(ext) ? ext : "jpg";
@@ -391,7 +391,7 @@ function openEditModal(id){
   document.getElementById("fInstagram").checked = p ? !!p.publish_to_instagram : true;
   document.getElementById("fLinkedin").checked = p ? !!p.publish_to_linkedin : false;
   document.getElementById("fTextFont").value = p ? (p.text_font || "montserrat") : "montserrat";
-  document.getElementById("fTextColor").value = p ? (p.text_color || "#d6ab4b") : "#d6ab4b";
+  document.getElementById("fTextColor").value = p ? (p.text_color || "#4d4d4d") : "#4d4d4d";
   document.getElementById("fTextBold").checked = p ? (p.text_bold !== false) : true;
   document.getElementById("fTextUnderline").checked = p ? !!p.text_underline : false;
   document.getElementById("fImageFilter").value = p ? (p.image_filter || "none") : "none";
@@ -542,7 +542,7 @@ function buildInstagramPreview(p){
     // reale fatto dal backend con ImageScript.
     const fontStack = FONT_STACKS[p.text_font] || FONT_STACKS.poppins;
     const cssFilter = CSS_FILTERS[p.image_filter] || "none";
-    const textColor = p.text_color || "#d6ab4b";
+    const textColor = p.text_color || "#4d4d4d";
     const bg = p.image_url
       ? `background-image:url('${escapeHTML(p.image_url)}');background-size:cover;background-position:center;filter:${cssFilter}`
       : "background:#f0f0f0";
@@ -676,5 +676,6 @@ document.getElementById("previewModal").addEventListener("click", (e) => { if(e.
   await loadPosts();
 })();
 </script>
+<script src="/js/ip-brand.js?v=2"></script>
 </body>
 </html>

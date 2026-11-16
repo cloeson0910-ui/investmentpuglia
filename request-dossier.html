@@ -34,7 +34,7 @@ fbq('track', 'PageView');
 html,body{width:100%;min-height:100%}
 
 body{
-  background:#f4ecdf;
+  background:#ffffff;
   font-family:"Avenir Next","Helvetica Neue",Arial,sans-serif;
   color:var(--c-46371a);
 }
@@ -45,8 +45,8 @@ body::before{
   inset:0;
   z-index:-2;
   background:
-    radial-gradient(circle at center,rgba(255,255,255,.72) 0%,rgba(255,255,255,.34) 38%,rgba(244,236,223,.06) 72%),
-    #f4ecdf;
+    radial-gradient(circle at center,rgba(255,255,255,.72) 0%,rgba(255,255,255,.34) 38%,rgba(255,255,255,.06) 72%),
+    #ffffff;
 }
 
 body::after{
@@ -55,9 +55,9 @@ body::after{
   inset:0;
   z-index:-1;
   background:
-    repeating-linear-gradient(60deg,transparent 0 86px,rgba(188,149,78,.23) 87px,transparent 90px),
-    repeating-linear-gradient(-60deg,transparent 0 86px,rgba(188,149,78,.22) 87px,transparent 90px),
-    repeating-linear-gradient(0deg,transparent 0 148px,rgba(188,149,78,.13) 149px,transparent 152px);
+    repeating-linear-gradient(60deg,transparent 0 86px,rgba(68,68,68,.23) 87px,transparent 90px),
+    repeating-linear-gradient(-60deg,transparent 0 86px,rgba(68,68,68,.22) 87px,transparent 90px),
+    repeating-linear-gradient(0deg,transparent 0 148px,rgba(68,68,68,.13) 149px,transparent 152px);
   background-size:230px 199px;
   opacity:.30;
 }
@@ -92,7 +92,7 @@ body::after{
 }
 
 .panel{
-  border:1px solid rgba(166,127,52,.18);
+  border:1px solid rgba(58,58,58,.18);
   background:rgba(255,255,255,.16);
   backdrop-filter:blur(10px);
   padding:46px;
@@ -124,7 +124,7 @@ h1{
 .opportunity-box{
   margin-bottom:34px;
   padding:18px 20px;
-  border:1px solid rgba(166,127,52,.18);
+  border:1px solid rgba(58,58,58,.18);
   background:rgba(255,255,255,.18);
   color:var(--c-4f4125);
   font-size:13px;
@@ -158,8 +158,8 @@ input,
 textarea{
   width:100%;
   padding:15px 16px;
-  border:1px solid rgba(165,129,57,.25);
-  background:rgba(255,252,244,.35);
+  border:1px solid rgba(59,59,59,.25);
+  background:rgba(255,255,255,.35);
   color:var(--c-46371a);
   font-size:14px;
   outline:none;
@@ -206,8 +206,8 @@ textarea{
 button.primary,
 a.secondary{
   padding:14px 28px;
-  border:1px solid rgba(165,129,57,.42);
-  background:rgba(255,252,244,.22);
+  border:1px solid rgba(59,59,59,.42);
+  background:rgba(255,255,255,.22);
   backdrop-filter:blur(8px);
   color:var(--c-5b471f);
   text-decoration:none;
@@ -573,5 +573,6 @@ form.addEventListener("submit", async (e) => {
 loadOpportunity();
 </script>
 
+<script src="/js/ip-brand.js?v=2"></script>
 </body>
 </html>

@@ -13,7 +13,7 @@
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{width:100%;min-height:100%}
 body{
-  background:#f4ecdf;
+  background:#ffffff;
   font-family:"Avenir Next","Helvetica Neue",Arial,sans-serif;
   color:var(--c-46371a);
 }
@@ -23,8 +23,8 @@ body::before{
   inset:0;
   z-index:-2;
   background:
-    radial-gradient(circle at center,rgba(255,255,255,.72) 0%,rgba(255,255,255,.34) 38%,rgba(244,236,223,.06) 72%),
-    #f4ecdf;
+    radial-gradient(circle at center,rgba(255,255,255,.72) 0%,rgba(255,255,255,.34) 38%,rgba(255,255,255,.06) 72%),
+    #ffffff;
 }
 body::after{
   content:"";
@@ -32,9 +32,9 @@ body::after{
   inset:0;
   z-index:-1;
   background:
-    repeating-linear-gradient(60deg,transparent 0 86px,rgba(188,149,78,.23) 87px,transparent 90px),
-    repeating-linear-gradient(-60deg,transparent 0 86px,rgba(188,149,78,.22) 87px,transparent 90px),
-    repeating-linear-gradient(0deg,transparent 0 148px,rgba(188,149,78,.13) 149px,transparent 152px);
+    repeating-linear-gradient(60deg,transparent 0 86px,rgba(68,68,68,.23) 87px,transparent 90px),
+    repeating-linear-gradient(-60deg,transparent 0 86px,rgba(68,68,68,.22) 87px,transparent 90px),
+    repeating-linear-gradient(0deg,transparent 0 148px,rgba(68,68,68,.13) 149px,transparent 152px);
   background-size:230px 199px;
   opacity:.30;
 }
@@ -43,8 +43,8 @@ body::after{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  border-bottom:1px solid rgba(166,127,52,.12);
-  background:rgba(244,236,223,.72);
+  border-bottom:1px solid rgba(58,58,58,.12);
+  background:rgba(255,255,255,.72);
   backdrop-filter:blur(14px);
   position:sticky;
   top:0;
@@ -75,7 +75,7 @@ body::after{
 .header-actions a,
 .logout{
   padding:10px 20px;
-  border:1px solid rgba(166,127,52,.25);
+  border:1px solid rgba(58,58,58,.25);
   background:rgba(255,255,255,.25);
   cursor:pointer;
   color:var(--c-5b461d);
@@ -86,11 +86,11 @@ body::after{
 }
 .header-actions a:hover,
 .logout:hover{
-  background:#a67f34;
+  background:#3a3a3a;
   color:var(--c-ffffff);
 }
 .header-actions a.active{
-  background:#a67f34;
+  background:#3a3a3a;
   color:var(--c-ffffff);
 }
 .container{
@@ -129,8 +129,8 @@ body::after{
 .primary-link{
   display:inline-block;
   padding:14px 22px;
-  border:1px solid rgba(166,127,52,.42);
-  background:#a67f34;
+  border:1px solid rgba(58,58,58,.42);
+  background:#3a3a3a;
   color:var(--c-fffaf0);
   text-decoration:none;
   text-transform:uppercase;
@@ -150,7 +150,7 @@ body::after{
 /* ---- Form di creazione/modifica: visibile solo ad admin/super user, nascosto di default. ---- */
 .news-form{
   display:none;
-  border:1px solid rgba(166,127,52,.22);
+  border:1px solid rgba(58,58,58,.22);
   background:rgba(255,255,255,.28);
   padding:26px;
   margin-bottom:32px;
@@ -169,7 +169,7 @@ body::after{
 .news-form textarea{
   width:100%;
   padding:14px 16px;
-  border:1px solid rgba(166,127,52,.22);
+  border:1px solid rgba(58,58,58,.22);
   background:rgba(255,255,255,.6);
   color:var(--c-46371a);
   outline:none;
@@ -192,7 +192,7 @@ body::after{
 }
 .secondary-btn{
   padding:14px 22px;
-  border:1px solid rgba(166,127,52,.42);
+  border:1px solid rgba(58,58,58,.42);
   background:rgba(255,255,255,.3);
   color:var(--c-5b461d);
   text-decoration:none;
@@ -202,7 +202,7 @@ body::after{
   cursor:pointer;
   font-family:inherit;
 }
-.secondary-btn:hover{ background:rgba(166,127,52,.1); }
+.secondary-btn:hover{ background:rgba(58,58,58,.1); }
 
 /* ---- Elenco notizie: card in stile bacheca, coerente col resto dell'app. ---- */
 .news-list{
@@ -213,13 +213,13 @@ body::after{
 .news-card{
   background:rgba(255,255,255,.22);
   backdrop-filter:blur(8px);
-  border:1px solid rgba(166,127,52,.15);
-  box-shadow:0 24px 70px rgba(127,100,48,.07);
+  border:1px solid rgba(58,58,58,.15);
+  box-shadow:0 24px 70px rgba(45,45,45,.07);
   padding:26px;
 }
 .news-card.pinned{
-  border-color:rgba(166,127,52,.5);
-  background:linear-gradient(135deg,rgba(166,127,52,.10),rgba(255,255,255,.25));
+  border-color:rgba(58,58,58,.5);
+  background:linear-gradient(135deg,rgba(58,58,58,.10),rgba(255,255,255,.25));
 }
 .news-card-head{
   display:flex;
@@ -236,7 +236,7 @@ body::after{
 .pin-badge{
   display:inline-block;
   padding:5px 9px;
-  border:1px solid rgba(166,127,52,.4);
+  border:1px solid rgba(58,58,58,.4);
   color:var(--c-5b461d);
   font-size:9px;
   letter-spacing:.14em;
@@ -264,7 +264,7 @@ body::after{
 }
 .news-actions button{
   padding:8px 14px;
-  border:1px solid rgba(166,127,52,.25);
+  border:1px solid rgba(58,58,58,.25);
   background:rgba(255,255,255,.25);
   color:var(--c-5b461d);
   cursor:pointer;
@@ -273,12 +273,12 @@ body::after{
   text-transform:uppercase;
   font-family:inherit;
 }
-.news-actions button:hover{ background:#a67f34; color:var(--c-ffffff); }
+.news-actions button:hover{ background:#3a3a3a; color:var(--c-ffffff); }
 .news-actions button.danger:hover{ background:#9c2f2f; border-color:#9c2f2f; }
 .news-actions button.verify{ border-color:rgba(79,127,69,.4); color:var(--c-2b4626); }
 .news-actions button.verify:hover{ background:#4f7f45; color:var(--c-ffffff); }
 #historyList{ display:flex; flex-direction:column; gap:8px; }
-.news-update-item{ border-left:2px solid rgba(166,127,52,.4); padding-left:10px; margin-bottom:8px; }
+.news-update-item{ border-left:2px solid rgba(58,58,58,.4); padding-left:10px; margin-bottom:8px; }
 .news-update-date{ font-size:11px; color:var(--c-5b461d); text-transform:uppercase; letter-spacing:.06em; }
 .news-update-note{ font-size:13px; color:var(--c-5c4b25); white-space:pre-wrap; }
 .news-update-empty{ font-size:13px; color:var(--c-4f4125); }
@@ -287,7 +287,7 @@ body::after{
   text-align:center;
   color:var(--c-4f4125);
   font-size:14px;
-  border:1px solid rgba(166,127,52,.15);
+  border:1px solid rgba(58,58,58,.15);
   background:rgba(255,255,255,.18);
 }
 
@@ -295,9 +295,9 @@ body::after{
 .verify-badge{
   display:inline-block;
   padding:5px 9px;
-  border:1px solid rgba(196,140,20,.5);
+  border:1px solid rgba(64,64,64,.5);
   color:var(--c-5b3e07);
-  background:rgba(196,140,20,.08);
+  background:rgba(64,64,64,.08);
   font-size:9px;
   letter-spacing:.14em;
   text-transform:uppercase;
@@ -338,7 +338,7 @@ body::after{
   text-transform:uppercase;
   color:var(--c-5b461d);
   margin:22px 0 12px;
-  border-top:1px solid rgba(166,127,52,.18);
+  border-top:1px solid rgba(58,58,58,.18);
   padding-top:16px;
 }
 .news-form input[type="text"],
@@ -347,7 +347,7 @@ body::after{
 .news-form input[type="tel"]{
   width:100%;
   padding:14px 16px;
-  border:1px solid rgba(166,127,52,.22);
+  border:1px solid rgba(58,58,58,.22);
   background:rgba(255,255,255,.6);
   color:var(--c-46371a);
   outline:none;
@@ -1106,5 +1106,6 @@ async function revealCapitalPartnersLinkIfAllowed(){
   }
 })();
 </script>
+<script src="/js/ip-brand.js?v=2"></script>
 </body>
 </html>
