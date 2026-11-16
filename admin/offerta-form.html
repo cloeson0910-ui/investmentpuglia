@@ -13,7 +13,7 @@
 html,body{width:100%;min-height:100%}
 
 body{
-  background:#f4ecdf;
+  background:#ffffff;
   font-family:"Avenir Next","Helvetica Neue",Arial,sans-serif;
   color:var(--c-46371a);
 }
@@ -24,8 +24,8 @@ body::before{
   inset:0;
   z-index:-2;
   background:
-    radial-gradient(circle at center,rgba(255,255,255,.72) 0%,rgba(255,255,255,.34) 38%,rgba(244,236,223,.06) 72%),
-    #f4ecdf;
+    radial-gradient(circle at center,rgba(255,255,255,.72) 0%,rgba(255,255,255,.34) 38%,rgba(255,255,255,.06) 72%),
+    #ffffff;
 }
 
 body::after{
@@ -34,9 +34,9 @@ body::after{
   inset:0;
   z-index:-1;
   background:
-    repeating-linear-gradient(60deg,transparent 0 86px,rgba(188,149,78,.23) 87px,transparent 90px),
-    repeating-linear-gradient(-60deg,transparent 0 86px,rgba(188,149,78,.22) 87px,transparent 90px),
-    repeating-linear-gradient(0deg,transparent 0 148px,rgba(188,149,78,.13) 149px,transparent 152px);
+    repeating-linear-gradient(60deg,transparent 0 86px,rgba(68,68,68,.23) 87px,transparent 90px),
+    repeating-linear-gradient(-60deg,transparent 0 86px,rgba(68,68,68,.22) 87px,transparent 90px),
+    repeating-linear-gradient(0deg,transparent 0 148px,rgba(68,68,68,.13) 149px,transparent 152px);
   background-size:230px 199px;
   opacity:.30;
 }
@@ -70,8 +70,8 @@ body::after{
 .nav a,
 .nav button{
   padding:11px 20px;
-  border:1px solid rgba(165,129,57,.42);
-  background:rgba(255,252,244,.22);
+  border:1px solid rgba(59,59,59,.42);
+  background:rgba(255,255,255,.22);
   backdrop-filter:blur(8px);
   color:var(--c-5b471f);
   text-decoration:none;
@@ -83,7 +83,7 @@ body::after{
 }
 
 .panel{
-  border:1px solid rgba(165,129,57,.18);
+  border:1px solid rgba(59,59,59,.18);
   background:rgba(255,255,255,.08);
   padding:44px;
 }
@@ -107,7 +107,7 @@ h1{
 .legal-box{
   margin-bottom:28px;
   padding:22px;
-  border:1px solid rgba(165,129,57,.28);
+  border:1px solid rgba(59,59,59,.28);
   background:rgba(255,255,255,.15);
   font-size:12.5px;
   line-height:1.8;
@@ -120,7 +120,7 @@ h1{
   grid-column:1 / -1;
   margin-top:18px;
   padding-top:24px;
-  border-top:1px solid rgba(165,129,57,.16);
+  border-top:1px solid rgba(59,59,59,.16);
   font-size:12px;
   letter-spacing:.24em;
   text-transform:uppercase;
@@ -169,8 +169,8 @@ select,
 textarea{
   width:100%;
   padding:15px 16px;
-  border:1px solid rgba(165,129,57,.25);
-  background:rgba(255,252,244,.35);
+  border:1px solid rgba(59,59,59,.25);
+  background:rgba(255,255,255,.35);
   color:var(--c-46371a);
   font-size:14px;
   outline:none;
@@ -183,14 +183,14 @@ textarea{
 }
 
 input[readonly]{
-  background:rgba(165,129,57,.08);
+  background:rgba(59,59,59,.08);
   color:var(--c-4f4125);
 }
 
 .property-summary,
 .client-summary{
   grid-column:1 / -1;
-  border:1px solid rgba(165,129,57,.22);
+  border:1px solid rgba(59,59,59,.22);
   background:rgba(255,255,255,.18);
   padding:18px 20px;
   font-size:13px;
@@ -211,7 +211,7 @@ input[readonly]{
 }
 
 .clause-row{
-  border:1px solid rgba(165,129,57,.20);
+  border:1px solid rgba(59,59,59,.20);
   background:rgba(255,255,255,.12);
   padding:14px 16px;
 }
@@ -230,7 +230,7 @@ input[readonly]{
 .clause-row input[type="checkbox"]{
   width:auto;
   margin-top:3px;
-  accent-color:#a58139;
+  accent-color:#3b3b3b;
 }
 
 .clause-detail{
@@ -247,7 +247,7 @@ input[readonly]{
 }
 
 .doc-upload-box{
-  border:1px solid rgba(165,129,57,.22);
+  border:1px solid rgba(59,59,59,.22);
   background:rgba(255,255,255,.12);
   padding:16px;
 }
@@ -274,13 +274,13 @@ input[readonly]{
   align-items:flex-start;
   gap:10px;
   padding:16px;
-  border:1px solid rgba(165,129,57,.28);
+  border:1px solid rgba(59,59,59,.28);
   background:rgba(255,255,255,.18);
 }
 .checkbox-field input[type="checkbox"]{
   width:auto;
   margin-top:3px;
-  accent-color:#a58139;
+  accent-color:#3b3b3b;
 }
 .checkbox-field label{
   font-size:12.5px;
@@ -300,8 +300,8 @@ input[readonly]{
 
 .save-button{
   padding:16px 34px;
-  border:1px solid rgba(165,129,57,.42);
-  background:#a58139;
+  border:1px solid rgba(59,59,59,.42);
+  background:#3b3b3b;
   color:white;
   text-transform:uppercase;
   font-size:11px;
@@ -318,12 +318,12 @@ input[readonly]{
 /* Overlay stampabile della proposta, per la raccolta firme — stesso pattern già in
    uso in documenti.html per NDA/Incarico: pannello sovrapposto, isolato in stampa via
    @media print che nasconde tutto il resto della pagina. */
-.print-overlay{display:none;position:fixed;inset:0;background:rgba(74,60,31,.55);z-index:50;padding:30px;overflow-y:auto}
+.print-overlay{display:none;position:fixed;inset:0;background:rgba(27,27,27,.55);z-index:50;padding:30px;overflow-y:auto}
 .print-overlay.visible{display:block}
-.print-sheet{max-width:780px;margin:0 auto;background:#fffdf7;padding:52px 56px;box-shadow:0 30px 90px rgba(0,0,0,.35);position:relative}
+.print-sheet{max-width:780px;margin:0 auto;background:#ffffff;padding:52px 56px;box-shadow:0 30px 90px rgba(0,0,0,.35);position:relative}
 .print-close{position:absolute;top:18px;right:18px;background:none;border:none;font-size:20px;color:var(--c-5b461d);cursor:pointer}
 .print-letterhead{font-size:20px;letter-spacing:.3em;color:var(--c-5b461d);font-weight:300;margin-bottom:6px}
-.print-sub{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--c-4f4125);margin-bottom:32px;border-bottom:1px solid rgba(166,127,52,.25);padding-bottom:18px}
+.print-sub{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--c-4f4125);margin-bottom:32px;border-bottom:1px solid rgba(58,58,58,.25);padding-bottom:18px}
 .print-doc-title{font-size:22px;color:var(--c-4a3c1f);font-weight:400;margin-bottom:22px}
 .print-doc-body h4{font-size:12.5px;color:var(--c-5b461d);margin:20px 0 6px;text-transform:uppercase;letter-spacing:.06em}
 .print-doc-body p{font-size:13px;line-height:1.8;color:var(--c-3f321c);margin-bottom:8px}
@@ -331,7 +331,7 @@ input[readonly]{
 .print-sign-date{font-size:13px;color:var(--c-3f321c);margin-top:26px}
 .print-sign-row{display:flex;justify-content:space-between;gap:40px;margin-top:70px}
 .print-sign-col{flex:1;font-size:12.5px;color:var(--c-4a3c1f)}
-.print-sign-line{border-top:1px solid #4a3c1f;margin-top:46px;padding-top:6px}
+.print-sign-line{border-top:1px solid #1b1b1b;margin-top:46px;padding-top:6px}
 .print-actions{margin-top:30px;display:flex;gap:10px;flex-wrap:wrap}
 @media print{
   body *{visibility:hidden}
@@ -342,10 +342,10 @@ input[readonly]{
 
 .new-client-toggle{font-size:12px;color:var(--c-5b471f);text-decoration:underline;cursor:pointer;display:inline-block}
 
-.btn{padding:11px 18px;border:1px solid rgba(165,129,57,.42);background:rgba(255,252,244,.35);color:var(--c-5b471f);font-size:11px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;font-family:inherit}
+.btn{padding:11px 18px;border:1px solid rgba(59,59,59,.42);background:rgba(255,255,255,.35);color:var(--c-5b471f);font-size:11px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;font-family:inherit}
 .btn.secondary-btn{background:transparent}
 
-.sig-pad-box{border:1px solid rgba(165,129,57,.35);background:#fffdf8;touch-action:none}
+.sig-pad-box{border:1px solid rgba(59,59,59,.35);background:#ffffff;touch-action:none}
 .sig-canvas{width:100%;height:180px;display:block;cursor:crosshair}
 .sig-pad-actions{display:flex;align-items:center;gap:14px;margin-top:8px}
 .sig-pad-status{font-size:11.5px;color:var(--c-2b4626)}
@@ -1079,7 +1079,7 @@ function createSignaturePad(canvasId, statusId){
     ctx.lineWidth = 2.2;
     ctx.lineCap = "round";
     ctx.lineJoin = "round";
-    ctx.strokeStyle = "#3f321c";
+    ctx.strokeStyle = "#171717";
     if(prevData){
       var img = new Image();
       img.onload = function(){ ctx.drawImage(img, 0, 0, rect.width, rect.height); };
@@ -1148,13 +1148,13 @@ function escapeHTML(value){
 function setStatus(msg, type){
   var el = document.getElementById("status");
   el.textContent = msg || "";
-  el.style.color = type === "error" ? "#9c2f2f" : (type === "success" ? "#4f7f45" : "#8f7643");
+  el.style.color = type === "error" ? "#9c2f2f" : (type === "success" ? "#4f7f45" : "#353535");
 }
 
 function setSaveStatus(msg, type){
   var el = document.getElementById("saveStatus");
   el.textContent = msg || "";
-  el.style.color = type === "error" ? "#9c2f2f" : (type === "success" ? "#4f7f45" : "#8f7643");
+  el.style.color = type === "error" ? "#9c2f2f" : (type === "success" ? "#4f7f45" : "#353535");
 }
 
 async function checkAuth(){
@@ -2084,5 +2084,6 @@ document.getElementById("logoutBtn").addEventListener("click", async function(){
 })();
 </script>
 
+<script src="../js/ip-brand.js?v=1"></script>
 </body>
 </html>

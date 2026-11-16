@@ -11,7 +11,7 @@
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{width:100%;min-height:100%}
 body{
-  background:#f4ecdf;
+  background:#ffffff;
   font-family:"Avenir Next","Helvetica Neue",Arial,sans-serif;
   color:var(--c-46371a);
 }
@@ -21,8 +21,8 @@ body::before{
   inset:0;
   z-index:-2;
   background:
-    radial-gradient(circle at center,rgba(255,255,255,.72) 0%,rgba(255,255,255,.34) 38%,rgba(244,236,223,.06) 72%),
-    #f4ecdf;
+    radial-gradient(circle at center,rgba(255,255,255,.72) 0%,rgba(255,255,255,.34) 38%,rgba(255,255,255,.06) 72%),
+    #ffffff;
 }
 body::after{
   content:"";
@@ -30,9 +30,9 @@ body::after{
   inset:0;
   z-index:-1;
   background:
-    repeating-linear-gradient(60deg,transparent 0 86px,rgba(188,149,78,.23) 87px,transparent 90px),
-    repeating-linear-gradient(-60deg,transparent 0 86px,rgba(188,149,78,.22) 87px,transparent 90px),
-    repeating-linear-gradient(0deg,transparent 0 148px,rgba(188,149,78,.13) 149px,transparent 152px);
+    repeating-linear-gradient(60deg,transparent 0 86px,rgba(68,68,68,.23) 87px,transparent 90px),
+    repeating-linear-gradient(-60deg,transparent 0 86px,rgba(68,68,68,.22) 87px,transparent 90px),
+    repeating-linear-gradient(0deg,transparent 0 148px,rgba(68,68,68,.13) 149px,transparent 152px);
   background-size:230px 199px;
   opacity:.30;
 }
@@ -41,8 +41,8 @@ body::after{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  border-bottom:1px solid rgba(166,127,52,.12);
-  background:rgba(244,236,223,.72);
+  border-bottom:1px solid rgba(58,58,58,.12);
+  background:rgba(255,255,255,.72);
   backdrop-filter:blur(14px);
   position:sticky;
   top:0;
@@ -54,7 +54,7 @@ body::after{
 .header-actions{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
 .header-actions a,.logout{
   padding:10px 20px;
-  border:1px solid rgba(166,127,52,.25);
+  border:1px solid rgba(58,58,58,.25);
   background:rgba(255,255,255,.25);
   cursor:pointer;
   color:var(--c-5b461d);
@@ -63,7 +63,7 @@ body::after{
   letter-spacing:.14em;
   text-transform:uppercase;
 }
-.header-actions a:hover,.logout:hover{background:#a67f34;color:var(--c-ffffff)}
+.header-actions a:hover,.logout:hover{background:#3a3a3a;color:var(--c-ffffff)}
 .container{max-width:1280px;margin:auto;padding:40px}
 .kicker{font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--c-554321);margin-bottom:12px}
 .title-row{display:flex;justify-content:space-between;align-items:flex-start;gap:22px;flex-wrap:wrap;margin-bottom:18px}
@@ -72,11 +72,11 @@ body::after{
 .form-wrapper{
   background:rgba(255,255,255,.20);
   backdrop-filter:blur(8px);
-  border:1px solid rgba(166,127,52,.15);
-  box-shadow:0 24px 70px rgba(127,100,48,.07);
+  border:1px solid rgba(58,58,58,.15);
+  box-shadow:0 24px 70px rgba(45,45,45,.07);
   padding:34px;
 }
-.section{margin-bottom:34px;padding-bottom:30px;border-bottom:1px solid rgba(166,127,52,.12)}
+.section{margin-bottom:34px;padding-bottom:30px;border-bottom:1px solid rgba(58,58,58,.12)}
 .section:last-child{border-bottom:0;margin-bottom:0;padding-bottom:0}
 .section-title{font-size:18px;font-weight:300;letter-spacing:.12em;text-transform:uppercase;color:var(--c-5b461d);margin-bottom:6px}
 .section-note{font-size:12px;color:var(--c-4f4125);margin-bottom:20px;line-height:1.6}
@@ -88,7 +88,7 @@ label{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--c
 input,select,textarea{
   width:100%;
   padding:14px 16px;
-  border:1px solid rgba(166,127,52,.22);
+  border:1px solid rgba(58,58,58,.22);
   background:rgba(255,255,255,.25);
   color:var(--c-46371a);
   outline:none;
@@ -98,24 +98,24 @@ input,select,textarea{
 textarea{min-height:100px;resize:vertical;line-height:1.6}
 
 .cadastral-box{
-  background:rgba(166,127,52,.06);
-  border:1px solid rgba(166,127,52,.18);
+  background:rgba(58,58,58,.06);
+  border:1px solid rgba(58,58,58,.18);
   padding:22px;
 }
 .cadastral-value-box{
   margin-top:18px;
   padding:18px 20px;
-  border:1px solid rgba(166,127,52,.25);
+  border:1px solid rgba(58,58,58,.25);
   background:rgba(255,255,255,.35);
 }
 .cadastral-value-title{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--c-5b461d);margin-bottom:8px}
 .cadastral-value-amount{font-size:22px;color:var(--c-46371a);margin-bottom:6px}
 .cadastral-value-detail{font-size:12px;color:var(--c-4f4125);line-height:1.7}
 .cadastral-value-breakdown{font-size:12px;color:var(--c-4f4125);line-height:1.8;margin-bottom:8px;padding-left:0;list-style:none}
-.cadastral-value-breakdown li{display:flex;justify-content:space-between;gap:12px;border-bottom:1px dashed rgba(166,127,52,.2);padding:3px 0}
+.cadastral-value-breakdown li{display:flex;justify-content:space-between;gap:12px;border-bottom:1px dashed rgba(58,58,58,.2);padding:3px 0}
 .cadastral-section-extra{
-  background:rgba(166,127,52,.06);
-  border:1px solid rgba(166,127,52,.18);
+  background:rgba(58,58,58,.06);
+  border:1px solid rgba(58,58,58,.18);
   padding:22px;
   margin-top:14px;
   position:relative;
@@ -140,8 +140,8 @@ textarea{min-height:100px;resize:vertical;line-height:1.6}
 .result-box{
   margin-top:24px;
   padding:26px;
-  border:1px solid rgba(166,127,52,.25);
-  background:rgba(166,127,52,.08);
+  border:1px solid rgba(58,58,58,.25);
+  background:rgba(58,58,58,.08);
   display:none;
 }
 .result-box.visible{display:block}
@@ -150,7 +150,7 @@ textarea{min-height:100px;resize:vertical;line-height:1.6}
 .result-detail{font-size:12.5px;color:var(--c-4f4125);line-height:1.9}
 .result-detail strong{color:var(--c-5a4a2a)}
 .comparables-table{width:100%;border-collapse:collapse;margin-top:14px;font-size:12px}
-.comparables-table th,.comparables-table td{text-align:left;padding:6px 8px;border-bottom:1px solid #e8dfc8}
+.comparables-table th,.comparables-table td{text-align:left;padding:6px 8px;border-bottom:1px solid #b6b6b6}
 .comparables-table th{color:var(--c-5b461d);text-transform:uppercase;letter-spacing:.05em;font-size:10.5px}
 .comparables-table td{color:var(--c-5a4a2a)}
 
@@ -158,7 +158,7 @@ textarea{min-height:100px;resize:vertical;line-height:1.6}
 .btn-group{display:flex;gap:12px;flex-wrap:wrap}
 .submit-btn,.secondary-btn{
   padding:14px 22px;
-  border:1px solid rgba(166,127,52,.42);
+  border:1px solid rgba(58,58,58,.42);
   text-decoration:none;
   text-transform:uppercase;
   font-size:11px;
@@ -166,15 +166,15 @@ textarea{min-height:100px;resize:vertical;line-height:1.6}
   cursor:pointer;
   font-family:inherit;
 }
-.submit-btn{background:#a67f34;color:var(--c-fffaf0)}
+.submit-btn{background:#3a3a3a;color:var(--c-fffaf0)}
 .submit-btn:disabled{opacity:.55;cursor:not-allowed}
 .secondary-btn{background:rgba(255,255,255,.25);color:var(--c-5b461d)}
 .save-panel{min-width:300px}
 .progress-text{min-height:18px;margin-bottom:10px;font-size:13px;color:var(--c-4f4125)}
 .progress-text.success{color:var(--c-2b4626)}
 .progress-text.error{color:var(--c-561a1a)}
-.progress-bar{width:100%;height:6px;border:1px solid rgba(166,127,52,.20);background:rgba(255,255,255,.28);overflow:hidden;margin-bottom:14px}
-.progress-fill{width:0%;height:100%;background:#a67f34;transition:width .35s ease}
+.progress-bar{width:100%;height:6px;border:1px solid rgba(58,58,58,.20);background:rgba(255,255,255,.28);overflow:hidden;margin-bottom:14px}
+.progress-fill{width:0%;height:100%;background:#3a3a3a;transition:width .35s ease}
 
 @media(max-width:900px){.grid,.grid-3{grid-template-columns:1fr}}
 @media(max-width:700px){
@@ -214,7 +214,7 @@ textarea{min-height:100px;resize:vertical;line-height:1.6}
     Registra i dati del venditore e dell'immobile, con i dati catastali dalla visura. Il calcolo combina le opportunità IMMONOVA già pubblicate nella zona con i dati di mercato pubblici, con metodo comparativo.
   </p>
 
-  <div id="importBanner" style="display:none;margin-bottom:22px;padding:16px 20px;border:1px solid rgba(166,127,52,.35);background:rgba(166,127,52,.10);font-size:13px;line-height:1.7;color:var(--c-5a4a2a)"></div>
+  <div id="importBanner" style="display:none;margin-bottom:22px;padding:16px 20px;border:1px solid rgba(58,58,58,.35);background:rgba(58,58,58,.10);font-size:13px;line-height:1.7;color:var(--c-5a4a2a)"></div>
 
   <form id="valuationForm" class="form-wrapper">
 
@@ -501,7 +501,7 @@ textarea{min-height:100px;resize:vertical;line-height:1.6}
         <button type="button" class="secondary-btn" id="addCadastralSectionBtn" data-i18n="btn_add_cadastral_section">+ Aggiungi sezione catastale</button>
         <button type="button" class="secondary-btn" id="extractVisuraBtn">📄 Carica visura catastale (estrazione automatica)</button>
         <input type="file" id="visuraFileInput" accept="application/pdf,image/*" multiple style="display:none">
-        <span id="extractVisuraStatus" style="font-size:13px;color:#8a7458"></span>
+        <span id="extractVisuraStatus" style="font-size:13px;color:#353535"></span>
       </div>
       <p class="section-note" style="margin-top:6px">Carica una o più pagine della visura catastale (PDF o foto): i dati vengono letti automaticamente e usati per riempire la sezione principale e, se la visura riporta più unità (es. abitazione + garage + cantina), per creare in automatico le sezioni catastali aggiuntive corrispondenti. Controlla sempre i dati estratti prima di salvare. Il file originale viene conservato e allegato al dossier di valutazione (lo ritrovi anche nel report stampabile).</p>
       <p id="visuraFilesStatus" class="section-note" style="margin-top:4px;font-size:12px"></p>
@@ -519,7 +519,7 @@ textarea{min-height:100px;resize:vertical;line-height:1.6}
         <div class="cadastral-value-detail" id="commercialSurfaceDetail"></div>
       </div>
 
-      <div id="fNotEvaluableBox" style="display:none;margin-top:14px;padding:14px 16px;border:1px solid #c98b3a;background:rgba(201,139,58,.08);border-radius:4px;font-size:12px;color:#5b471f"></div>
+      <div id="fNotEvaluableBox" style="display:none;margin-top:14px;padding:14px 16px;border:1px solid #424242;background:rgba(66,66,66,.08);border-radius:4px;font-size:12px;color:#202020"></div>
     </div>
 
     <div class="section">
@@ -533,7 +533,7 @@ textarea{min-height:100px;resize:vertical;line-height:1.6}
         <button type="button" class="secondary-btn" id="floorplanUndoBtn">↩ Annulla ultimo</button>
         <button type="button" class="secondary-btn" id="floorplanClearBtn">🗑 Cancella tutto</button>
       </div>
-      <div id="fmBox" style="display:none;margin-top:14px;padding:12px 14px;border:1px solid rgba(166,127,52,.35);background:rgba(166,127,52,.05)">
+      <div id="fmBox" style="display:none;margin-top:14px;padding:12px 14px;border:1px solid rgba(58,58,58,.35);background:rgba(58,58,58,.05)">
         <div style="font-weight:600;margin-bottom:6px">📏 Misura superficie dalla planimetria</div>
         <div style="font-size:12px;opacity:.8;margin-bottom:8px">Scegli il tipo e clicca dentro ogni vano: si colora fino ai muri e ne calcola i mq. La scala si legge da sola dalla griglia "10 metri" delle planimetrie catastali; se manca, usa "Imposta scala" su una misura nota. Se il colore esce da un ingresso o da una porta aperta, chiudila con una linea.</div>
         <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
@@ -547,7 +547,7 @@ textarea{min-height:100px;resize:vertical;line-height:1.6}
         </div>
         <div id="fmPanel"></div>
       </div>
-      <div id="floorplanCanvasWrap" style="display:none;margin-top:12px;max-width:100%;overflow:auto;border:1px solid rgba(166,127,52,.28)">
+      <div id="floorplanCanvasWrap" style="display:none;margin-top:12px;max-width:100%;overflow:auto;border:1px solid rgba(58,58,58,.28)">
         <canvas id="floorplanCanvas" style="max-width:100%;display:block;touch-action:none;cursor:crosshair"></canvas>
       </div>
       <div id="floorplanNotesList"></div>
@@ -567,7 +567,7 @@ textarea{min-height:100px;resize:vertical;line-height:1.6}
       <div id="bonusMalusList"></div>
       <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap;align-items:center">
         <button type="button" class="secondary-btn" id="addBonusMalusBtn">+ Aggiungi caratteristica</button>
-        <span id="bonusMalusTotal" style="font-size:14px;font-weight:600;color:#5b461d"></span>
+        <span id="bonusMalusTotal" style="font-size:14px;font-weight:600;color:#202020"></span>
       </div>
     </div>
 
@@ -578,7 +578,7 @@ textarea{min-height:100px;resize:vertical;line-height:1.6}
         <div class="result-title" data-i18n="result_title">Valore di mercato stimato</div>
         <div class="result-range" id="resultRange">—</div>
         <div class="result-detail" id="resultDetail"></div>
-        <div id="bonusMalusResultNote" style="margin-top:8px;font-size:12.5px;color:#5a4a2a"></div>
+        <div id="bonusMalusResultNote" style="margin-top:8px;font-size:12.5px;color:#212121"></div>
       </div>
     </div>
 
@@ -2048,17 +2048,17 @@ function renderBonusMalusList(){
   if(!container) return;
   container.innerHTML = bonusMalusState.map(function(item){
     var referenceHTML = (item.reference && item.reference.length)
-      ? '<ul class="bm-reference" style="margin:6px 0 0;padding-left:16px;font-size:11.5px;color:#8a7458;line-height:1.6">' +
+      ? '<ul class="bm-reference" style="margin:6px 0 0;padding-left:16px;font-size:11.5px;color:#353535;line-height:1.6">' +
           item.reference.map(function(line){ return '<li>' + escapeHTML(line) + '</li>'; }).join("") +
         '</ul>'
-      : (item.range_hint ? '<div style="font-size:11px;color:#8a7458;margin-top:4px">' + escapeHTML(item.range_hint) + '</div>' : '');
+      : (item.range_hint ? '<div style="font-size:11px;color:#353535;margin-top:4px">' + escapeHTML(item.range_hint) + '</div>' : '');
     return '' +
-      '<div class="bonus-malus-row" data-bm-id="' + item.id + '" style="display:grid;grid-template-columns:1fr 110px' + (item.custom ? ' 32px' : '') + ';gap:10px;align-items:start;padding:12px 0;border-bottom:1px solid rgba(166,127,52,.15)">' +
+      '<div class="bonus-malus-row" data-bm-id="' + item.id + '" style="display:grid;grid-template-columns:1fr 110px' + (item.custom ? ' 32px' : '') + ';gap:10px;align-items:start;padding:12px 0;border-bottom:1px solid rgba(58,58,58,.15)">' +
         (item.custom
-          ? '<input type="text" class="bm-label" data-bm="' + item.id + '" placeholder="Es. Angolo cottura di pregio, soffitti a volta..." value="' + escapeHTML(item.label || "") + '" style="padding:8px;border:1px solid rgba(166,127,52,.3);background:#fffaf0">'
-          : '<div><div style="font-size:13.5px;color:#4a3c1f;font-weight:600">' + escapeHTML(item.label) + '</div>' + referenceHTML + '</div>')
+          ? '<input type="text" class="bm-label" data-bm="' + item.id + '" placeholder="Es. Angolo cottura di pregio, soffitti a volta..." value="' + escapeHTML(item.label || "") + '" style="padding:8px;border:1px solid rgba(58,58,58,.3);background:#ffffff">'
+          : '<div><div style="font-size:13.5px;color:#1b1b1b;font-weight:600">' + escapeHTML(item.label) + '</div>' + referenceHTML + '</div>')
         +
-        '<input type="number" class="bm-pct" data-bm="' + item.id + '" step="1" placeholder="0%" value="' + escapeHTML(item.pct === "" ? "" : String(item.pct)) + '" style="padding:8px;border:1px solid rgba(166,127,52,.3);background:#fffaf0;text-align:right;align-self:start">' +
+        '<input type="number" class="bm-pct" data-bm="' + item.id + '" step="1" placeholder="0%" value="' + escapeHTML(item.pct === "" ? "" : String(item.pct)) + '" style="padding:8px;border:1px solid rgba(58,58,58,.3);background:#ffffff;text-align:right;align-self:start">' +
         (item.custom ? '<button type="button" class="remove-bonus-malus-btn" data-bm="' + item.id + '" title="Rimuovi" style="border:none;background:none;color:#a44;cursor:pointer;font-size:16px;align-self:start">×</button>' : '') +
       '</div>';
   }).join("");
@@ -2581,9 +2581,9 @@ function fpInit(){
 
 function fpSetTool(tool){
   fpState.tool = (fpState.tool === tool) ? null : tool;
-  document.getElementById("floorplanToolCircle").style.outline = fpState.tool === "circle" ? "2px solid #a67f34" : "";
-  document.getElementById("floorplanToolNote").style.outline = fpState.tool === "note" ? "2px solid #a67f34" : "";
-  [["fmRoomBtn","m_room"],["fmLineBtn","m_line"],["fmScaleBtn","m_scale"]].forEach(function(b){ var el = document.getElementById(b[0]); if(el) el.style.outline = fpState.tool === b[1] ? "2px solid #a67f34" : ""; });
+  document.getElementById("floorplanToolCircle").style.outline = fpState.tool === "circle" ? "2px solid #3a3a3a" : "";
+  document.getElementById("floorplanToolNote").style.outline = fpState.tool === "note" ? "2px solid #3a3a3a" : "";
+  [["fmRoomBtn","m_room"],["fmLineBtn","m_line"],["fmScaleBtn","m_scale"]].forEach(function(b){ var el = document.getElementById(b[0]); if(el) el.style.outline = fpState.tool === b[1] ? "2px solid #3a3a3a" : ""; });
 }
 
 function fpOnFileChange(e){
@@ -2747,7 +2747,7 @@ function fpRedraw(){
       noteNum++;
       var r = Math.max(14, fpState.naturalW/60);
       fpCtx.save();
-      fpCtx.fillStyle = "#a67f34";
+      fpCtx.fillStyle = "#3a3a3a";
       fpCtx.beginPath();
       fpCtx.arc(a.x, a.y, r, 0, Math.PI*2);
       fpCtx.fill();
@@ -2769,7 +2769,7 @@ function fpRenderNotesList(){
   var html = "";
   notes.forEach(function(n, i){
     html += '<div style="display:flex;gap:8px;align-items:flex-start;margin-top:8px">' +
-      '<span style="min-width:22px;height:22px;border-radius:50%;background:#a67f34;color:#fff;font-size:11px;display:flex;align-items:center;justify-content:center;flex:none">' + (i+1) + '</span>' +
+      '<span style="min-width:22px;height:22px;border-radius:50%;background:#3a3a3a;color:#fff;font-size:11px;display:flex;align-items:center;justify-content:center;flex:none">' + (i+1) + '</span>' +
       '<span style="font-size:13.5px;flex:1">' + fpEscape(n.text) + '</span>' +
       '</div>';
   });
@@ -2969,7 +2969,7 @@ function fmDrawOverlay(){
     fmState.rooms.forEach(function(r, i){
       var fs = Math.max(16, W/70);
       fpCtx.save(); fpCtx.font = "bold " + Math.round(fs) + "px sans-serif"; fpCtx.textAlign = "center";
-      fpCtx.lineWidth = fs/5; fpCtx.strokeStyle = "#fff"; fpCtx.fillStyle = "#3a2a08";
+      fpCtx.lineWidth = fs/5; fpCtx.strokeStyle = "#fff"; fpCtx.fillStyle = "#131313";
       var t = (i+1) + ") " + (fmState.useGross ? r.gross : r.net).toFixed(1).replace(".", ",") + " mq";
       fpCtx.strokeText(t, r.seed.x, r.seed.y); fpCtx.fillText(t, r.seed.x, r.seed.y); fpCtx.restore();
     });
@@ -3479,5 +3479,6 @@ async function handleCategoryChange(selectEl){
   }
 })();
 </script>
+<script src="../js/ip-brand.js?v=1"></script>
 </body>
 </html>

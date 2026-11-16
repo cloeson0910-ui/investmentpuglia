@@ -12,7 +12,7 @@
 html,body{width:100%;min-height:100%}
 
 body{
-  background:#f4ecdf;
+  background:#ffffff;
   font-family:"Avenir Next","Helvetica Neue",Arial,sans-serif;
   color:var(--c-46371a);
 }
@@ -23,8 +23,8 @@ body::before{
   inset:0;
   z-index:-2;
   background:
-    radial-gradient(circle at center,rgba(255,255,255,.72) 0%,rgba(255,255,255,.34) 38%,rgba(244,236,223,.06) 72%),
-    #f4ecdf;
+    radial-gradient(circle at center,rgba(255,255,255,.72) 0%,rgba(255,255,255,.34) 38%,rgba(255,255,255,.06) 72%),
+    #ffffff;
 }
 
 body::after{
@@ -33,9 +33,9 @@ body::after{
   inset:0;
   z-index:-1;
   background:
-    repeating-linear-gradient(60deg,transparent 0 86px,rgba(188,149,78,.23) 87px,transparent 90px),
-    repeating-linear-gradient(-60deg,transparent 0 86px,rgba(188,149,78,.22) 87px,transparent 90px),
-    repeating-linear-gradient(0deg,transparent 0 148px,rgba(188,149,78,.13) 149px,transparent 152px);
+    repeating-linear-gradient(60deg,transparent 0 86px,rgba(68,68,68,.23) 87px,transparent 90px),
+    repeating-linear-gradient(-60deg,transparent 0 86px,rgba(68,68,68,.22) 87px,transparent 90px),
+    repeating-linear-gradient(0deg,transparent 0 148px,rgba(68,68,68,.13) 149px,transparent 152px);
   background-size:230px 199px;
   opacity:.30;
 }
@@ -69,8 +69,8 @@ body::after{
 .nav a,
 .nav button{
   padding:11px 20px;
-  border:1px solid rgba(165,129,57,.42);
-  background:rgba(255,252,244,.22);
+  border:1px solid rgba(59,59,59,.42);
+  background:rgba(255,255,255,.22);
   backdrop-filter:blur(8px);
   color:var(--c-5b471f);
   text-decoration:none;
@@ -82,7 +82,7 @@ body::after{
 }
 
 .panel{
-  border:1px solid rgba(165,129,57,.18);
+  border:1px solid rgba(59,59,59,.18);
   background:rgba(255,255,255,.08);
   padding:44px;
 }
@@ -106,7 +106,7 @@ h1{
 .ai-box{
   margin-bottom:28px;
   padding:22px;
-  border:1px solid rgba(165,129,57,.28);
+  border:1px solid rgba(59,59,59,.28);
   background:rgba(255,255,255,.15);
 }
 
@@ -127,8 +127,8 @@ h1{
 
 .ai-button{
   padding:13px 24px;
-  border:1px solid rgba(165,129,57,.42);
-  background:#a58139;
+  border:1px solid rgba(59,59,59,.42);
+  background:#3b3b3b;
   color:white;
   text-transform:uppercase;
   font-size:10px;
@@ -145,7 +145,7 @@ h1{
   grid-column:1 / -1;
   margin-top:18px;
   padding-top:24px;
-  border-top:1px solid rgba(165,129,57,.16);
+  border-top:1px solid rgba(59,59,59,.16);
   font-size:12px;
   letter-spacing:.24em;
   text-transform:uppercase;
@@ -161,7 +161,7 @@ h1{
   flex-wrap:wrap;
   gap:6px;
   margin-bottom:24px;
-  border-bottom:1px solid rgba(165,129,57,.16);
+  border-bottom:1px solid rgba(59,59,59,.16);
   padding-bottom:0;
 }
 .tab-btn{
@@ -179,13 +179,13 @@ h1{
 }
 .tab-btn:hover{
   color:var(--c-5b461d);
-  background:rgba(165,129,57,.06);
+  background:rgba(59,59,59,.06);
 }
 .tab-btn.active{
   color:var(--c-5b461d);
-  background:rgba(165,129,57,.10);
-  border-color:rgba(165,129,57,.22);
-  border-bottom:1px solid #fffdf8;
+  background:rgba(59,59,59,.10);
+  border-color:rgba(59,59,59,.22);
+  border-bottom:1px solid #ffffff;
   margin-bottom:-1px;
   font-weight:600;
 }
@@ -225,8 +225,8 @@ select,
 textarea{
   width:100%;
   padding:15px 16px;
-  border:1px solid rgba(165,129,57,.25);
-  background:rgba(255,252,244,.35);
+  border:1px solid rgba(59,59,59,.25);
+  background:rgba(255,255,255,.35);
   color:var(--c-46371a);
   font-size:14px;
   outline:none;
@@ -242,7 +242,7 @@ textarea{
   width:100%;
   max-height:360px;
   object-fit:cover;
-  border:1px solid rgba(165,129,57,.20);
+  border:1px solid rgba(59,59,59,.20);
   margin-bottom:14px;
   display:none;
 }
@@ -255,7 +255,7 @@ textarea{
 }
 
 .gallery-item{
-  border:1px solid rgba(165,129,57,.20);
+  border:1px solid rgba(59,59,59,.20);
   background:rgba(255,255,255,.12);
   padding:8px;
 }
@@ -272,7 +272,7 @@ textarea{
   margin-top:8px;
   padding:9px 10px;
   border:1px solid rgba(156,47,47,.35);
-  background:rgba(255,252,244,.22);
+  background:rgba(255,255,255,.22);
   color:var(--c-561a1a);
   text-transform:uppercase;
   font-size:9px;
@@ -287,8 +287,8 @@ textarea{
 }
 
 .folder-import-box{
-  border:1px solid rgba(165,129,57,.30);
-  background:rgba(255,252,244,.30);
+  border:1px solid rgba(59,59,59,.30);
+  background:rgba(255,255,255,.30);
   padding:20px;
   margin-bottom:22px;
 }
@@ -344,7 +344,7 @@ textarea{
   margin-top:14px;
 }
 .folder-import-card{
-  border:1px solid rgba(165,129,57,.25);
+  border:1px solid rgba(59,59,59,.25);
   background:rgba(255,255,255,.30);
   padding:8px;
   position:relative;
@@ -369,11 +369,11 @@ textarea{
   text-transform:uppercase;
   padding:2px 6px;
   border-radius:2px;
-  background:rgba(166,127,52,.14);
+  background:rgba(58,58,58,.14);
   color:var(--c-4f4125);
 }
 .folder-import-badge.cover-badge{background:rgba(79,127,69,.16);color:var(--c-2b4626)}
-.folder-import-badge.enhanced-badge{background:rgba(166,127,52,.22);color:var(--c-5b471f);cursor:pointer}
+.folder-import-badge.enhanced-badge{background:rgba(58,58,58,.22);color:var(--c-5b471f);cursor:pointer}
 .folder-import-badge.low-score-badge{background:rgba(156,47,47,.14);color:var(--c-561a1a)}
 .folder-import-card-actions{
   display:flex;
@@ -390,7 +390,7 @@ textarea{
   cursor:pointer;
 }
 .folder-import-cover-btn{
-  border:1px solid rgba(165,129,57,.35);
+  border:1px solid rgba(59,59,59,.35);
   background:transparent;
   color:var(--c-5b471f);
   font-size:9px;
@@ -404,7 +404,7 @@ textarea{
   position:absolute;
   top:6px;
   right:6px;
-  background:rgba(30,22,10,.66);
+  background:rgba(10,10,10,.66);
   color:var(--c-f1d27a);
   font-size:10px;
   font-family:monospace;
@@ -413,8 +413,8 @@ textarea{
 }
 
 .watermark-box{
-  border:1px solid rgba(165,129,57,.30);
-  background:rgba(255,252,244,.30);
+  border:1px solid rgba(59,59,59,.30);
+  background:rgba(255,255,255,.30);
   padding:20px;
   margin-bottom:22px;
 }
@@ -422,7 +422,7 @@ textarea{
   font-size:13px;
   letter-spacing:.14em;
   text-transform:uppercase;
-  color:var(--primary-color,#a58139);
+  color:var(--primary-color,#3b3b3b);
   font-weight:600;
   margin-bottom:8px;
 }
@@ -478,7 +478,7 @@ textarea{
   position:relative;
   width:32px;
   height:32px;
-  border:1px solid rgba(165,129,57,.35);
+  border:1px solid rgba(59,59,59,.35);
   background:rgba(255,255,255,.4);
   cursor:pointer;
   display:flex;
@@ -496,14 +496,14 @@ textarea{
   width:8px;
   height:8px;
   border-radius:50%;
-  background:rgba(165,129,57,.4);
+  background:rgba(59,59,59,.4);
 }
 .wm-pos-cell:has(input:checked){
-  background:rgba(165,129,57,.20);
-  border-color:var(--primary-color,#a58139);
+  background:rgba(59,59,59,.20);
+  border-color:var(--primary-color,#3b3b3b);
 }
 .wm-pos-cell:has(input:checked) span{
-  background:var(--primary-color,#a58139);
+  background:var(--primary-color,#3b3b3b);
 }
 
 .watermark-variant-group{
@@ -516,7 +516,7 @@ textarea{
   align-items:center;
   gap:6px;
   padding:6px 12px;
-  border:1px solid rgba(165,129,57,.35);
+  border:1px solid rgba(59,59,59,.35);
   background:rgba(255,255,255,.4);
   cursor:pointer;
   font-size:11px;
@@ -532,8 +532,8 @@ textarea{
   cursor:pointer;
 }
 .wm-variant-cell:has(input:checked){
-  background:rgba(165,129,57,.20);
-  border-color:var(--primary-color,#a58139);
+  background:rgba(59,59,59,.20);
+  border-color:var(--primary-color,#3b3b3b);
   color:var(--c-5c4a20);
 }
 
@@ -544,7 +544,7 @@ textarea{
   margin-top:14px;
 }
 .watermark-preview-card{
-  border:1px solid rgba(165,129,57,.25);
+  border:1px solid rgba(59,59,59,.25);
   background:rgba(255,255,255,.30);
   padding:8px;
 }
@@ -568,7 +568,7 @@ textarea{
 }
 .wm-preview-variant-btn{
   flex:1;
-  border:1px solid rgba(165,129,57,.35);
+  border:1px solid rgba(59,59,59,.35);
   background:transparent;
   color:var(--c-4f4125);
   font-size:9px;
@@ -578,9 +578,9 @@ textarea{
   cursor:pointer;
 }
 .wm-preview-variant-btn.active{
-  background:rgba(165,129,57,.22);
+  background:rgba(59,59,59,.22);
   color:var(--c-5c4a20);
-  border-color:var(--primary-color,#a58139);
+  border-color:var(--primary-color,#3b3b3b);
 }
 
 .checks{
@@ -627,8 +627,8 @@ button.danger,
 button.soft,
 a.secondary{
   padding:14px 28px;
-  border:1px solid rgba(165,129,57,.42);
-  background:rgba(255,252,244,.22);
+  border:1px solid rgba(59,59,59,.42);
+  background:rgba(255,255,255,.22);
   backdrop-filter:blur(8px);
   color:var(--c-5b471f);
   text-decoration:none;
@@ -672,8 +672,8 @@ button.danger{
 }
 
 .building-card{
-  border:1px solid rgba(165,129,57,.25);
-  background:rgba(255,252,244,.25);
+  border:1px solid rgba(59,59,59,.25);
+  background:rgba(255,255,255,.25);
   padding:18px;
   margin-bottom:14px;
 }
@@ -722,8 +722,8 @@ button.danger{
   grid-column:1 / -1;
   display:none;
   padding:24px;
-  border:1px solid rgba(165,129,57,.24);
-  background:rgba(255,252,244,.18);
+  border:1px solid rgba(59,59,59,.24);
+  background:rgba(255,255,255,.18);
 }
 
 .renovation-box.active{
@@ -753,8 +753,8 @@ button.danger{
 .ai-status-box{
   margin-top:14px;
   padding:14px 16px;
-  border:1px solid rgba(165,129,57,.20);
-  background:rgba(255,252,244,.24);
+  border:1px solid rgba(59,59,59,.20);
+  background:rgba(255,255,255,.24);
   font-size:13px;
   line-height:1.7;
   color:var(--c-4f4125);
@@ -779,7 +779,7 @@ button.danger{
 }
 
 .render-card{
-  border:1px solid rgba(165,129,57,.20);
+  border:1px solid rgba(59,59,59,.20);
   background:rgba(255,255,255,.12);
   padding:8px;
 }
@@ -809,14 +809,14 @@ button.danger{
   flex-wrap:wrap;
   align-items:center;
   padding:18px;
-  border:1px solid rgba(165,129,57,.18);
-  background:rgba(255,252,244,.16);
+  border:1px solid rgba(59,59,59,.18);
+  background:rgba(255,255,255,.16);
 }
 
 .map-tools button{
   padding:12px 18px;
-  border:1px solid rgba(165,129,57,.42);
-  background:rgba(255,252,244,.22);
+  border:1px solid rgba(59,59,59,.42);
+  background:rgba(255,255,255,.22);
   color:var(--c-5b471f);
   text-transform:uppercase;
   font-size:10px;
@@ -834,8 +834,8 @@ button.danger{
   grid-column:1 / -1;
   display:none;
   min-height:320px;
-  border:1px solid rgba(165,129,57,.22);
-  background:rgba(255,252,244,.18);
+  border:1px solid rgba(59,59,59,.22);
+  background:rgba(255,255,255,.18);
   overflow:hidden;
 }
 
@@ -851,15 +851,15 @@ button.danger{
   font-size:12px;
   line-height:1.6;
   color:var(--c-4f4125);
-  border-top:1px solid rgba(165,129,57,.16);
+  border-top:1px solid rgba(59,59,59,.16);
 }
 
 
 .documents-box{
   grid-column:1 / -1;
   padding:24px;
-  border:1px solid rgba(165,129,57,.24);
-  background:rgba(255,252,244,.18);
+  border:1px solid rgba(59,59,59,.24);
+  background:rgba(255,255,255,.18);
 }
 
 .documents-head{
@@ -890,7 +890,7 @@ button.danger{
   min-width:120px;
   text-align:center;
   padding:12px 16px;
-  border:1px solid rgba(165,129,57,.28);
+  border:1px solid rgba(59,59,59,.28);
   background:rgba(255,255,255,.18);
   color:var(--c-5b471f);
 }
@@ -913,7 +913,7 @@ button.danger{
 .documents-progress{
   width:100%;
   height:8px;
-  border:1px solid rgba(165,129,57,.20);
+  border:1px solid rgba(59,59,59,.20);
   background:rgba(255,255,255,.18);
   margin-bottom:18px;
   overflow:hidden;
@@ -922,7 +922,7 @@ button.danger{
 .documents-progress-bar{
   height:100%;
   width:0%;
-  background:#a58139;
+  background:#3b3b3b;
   transition:width .25s ease;
 }
 
@@ -930,8 +930,8 @@ button.danger{
   display:none;
   margin-top:16px;
   padding:16px;
-  border:1px solid rgba(165,129,57,.24);
-  background:rgba(255,252,244,.24);
+  border:1px solid rgba(59,59,59,.24);
+  background:rgba(255,255,255,.24);
 }
 
 .work-progress.active{
@@ -962,7 +962,7 @@ button.danger{
 .work-progress-track{
   width:100%;
   height:9px;
-  border:1px solid rgba(165,129,57,.20);
+  border:1px solid rgba(59,59,59,.20);
   background:rgba(255,255,255,.18);
   overflow:hidden;
 }
@@ -970,7 +970,7 @@ button.danger{
 .work-progress-bar{
   height:100%;
   width:0%;
-  background:#a58139;
+  background:#3b3b3b;
   transition:width .28s ease;
 }
 
@@ -993,7 +993,7 @@ button.danger{
   gap:14px;
   align-items:center;
   padding:14px;
-  border:1px solid rgba(165,129,57,.16);
+  border:1px solid rgba(59,59,59,.16);
   background:rgba(255,255,255,.12);
 }
 
@@ -1018,7 +1018,7 @@ button.danger{
   align-items:center;
   width:max-content;
   padding:8px 10px;
-  border:1px solid rgba(165,129,57,.25);
+  border:1px solid rgba(59,59,59,.25);
   background:rgba(255,255,255,.16);
   color:var(--c-4f3216);
   font-size:10px;
@@ -1048,8 +1048,8 @@ button.danger{
 .document-actions a,
 .document-upload-label{
   padding:9px 11px;
-  border:1px solid rgba(165,129,57,.30);
-  background:rgba(255,252,244,.22);
+  border:1px solid rgba(59,59,59,.30);
+  background:rgba(255,255,255,.22);
   color:var(--c-5b471f);
   text-decoration:none;
   text-transform:uppercase;
@@ -1088,8 +1088,8 @@ button.danger{
   align-items:center;
   gap:12px;
   padding:8px 10px;
-  border:1px solid rgba(165,129,57,.14);
-  background:rgba(255,252,244,.18);
+  border:1px solid rgba(59,59,59,.14);
+  background:rgba(255,255,255,.18);
 }
 
 .document-file-actions{
@@ -1102,7 +1102,7 @@ button.danger{
 .document-file-actions a,
 .document-file-actions button{
   padding:7px 10px;
-  border:1px solid rgba(166,127,52,.25);
+  border:1px solid rgba(58,58,58,.25);
   background:rgba(255,255,255,.25);
   color:var(--c-5b461d);
   text-decoration:none;
@@ -1122,8 +1122,8 @@ button.danger{
   display:none;
   margin-top:4px;
   padding:12px;
-  border:1px solid rgba(165,129,57,.22);
-  background:rgba(255,252,244,.26);
+  border:1px solid rgba(59,59,59,.22);
+  background:rgba(255,255,255,.26);
 }
 
 .document-inline-progress.active{
@@ -1154,7 +1154,7 @@ button.danger{
 .document-inline-progress-track{
   width:100%;
   height:8px;
-  border:1px solid rgba(165,129,57,.18);
+  border:1px solid rgba(59,59,59,.18);
   background:rgba(255,255,255,.20);
   overflow:hidden;
 }
@@ -1162,7 +1162,7 @@ button.danger{
 .document-inline-progress-bar{
   height:100%;
   width:0%;
-  background:#a58139;
+  background:#3b3b3b;
   transition:width .25s ease;
 }
 
@@ -1261,7 +1261,7 @@ button.danger{
       <div class="tab-panel active" data-tab-panel="info">
       <div class="section-title" data-i18n="section_main_info">Informazioni principali</div>
 
-      <div class="field full" id="wordImportBox" style="border:1px dashed #c9a85a;background:#fbf6ea;border-radius:8px;padding:14px 16px;margin-bottom:6px">
+      <div class="field full" id="wordImportBox" style="border:1px dashed #4c4c4c;background:#ffffff;border-radius:8px;padding:14px 16px;margin-bottom:6px">
         <label for="wordImportFile" style="margin-top:0">📄 Importa da documento Word (.docx)</label>
         <div class="file-note">Carica il Word della proprietà: vengono estratti foto, dati principali e descrizione per creare lo scheletro della scheda. Si compilano solo i campi ancora vuoti; il Word originale viene salvato nei documenti della scheda per poterlo riaprire e verificare.</div>
         <input type="file" id="wordImportFile" accept=".docx,application/vnd.openxmlformats-officedocument.wordprocessingml.document" style="margin-top:8px">
@@ -1281,7 +1281,7 @@ button.danger{
         </select>
       </div>
       <div class="field full" id="shortRentBox" style="display:none">
-        <div style="border:1px solid rgba(166,127,52,.45);border-radius:10px;padding:14px 16px;background:rgba(166,127,52,.06)">
+        <div style="border:1px solid rgba(58,58,58,.45);border-radius:10px;padding:14px 16px;background:rgba(58,58,58,.06)">
           <label style="display:flex;align-items:center;gap:10px;cursor:pointer;margin:0">
             <input type="checkbox" id="short_rent_income" style="width:18px;height:18px;margin:0">
             <span>Messa a reddito come affitti brevi</span>
@@ -1496,7 +1496,7 @@ button.danger{
       <div class="field">
         <label for="internal_size" data-i18n="label_internal_size">Mq Interni</label>
         <input type="number" id="internal_size">
-        <button type="button" class="fpm-open" style="margin-top:6px;border:1px solid #a67f34;background:#fff;color:#3a2a08;padding:6px 12px;cursor:pointer;font-size:12px;letter-spacing:.05em" onclick="FloorplanMeasure.open({fields:{principale:'internal_size'}})">📏 Misura da planimetria</button>
+        <button type="button" class="fpm-open" style="margin-top:6px;border:1px solid #3a3a3a;background:#fff;color:#131313;padding:6px 12px;cursor:pointer;font-size:12px;letter-spacing:.05em" onclick="FloorplanMeasure.open({fields:{principale:'internal_size'}})">📏 Misura da planimetria</button>
       </div>
 
       <div class="field">
@@ -1883,7 +1883,7 @@ function setDocumentsStatus(message, type){
   var el = document.getElementById("documentsStatus");
   if(!el) return;
   el.textContent = message || "";
-  el.style.color = type === "error" ? "#9c2f2f" : (type === "success" ? "#4f7f45" : "#8f7643");
+  el.style.color = type === "error" ? "#9c2f2f" : (type === "success" ? "#4f7f45" : "#353535");
 }
 
 function showWorkProgress(prefix, message, percent){
@@ -2322,7 +2322,7 @@ function setGeoStatus(message, type){
   var el = document.getElementById("geoStatus");
   if(!el) return;
   el.textContent = message || "";
-  el.style.color = type === "error" ? "#9c2f2f" : (type === "success" ? "#4f7f45" : "#8f7643");
+  el.style.color = type === "error" ? "#9c2f2f" : (type === "success" ? "#4f7f45" : "#353535");
 }
 
 function updateMapPreview(){
@@ -4578,7 +4578,7 @@ function wiSetStatus(msg, kind){
   var el = document.getElementById("wordImportStatus");
   if(!el) return;
   el.textContent = msg || "";
-  el.style.color = kind === "error" ? "#a33" : (kind === "success" ? "#2a7a2a" : "#6b5a3a");
+  el.style.color = kind === "error" ? "#a33" : (kind === "success" ? "#2a7a2a" : "#292929");
 }
 
 function wiNum(str){
@@ -4789,7 +4789,7 @@ function wiApplyFields(fields){
     }
     el.dispatchEvent(new Event("input", { bubbles:true }));
     el.dispatchEvent(new Event("change", { bubbles:true }));
-    el.style.outline = "2px solid #c99a2e";
+    el.style.outline = "2px solid #464646";
     el.style.outlineOffset = "1px";
     filled.push(WI_LABELS[key] || key);
   });
@@ -4940,5 +4940,6 @@ document.addEventListener("DOMContentLoaded", srRefresh);
 ["change","input","click"].forEach(function(ev){ document.addEventListener(ev, function(e){ if(e.target && (e.target.id==="category"||e.target.id==="short_rent_income")) setTimeout(srRefresh,0); }, true); });
 setInterval(srRefresh, 600); /* anche quando la categoria viene impostata via codice (caricamento scheda, import Word) */
 </script>
+<script src="../js/ip-brand.js?v=1"></script>
 </body>
 </html>

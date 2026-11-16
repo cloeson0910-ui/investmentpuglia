@@ -12,7 +12,7 @@
 html,body{width:100%;min-height:100%}
 
 body{
-  background:#f4ecdf;
+  background:#ffffff;
   font-family:"Avenir Next","Helvetica Neue",Arial,sans-serif;
   color:var(--c-46371a);
 }
@@ -23,8 +23,8 @@ body::before{
   inset:0;
   z-index:-2;
   background:
-    radial-gradient(circle at center,rgba(255,255,255,.72) 0%,rgba(255,255,255,.34) 38%,rgba(244,236,223,.06) 72%),
-    #f4ecdf;
+    radial-gradient(circle at center,rgba(255,255,255,.72) 0%,rgba(255,255,255,.34) 38%,rgba(255,255,255,.06) 72%),
+    #ffffff;
 }
 
 body::after{
@@ -33,9 +33,9 @@ body::after{
   inset:0;
   z-index:-1;
   background:
-    repeating-linear-gradient(60deg,transparent 0 86px,rgba(188,149,78,.23) 87px,transparent 90px),
-    repeating-linear-gradient(-60deg,transparent 0 86px,rgba(188,149,78,.22) 87px,transparent 90px),
-    repeating-linear-gradient(0deg,transparent 0 148px,rgba(188,149,78,.13) 149px,transparent 152px);
+    repeating-linear-gradient(60deg,transparent 0 86px,rgba(68,68,68,.23) 87px,transparent 90px),
+    repeating-linear-gradient(-60deg,transparent 0 86px,rgba(68,68,68,.22) 87px,transparent 90px),
+    repeating-linear-gradient(0deg,transparent 0 148px,rgba(68,68,68,.13) 149px,transparent 152px);
   background-size:230px 199px;
   opacity:.30;
 }
@@ -45,8 +45,8 @@ body::after{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  border-bottom:1px solid rgba(166,127,52,.14);
-  background:rgba(244,236,223,.72);
+  border-bottom:1px solid rgba(58,58,58,.14);
+  background:rgba(255,255,255,.72);
   backdrop-filter:blur(14px);
   position:sticky;
   top:0;
@@ -82,7 +82,7 @@ body::after{
   width:78%;
   height:1px;
   margin:5px auto 0;
-  background:linear-gradient(to right,transparent,rgba(197,157,72,.78),transparent);
+  background:linear-gradient(to right,transparent,rgba(71,71,71,.78),transparent);
 }
 
 .logo-sub{
@@ -105,7 +105,7 @@ body::after{
 .header-actions a,
 .logout{
   padding:11px 18px;
-  border:1px solid rgba(166,127,52,.28);
+  border:1px solid rgba(58,58,58,.28);
   background:rgba(255,255,255,.26);
   cursor:pointer;
   color:var(--c-5b461d);
@@ -117,7 +117,7 @@ body::after{
 
 .header-actions a:hover,
 .logout:hover{
-  background:#a67f34;
+  background:#3a3a3a;
   color:var(--c-ffffff);
 }
 
@@ -155,7 +155,7 @@ body::after{
   display:flex;
   gap:10px;
   margin-bottom:26px;
-  border-bottom:1px solid rgba(166,127,52,.18);
+  border-bottom:1px solid rgba(58,58,58,.18);
 }
 
 .tab-btn{
@@ -172,7 +172,7 @@ body::after{
 
 .tab-btn.active{
   color:var(--c-5b461d);
-  border-bottom-color:#a67f34;
+  border-bottom-color:#3a3a3a;
 }
 
 .tab-panel{display:none}
@@ -196,8 +196,8 @@ label{
 select{
   width:100%;
   padding:15px 16px;
-  border:1px solid rgba(165,129,57,.25);
-  background:rgba(255,252,244,.35);
+  border:1px solid rgba(59,59,59,.25);
+  background:rgba(255,255,255,.35);
   color:var(--c-46371a);
   font-size:14px;
   outline:none;
@@ -219,8 +219,8 @@ select{
 .acc-panel{
   background:rgba(255,255,255,.20);
   backdrop-filter:blur(8px);
-  border:1px solid rgba(166,127,52,.15);
-  box-shadow:0 18px 50px rgba(127,100,48,.06);
+  border:1px solid rgba(58,58,58,.15);
+  box-shadow:0 18px 50px rgba(45,45,45,.06);
   overflow:hidden;
 }
 
@@ -230,7 +230,7 @@ select{
   justify-content:space-between;
   align-items:center;
   padding:18px 24px;
-  background:rgba(166,127,52,.08);
+  background:rgba(58,58,58,.08);
   border:none;
   cursor:pointer;
   text-align:left;
@@ -273,7 +273,7 @@ select{
   align-items:center;
   justify-content:space-between;
   padding:14px 24px;
-  border-top:1px solid rgba(166,127,52,.08);
+  border-top:1px solid rgba(58,58,58,.08);
   gap:16px;
 }
 
@@ -305,7 +305,7 @@ select{
   position:absolute;
   cursor:pointer;
   inset:0;
-  background:rgba(166,127,52,.25);
+  background:rgba(58,58,58,.25);
   border-radius:20px;
   transition:.2s;
 }
@@ -323,7 +323,7 @@ select{
 }
 
 input:checked + .slider{
-  background:#a67f34;
+  background:#3a3a3a;
 }
 
 input:checked + .slider::before{
@@ -356,7 +356,7 @@ input:disabled + .slider{
   color:var(--c-7d6a43);
   margin-bottom:18px;
   padding:12px 16px;
-  border:1px solid rgba(166,127,52,.2);
+  border:1px solid rgba(58,58,58,.2);
   background:rgba(255,255,255,.18);
 }
 
@@ -378,10 +378,10 @@ input:disabled + .slider{
   <svg class="logo-svg" viewBox="0 0 1120 135" xmlns="http://www.w3.org/2000/svg" aria-label="IMMONOVA">
     <defs>
       <linearGradient id="goldGradientHeader" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="0%" stop-color="#8f6f2c"/>
-        <stop offset="42%" stop-color="#c79c43"/>
-        <stop offset="58%" stop-color="#f1d27a"/>
-        <stop offset="100%" stop-color="#a77d31"/>
+        <stop offset="0%" stop-color="#323232"/>
+        <stop offset="42%" stop-color="#474747"/>
+        <stop offset="58%" stop-color="#ababab"/>
+        <stop offset="100%" stop-color="#3a3a3a"/>
       </linearGradient>
     </defs>
 
@@ -815,5 +815,6 @@ document.getElementById("logoutBtn").addEventListener("click", async function(){
 })();
 </script>
 
+<script src="../js/ip-brand.js?v=1"></script>
 </body>
 </html>

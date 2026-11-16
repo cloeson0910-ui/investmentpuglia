@@ -7,68 +7,68 @@
 <title>Ricerca soggetti | IMMONOVA</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:#f4ecdf;font-family:"Avenir Next","Helvetica Neue",Arial,sans-serif;color:#46371a;min-height:100vh}
-body::after{content:"";position:fixed;inset:0;z-index:-1;background:repeating-linear-gradient(60deg,transparent 0 86px,rgba(188,149,78,.23) 87px,transparent 90px),repeating-linear-gradient(-60deg,transparent 0 86px,rgba(188,149,78,.22) 87px,transparent 90px),repeating-linear-gradient(0deg,transparent 0 148px,rgba(188,149,78,.13) 149px,transparent 152px);background-size:230px 199px;opacity:.30}
-.header{padding:26px 40px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(166,127,52,.12);background:rgba(244,236,223,.85);backdrop-filter:blur(14px);position:sticky;top:0;z-index:10;gap:16px;flex-wrap:wrap}
-.logo{text-decoration:none;color:#5b461d}.logo-main{font-size:24px;font-weight:600;letter-spacing:.35em}.logo-sub{margin-top:6px;font-size:9px;font-weight:700;letter-spacing:.18em;color:#5b471f}
+body{background:#ffffff;font-family:"Avenir Next","Helvetica Neue",Arial,sans-serif;color:#191919;min-height:100vh}
+body::after{content:"";position:fixed;inset:0;z-index:-1;background:repeating-linear-gradient(60deg,transparent 0 86px,rgba(68,68,68,.23) 87px,transparent 90px),repeating-linear-gradient(-60deg,transparent 0 86px,rgba(68,68,68,.22) 87px,transparent 90px),repeating-linear-gradient(0deg,transparent 0 148px,rgba(68,68,68,.13) 149px,transparent 152px);background-size:230px 199px;opacity:.30}
+.header{padding:26px 40px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(58,58,58,.12);background:rgba(255,255,255,.85);backdrop-filter:blur(14px);position:sticky;top:0;z-index:10;gap:16px;flex-wrap:wrap}
+.logo{text-decoration:none;color:#202020}.logo-main{font-size:24px;font-weight:600;letter-spacing:.35em}.logo-sub{margin-top:6px;font-size:9px;font-weight:700;letter-spacing:.18em;color:#202020}
 .header-actions{display:flex;gap:12px;flex-wrap:wrap}
-.header-actions a{padding:10px 20px;border:1px solid rgba(166,127,52,.25);background:rgba(255,255,255,.25);color:#5b461d;text-decoration:none;font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+.header-actions a{padding:10px 20px;border:1px solid rgba(58,58,58,.25);background:rgba(255,255,255,.25);color:#202020;text-decoration:none;font-size:12px;letter-spacing:.14em;text-transform:uppercase}
 .container{max-width:1200px;margin:auto;padding:32px 28px}
-.kicker{font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:#554321;margin-bottom:10px}
-.title{font-size:38px;font-weight:200;letter-spacing:.05em;color:#5b461d;margin-bottom:10px}
-.subtitle{font-size:15px;line-height:1.7;color:#4f4125;margin-bottom:18px;max-width:900px}
+.kicker{font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:#1e1e1e;margin-bottom:10px}
+.title{font-size:38px;font-weight:200;letter-spacing:.05em;color:#202020;margin-bottom:10px}
+.subtitle{font-size:15px;line-height:1.7;color:#1d1d1d;margin-bottom:18px;max-width:900px}
 .banner{padding:12px 16px;margin-bottom:18px;font-size:14px;line-height:1.5;border:1px solid}
 .banner.warn{background:#fdecea;border-color:#c62828;color:#8e1b1b}
-.banner.info{background:#fff8e6;border-color:#c99a2e;color:#6b4a10}
+.banner.info{background:#ffffff;border-color:#464646;color:#222222}
 .banner.ok{background:#eef6ee;border-color:#6aa36f;color:#2e5a32}
-.card{background:rgba(255,255,255,.6);border:1px solid rgba(166,127,52,.22);padding:20px;margin-bottom:18px}
+.card{background:rgba(255,255,255,.6);border:1px solid rgba(58,58,58,.22);padding:20px;margin-bottom:18px}
 .tabs{display:flex;gap:8px;margin-bottom:14px}
-.tab{padding:10px 16px;border:1px solid rgba(166,127,52,.35);background:#fff;cursor:pointer;font-family:inherit;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#5b461d}
-.tab.on{background:#a67f34;color:#fff}
+.tab{padding:10px 16px;border:1px solid rgba(58,58,58,.35);background:#fff;cursor:pointer;font-family:inherit;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#202020}
+.tab.on{background:#3a3a3a;color:#fff}
 .row{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end}
-label{display:block;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#5b471f;margin-bottom:6px}
-input[type=text]{padding:11px 12px;border:1px solid rgba(166,127,52,.3);background:#fff;font-family:inherit;font-size:15px;min-width:280px}
-.btn{padding:11px 16px;border:1px solid rgba(166,127,52,.45);background:#a67f34;color:#fffaf0;font-family:inherit;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;cursor:pointer}
-.btn.sec{background:#fff;color:#5b461d}
+label{display:block;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#202020;margin-bottom:6px}
+input[type=text]{padding:11px 12px;border:1px solid rgba(58,58,58,.3);background:#fff;font-family:inherit;font-size:15px;min-width:280px}
+.btn{padding:11px 16px;border:1px solid rgba(58,58,58,.45);background:#3a3a3a;color:#ffffff;font-family:inherit;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;cursor:pointer}
+.btn.sec{background:#fff;color:#202020}
 .btn:disabled{opacity:.45;cursor:default}
 .btn .paid{font-size:9px;letter-spacing:.08em;opacity:.85;margin-left:6px;border:1px solid currentColor;padding:1px 4px}
 .status{margin-top:12px;font-size:14px;white-space:pre-line}.status.err{color:#8d2f22}.status.ok{color:#2e6b34}
-.res-block{margin-top:16px;border-top:1px solid rgba(166,127,52,.2);padding-top:14px}
-.res-title{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#a67f34;margin-bottom:10px;font-weight:600}
-.res-meta{font-size:12px;color:#7d6640;margin-bottom:8px}
+.res-block{margin-top:16px;border-top:1px solid rgba(58,58,58,.2);padding-top:14px}
+.res-title{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#3a3a3a;margin-bottom:10px;font-weight:600}
+.res-meta{font-size:12px;color:#2f2f2f;margin-bottom:8px}
 table{border-collapse:collapse;width:100%;font-size:13px;margin:6px 0 10px;background:#fff}
-th,td{border:1px solid rgba(166,127,52,.2);padding:6px 8px;text-align:left;vertical-align:top}
-th{background:#f6efe3;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:#5b471f;font-weight:600}
-td.k{width:30%;color:#5b471f;background:#fbf8f2}
+th,td{border:1px solid rgba(58,58,58,.2);padding:6px 8px;text-align:left;vertical-align:top}
+th{background:#ffffff;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:#202020;font-weight:600}
+td.k{width:30%;color:#202020;background:#ffffff}
 .mini{font-size:10.5px;padding:4px 8px;margin:2px 4px 2px 0}
 .company-head{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center}
-.company-head h3{font-size:22px;font-weight:300;color:#2b2620}
+.company-head h3{font-size:22px;font-weight:300;color:#111111}
 .actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
 .hist td{font-size:12px}
-.crumbs{font-size:12px;color:#7d6640;margin-bottom:10px}.crumbs a{color:#a67f34;cursor:pointer;text-decoration:underline}
-.subj{background:#fff;border:1px solid rgba(166,127,52,.25);padding:22px 24px;margin-top:16px}
-.subj-kind{font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:#a67f34}
-.subj h2{font-size:28px;font-weight:300;color:#2b2620;margin:4px 0 2px}
-.subj-id{font-size:13px;color:#6b5c44}
-.tools{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:16px 0 4px;padding-top:14px;border-top:1px solid rgba(166,127,52,.15)}
-.tool{padding:8px 12px;border:1px solid rgba(166,127,52,.45);background:#fbf8f2;color:#5b461d;font-family:inherit;font-size:12.5px;cursor:pointer}
-.tool:hover{background:#a67f34;color:#fff}.tool .eur{font-size:10px;margin-left:5px;opacity:.7}
-.tool-sep{width:1px;height:26px;background:rgba(166,127,52,.25);margin:0 4px}
-.tools select{padding:8px;border:1px solid rgba(166,127,52,.35);font-family:inherit;font-size:12.5px;background:#fff}
+.crumbs{font-size:12px;color:#2f2f2f;margin-bottom:10px}.crumbs a{color:#3a3a3a;cursor:pointer;text-decoration:underline}
+.subj{background:#fff;border:1px solid rgba(58,58,58,.25);padding:22px 24px;margin-top:16px}
+.subj-kind{font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:#3a3a3a}
+.subj h2{font-size:28px;font-weight:300;color:#111111;margin:4px 0 2px}
+.subj-id{font-size:13px;color:#2a2a2a}
+.tools{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:16px 0 4px;padding-top:14px;border-top:1px solid rgba(58,58,58,.15)}
+.tool{padding:8px 12px;border:1px solid rgba(58,58,58,.45);background:#ffffff;color:#202020;font-family:inherit;font-size:12.5px;cursor:pointer}
+.tool:hover{background:#3a3a3a;color:#fff}.tool .eur{font-size:10px;margin-left:5px;opacity:.7}
+.tool-sep{width:1px;height:26px;background:rgba(58,58,58,.25);margin:0 4px}
+.tools select{padding:8px;border:1px solid rgba(58,58,58,.35);font-family:inherit;font-size:12.5px;background:#fff}
 .sec{margin-top:18px}
-.sec-h{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid rgba(166,127,52,.2);padding-bottom:6px;margin-bottom:8px}
-.sec-h b{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#a67f34}.sec-h span{font-size:11px;color:#7d6640}
-.rowp{display:grid;grid-template-columns:1fr 160px 90px;gap:14px;align-items:center;padding:10px 0;border-bottom:1px solid rgba(166,127,52,.1)}
-.rowp .who{font-size:15px;color:#2b2620}.rowp .meta{font-size:12px;color:#7d6640;margin-top:2px}
-.bar{height:8px;background:#efe6d4;position:relative}.bar i{position:absolute;left:0;top:0;bottom:0;background:#a67f34}
-.pct{font-size:13px;color:#2b2620;text-align:right;margin-top:3px}
+.sec-h{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid rgba(58,58,58,.2);padding-bottom:6px;margin-bottom:8px}
+.sec-h b{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#3a3a3a}.sec-h span{font-size:11px;color:#2f2f2f}
+.rowp{display:grid;grid-template-columns:1fr 160px 90px;gap:14px;align-items:center;padding:10px 0;border-bottom:1px solid rgba(58,58,58,.1)}
+.rowp .who{font-size:15px;color:#111111}.rowp .meta{font-size:12px;color:#2f2f2f;margin-top:2px}
+.bar{height:8px;background:#ffffff;position:relative}.bar i{position:absolute;left:0;top:0;bottom:0;background:#3a3a3a}
+.pct{font-size:13px;color:#111111;text-align:right;margin-top:3px}
 .tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}
-.tile{background:#fbf8f2;border:1px solid rgba(166,127,52,.15);padding:10px 12px}.tile .l{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#7d6640}.tile .v{font-size:14px;color:#2b2620;margin-top:4px;word-break:break-word}
-details{margin-top:10px;font-size:13px}summary{cursor:pointer;color:#a67f34}
-.empty-sec{font-size:13px;color:#7d6640;padding:8px 0}
-.reslist .ri{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid rgba(166,127,52,.1);align-items:center}
+.tile{background:#ffffff;border:1px solid rgba(58,58,58,.15);padding:10px 12px}.tile .l{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#2f2f2f}.tile .v{font-size:14px;color:#111111;margin-top:4px;word-break:break-word}
+details{margin-top:10px;font-size:13px}summary{cursor:pointer;color:#3a3a3a}
+.empty-sec{font-size:13px;color:#2f2f2f;padding:8px 0}
+.reslist .ri{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid rgba(58,58,58,.1);align-items:center}
 @media(max-width:700px){.rowp{grid-template-columns:1fr}}
-.note{font-size:12px;color:#6b5c44;line-height:1.6}
+.note{font-size:12px;color:#2a2a2a;line-height:1.6}
 @media(max-width:700px){input[type=text]{min-width:0;width:100%}.container{padding:20px 14px}}
 </style>
 </head>
@@ -259,7 +259,7 @@ async function companySearch(){
     const d = await paidCall({ action:"company_search", name:q, province:$("socProv").value.trim() }); if(!d) return;
     const arr = asList(unwrap(d));
     if(!arr.length){ addBlock("Risultati per \"" + q + "\"", '<div class="empty-sec">Nessuna società trovata.</div>'); return; }
-    addBlock(arr.length + " risultati per \"" + q + "\"", '<div class="reslist">' + arr.map(c => { const id = g(c, "vatCode", "taxCode", "partita_iva", "id"), nm = fullName(c); return '<div class="ri"><div><div class="who" style="font-size:15px">' + esc(nm) + '</div><div class="meta" style="font-size:12px;color:#7d6640">' + esc([g(c, "address.registeredOffice.town", "town", "comune"), id].filter(Boolean).join(" · ")) + '</div></div><button class="tool" data-look="' + esc(id) + '" data-name="' + esc(nm) + '">Apri ›</button></div>'; }).join("") + '</div>');
+    addBlock(arr.length + " risultati per \"" + q + "\"", '<div class="reslist">' + arr.map(c => { const id = g(c, "vatCode", "taxCode", "partita_iva", "id"), nm = fullName(c); return '<div class="ri"><div><div class="who" style="font-size:15px">' + esc(nm) + '</div><div class="meta" style="font-size:12px;color:#2f2f2f">' + esc([g(c, "address.registeredOffice.town", "town", "comune"), id].filter(Boolean).join(" · ")) + '</div></div><button class="tool" data-look="' + esc(id) + '" data-name="' + esc(nm) + '">Apri ›</button></div>'; }).join("") + '</div>');
   }catch(e){ setStatus(e.message, "err"); }
 }
 function openCompany(id, name){ openSubject(id, name, false); }
@@ -319,7 +319,7 @@ async function catastoFlow(cf, out){
   const sogg = (x.risultato && x.risultato.soggetti) || [];
   const sec = document.createElement("div");
   if(!sogg.length){ out.innerHTML = ""; sec.innerHTML = '<div class="empty-sec">Nessun immobile intestato trovato' + (x.esito && x.esito !== "OK" ? " (esito: " + esc(x.esito) + ")" : "") + '.</div>'; out.appendChild(sec); return; }
-  sec.innerHTML = sogg.map((s, n) => '<div style="margin-top:10px"><div class="who" style="font-size:15px">' + esc(s.denominazione || ((s.cognome || "") + " " + (s.nome || ""))) + '</div><div class="meta" style="font-size:12px;color:#7d6640">' + esc([s.sede || s.luogo_nascita, s.cf || cf].filter(Boolean).join(" · ")) + '</div>' +
+  sec.innerHTML = sogg.map((s, n) => '<div style="margin-top:10px"><div class="who" style="font-size:15px">' + esc(s.denominazione || ((s.cognome || "") + " " + (s.nome || ""))) + '</div><div class="meta" style="font-size:12px;color:#2f2f2f">' + esc([s.sede || s.luogo_nascita, s.cf || cf].filter(Boolean).join(" · ")) + '</div>' +
     '<table style="margin-top:8px"><thead><tr><th>Comune</th><th style="text-align:right">Fabbricati</th><th style="text-align:right">Terreni</th></tr></thead><tbody>' + (s.catasti || []).map(c => '<tr><td>' + esc(c.citta || c.comune || "") + (c.provincia ? " (" + esc(c.provincia) + ")" : "") + '</td><td style="text-align:right">' + esc(c.fabbricati || 0) + '</td><td style="text-align:right">' + esc(c.terreni || 0) + '</td></tr>').join("") + '</tbody></table>' +
     (s.id_soggetto ? '<button class="tool" type="button" data-vis="' + n + '" style="margin-top:8px">Visura per soggetto: elenco completo immobili (PDF)<span class="eur">€</span></button>' : '') + '</div>').join("") +
     '<div class="note" style="margin-top:8px">La ricerca nazionale indica in quali comuni il soggetto ha fabbricati o terreni. L\'elenco completo con foglio, particella e rendita è nella visura per soggetto.</div>';
@@ -374,5 +374,6 @@ $("perQ").addEventListener("keydown", e => { if(e.key === "Enter"){ $("results")
   loadHistory();
 })();
 </script>
+<script src="../js/ip-brand.js?v=1"></script>
 </body>
 </html>

@@ -11,7 +11,7 @@
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{width:100%;min-height:100%}
 body{
-  background:#f4ecdf;
+  background:#ffffff;
   font-family:"Avenir Next","Helvetica Neue",Arial,sans-serif;
   color:var(--c-5a4520);
   -webkit-print-color-adjust:exact;
@@ -23,8 +23,8 @@ body::before{
   inset:0;
   z-index:-2;
   background:
-    radial-gradient(circle at center,rgba(255,255,255,.72) 0%,rgba(255,255,255,.34) 38%,rgba(244,236,223,.06) 72%),
-    #f4ecdf;
+    radial-gradient(circle at center,rgba(255,255,255,.72) 0%,rgba(255,255,255,.34) 38%,rgba(255,255,255,.06) 72%),
+    #ffffff;
 }
 body::after{
   content:"";
@@ -32,9 +32,9 @@ body::after{
   inset:0;
   z-index:-1;
   background:
-    repeating-linear-gradient(60deg,transparent 0 86px,rgba(188,149,78,.23) 87px,transparent 90px),
-    repeating-linear-gradient(-60deg,transparent 0 86px,rgba(188,149,78,.22) 87px,transparent 90px),
-    repeating-linear-gradient(0deg,transparent 0 148px,rgba(188,149,78,.13) 149px,transparent 152px);
+    repeating-linear-gradient(60deg,transparent 0 86px,rgba(68,68,68,.23) 87px,transparent 90px),
+    repeating-linear-gradient(-60deg,transparent 0 86px,rgba(68,68,68,.22) 87px,transparent 90px),
+    repeating-linear-gradient(0deg,transparent 0 148px,rgba(68,68,68,.13) 149px,transparent 152px);
   background-size:230px 199px;
   opacity:.30;
 }
@@ -43,8 +43,8 @@ body::after{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  border-bottom:1px solid rgba(166,127,52,.12);
-  background:rgba(244,236,223,.72);
+  border-bottom:1px solid rgba(58,58,58,.12);
+  background:rgba(255,255,255,.72);
   backdrop-filter:blur(14px);
   position:sticky;
   top:0;
@@ -56,7 +56,7 @@ body::after{
 .header-actions{ display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
 .header-actions a,.header-actions button{
   padding:10px 20px;
-  border:1px solid rgba(166,127,52,.25);
+  border:1px solid rgba(58,58,58,.25);
   background:rgba(255,255,255,.25);
   cursor:pointer;
   color:var(--c-5b461d);
@@ -66,14 +66,14 @@ body::after{
   text-transform:uppercase;
   font-family:inherit;
 }
-.header-actions a:hover,.header-actions button:hover{ background:#a67f34; color:var(--c-ffffff); }
-.header-actions .primary{ background:#a67f34; color:var(--c-fffaf0); }
-.header-actions .primary:hover{ background:#8f6a29; }
+.header-actions a:hover,.header-actions button:hover{ background:#3a3a3a; color:var(--c-ffffff); }
+.header-actions .primary{ background:#3a3a3a; color:var(--c-fffaf0); }
+.header-actions .primary:hover{ background:#313131; }
 .back-link{ display:inline-block; margin:24px 40px 0; font-size:12px; color:var(--c-5b461d); text-decoration:none; letter-spacing:.06em; text-transform:uppercase; }
 
 .controls{ max-width:1200px; margin:20px auto 0; padding:0 40px; }
 .controls-panel{
-  border:1px solid rgba(166,127,52,.18);
+  border:1px solid rgba(58,58,58,.18);
   background:rgba(255,255,255,.32);
   padding:22px 26px;
   display:flex;
@@ -84,7 +84,7 @@ body::after{
 .controls-panel .field{ min-width:160px; }
 .controls-panel label{ display:block; font-size:10px; letter-spacing:.08em; text-transform:uppercase; color:var(--c-554321); margin-bottom:6px; }
 .controls-panel input{
-  width:100%; padding:9px 10px; border:1px solid rgba(166,127,52,.3);
+  width:100%; padding:9px 10px; border:1px solid rgba(58,58,58,.3);
   background:rgba(255,255,255,.6); color:var(--c-5a4520); font-size:13px; font-family:inherit;
 }
 .controls-panel .hint{ font-size:11px; color:var(--c-4f4125); max-width:260px; }
@@ -95,15 +95,15 @@ body::after{
 .container{ max-width:1200px; margin:26px auto 60px; padding:0 40px; }
 .book{
   background:rgba(255,255,255,.4);
-  border:1px solid rgba(166,127,52,.18);
-  box-shadow:0 24px 70px rgba(127,100,48,.08);
+  border:1px solid rgba(58,58,58,.18);
+  box-shadow:0 24px 70px rgba(45,45,45,.08);
 }
 .report-page{
   position:relative;
   width:100%;
   min-height:720px;
-  background:#fffdf8;
-  border-bottom:1px solid rgba(166,127,52,.12);
+  background:#ffffff;
+  border-bottom:1px solid rgba(58,58,58,.12);
   overflow:hidden;
   padding:54px;
 }
@@ -111,55 +111,55 @@ body::after{
 .brand{ font-size:26px; letter-spacing:.20em; color:var(--c-5b461d); font-weight:300; }
 .brand-sub{ margin-top:6px; font-size:9px; letter-spacing:.22em; color:var(--c-5b471f); text-transform:uppercase; }
 .doc-meta{ text-align:right; font-size:11px; color:var(--c-4f4125); line-height:1.6; }
-.page-header{ display:flex; justify-content:space-between; align-items:flex-start; border-bottom:1px solid rgba(166,127,52,.2); padding-bottom:16px; margin-bottom:30px; }
+.page-header{ display:flex; justify-content:space-between; align-items:flex-start; border-bottom:1px solid rgba(58,58,58,.2); padding-bottom:16px; margin-bottom:30px; }
 
 .cover-kicker{ font-size:12px; letter-spacing:.34em; text-transform:uppercase; color:var(--c-5b461d); margin-bottom:22px; }
 .cover-title{ max-width:820px; font-size:44px; line-height:1.1; font-weight:200; letter-spacing:.04em; color:var(--c-5a4520); margin-bottom:10px; }
 .cover-sub{ font-size:16px; color:var(--c-4f4125); margin-bottom:36px; }
 .cover-meta{ font-size:12px; color:var(--c-4f4125); line-height:2; }
-.cover-badge{ display:inline-block; border:1px solid rgba(166,127,52,.4); padding:9px 22px; font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:var(--c-5b461d); margin-top:18px; }
+.cover-badge{ display:inline-block; border:1px solid rgba(58,58,58,.4); padding:9px 22px; font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:var(--c-5b461d); margin-top:18px; }
 .cover-flex{ height:600px; display:flex; flex-direction:column; justify-content:center; }
 
 .section-kicker{ font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:var(--c-5b471f); margin-bottom:6px; }
 .section-title{ font-size:24px; font-weight:300; letter-spacing:.08em; text-transform:uppercase; color:var(--c-5b461d); margin-bottom:20px; }
-.lux-rule{ height:1px; background:linear-gradient(90deg,#a67f34,rgba(166,127,52,0)); margin:6px 0 24px; }
+.lux-rule{ height:1px; background:linear-gradient(90deg,#3a3a3a,rgba(58,58,58,0)); margin:6px 0 24px; }
 
 .info-text{ font-size:13px; line-height:1.7; color:var(--c-5a4520); margin-bottom:16px; }
 .source-row{ font-size:11px; color:var(--c-4f4125); font-style:italic; margin-bottom:18px; }
 
 table.rep-table{ width:100%; border-collapse:collapse; margin-bottom:18px; font-size:12px; }
-table.rep-table th{ text-align:right; padding:9px 8px; font-size:9px; letter-spacing:.1em; text-transform:uppercase; color:var(--c-f1e3c0); background:#7f6430; }
+table.rep-table th{ text-align:right; padding:9px 8px; font-size:9px; letter-spacing:.1em; text-transform:uppercase; color:var(--c-f1e3c0); background:#2d2d2d; }
 table.rep-table th:first-child,table.rep-table td:first-child{ text-align:left; }
-table.rep-table td{ padding:8px 8px; border-bottom:1px solid rgba(166,127,52,.14); text-align:right; color:var(--c-5a4520); }
+table.rep-table td{ padding:8px 8px; border-bottom:1px solid rgba(58,58,58,.14); text-align:right; color:var(--c-5a4520); }
 table.rep-table tr:nth-child(even) td{ background:rgba(255,255,255,.4); }
-table.rep-table tr.total td{ border-top:2px solid #a67f34; border-bottom:0; font-weight:700; background:rgba(166,127,52,.14); color:var(--c-5a4520); }
-table.rep-table tr.season td{ background:rgba(166,127,52,.10); }
+table.rep-table tr.total td{ border-top:2px solid #3a3a3a; border-bottom:0; font-weight:700; background:rgba(58,58,58,.14); color:var(--c-5a4520); }
+table.rep-table tr.season td{ background:rgba(58,58,58,.10); }
 
 .metric-grid{ display:flex; gap:16px; margin:22px 0 26px; }
-.metric-card{ flex:1; border:1px solid rgba(166,127,52,.18); background:rgba(255,255,255,.5); padding:18px; text-align:center; }
+.metric-card{ flex:1; border:1px solid rgba(58,58,58,.18); background:rgba(255,255,255,.5); padding:18px; text-align:center; }
 .metric-value{ font-size:24px; font-weight:600; color:var(--c-5b461d); }
 .metric-label{ font-size:9px; letter-spacing:.1em; text-transform:uppercase; color:var(--c-4f4125); margin-top:6px; }
 
-.note-box{ border-left:3px solid #a67f34; background:rgba(255,255,255,.4); padding:14px 18px; font-size:11.5px; line-height:1.6; color:var(--c-5a4520); margin:14px 0 20px; }
-.assumption-box{ border:1px dashed rgba(166,127,52,.45); background:rgba(255,255,255,.28); padding:14px 18px; font-size:11px; line-height:1.6; color:var(--c-3b3321); margin:14px 0 20px; }
+.note-box{ border-left:3px solid #3a3a3a; background:rgba(255,255,255,.4); padding:14px 18px; font-size:11.5px; line-height:1.6; color:var(--c-5a4520); margin:14px 0 20px; }
+.assumption-box{ border:1px dashed rgba(58,58,58,.45); background:rgba(255,255,255,.28); padding:14px 18px; font-size:11px; line-height:1.6; color:var(--c-3b3321); margin:14px 0 20px; }
 .disclaimer-text{ font-size:10px; line-height:1.65; color:var(--c-4f4125); margin-top:10px; }
-.page-folio{ position:absolute; left:54px; right:54px; bottom:22px; display:flex; justify-content:space-between; font-size:9px; color:var(--c-a89876); border-top:1px solid rgba(166,127,52,.15); padding-top:8px; }
+.page-folio{ position:absolute; left:54px; right:54px; bottom:22px; display:flex; justify-content:space-between; font-size:9px; color:var(--c-a89876); border-top:1px solid rgba(58,58,58,.15); padding-top:8px; }
 
 .photo-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:14px; margin-top:8px; }
 .photo-grid.single{ grid-template-columns:1fr; }
-.photo-grid img{ width:100%; height:220px; object-fit:cover; border:1px solid rgba(166,127,52,.2); display:block; }
+.photo-grid img{ width:100%; height:220px; object-fit:cover; border:1px solid rgba(58,58,58,.2); display:block; }
 .photo-grid.single img{ height:400px; }
 
-.cover-photo{ width:100%; margin-top:8px; overflow:hidden; border:1px solid rgba(166,127,52,.2); }
+.cover-photo{ width:100%; margin-top:8px; overflow:hidden; border:1px solid rgba(58,58,58,.2); }
 .cover-photo img{ width:100%; height:420px; object-fit:cover; object-position:center; display:block; }
 
 .share-note{ font-size:10px; color:var(--c-4f4125); margin-top:6px; }
 
 .link-row{ display:none; max-width:1200px; margin:0 auto; padding:0 40px; align-items:center; gap:10px; }
 .link-row.visible{ display:flex; margin-top:14px; }
-.link-row input{ flex:1; padding:10px 12px; border:1px solid rgba(166,127,52,.3); background:rgba(255,255,255,.6); color:var(--c-5a4520); font-size:12px; font-family:inherit; }
-.link-row .copy-btn{ padding:10px 18px; border:1px solid rgba(166,127,52,.25); background:#a67f34; color:var(--c-fffaf0); cursor:pointer; font-size:11px; letter-spacing:.1em; text-transform:uppercase; font-family:inherit; }
-.link-row .copy-btn:hover{ background:#8f6a29; }
+.link-row input{ flex:1; padding:10px 12px; border:1px solid rgba(58,58,58,.3); background:rgba(255,255,255,.6); color:var(--c-5a4520); font-size:12px; font-family:inherit; }
+.link-row .copy-btn{ padding:10px 18px; border:1px solid rgba(58,58,58,.25); background:#3a3a3a; color:var(--c-fffaf0); cursor:pointer; font-size:11px; letter-spacing:.1em; text-transform:uppercase; font-family:inherit; }
+.link-row .copy-btn:hover{ background:#313131; }
 .link-row .copy-feedback{ font-size:11px; color:var(--c-2b4626); }
 #generateLinkBtn.btn-busy{ opacity:.6; cursor:wait; }
 #generateLinkBtn.btn-success{ background:#4f7f45!important; color:var(--c-ffffff)!important; border-color:#4f7f45!important; }
@@ -289,7 +289,7 @@ table.rep-table tr.season td{ background:rgba(166,127,52,.10); }
       <label>% manuale Ottobre&ndash;Dicembre</label>
       <input type="number" id="cPctOctDec" step="1" placeholder="default 0% / -10%">
     </div>
-    <button class="header-actions primary" id="recalcBtn" type="button" style="padding:10px 22px;border:1px solid rgba(166,127,52,.35);background:#a67f34;color:var(--c-fffaf0);text-transform:uppercase;letter-spacing:.1em;font-size:11px;cursor:pointer;font-family:inherit;">Ricalcola e salva</button>
+    <button class="header-actions primary" id="recalcBtn" type="button" style="padding:10px 22px;border:1px solid rgba(58,58,58,.35);background:#3a3a3a;color:var(--c-fffaf0);text-transform:uppercase;letter-spacing:.1em;font-size:11px;cursor:pointer;font-family:inherit;">Ricalcola e salva</button>
     <div class="hint">Il prezzo medio si precompila dai comparabili trovati sul web per questa scheda. Se compili "Prezzo manuale" viene usato sempre quello, anche dopo un ricaricamento della pagina. Le caselle "% manuale" per periodo, se compilate, sostituiscono sempre la curva stagionale automatica per quel periodo (anche loro salvate). Il riempimento giu&ndash;set resta l'unico dato di occupazione impostabile: i restanti mesi seguono una curva stagionale stimata (vedi nota nel documento), non un dato ufficiale mensile.</div>
   </div>
 </div>
@@ -1011,5 +1011,6 @@ async function init(){
 init();
 </script>
 
+<script src="../js/ip-brand.js?v=1"></script>
 </body>
 </html>

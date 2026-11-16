@@ -6,21 +6,21 @@
 <title>Servizi Esterni IMMONOVA</title>
 <style>
 :root{
-  --bg:#faf7f2; --card:#ffffff; --border:#e4ddd0; --text:#2b2520; --muted:#7a7066;
-  --accent:#a67f34; --paid-bg:#fdecec; --paid-text:#b3261e; --free-bg:#eaf6ec; --free-text:#1e7a3a;
-  --unk-bg:#fdf3e3; --unk-text:#9a6a00; --head-bg:#f1ebe0;
+  --bg:#ffffff; --card:#ffffff; --border:#b5b5b5; --text:#111111; --muted:#7a7066;
+  --accent:#3a3a3a; --paid-bg:#fdecec; --paid-text:#b3261e; --free-bg:#eaf6ec; --free-text:#1e7a3a;
+  --unk-bg:#ffffff; --unk-text:#303030; --head-bg:#ffffff;
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
-    --bg:#1b1812; --card:#242019; --border:#3a342a; --text:#ece6da; --muted:#a79c8c;
-    --accent:#d3a35a; --paid-bg:#3a1f1d; --paid-text:#f28b82; --free-bg:#1c3324; --free-text:#7ddb98;
-    --unk-bg:#3a2f12; --unk-text:#f0c468; --head-bg:#2c271d;
+    --bg:#0a0a0a; --card:#0e0e0e; --border:#171717; --text:#ffffff; --muted:#464646;
+    --accent:#4c4c4c; --paid-bg:#3a1f1d; --paid-text:#f28b82; --free-bg:#1c3324; --free-text:#7ddb98;
+    --unk-bg:#151515; --unk-text:#a2a2a2; --head-bg:#111111;
   }
 }
 :root[data-theme="dark"]{
-  --bg:#1b1812; --card:#242019; --border:#3a342a; --text:#ece6da; --muted:#a79c8c;
-  --accent:#d3a35a; --paid-bg:#3a1f1d; --paid-text:#f28b82; --free-bg:#1c3324; --free-text:#7ddb98;
-  --unk-bg:#3a2f12; --unk-text:#f0c468; --head-bg:#2c271d;
+  --bg:#0a0a0a; --card:#0e0e0e; --border:#171717; --text:#ffffff; --muted:#464646;
+  --accent:#4c4c4c; --paid-bg:#3a1f1d; --paid-text:#f28b82; --free-bg:#1c3324; --free-text:#7ddb98;
+  --unk-bg:#151515; --unk-text:#a2a2a2; --head-bg:#111111;
 }
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;padding:24px 16px 60px}
@@ -187,5 +187,6 @@ document.getElementById("search").addEventListener("input", render);
 document.getElementById("filterCost").addEventListener("change", render);
 render();
 </script>
+<script src="../js/ip-brand.js?v=1"></script>
 </body>
 </html>

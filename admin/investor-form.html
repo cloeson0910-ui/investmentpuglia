@@ -13,7 +13,7 @@
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{width:100%;min-height:100%}
 body{
-  background:#f4ecdf;
+  background:#ffffff;
   font-family:"Avenir Next","Helvetica Neue",Arial,sans-serif;
   color:var(--c-46371a);
 }
@@ -23,8 +23,8 @@ body::before{
   inset:0;
   z-index:-2;
   background:
-    radial-gradient(circle at center,rgba(255,255,255,.72) 0%,rgba(255,255,255,.34) 38%,rgba(244,236,223,.06) 72%),
-    #f4ecdf;
+    radial-gradient(circle at center,rgba(255,255,255,.72) 0%,rgba(255,255,255,.34) 38%,rgba(255,255,255,.06) 72%),
+    #ffffff;
 }
 body::after{
   content:"";
@@ -32,9 +32,9 @@ body::after{
   inset:0;
   z-index:-1;
   background:
-    repeating-linear-gradient(60deg,transparent 0 86px,rgba(188,149,78,.23) 87px,transparent 90px),
-    repeating-linear-gradient(-60deg,transparent 0 86px,rgba(188,149,78,.22) 87px,transparent 90px),
-    repeating-linear-gradient(0deg,transparent 0 148px,rgba(188,149,78,.13) 149px,transparent 152px);
+    repeating-linear-gradient(60deg,transparent 0 86px,rgba(68,68,68,.23) 87px,transparent 90px),
+    repeating-linear-gradient(-60deg,transparent 0 86px,rgba(68,68,68,.22) 87px,transparent 90px),
+    repeating-linear-gradient(0deg,transparent 0 148px,rgba(68,68,68,.13) 149px,transparent 152px);
   background-size:230px 199px;
   opacity:.30;
 }
@@ -43,8 +43,8 @@ body::after{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  border-bottom:1px solid rgba(166,127,52,.12);
-  background:rgba(244,236,223,.72);
+  border-bottom:1px solid rgba(58,58,58,.12);
+  background:rgba(255,255,255,.72);
   backdrop-filter:blur(14px);
   position:sticky;
   top:0;
@@ -75,7 +75,7 @@ body::after{
 .header-actions a,
 .logout{
   padding:10px 20px;
-  border:1px solid rgba(166,127,52,.25);
+  border:1px solid rgba(58,58,58,.25);
   background:rgba(255,255,255,.25);
   cursor:pointer;
   color:var(--c-5b461d);
@@ -86,7 +86,7 @@ body::after{
 }
 .header-actions a:hover,
 .logout:hover{
-  background:#a67f34;
+  background:#3a3a3a;
   color:var(--c-ffffff);
 }
 .container{
@@ -127,8 +127,8 @@ body::after{
 .submit-btn{
   display:inline-block;
   padding:14px 22px;
-  border:1px solid rgba(166,127,52,.42);
-  background:#a67f34;
+  border:1px solid rgba(58,58,58,.42);
+  background:#3a3a3a;
   color:var(--c-fffaf0);
   text-decoration:none;
   text-transform:uppercase;
@@ -148,14 +148,14 @@ body::after{
 .form-wrapper{
   background:rgba(255,255,255,.20);
   backdrop-filter:blur(8px);
-  border:1px solid rgba(166,127,52,.15);
-  box-shadow:0 24px 70px rgba(127,100,48,.07);
+  border:1px solid rgba(58,58,58,.15);
+  box-shadow:0 24px 70px rgba(45,45,45,.07);
   padding:34px;
 }
 .section{
   margin-bottom:34px;
   padding-bottom:30px;
-  border-bottom:1px solid rgba(166,127,52,.12);
+  border-bottom:1px solid rgba(58,58,58,.12);
 }
 .section:last-child{
   border-bottom:0;
@@ -170,15 +170,15 @@ body::after{
   color:var(--c-5b461d);
   margin-bottom:20px;
 }
-.record-tabs{display:flex;gap:8px;margin-bottom:20px;border-bottom:1px solid rgba(166,127,52,.25)}
+.record-tabs{display:flex;gap:8px;margin-bottom:20px;border-bottom:1px solid rgba(58,58,58,.25)}
 .record-tab{background:none;border:none;border-bottom:2px solid transparent;padding:10px 4px;margin-bottom:-1px;font-family:inherit;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--c-4f4125);cursor:pointer}
-.record-tab.active{color:var(--c-5b461d);border-bottom-color:#a67f34}
+.record-tab.active{color:var(--c-5b461d);border-bottom-color:#3a3a3a}
 .activity-list{display:flex;flex-direction:column;gap:8px}
 .activity-empty{font-size:12.5px;color:var(--c-4f4125);padding:10px 0}
-.activity-row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 14px;background:#f9f4e8;border:1px solid rgba(166,127,52,.18);border-radius:2px;flex-wrap:wrap}
+.activity-row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 14px;background:#ffffff;border:1px solid rgba(58,58,58,.18);border-radius:2px;flex-wrap:wrap}
 .activity-row .main{font-size:13px;color:var(--c-4a3c1d);font-weight:600}
 .activity-row .meta{font-size:11.5px;color:var(--c-4f4125);margin-top:2px}
-.activity-row .status-tag{font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;padding:3px 9px;border-radius:2px;background:rgba(166,127,52,.15);color:var(--c-5b461d);white-space:nowrap}
+.activity-row .status-tag{font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;padding:3px 9px;border-radius:2px;background:rgba(58,58,58,.15);color:var(--c-5b461d);white-space:nowrap}
 .activity-row a.open-link{font-size:11.5px;color:var(--c-5b461d);text-decoration:underline;white-space:nowrap}
 .grid{
   display:grid;
@@ -209,7 +209,7 @@ select,
 textarea{
   width:100%;
   padding:14px 16px;
-  border:1px solid rgba(166,127,52,.22);
+  border:1px solid rgba(58,58,58,.22);
   background:rgba(255,255,255,.25);
   color:var(--c-46371a);
   outline:none;
@@ -232,7 +232,7 @@ textarea{
   align-items:center;
   gap:8px;
   padding:12px 14px;
-  border:1px solid rgba(166,127,52,.18);
+  border:1px solid rgba(58,58,58,.18);
   background:rgba(255,255,255,.18);
   color:var(--c-4f4125);
   font-size:12px;
@@ -245,7 +245,7 @@ textarea{
 }
 .map-field{margin-top:18px}
 .map-hint{font-size:12px;line-height:1.6;color:var(--c-4f4125);margin-bottom:10px}
-#interestAreaMap{width:100%;height:380px;border:1px solid rgba(166,127,52,.22)}
+#interestAreaMap{width:100%;height:380px;border:1px solid rgba(58,58,58,.22)}
 .map-actions{display:flex;gap:10px;align-items:center;margin-top:10px;flex-wrap:wrap}
 .map-clear-btn{
   padding:9px 14px;
@@ -261,7 +261,7 @@ textarea{
 .map-clear-btn:hover{background:#9c2f2f;color:var(--c-ffffff)}
 .map-secondary-btn{
   padding:9px 14px;
-  border:1px solid rgba(166,127,52,.28);
+  border:1px solid rgba(58,58,58,.28);
   background:rgba(255,255,255,.20);
   color:var(--c-5b461d);
   cursor:pointer;
@@ -270,7 +270,7 @@ textarea{
   text-transform:uppercase;
   font-family:inherit;
 }
-.map-secondary-btn:hover{background:#a67f34;color:var(--c-ffffff)}
+.map-secondary-btn:hover{background:#3a3a3a;color:var(--c-ffffff)}
 .map-status{font-size:11.5px;color:var(--c-4f4125)}
 .footer-actions{
   display:flex;
@@ -296,7 +296,7 @@ textarea{
 .progress-bar{
   width:100%;
   height:6px;
-  border:1px solid rgba(166,127,52,.20);
+  border:1px solid rgba(58,58,58,.20);
   background:rgba(255,255,255,.28);
   overflow:hidden;
   margin-bottom:14px;
@@ -304,7 +304,7 @@ textarea{
 .progress-fill{
   width:0%;
   height:100%;
-  background:#a67f34;
+  background:#3a3a3a;
   transition:width .35s ease;
 }
 @media(max-width:900px){
@@ -346,8 +346,8 @@ textarea{
   <div class="title-row">
     <div>
       <h1 class="title" id="pageTitle" data-i18n="title_new">Nuovo Contatto</h1>
-      <div id="pendingNewsBadge" style="display:none;margin-top:10px;padding:8px 14px;border:1px solid rgba(196,140,20,.5);color:var(--c-5b3e07);background:rgba(196,140,20,.08);font-size:11px;letter-spacing:.1em;text-transform:uppercase"></div>
-      <div id="authorshipBadge" style="display:none;margin-top:10px;padding:8px 14px;border:1px solid rgba(166,127,52,.35);color:var(--c-46371a);background:rgba(166,127,52,.08);font-size:11px;letter-spacing:.06em"></div>
+      <div id="pendingNewsBadge" style="display:none;margin-top:10px;padding:8px 14px;border:1px solid rgba(64,64,64,.5);color:var(--c-5b3e07);background:rgba(64,64,64,.08);font-size:11px;letter-spacing:.1em;text-transform:uppercase"></div>
+      <div id="authorshipBadge" style="display:none;margin-top:10px;padding:8px 14px;border:1px solid rgba(58,58,58,.35);color:var(--c-46371a);background:rgba(58,58,58,.08);font-size:11px;letter-spacing:.06em"></div>
     </div>
     <a class="secondary-link" href="investors.html" data-i18n="btn_back_to_investors">Torna ai Contatti</a>
   </div>
@@ -888,7 +888,7 @@ function updateAreaMapStatus(message){
 function redrawAreaPreview(){
   if(areaPreviewLine){ interestAreaMap.removeLayer(areaPreviewLine); areaPreviewLine = null; }
   if(areaPoints.length > 1){
-    areaPreviewLine = L.polyline(areaPoints, { color:"#a67f34", weight:3, dashArray:"6,6" }).addTo(interestAreaMap);
+    areaPreviewLine = L.polyline(areaPoints, { color:"#3a3a3a", weight:3, dashArray:"6,6" }).addTo(interestAreaMap);
   }
 }
 
@@ -1061,7 +1061,7 @@ async function finishAreaPolygon(){
   if(areaPreviewLine){ interestAreaMap.removeLayer(areaPreviewLine); areaPreviewLine = null; }
 
   var closedPoints = areaPoints.slice();
-  var layer = L.polygon(closedPoints, { color:"#a67f34", weight:2, fillOpacity:.18 }).addTo(interestAreaMap);
+  var layer = L.polygon(closedPoints, { color:"#3a3a3a", weight:2, fillOpacity:.18 }).addTo(interestAreaMap);
   areaPolygons.push({ points:closedPoints, layer:layer });
   areaPoints = [];
   recomputeAreaGeoJSON();
@@ -1134,7 +1134,7 @@ function loadAreaGeoJSONOntoMap(geojson){
     var allBounds = null;
     pointArrays.forEach(function(points){
       var closedPoints = points.slice();
-      var layer = L.polygon(closedPoints, { color:"#a67f34", weight:2, fillOpacity:.18 }).addTo(interestAreaMap);
+      var layer = L.polygon(closedPoints, { color:"#3a3a3a", weight:2, fillOpacity:.18 }).addTo(interestAreaMap);
       areaPolygons.push({ points:closedPoints, layer:layer });
       allBounds = allBounds ? allBounds.extend(layer.getBounds()) : layer.getBounds();
     });
@@ -1359,7 +1359,7 @@ function lockFormAsReadOnly(){
   saveBtn.style.display = "none";
 
   var notice = document.createElement("div");
-  notice.style.cssText = "margin-top:14px;padding:10px 14px;border:1px solid rgba(166,127,52,.35);color:var(--c-46371a);background:rgba(166,127,52,.08);font-size:12px;letter-spacing:.04em";
+  notice.style.cssText = "margin-top:14px;padding:10px 14px;border:1px solid rgba(58,58,58,.35);color:var(--c-46371a);background:rgba(58,58,58,.08);font-size:12px;letter-spacing:.04em";
   notice.textContent = "Accesso in sola lettura: questo contatto non è tuo e non hai il permesso di modificarlo.";
   form.insertBefore(notice, form.firstChild);
 }
@@ -1690,5 +1690,6 @@ async function revealCapitalPartnersLinkIfAllowed(){
   }
 })();
 </script>
+<script src="../js/ip-brand.js?v=1"></script>
 </body>
 </html>

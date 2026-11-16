@@ -8,19 +8,19 @@
 <script src="../js/config.js"></script>
 <style>
   :root{
-    --cream:#F6F2EA;
-    --cream-dark:#EFE8D8;
-    --gold:#a9824a;
-    --gold-dark:#8f6f2c;
+    --cream:#ffffff;
+    --cream-dark:#ffffff;
+    --gold:#3c3c3c;
+    --gold-dark:#323232;
     --ink:#1f2e4a;
     --text:#2a2a28;
     --muted:#6b6459;
-    --border: rgba(169,130,74,.35);
+    --border: rgba(60,60,60,.35);
   }
   *{box-sizing:border-box}
   body{
     margin:0;
-    background:#ded7c8;
+    background:#b0b0b0;
     color:var(--text);
     font-family:'Avenir Next', 'Segoe UI', Arial, sans-serif;
   }
@@ -35,10 +35,10 @@
     flex-wrap:wrap; gap:12px;
   }
   .toolbar h1{font-size:16px; margin:0; font-weight:600;}
-  .toolbar .count{color:#c9bda0; font-size:13px; margin-left:10px;}
+  .toolbar .count{color:#555555; font-size:13px; margin-left:10px;}
   .toolbar button{
     background:var(--gold);
-    color:#1a1407;
+    color:#090909;
     border:none;
     padding:10px 20px;
     border-radius:6px;
@@ -46,9 +46,9 @@
     font-size:14px;
     cursor:pointer;
   }
-  .toolbar button:hover{background:#c0994f}
+  .toolbar button:hover{background:#464646}
   .toolbar button:disabled{opacity:.5;cursor:default}
-  .toolbar .status{font-size:13px; color:#c9bda0;}
+  .toolbar .status{font-size:13px; color:#555555;}
   .toolbar .back-btn{
     background:transparent;
     color:#fff;
@@ -578,5 +578,6 @@ async function init(){
 init();
 </script>
 
+<script src="../js/ip-brand.js?v=1"></script>
 </body>
 </html>

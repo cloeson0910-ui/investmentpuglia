@@ -8,46 +8,46 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{width:100%;min-height:100%}
-body{background:#f4ecdf;font-family:"Avenir Next","Helvetica Neue",Arial,sans-serif;color:#46371a}
-body::before{content:"";position:fixed;inset:0;z-index:-2;background:radial-gradient(circle at center,rgba(255,255,255,.72) 0%,rgba(255,255,255,.34) 38%,rgba(244,236,223,.06) 72%),#f4ecdf}
-body::after{content:"";position:fixed;inset:0;z-index:-1;background:repeating-linear-gradient(60deg,transparent 0 86px,rgba(188,149,78,.23) 87px,transparent 90px),repeating-linear-gradient(-60deg,transparent 0 86px,rgba(188,149,78,.22) 87px,transparent 90px),repeating-linear-gradient(0deg,transparent 0 148px,rgba(188,149,78,.13) 149px,transparent 152px);background-size:230px 199px;opacity:.30}
-.header{padding:30px 40px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(166,127,52,.12);background:rgba(244,236,223,.72);backdrop-filter:blur(14px);position:sticky;top:0;z-index:10;gap:16px;flex-wrap:wrap}
-.logo{text-decoration:none;color:#5b461d}
+body{background:#ffffff;font-family:"Avenir Next","Helvetica Neue",Arial,sans-serif;color:#191919}
+body::before{content:"";position:fixed;inset:0;z-index:-2;background:radial-gradient(circle at center,rgba(255,255,255,.72) 0%,rgba(255,255,255,.34) 38%,rgba(255,255,255,.06) 72%),#ffffff}
+body::after{content:"";position:fixed;inset:0;z-index:-1;background:repeating-linear-gradient(60deg,transparent 0 86px,rgba(68,68,68,.23) 87px,transparent 90px),repeating-linear-gradient(-60deg,transparent 0 86px,rgba(68,68,68,.22) 87px,transparent 90px),repeating-linear-gradient(0deg,transparent 0 148px,rgba(68,68,68,.13) 149px,transparent 152px);background-size:230px 199px;opacity:.30}
+.header{padding:30px 40px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(58,58,58,.12);background:rgba(255,255,255,.72);backdrop-filter:blur(14px);position:sticky;top:0;z-index:10;gap:16px;flex-wrap:wrap}
+.logo{text-decoration:none;color:#202020}
 .logo-main{font-size:24px;font-weight:600;letter-spacing:.35em}
-.logo-sub{margin-top:6px;font-size:9px;font-weight:700;letter-spacing:.18em;color:#5b471f}
+.logo-sub{margin-top:6px;font-size:9px;font-weight:700;letter-spacing:.18em;color:#202020}
 .header-actions{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
-.header-actions a,.logout{padding:10px 20px;border:1px solid rgba(166,127,52,.25);background:rgba(255,255,255,.25);cursor:pointer;color:#5b461d;text-decoration:none;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-family:inherit}
-.header-actions a:hover,.logout:hover{background:#a67f34;color:#fff}
+.header-actions a,.logout{padding:10px 20px;border:1px solid rgba(58,58,58,.25);background:rgba(255,255,255,.25);cursor:pointer;color:#202020;text-decoration:none;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-family:inherit}
+.header-actions a:hover,.logout:hover{background:#3a3a3a;color:#fff}
 .container{max-width:980px;margin:auto;padding:40px}
-.kicker{font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:#554321;margin-bottom:12px}
-.title{font-size:40px;font-weight:200;letter-spacing:.05em;color:#5b461d;margin-bottom:14px}
-.subtitle{font-size:15px;line-height:1.8;color:#4f4125;margin-bottom:28px}
-.card{background:rgba(255,255,255,.55);border:1px solid rgba(166,127,52,.22);padding:28px;margin-bottom:28px}
-.section-title{font-size:13px;letter-spacing:.24em;text-transform:uppercase;color:#a67f34;margin-bottom:18px;font-weight:600}
-label{display:block;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#5b471f;margin:16px 0 8px}
-input[type=text],textarea{width:100%;padding:13px 14px;border:1px solid rgba(166,127,52,.3);background:rgba(255,255,255,.8);font-family:inherit;font-size:15px;color:#2b2620}
+.kicker{font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:#1e1e1e;margin-bottom:12px}
+.title{font-size:40px;font-weight:200;letter-spacing:.05em;color:#202020;margin-bottom:14px}
+.subtitle{font-size:15px;line-height:1.8;color:#1d1d1d;margin-bottom:28px}
+.card{background:rgba(255,255,255,.55);border:1px solid rgba(58,58,58,.22);padding:28px;margin-bottom:28px}
+.section-title{font-size:13px;letter-spacing:.24em;text-transform:uppercase;color:#3a3a3a;margin-bottom:18px;font-weight:600}
+label{display:block;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#202020;margin:16px 0 8px}
+input[type=text],textarea{width:100%;padding:13px 14px;border:1px solid rgba(58,58,58,.3);background:rgba(255,255,255,.8);font-family:inherit;font-size:15px;color:#111111}
 textarea{min-height:90px;resize:vertical}
-.btn{display:inline-flex;align-items:center;gap:10px;padding:13px 22px;border:1px solid rgba(166,127,52,.45);background:#a67f34;color:#fffaf0;font-family:inherit;font-size:12px;letter-spacing:.16em;text-transform:uppercase;cursor:pointer}
-.btn.ghost{background:transparent;color:#5b461d}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:13px 22px;border:1px solid rgba(58,58,58,.45);background:#3a3a3a;color:#ffffff;font-family:inherit;font-size:12px;letter-spacing:.16em;text-transform:uppercase;cursor:pointer}
+.btn.ghost{background:transparent;color:#202020}
 .btn:disabled{opacity:.45;cursor:not-allowed}
 .btn.rec{background:#8d2f22;border-color:#8d2f22}
 .rec-row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
-.timer{font-variant-numeric:tabular-nums;font-size:18px;color:#5b461d;min-width:60px}
+.timer{font-variant-numeric:tabular-nums;font-size:18px;color:#202020;min-width:60px}
 .dot{width:10px;height:10px;border-radius:50%;background:#c0392b;animation:blink 1s infinite}
 @keyframes blink{50%{opacity:.2}}
-.or{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#8a7350;margin:16px 0 8px}
+.or{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#353535;margin:16px 0 8px}
 audio{width:100%;margin-top:14px}
 .status{margin-top:16px;font-size:14px;line-height:1.6}
 .status.ok{color:#2e6b34}.status.err{color:#8d2f22}
-.msg{border-top:1px solid rgba(166,127,52,.2);padding:20px 0}
+.msg{border-top:1px solid rgba(58,58,58,.2);padding:20px 0}
 .msg:first-child{border-top:none;padding-top:0}
-.msg.highlight{background:rgba(166,127,52,.08);padding:20px;border:1px solid rgba(166,127,52,.4)}
-.msg-title{font-size:18px;color:#2b2620}
-.msg-meta{font-size:12px;letter-spacing:.06em;color:#7d6640;margin-top:4px}
-.msg-note{font-size:14px;line-height:1.7;color:#4f4125;margin-top:10px;white-space:pre-line}
+.msg.highlight{background:rgba(58,58,58,.08);padding:20px;border:1px solid rgba(58,58,58,.4)}
+.msg-title{font-size:18px;color:#111111}
+.msg-meta{font-size:12px;letter-spacing:.06em;color:#2f2f2f;margin-top:4px}
+.msg-note{font-size:14px;line-height:1.7;color:#1d1d1d;margin-top:10px;white-space:pre-line}
 .msg-actions{margin-top:10px}
 .link-btn{background:none;border:none;color:#8d2f22;font-family:inherit;font-size:12px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer}
-.empty{font-size:14px;color:#7d6640}
+.empty{font-size:14px;color:#2f2f2f}
 .hidden{display:none!important}
 @media(max-width:640px){.header{padding:20px}.container{padding:24px 16px}.title{font-size:30px}.card{padding:20px}}
 </style>
@@ -228,7 +228,7 @@ async function loadList(){
     return '<div class="msg' + (x.id === focusId ? ' highlight' : '') + '" id="m-' + esc(x.id) + '">' +
       '<div class="msg-title">' + esc(x.title) + '</div><div class="msg-meta">' + meta + '</div>' +
       (x.note ? '<div class="msg-note">' + esc(x.note) + '</div>' : '') +
-      (urlOf[x.audio_path] ? '<audio controls preload="none" src="' + esc(urlOf[x.audio_path]) + '"></audio>' + '<div class="msg-actions"><a class="link-btn" style="color:#5b461d;text-decoration:none" href="' + esc(urlOf[x.audio_path]) + '" download>Scarica audio</a>' : '<div class="msg-actions">') +
+      (urlOf[x.audio_path] ? '<audio controls preload="none" src="' + esc(urlOf[x.audio_path]) + '"></audio>' + '<div class="msg-actions"><a class="link-btn" style="color:#202020;text-decoration:none" href="' + esc(urlOf[x.audio_path]) + '" download>Scarica audio</a>' : '<div class="msg-actions">') +
       ((isAdmin || x.created_by === currentUser.id) ? ' &nbsp; <button class="link-btn" data-del="' + esc(x.id) + '" data-path="' + esc(x.audio_path) + '">Elimina</button>' : '') + '</div>' +
       '</div>';
   }).join("");
@@ -331,5 +331,6 @@ async function init(){
 }
 init();
 </script>
+<script src="../js/ip-brand.js?v=1"></script>
 </body>
 </html>

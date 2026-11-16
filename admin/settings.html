@@ -11,7 +11,7 @@
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{width:100%;min-height:100%}
 body{
-  background:#f4ecdf;
+  background:#ffffff;
   font-family:"Avenir Next","Helvetica Neue",Arial,sans-serif;
   color:var(--c-46371a);
 }
@@ -21,8 +21,8 @@ body::before{
   inset:0;
   z-index:-2;
   background:
-    radial-gradient(circle at center,rgba(255,255,255,.72) 0%,rgba(255,255,255,.34) 38%,rgba(244,236,223,.06) 72%),
-    #f4ecdf;
+    radial-gradient(circle at center,rgba(255,255,255,.72) 0%,rgba(255,255,255,.34) 38%,rgba(255,255,255,.06) 72%),
+    #ffffff;
 }
 body::after{
   content:"";
@@ -30,9 +30,9 @@ body::after{
   inset:0;
   z-index:-1;
   background:
-    repeating-linear-gradient(60deg,transparent 0 86px,rgba(188,149,78,.23) 87px,transparent 90px),
-    repeating-linear-gradient(-60deg,transparent 0 86px,rgba(188,149,78,.22) 87px,transparent 90px),
-    repeating-linear-gradient(0deg,transparent 0 148px,rgba(188,149,78,.13) 149px,transparent 152px);
+    repeating-linear-gradient(60deg,transparent 0 86px,rgba(68,68,68,.23) 87px,transparent 90px),
+    repeating-linear-gradient(-60deg,transparent 0 86px,rgba(68,68,68,.22) 87px,transparent 90px),
+    repeating-linear-gradient(0deg,transparent 0 148px,rgba(68,68,68,.13) 149px,transparent 152px);
   background-size:230px 199px;
   opacity:.30;
 }
@@ -41,8 +41,8 @@ body::after{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  border-bottom:1px solid rgba(166,127,52,.12);
-  background:rgba(244,236,223,.72);
+  border-bottom:1px solid rgba(58,58,58,.12);
+  background:rgba(255,255,255,.72);
   backdrop-filter:blur(14px);
   position:sticky;
   top:0;
@@ -55,7 +55,7 @@ body::after{
 .header-actions a,
 .logout{
   padding:10px 20px;
-  border:1px solid rgba(166,127,52,.25);
+  border:1px solid rgba(58,58,58,.25);
   background:rgba(255,255,255,.25);
   cursor:pointer;
   color:var(--c-5b461d);
@@ -64,7 +64,7 @@ body::after{
   letter-spacing:.14em;
   text-transform:uppercase;
 }
-.header-actions a:hover, .logout:hover{ background:#a67f34; color:var(--c-ffffff); }
+.header-actions a:hover, .logout:hover{ background:#3a3a3a; color:var(--c-ffffff); }
 .container{ max-width:760px; margin:auto; padding:40px; }
 .kicker{ font-size:11px; letter-spacing:.32em; text-transform:uppercase; color:var(--c-554321); margin-bottom:12px; }
 .title{ font-size:42px; font-weight:200; letter-spacing:.05em; color:var(--c-5b461d); margin-bottom:18px; }
@@ -75,8 +75,8 @@ body::after{
 .panel{
   background:rgba(255,255,255,.20);
   backdrop-filter:blur(8px);
-  border:1px solid rgba(166,127,52,.15);
-  box-shadow:0 24px 70px rgba(127,100,48,.07);
+  border:1px solid rgba(58,58,58,.15);
+  box-shadow:0 24px 70px rgba(45,45,45,.07);
   padding:34px;
 }
 .field{ margin-bottom:22px; }
@@ -93,7 +93,7 @@ body::after{
 .field input{
   flex:1;
   padding:14px 16px;
-  border:1px solid rgba(166,127,52,.22);
+  border:1px solid rgba(58,58,58,.22);
   background:rgba(255,255,255,.35);
   color:var(--c-46371a);
   outline:none;
@@ -104,8 +104,8 @@ body::after{
 .actions{ margin-top:8px; }
 .btn{
   padding:14px 24px;
-  border:1px solid #a67f34;
-  background:#a67f34;
+  border:1px solid #3a3a3a;
+  background:#3a3a3a;
   color:white;
   text-decoration:none;
   letter-spacing:.16em;
@@ -287,5 +287,6 @@ document.getElementById("logoutBtn").addEventListener("click", async () => {
 })();
 </script>
 
+<script src="../js/ip-brand.js?v=1"></script>
 </body>
 </html>

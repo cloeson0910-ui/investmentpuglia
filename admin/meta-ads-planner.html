@@ -11,7 +11,7 @@
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{width:100%;min-height:100%}
 body{
-  background:#f4ecdf;
+  background:#ffffff;
   font-family:"Avenir Next","Helvetica Neue",Arial,sans-serif;
   color:var(--c-46371a);
 }
@@ -21,8 +21,8 @@ body::before{
   inset:0;
   z-index:-2;
   background:
-    radial-gradient(circle at center,rgba(255,255,255,.72) 0%,rgba(255,255,255,.34) 38%,rgba(244,236,223,.06) 72%),
-    #f4ecdf;
+    radial-gradient(circle at center,rgba(255,255,255,.72) 0%,rgba(255,255,255,.34) 38%,rgba(255,255,255,.06) 72%),
+    #ffffff;
 }
 body::after{
   content:"";
@@ -30,9 +30,9 @@ body::after{
   inset:0;
   z-index:-1;
   background:
-    repeating-linear-gradient(60deg,transparent 0 86px,rgba(188,149,78,.23) 87px,transparent 90px),
-    repeating-linear-gradient(-60deg,transparent 0 86px,rgba(188,149,78,.22) 87px,transparent 90px),
-    repeating-linear-gradient(0deg,transparent 0 148px,rgba(188,149,78,.13) 149px,transparent 152px);
+    repeating-linear-gradient(60deg,transparent 0 86px,rgba(68,68,68,.23) 87px,transparent 90px),
+    repeating-linear-gradient(-60deg,transparent 0 86px,rgba(68,68,68,.22) 87px,transparent 90px),
+    repeating-linear-gradient(0deg,transparent 0 148px,rgba(68,68,68,.13) 149px,transparent 152px);
   background-size:230px 199px;
   opacity:.30;
 }
@@ -41,8 +41,8 @@ body::after{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  border-bottom:1px solid rgba(166,127,52,.12);
-  background:rgba(244,236,223,.72);
+  border-bottom:1px solid rgba(58,58,58,.12);
+  background:rgba(255,255,255,.72);
   backdrop-filter:blur(14px);
   position:sticky;
   top:0;
@@ -54,7 +54,7 @@ body::after{
 .header-actions{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
 .header-actions a,.logout{
   padding:10px 20px;
-  border:1px solid rgba(166,127,52,.25);
+  border:1px solid rgba(58,58,58,.25);
   background:rgba(255,255,255,.25);
   cursor:pointer;
   color:var(--c-5b461d);
@@ -64,7 +64,7 @@ body::after{
   text-transform:uppercase;
   font-family:inherit;
 }
-.header-actions a:hover,.logout:hover{background:#a67f34;color:var(--c-ffffff)}
+.header-actions a:hover,.logout:hover{background:#3a3a3a;color:var(--c-ffffff)}
 .container{max-width:1400px;margin:auto;padding:40px}
 .kicker{font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--c-554321);margin-bottom:12px}
 .title-row{display:flex;justify-content:space-between;align-items:flex-start;gap:22px;flex-wrap:wrap;margin-bottom:18px}
@@ -73,8 +73,8 @@ body::after{
 .status-banner{
   margin:18px 0 30px;
   padding:16px 20px;
-  border:1px solid rgba(166,127,52,.25);
-  background:rgba(166,127,52,.08);
+  border:1px solid rgba(58,58,58,.25);
+  background:rgba(58,58,58,.08);
   font-size:13px;
   line-height:1.7;
   color:var(--c-5a4a2a);
@@ -83,8 +83,8 @@ body::after{
 
 .new-btn{
   padding:14px 22px;
-  border:1px solid #a67f34;
-  background:#a67f34;
+  border:1px solid #3a3a3a;
+  background:#3a3a3a;
   color:var(--c-fffaf0);
   text-transform:uppercase;
   font-size:11px;
@@ -94,12 +94,12 @@ body::after{
   text-decoration:none;
   display:inline-block;
 }
-.new-btn:hover{background:#8f6c2c}
+.new-btn:hover{background:#323232}
 
 .filters{display:flex;gap:12px;flex-wrap:wrap;margin:24px 0}
 .filters select,.filters input{
   padding:10px 14px;
-  border:1px solid rgba(166,127,52,.28);
+  border:1px solid rgba(58,58,58,.28);
   background:rgba(255,255,255,.30);
   color:var(--c-46371a);
   font-size:12px;
@@ -113,7 +113,7 @@ body::after{
   color:var(--c-5b461d);
   margin-bottom:4px;
   padding-bottom:10px;
-  border-bottom:1px solid rgba(166,127,52,.18);
+  border-bottom:1px solid rgba(58,58,58,.18);
 }
 .campaign-meta{font-size:11px;color:var(--c-4f4125);margin-bottom:16px;letter-spacing:.05em}
 
@@ -121,8 +121,8 @@ body::after{
 .variant-card{
   background:rgba(255,255,255,.24);
   backdrop-filter:blur(8px);
-  border:1px solid rgba(166,127,52,.18);
-  box-shadow:0 18px 50px rgba(127,100,48,.06);
+  border:1px solid rgba(58,58,58,.18);
+  box-shadow:0 18px 50px rgba(45,45,45,.06);
   padding:24px;
   position:relative;
 }
@@ -131,7 +131,7 @@ body::after{
   font-size:22px;
   font-weight:300;
   color:var(--c-5b461d);
-  border:1px solid rgba(166,127,52,.35);
+  border:1px solid rgba(58,58,58,.35);
   width:40px;height:40px;
   display:flex;align-items:center;justify-content:center;
   flex-shrink:0;
@@ -148,8 +148,8 @@ body::after{
   border:1px solid;
   white-space:nowrap;
 }
-.status-draft{color:var(--c-4f4125);border-color:rgba(143,118,67,.4);background:rgba(143,118,67,.08)}
-.status-ready_to_review{color:var(--c-5b461d);border-color:rgba(166,127,52,.5);background:rgba(166,127,52,.10)}
+.status-draft{color:var(--c-4f4125);border-color:rgba(53,53,53,.4);background:rgba(53,53,53,.08)}
+.status-ready_to_review{color:var(--c-5b461d);border-color:rgba(58,58,58,.5);background:rgba(58,58,58,.10)}
 .status-approved{color:var(--c-2b4626);border-color:rgba(79,127,69,.4);background:rgba(79,127,69,.08)}
 .status-launched{color:var(--c-1a3c4f);border-color:rgba(47,109,143,.4);background:rgba(47,109,143,.08)}
 .status-paused{color:var(--c-561a1a);border-color:rgba(156,47,47,.4);background:rgba(156,47,47,.08)}
@@ -158,14 +158,14 @@ body::after{
 .field-row{margin-bottom:10px;font-size:12.5px;line-height:1.6;color:var(--c-3f341e)}
 .field-label{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--c-5b471f);margin-bottom:3px}
 .field-value{white-space:pre-wrap}
-.budget-line{font-size:13px;color:var(--c-5a4a2a);margin-top:14px;padding-top:12px;border-top:1px solid rgba(166,127,52,.12)}
+.budget-line{font-size:13px;color:var(--c-5a4a2a);margin-top:14px;padding-top:12px;border-top:1px solid rgba(58,58,58,.12)}
 
 .card-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
 .card-actions button{
   flex:1;
   min-width:90px;
   padding:9px 10px;
-  border:1px solid rgba(166,127,52,.30);
+  border:1px solid rgba(58,58,58,.30);
   background:rgba(255,255,255,.30);
   color:var(--c-5b461d);
   font-size:10px;
@@ -174,14 +174,14 @@ body::after{
   cursor:pointer;
   font-family:inherit;
 }
-.card-actions button:hover{background:#a67f34;color:var(--c-ffffff)}
+.card-actions button:hover{background:#3a3a3a;color:var(--c-ffffff)}
 .card-actions .danger:hover{background:#9c2f2f;border-color:#9c2f2f}
 
 .empty{
   padding:54px;
   text-align:center;
   color:var(--c-4f4125);
-  border:1px solid rgba(166,127,52,.16);
+  border:1px solid rgba(58,58,58,.16);
   background:rgba(255,255,255,.18);
   line-height:1.8;
 }
@@ -190,7 +190,7 @@ body::after{
 .modal-overlay{
   display:none;
   position:fixed; inset:0; z-index:50;
-  background:rgba(60,45,21,.45);
+  background:rgba(21,21,21,.45);
   align-items:flex-start;
   justify-content:center;
   padding:40px 20px;
@@ -200,9 +200,9 @@ body::after{
 .modal{
   width:100%;
   max-width:760px;
-  background:#f4ecdf;
-  border:1px solid rgba(166,127,52,.30);
-  box-shadow:0 30px 90px rgba(60,45,21,.35);
+  background:#ffffff;
+  border:1px solid rgba(58,58,58,.30);
+  box-shadow:0 30px 90px rgba(21,21,21,.35);
   padding:36px;
 }
 .modal-title{font-size:22px;font-weight:300;color:var(--c-5b461d);margin-bottom:22px}
@@ -212,7 +212,7 @@ body::after{
 .field label{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--c-4f4125)}
 .field input,.field select,.field textarea{
   padding:12px 14px;
-  border:1px solid rgba(166,127,52,.25);
+  border:1px solid rgba(58,58,58,.25);
   background:rgba(255,255,255,.35);
   color:var(--c-5a4a2a);
   font-size:13px;
@@ -228,7 +228,7 @@ body::after{
 .modal-buttons{display:flex;gap:10px}
 .btn-cancel,.btn-save{
   padding:13px 22px;
-  border:1px solid rgba(166,127,52,.42);
+  border:1px solid rgba(58,58,58,.42);
   text-transform:uppercase;
   font-size:11px;
   letter-spacing:.16em;
@@ -236,13 +236,13 @@ body::after{
   font-family:inherit;
 }
 .btn-cancel{background:rgba(255,255,255,.25);color:var(--c-5b461d)}
-.btn-save{background:#a67f34;color:var(--c-fffaf0)}
+.btn-save{background:#3a3a3a;color:var(--c-fffaf0)}
 .btn-save:disabled{opacity:.55;cursor:not-allowed}
 
 /* Export modal */
 .export-block{
   background:rgba(255,255,255,.4);
-  border:1px solid rgba(166,127,52,.2);
+  border:1px solid rgba(58,58,58,.2);
   padding:16px;
   margin-bottom:12px;
 }
@@ -256,7 +256,7 @@ body::after{
 .copy-btn{
   margin-top:8px;
   padding:6px 12px;
-  border:1px solid rgba(166,127,52,.35);
+  border:1px solid rgba(58,58,58,.35);
   background:rgba(255,255,255,.3);
   color:var(--c-5b461d);
   font-size:10px;
@@ -265,10 +265,10 @@ body::after{
   cursor:pointer;
   font-family:inherit;
 }
-.copy-btn:hover{background:#a67f34;color:var(--c-ffffff)}
+.copy-btn:hover{background:#3a3a3a;color:var(--c-ffffff)}
 
 .preview-frame-wrap{
-  border:1px solid rgba(166,127,52,.25);
+  border:1px solid rgba(58,58,58,.25);
   background:#fff;
   min-height:420px;
   display:flex;
@@ -279,8 +279,8 @@ body::after{
 .preview-frame-wrap iframe{border:0;width:100%;min-height:420px}
 .meta-status-line{font-size:11px;color:var(--c-4f4125);margin-top:10px}
 .meta-status-line strong{color:var(--c-5b461d)}
-.card-actions button.primary{background:#a67f34;color:var(--c-ffffff);border-color:#a67f34}
-.card-actions button.primary:hover{background:#8f6c2c}
+.card-actions button.primary{background:#3a3a3a;color:var(--c-ffffff);border-color:#3a3a3a}
+.card-actions button.primary:hover{background:#323232}
 .card-actions button:disabled{opacity:.45;cursor:not-allowed}
 .card-actions button:disabled:hover{background:rgba(255,255,255,.30);color:var(--c-5b461d)}
 
@@ -645,7 +645,7 @@ function renderCountryUI(){
   const listWrap = document.getElementById("countryCheckboxes");
 
   quickWrap.innerHTML = COUNTRY_REGIONS.map(r =>
-    `<button type="button" class="region-btn" data-region="${r.key}" style="padding:6px 12px;border:1px solid rgba(166,127,52,.35);background:rgba(255,255,255,.3);color:var(--c-5b461d);font-size:11px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;font-family:inherit">${r.label}</button>`
+    `<button type="button" class="region-btn" data-region="${r.key}" style="padding:6px 12px;border:1px solid rgba(58,58,58,.35);background:rgba(255,255,255,.3);color:var(--c-5b461d);font-size:11px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;font-family:inherit">${r.label}</button>`
   ).join("") +
   `<button type="button" id="clearCountriesBtn" style="padding:6px 12px;border:1px solid rgba(156,47,47,.35);background:rgba(255,255,255,.3);color:var(--c-561a1a);font-size:11px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;font-family:inherit">Svuota selezione</button>`;
 
@@ -708,7 +708,7 @@ function escHtmlAttr(s){
 async function uploadAdImageFile(file){
   const statusEl = document.getElementById("imageUploadStatus");
   statusEl.textContent = "Caricamento in corso...";
-  statusEl.style.color = "#5a4a2a";
+  statusEl.style.color = "#212121";
 
   const ext = (file.name.split(".").pop() || "jpg").toLowerCase();
   const safeExt = /^[a-z0-9]+$/.test(ext) ? ext : "jpg";
@@ -1188,23 +1188,23 @@ function openPreviewModal(draftId){
   try{ domain = draft.destination_url ? new URL(draft.destination_url).hostname : ""; }catch(e){ domain = draft.destination_url || ""; }
 
   wrap.innerHTML = `
-    <div style="max-width:420px;margin:0 auto;border:1px solid rgba(166,127,52,.25);border-radius:10px;overflow:hidden;background:#fff;font-family:'Avenir Next','Helvetica Neue',Arial,sans-serif;text-align:left">
+    <div style="max-width:420px;margin:0 auto;border:1px solid rgba(58,58,58,.25);border-radius:10px;overflow:hidden;background:#fff;font-family:'Avenir Next','Helvetica Neue',Arial,sans-serif;text-align:left">
       <div style="display:flex;align-items:center;gap:10px;padding:12px 14px">
-        <div style="width:36px;height:36px;border-radius:50%;background:#a67f34;color:var(--c-ffffff);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700">VA</div>
+        <div style="width:36px;height:36px;border-radius:50%;background:#3a3a3a;color:var(--c-ffffff);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700">VA</div>
         <div>
           <div style="font-size:13px;font-weight:700;color:var(--c-3c2d15)">Immonova Off Market Consulting</div>
           <div style="font-size:11px;color:var(--c-4f4125)">Sponsorizzato</div>
         </div>
       </div>
       ${primaryText ? `<div style="padding:0 14px 10px;font-size:13.5px;color:var(--c-3c2d15);line-height:1.5">${primaryText}</div>` : ""}
-      ${imageUrl ? `<img src="${escHtmlAttr(imageUrl)}" style="width:100%;display:block;max-height:320px;object-fit:cover;background:#f4ecdf">` : `<div style="width:100%;height:200px;background:#f4ecdf;display:flex;align-items:center;justify-content:center;color:var(--c-5b461d);font-size:12px">Nessuna immagine impostata</div>`}
-      <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 14px;background:#f4ecdf;border-top:1px solid rgba(166,127,52,.2)">
+      ${imageUrl ? `<img src="${escHtmlAttr(imageUrl)}" style="width:100%;display:block;max-height:320px;object-fit:cover;background:#ffffff">` : `<div style="width:100%;height:200px;background:#ffffff;display:flex;align-items:center;justify-content:center;color:var(--c-5b461d);font-size:12px">Nessuna immagine impostata</div>`}
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 14px;background:#ffffff;border-top:1px solid rgba(58,58,58,.2)">
         <div style="min-width:0">
           ${domain ? `<div style="font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--c-4f4125)">${esc(domain)}</div>` : ""}
           ${headline ? `<div style="font-size:14px;font-weight:700;color:var(--c-3c2d15);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${headline}</div>` : ""}
           ${description ? `<div style="font-size:12px;color:var(--c-5a4a2a)">${description}</div>` : ""}
         </div>
-        <div style="flex-shrink:0;padding:8px 16px;background:#a67f34;color:var(--c-ffffff);font-size:12px;font-weight:700;border-radius:6px;white-space:nowrap">${ctaLabel}</div>
+        <div style="flex-shrink:0;padding:8px 16px;background:#3a3a3a;color:var(--c-ffffff);font-size:12px;font-weight:700;border-radius:6px;white-space:nowrap">${ctaLabel}</div>
       </div>
     </div>
   `;
@@ -1264,5 +1264,6 @@ renderCountryUI();
   }
 })();
 </script>
+<script src="../js/ip-brand.js?v=1"></script>
 </body>
 </html>

@@ -11,7 +11,7 @@
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{width:100%}
 body{
-  background:#f4ecdf;
+  background:#ffffff;
   font-family:"Avenir Next","Helvetica Neue",Arial,sans-serif;
   color:var(--c-4a3c1f);
   line-height:1.6;
@@ -30,8 +30,8 @@ body::before{
   inset:0;
   z-index:-2;
   background:
-    radial-gradient(circle at center,rgba(255,255,255,.72) 0%,rgba(255,255,255,.34) 38%,rgba(244,236,223,.06) 72%),
-    #f4ecdf;
+    radial-gradient(circle at center,rgba(255,255,255,.72) 0%,rgba(255,255,255,.34) 38%,rgba(255,255,255,.06) 72%),
+    #ffffff;
 }
 body::after{
   content:"";
@@ -39,8 +39,8 @@ body::after{
   inset:0;
   z-index:-1;
   background:
-    repeating-linear-gradient(60deg,transparent 0 86px,rgba(188,149,78,.20) 87px,transparent 90px),
-    repeating-linear-gradient(-60deg,transparent 0 86px,rgba(188,149,78,.19) 87px,transparent 90px);
+    repeating-linear-gradient(60deg,transparent 0 86px,rgba(68,68,68,.20) 87px,transparent 90px),
+    repeating-linear-gradient(-60deg,transparent 0 86px,rgba(68,68,68,.19) 87px,transparent 90px);
   background-size:230px 199px;
   opacity:.25;
 }
@@ -52,14 +52,14 @@ body::after{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  background:rgba(244,236,223,.85);
+  background:rgba(255,255,255,.85);
   backdrop-filter:blur(10px);
-  border-bottom:1px solid rgba(166,127,52,.15);
+  border-bottom:1px solid rgba(58,58,58,.15);
 }
 .toolbar-left{display:flex;gap:12px;align-items:center}
 .toolbar a,.toolbar button{
   padding:11px 18px;
-  border:1px solid rgba(166,127,52,.32);
+  border:1px solid rgba(58,58,58,.32);
   background:rgba(255,255,255,.25);
   color:var(--c-5b461d);
   text-decoration:none;
@@ -69,8 +69,8 @@ body::after{
   cursor:pointer;
   font-family:inherit;
 }
-.print-btn{background:#a67f34 !important;color:var(--c-fffaf0) !important}
-.print-btn:hover{background:#8f6c2c !important}
+.print-btn{background:#3a3a3a !important;color:var(--c-fffaf0) !important}
+.print-btn:hover{background:#323232 !important}
 
 .page{max-width:900px;margin:0 auto;padding:0 40px 90px}
 
@@ -90,10 +90,10 @@ body::after{
 .pop-comp-title{font-size:14px;font-weight:600;color:var(--c-5b461d);letter-spacing:.04em;margin-bottom:12px}
 .pop-bar-row{display:flex;align-items:center;gap:12px;margin-bottom:7px}
 .pop-bar-label{width:130px;font-size:11px;color:var(--c-4f4125);flex-shrink:0}
-.pop-bar-track{flex:1;height:9px;background:rgba(166,127,52,.10);border:1px solid rgba(166,127,52,.15)}
-.pop-bar-fill{height:100%;background:#a67f34}
+.pop-bar-track{flex:1;height:9px;background:rgba(58,58,58,.10);border:1px solid rgba(58,58,58,.15)}
+.pop-bar-fill{height:100%;background:#3a3a3a}
 .pop-bar-value{width:45px;text-align:right;font-size:11px;color:var(--c-5a4a2a);flex-shrink:0}
-.info-item{border-top:1px solid rgba(166,127,52,.18);padding-top:10px}
+.info-item{border-top:1px solid rgba(58,58,58,.18);padding-top:10px}
 .info-label{font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--c-5b471f);margin-bottom:6px}
 .info-value{font-size:14px;color:var(--c-4a3c1f)}
 
@@ -101,8 +101,8 @@ body::after{
   margin-top:16px;
   padding:36px;
   text-align:center;
-  background:rgba(166,127,52,.10);
-  border:1px solid rgba(166,127,52,.28);
+  background:rgba(58,58,58,.10);
+  border:1px solid rgba(58,58,58,.28);
 }
 .value-label{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--c-4f4125);margin-bottom:12px}
 .value-range{font-size:34px;color:var(--c-5b461d);font-weight:300}
@@ -118,20 +118,20 @@ body::after{
   letter-spacing:.12em;
   text-transform:uppercase;
   color:var(--c-5b471f);
-  border-bottom:1px solid rgba(166,127,52,.25);
+  border-bottom:1px solid rgba(58,58,58,.25);
 }
 .comp-table td{
   padding:10px 12px;
   font-size:12.5px;
   color:var(--c-5a4a2a);
-  border-bottom:1px solid rgba(166,127,52,.10);
+  border-bottom:1px solid rgba(58,58,58,.10);
 }
 
 .disclaimer-box{
   margin-top:16px;
   padding:20px 24px;
-  background:rgba(166,127,52,.06);
-  border:1px solid rgba(166,127,52,.18);
+  background:rgba(58,58,58,.06);
+  border:1px solid rgba(58,58,58,.18);
   font-size:12px;
   color:var(--c-4f4125);
   line-height:1.7;
@@ -140,8 +140,8 @@ body::after{
 .cadastral-note{
   margin-bottom:16px;
   padding:16px 20px;
-  background:rgba(143,91,40,.06);
-  border-left:3px solid rgba(143,91,40,.4);
+  background:rgba(45,45,45,.06);
+  border-left:3px solid rgba(45,45,45,.4);
   font-size:12.5px;
   color:var(--c-5a4a2a);
   line-height:1.7;
@@ -152,8 +152,8 @@ body::after{
 .cadastral-value-box{
   margin-top:16px;
   padding:24px;
-  background:rgba(166,127,52,.10);
-  border:1px solid rgba(166,127,52,.25);
+  background:rgba(58,58,58,.10);
+  border:1px solid rgba(58,58,58,.25);
 }
 .cadastral-value-label{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--c-4f4125);margin-bottom:8px}
 .cadastral-value-amount{font-size:24px;color:var(--c-5b461d);font-weight:300;margin-bottom:8px}
@@ -166,7 +166,7 @@ body::after{
   text-align:center;
   color:var(--c-4f4125);
   font-size:13px;
-  border:1px dashed rgba(166,127,52,.3);
+  border:1px dashed rgba(58,58,58,.3);
 }
 
 .footer-note{margin-top:60px;text-align:center;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--c-5b471f)}
@@ -175,10 +175,10 @@ body::after{
    nella stampa/PDF, non solo come link. Ogni scansione occupa la sua pagina. ---- */
 .visura-attachment-page{page-break-after:always;margin-top:16px}
 .visura-attachment-page:last-child{page-break-after:auto}
-.visura-embed-img{max-width:100%;display:block;margin-top:10px;border:1px solid rgba(166,127,52,.28)}
-.visura-pdf-canvas{max-width:100%;height:auto;display:block;margin-top:10px;border:1px solid rgba(166,127,52,.28);page-break-inside:avoid;page-break-after:always}
+.visura-embed-img{max-width:100%;display:block;margin-top:10px;border:1px solid rgba(58,58,58,.28)}
+.visura-pdf-canvas{max-width:100%;height:auto;display:block;margin-top:10px;border:1px solid rgba(58,58,58,.28);page-break-inside:avoid;page-break-after:always}
 .visura-pdf-canvas:last-child{page-break-after:auto}
-.visura-pdf-loading{font-size:12px;color:#8a7458;margin-top:10px}
+.visura-pdf-loading{font-size:12px;color:#353535;margin-top:10px}
 
 @media print{
   .toolbar{display:none}
@@ -190,7 +190,7 @@ body::after{
      sfondo pieno. ---- */
   body::before,body::after{display:none}
   .page{max-width:none;padding:0 20mm;position:relative;z-index:1}
-  body{background:#f4ecdf}
+  body{background:#ffffff}
   .section{margin-top:14mm;page-break-inside:avoid}
   .cover{padding:20mm 0 14mm}
   .visura-attachments-section{page-break-inside:auto;margin-top:0}
@@ -890,5 +890,6 @@ async function loadAndRender(){
 })();
 </script>
 
+<script src="../js/ip-brand.js?v=1"></script>
 </body>
 </html>

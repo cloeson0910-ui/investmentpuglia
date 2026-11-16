@@ -9,12 +9,12 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{width:100%;min-height:100%}
-body{background:#f4ecdf;font-family:"Avenir Next","Helvetica Neue",Arial,sans-serif;color:var(--c-46371a);overflow-x:hidden}
-body::before{content:"";position:fixed;inset:0;z-index:-2;background:radial-gradient(circle at center,rgba(255,255,255,.72) 0%,rgba(255,255,255,.34) 38%,rgba(244,236,223,.06) 72%),#f4ecdf}
-body::after{content:"";position:fixed;inset:0;z-index:-1;background:repeating-linear-gradient(60deg,transparent 0 86px,rgba(188,149,78,.23) 87px,transparent 90px),repeating-linear-gradient(-60deg,transparent 0 86px,rgba(188,149,78,.22) 87px,transparent 90px),repeating-linear-gradient(0deg,transparent 0 148px,rgba(188,149,78,.13) 149px,transparent 152px);background-size:230px 199px;opacity:.3}
-.header{padding:20px 42px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(166,127,52,.14);background:rgba(244,236,223,.72);backdrop-filter:blur(14px);position:sticky;top:0;z-index:10;flex-wrap:wrap;gap:14px}
+body{background:#ffffff;font-family:"Avenir Next","Helvetica Neue",Arial,sans-serif;color:var(--c-46371a);overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;z-index:-2;background:radial-gradient(circle at center,rgba(255,255,255,.72) 0%,rgba(255,255,255,.34) 38%,rgba(255,255,255,.06) 72%),#ffffff}
+body::after{content:"";position:fixed;inset:0;z-index:-1;background:repeating-linear-gradient(60deg,transparent 0 86px,rgba(68,68,68,.23) 87px,transparent 90px),repeating-linear-gradient(-60deg,transparent 0 86px,rgba(68,68,68,.22) 87px,transparent 90px),repeating-linear-gradient(0deg,transparent 0 148px,rgba(68,68,68,.13) 149px,transparent 152px);background-size:230px 199px;opacity:.3}
+.header{padding:20px 42px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(58,58,58,.14);background:rgba(255,255,255,.72);backdrop-filter:blur(14px);position:sticky;top:0;z-index:10;flex-wrap:wrap;gap:14px}
 .brand{font-size:20px;letter-spacing:.16em;color:var(--c-5b461d);font-weight:300;text-decoration:none}
-.back-link{padding:9px 16px;border:1px solid rgba(166,127,52,.28);background:rgba(255,255,255,.26);border-radius:8px;color:var(--c-46371a);text-decoration:none;font-size:12px;letter-spacing:.04em}
+.back-link{padding:9px 16px;border:1px solid rgba(58,58,58,.28);background:rgba(255,255,255,.26);border-radius:8px;color:var(--c-46371a);text-decoration:none;font-size:12px;letter-spacing:.04em}
 main{max-width:1180px;margin:0 auto;padding:32px 24px 80px}
 h1{font-size:26px;font-weight:300;letter-spacing:.04em;color:var(--c-5c4a22);margin-bottom:4px}
 .subtitle{font-size:13px;color:var(--c-56492d);margin-bottom:28px}
@@ -23,29 +23,29 @@ h1{font-size:26px;font-weight:300;letter-spacing:.04em;color:var(--c-5c4a22);mar
 .status.success{color:var(--c-2b4626)}
 .period-bar{display:flex;gap:12px;align-items:center;margin-bottom:22px;flex-wrap:wrap}
 .period-bar label{font-size:12px;color:var(--c-4f4125)}
-.period-bar select,.period-bar input{padding:8px 10px;border:1px solid rgba(166,127,52,.28);border-radius:6px;background:rgba(255,255,255,.5);color:var(--c-5c4a22);font-family:inherit;font-size:13px}
+.period-bar select,.period-bar input{padding:8px 10px;border:1px solid rgba(58,58,58,.28);border-radius:6px;background:rgba(255,255,255,.5);color:var(--c-5c4a22);font-family:inherit;font-size:13px}
 .summary-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px;margin-bottom:36px}
-.summary-card{background:rgba(255,255,255,.4);border:1px solid rgba(166,127,52,.18);border-radius:10px;padding:16px 18px}
+.summary-card{background:rgba(255,255,255,.4);border:1px solid rgba(58,58,58,.18);border-radius:10px;padding:16px 18px}
 .summary-label{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--c-5b471f);margin-bottom:8px}
 .summary-value{font-size:24px;font-weight:400;color:var(--c-5c4a22)}
 .summary-value.neg{color:var(--c-561a1a)}
 .summary-value.pos{color:var(--c-2b4626)}
-section.block{background:rgba(255,255,255,.32);border:1px solid rgba(166,127,52,.16);border-radius:12px;padding:22px 24px;margin-bottom:26px}
+section.block{background:rgba(255,255,255,.32);border:1px solid rgba(58,58,58,.16);border-radius:12px;padding:22px 24px;margin-bottom:26px}
 .block-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:10px}
 .block-title{font-size:16px;letter-spacing:.05em;color:var(--c-5c4a22);text-transform:uppercase;font-weight:400}
 .block-hint{font-size:12px;color:var(--c-56492d);margin-top:2px}
 form.inline-form{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-bottom:18px;align-items:end}
 form.inline-form label{display:block;font-size:11px;color:var(--c-4f4125);margin-bottom:4px}
-form.inline-form input,form.inline-form select,form.inline-form textarea{width:100%;padding:9px 10px;border:1px solid rgba(166,127,52,.28);border-radius:6px;background:rgba(255,255,255,.55);color:var(--c-5c4a22);font-family:inherit;font-size:13px}
-.btn{padding:10px 18px;border-radius:7px;border:1px solid rgba(166,127,52,.35);background:#a67f34;color:var(--c-fffaf0);font-size:12px;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;font-family:inherit}
+form.inline-form input,form.inline-form select,form.inline-form textarea{width:100%;padding:9px 10px;border:1px solid rgba(58,58,58,.28);border-radius:6px;background:rgba(255,255,255,.55);color:var(--c-5c4a22);font-family:inherit;font-size:13px}
+.btn{padding:10px 18px;border-radius:7px;border:1px solid rgba(58,58,58,.35);background:#3a3a3a;color:var(--c-fffaf0);font-size:12px;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;font-family:inherit}
 .btn.secondary{background:rgba(255,255,255,.4);color:var(--c-46371a)}
 .btn:disabled{opacity:.45;cursor:not-allowed}
 table{width:100%;border-collapse:collapse;font-size:13px}
-th,td{text-align:left;padding:9px 10px;border-bottom:1px solid rgba(166,127,52,.14)}
+th,td{text-align:left;padding:9px 10px;border-bottom:1px solid rgba(58,58,58,.14)}
 th{font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:var(--c-5b471f)}
-tr.total-row td{font-weight:600;border-top:2px solid rgba(166,127,52,.3)}
+tr.total-row td{font-weight:600;border-top:2px solid rgba(58,58,58,.3)}
 .badge{padding:3px 9px;border-radius:20px;font-size:10px;letter-spacing:.04em;text-transform:uppercase}
-.badge.draft{background:rgba(166,127,52,.15);color:var(--c-4f4125)}
+.badge.draft{background:rgba(58,58,58,.15);color:var(--c-4f4125)}
 .badge.sent{background:rgba(60,120,200,.15);color:var(--c-193351)}
 .badge.delivered{background:rgba(79,127,69,.15);color:var(--c-2b4626)}
 .badge.rejected,.badge.error{background:rgba(156,47,47,.15);color:var(--c-561a1a)}
@@ -54,7 +54,7 @@ tr.total-row td{font-weight:600;border-top:2px solid rgba(166,127,52,.3)}
 .empty-row td{color:var(--c-56492d);font-style:italic;text-align:center;padding:18px}
 .disclaimer{font-size:11px;color:var(--c-56492d);line-height:1.5;margin-top:10px;font-style:italic}
 .table-wrap{overflow-x:auto}
-#propertySearchResults{width:100%;padding:8px;border:1px solid rgba(166,127,52,.28);border-radius:6px;background:rgba(255,255,255,.6);font-family:inherit;font-size:13px}
+#propertySearchResults{width:100%;padding:8px;border:1px solid rgba(58,58,58,.28);border-radius:6px;background:rgba(255,255,255,.6);font-family:inherit;font-size:13px}
 #propertySearchResults option{padding:6px 4px}
 @media(max-width:700px){.header{padding:16px 20px}main{padding:22px 16px 60px}}
 </style>
@@ -70,12 +70,12 @@ tr.total-row td{font-weight:600;border-top:2px solid rgba(166,127,52,.3)}
   <div class="subtitle">Conto economico, IVA, spese e fatture (SDI) — uso interno.</div>
   <div class="status" id="pageStatus"></div>
 
-  <div id="newReceivedToast" style="display:none;position:fixed;top:90px;right:24px;z-index:999;max-width:320px;background:#5c4a22;color:var(--c-fff8ea);border-radius:10px;padding:16px 18px;box-shadow:0 8px 28px rgba(0,0,0,.28);font-size:13px;line-height:1.5">
+  <div id="newReceivedToast" style="display:none;position:fixed;top:90px;right:24px;z-index:999;max-width:320px;background:#212121;color:var(--c-fff8ea);border-radius:10px;padding:16px 18px;box-shadow:0 8px 28px rgba(0,0,0,.28);font-size:13px;line-height:1.5">
     <div style="font-weight:600;margin-bottom:6px">📩 Nuove fatture ricevute</div>
     <div id="newReceivedToastMsg" style="margin-bottom:12px;opacity:.9"></div>
     <div style="display:flex;gap:8px;justify-content:flex-end">
       <button type="button" id="newReceivedToastClose" style="background:none;border:1px solid rgba(255,255,255,.4);color:var(--c-fff8ea);border-radius:6px;padding:7px 12px;font-size:11px;cursor:pointer">Chiudi</button>
-      <button type="button" id="newReceivedToastGo" style="background:#fff8ea;border:none;color:var(--c-5c4a22);border-radius:6px;padding:7px 12px;font-size:11px;cursor:pointer;font-weight:600">Vai alla sezione</button>
+      <button type="button" id="newReceivedToastGo" style="background:#ffffff;border:none;color:var(--c-5c4a22);border-radius:6px;padding:7px 12px;font-size:11px;cursor:pointer;font-weight:600">Vai alla sezione</button>
     </div>
   </div>
 
@@ -611,7 +611,7 @@ function buildAccountingReportHtml(){
 <style>
 body{font-family:"Helvetica Neue",Arial,sans-serif;color:var(--c-333333);max-width:980px;margin:30px auto;padding:0 20px}
 .toolbar{display:flex;gap:10px;justify-content:flex-end;margin-bottom:24px}
-.toolbar button{padding:9px 16px;border-radius:6px;border:1px solid #a67f34;background:#a67f34;color:var(--c-ffffff);font-size:13px;cursor:pointer}
+.toolbar button{padding:9px 16px;border-radius:6px;border:1px solid #3a3a3a;background:#3a3a3a;color:var(--c-ffffff);font-size:13px;cursor:pointer}
 .toolbar button.secondary{background:#fff;color:var(--c-5b461d)}
 .doc{border:1px solid #ddd;border-radius:8px;padding:36px}
 .doc h1{font-size:20px;letter-spacing:.08em;color:var(--c-5c4a22);font-weight:400;margin-bottom:2px}
@@ -622,8 +622,8 @@ th,td{text-align:left;padding:7px 6px;border-bottom:1px solid #eee;vertical-alig
 th{font-size:10px;text-transform:uppercase;color:var(--c-5b471f)}
 td.num,th.num{text-align:right}
 tr.total-row td{font-weight:700;border-top:2px solid #ccc}
-.bar-track{width:110px;height:8px;background:#f1e9d8;border-radius:4px;overflow:hidden}
-.bar-fill{height:100%;background:#a67f34;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.bar-track{width:110px;height:8px;background:#ffffff;border-radius:4px;overflow:hidden}
+.bar-fill{height:100%;background:#3a3a3a;-webkit-print-color-adjust:exact;print-color-adjust:exact}
 .summary-table{max-width:420px;margin-top:6px}
 .summary-table td{padding:8px 6px}
 .summary-table td:first-child{color:var(--c-56492d)}
@@ -1061,7 +1061,7 @@ function buildInvoicePreviewHtml(invoice, company){
 <style>
 body{font-family:"Helvetica Neue",Arial,sans-serif;color:var(--c-333333);max-width:800px;margin:30px auto;padding:0 20px}
 .toolbar{display:flex;gap:10px;justify-content:flex-end;margin-bottom:24px}
-.toolbar button{padding:9px 16px;border-radius:6px;border:1px solid #a67f34;background:#a67f34;color:var(--c-ffffff);font-size:13px;cursor:pointer}
+.toolbar button{padding:9px 16px;border-radius:6px;border:1px solid #3a3a3a;background:#3a3a3a;color:var(--c-ffffff);font-size:13px;cursor:pointer}
 .toolbar button.secondary{background:#fff;color:var(--c-5b461d)}
 .doc{border:1px solid #ddd;border-radius:8px;padding:36px}
 .doc h1{font-size:20px;letter-spacing:.08em;color:var(--c-5c4a22);font-weight:400;margin-bottom:2px}
@@ -1332,5 +1332,6 @@ document.getElementById("generatePropertyInvoicesBtn").addEventListener("click",
   }
 })();
 </script>
+<script src="../js/ip-brand.js?v=1"></script>
 </body>
 </html>

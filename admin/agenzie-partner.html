@@ -7,39 +7,39 @@
 <title>Agenzie partner | IMMONOVA Admin</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:#f4ecdf;font-family:"Avenir Next","Helvetica Neue",Arial,sans-serif;color:#46371a;min-height:100vh}
-body::after{content:"";position:fixed;inset:0;z-index:-1;background:repeating-linear-gradient(60deg,transparent 0 86px,rgba(188,149,78,.23) 87px,transparent 90px),repeating-linear-gradient(-60deg,transparent 0 86px,rgba(188,149,78,.22) 87px,transparent 90px),repeating-linear-gradient(0deg,transparent 0 148px,rgba(188,149,78,.13) 149px,transparent 152px);background-size:230px 199px;opacity:.30}
-.header{padding:30px 40px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(166,127,52,.12);background:rgba(244,236,223,.72);backdrop-filter:blur(14px);position:sticky;top:0;z-index:10;gap:16px;flex-wrap:wrap}
-.logo{text-decoration:none;color:#5b461d}.logo-main{font-size:24px;font-weight:600;letter-spacing:.35em}.logo-sub{margin-top:6px;font-size:9px;font-weight:700;letter-spacing:.18em;color:#5b471f}
+body{background:#ffffff;font-family:"Avenir Next","Helvetica Neue",Arial,sans-serif;color:#191919;min-height:100vh}
+body::after{content:"";position:fixed;inset:0;z-index:-1;background:repeating-linear-gradient(60deg,transparent 0 86px,rgba(68,68,68,.23) 87px,transparent 90px),repeating-linear-gradient(-60deg,transparent 0 86px,rgba(68,68,68,.22) 87px,transparent 90px),repeating-linear-gradient(0deg,transparent 0 148px,rgba(68,68,68,.13) 149px,transparent 152px);background-size:230px 199px;opacity:.30}
+.header{padding:30px 40px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(58,58,58,.12);background:rgba(255,255,255,.72);backdrop-filter:blur(14px);position:sticky;top:0;z-index:10;gap:16px;flex-wrap:wrap}
+.logo{text-decoration:none;color:#202020}.logo-main{font-size:24px;font-weight:600;letter-spacing:.35em}.logo-sub{margin-top:6px;font-size:9px;font-weight:700;letter-spacing:.18em;color:#202020}
 .header-actions{display:flex;gap:12px;flex-wrap:wrap}
-.header-actions a{padding:10px 20px;border:1px solid rgba(166,127,52,.25);background:rgba(255,255,255,.25);color:#5b461d;text-decoration:none;font-size:12px;letter-spacing:.14em;text-transform:uppercase}
-.header-actions a:hover{background:#a67f34;color:#fff}
+.header-actions a{padding:10px 20px;border:1px solid rgba(58,58,58,.25);background:rgba(255,255,255,.25);color:#202020;text-decoration:none;font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+.header-actions a:hover{background:#3a3a3a;color:#fff}
 .container{max-width:1100px;margin:auto;padding:40px}
-.kicker{font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:#554321;margin-bottom:12px}
-.title{font-size:40px;font-weight:200;letter-spacing:.05em;color:#5b461d;margin-bottom:12px}
-.subtitle{font-size:15px;line-height:1.8;color:#4f4125;margin-bottom:26px}
-.card{background:rgba(255,255,255,.55);border:1px solid rgba(166,127,52,.22);padding:26px;margin-bottom:24px}
-.section-title{font-size:13px;letter-spacing:.24em;text-transform:uppercase;color:#a67f34;margin-bottom:16px;font-weight:600}
+.kicker{font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:#1e1e1e;margin-bottom:12px}
+.title{font-size:40px;font-weight:200;letter-spacing:.05em;color:#202020;margin-bottom:12px}
+.subtitle{font-size:15px;line-height:1.8;color:#1d1d1d;margin-bottom:26px}
+.card{background:rgba(255,255,255,.55);border:1px solid rgba(58,58,58,.22);padding:26px;margin-bottom:24px}
+.section-title{font-size:13px;letter-spacing:.24em;text-transform:uppercase;color:#3a3a3a;margin-bottom:16px;font-weight:600}
 .row{display:grid;grid-template-columns:1fr 1fr auto;gap:14px;align-items:end}
-label{display:block;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#5b471f;margin-bottom:6px}
-input[type=text]{width:100%;padding:11px 12px;border:1px solid rgba(166,127,52,.3);background:rgba(255,255,255,.85);font-family:inherit;font-size:14.5px}
+label{display:block;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#202020;margin-bottom:6px}
+input[type=text]{width:100%;padding:11px 12px;border:1px solid rgba(58,58,58,.3);background:rgba(255,255,255,.85);font-family:inherit;font-size:14.5px}
 input[type=file]{font-size:13px}
-.btn{padding:12px 20px;border:1px solid rgba(166,127,52,.45);background:#a67f34;color:#fffaf0;font-family:inherit;font-size:12px;letter-spacing:.16em;text-transform:uppercase;cursor:pointer}
+.btn{padding:12px 20px;border:1px solid rgba(58,58,58,.45);background:#3a3a3a;color:#ffffff;font-family:inherit;font-size:12px;letter-spacing:.16em;text-transform:uppercase;cursor:pointer}
 .btn:disabled{opacity:.45}
 .status{margin-top:12px;font-size:14px}.status.ok{color:#2e6b34}.status.err{color:#8d2f22}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px}
-.ag{background:#fff;border:1px solid rgba(166,127,52,.25);display:flex;flex-direction:column}
-.ag .logo-box{height:120px;display:flex;align-items:center;justify-content:center;padding:14px;background:#fbf8f2;border-bottom:1px solid rgba(166,127,52,.15)}
-.ag .logo-box.dark{background:#2b2620}
+.ag{background:#fff;border:1px solid rgba(58,58,58,.25);display:flex;flex-direction:column}
+.ag .logo-box{height:120px;display:flex;align-items:center;justify-content:center;padding:14px;background:#ffffff;border-bottom:1px solid rgba(58,58,58,.15)}
+.ag .logo-box.dark{background:#111111}
 .ag img{max-width:100%;max-height:92px;object-fit:contain}
 .ag .meta{padding:12px 14px;flex:1}
-.ag .name{font-size:15px;color:#2b2620}
-.ag .acts{display:flex;border-top:1px solid rgba(166,127,52,.15)}
-.ag .acts button{flex:1;padding:10px;background:none;border:0;font-family:inherit;font-size:11px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;color:#5b461d}
-.ag .acts button+button{border-left:1px solid rgba(166,127,52,.15)}
+.ag .name{font-size:15px;color:#111111}
+.ag .acts{display:flex;border-top:1px solid rgba(58,58,58,.15)}
+.ag .acts button{flex:1;padding:10px;background:none;border:0;font-family:inherit;font-size:11px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;color:#202020}
+.ag .acts button+button{border-left:1px solid rgba(58,58,58,.15)}
 .ag .acts button.del{color:#8d2f22}
-.ag .acts button:hover{background:rgba(166,127,52,.1)}
-.empty{color:#7d6640;font-size:14px}
+.ag .acts button:hover{background:rgba(58,58,58,.1)}
+.empty{color:#2f2f2f;font-size:14px}
 @media(max-width:700px){.row{grid-template-columns:1fr}.container{padding:22px 14px}.header{padding:18px}}
 </style>
 </head>
@@ -144,5 +144,6 @@ async function remove(id){
   load();
 })();
 </script>
+<script src="../js/ip-brand.js?v=1"></script>
 </body>
 </html>

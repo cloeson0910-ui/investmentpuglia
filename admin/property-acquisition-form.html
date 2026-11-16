@@ -8,14 +8,14 @@
 <title>Acquisizione immobile</title>
 <style>
   :root{
-    --gold:#a67f34; --gold-dark:#7a5f27; --ink:#4a3c1f; --ink-soft:#8f7643;
-    --bg:#fdfaf3; --card:#ffffff; --line:rgba(166,127,52,.28); --good:#2f7a3d; --bad:#b23b3b;
+    --gold:#3a3a3a; --gold-dark:#2b2b2b; --ink:#1b1b1b; --ink-soft:#353535;
+    --bg:#ffffff; --card:#ffffff; --line:rgba(58,58,58,.28); --good:#2f7a3d; --bad:#b23b3b;
   }
   *{box-sizing:border-box}
   body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;background:var(--bg);color:var(--ink);padding-bottom:120px}
   header{position:sticky;top:0;z-index:20;background:var(--card);border-bottom:1px solid var(--line);padding:14px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
   header h1{font-size:17px;margin:0;letter-spacing:.02em}
-  .status-pill{font-size:11px;text-transform:uppercase;letter-spacing:.06em;padding:4px 10px;border-radius:20px;background:#f1e6cc;color:var(--gold-dark);font-weight:600}
+  .status-pill{font-size:11px;text-transform:uppercase;letter-spacing:.06em;padding:4px 10px;border-radius:20px;background:#ffffff;color:var(--gold-dark);font-weight:600}
   .container{max-width:900px;margin:0 auto;padding:18px}
   .loader-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap;background:var(--card);border:1px solid var(--line);padding:10px 14px;border-radius:10px;margin-bottom:6px;position:relative}
   .loader-row input{flex:1;min-width:140px;padding:9px 10px;border:1px solid var(--line);border-radius:8px;font-size:14px}
@@ -24,11 +24,11 @@
   .search-results.open{display:block}
   .search-result-item{display:flex;flex-direction:column;gap:2px;padding:10px 14px;border-bottom:1px solid var(--line);cursor:pointer}
   .search-result-item:last-child{border-bottom:none}
-  .search-result-item:hover{background:#f7f1e0}
+  .search-result-item:hover{background:#ffffff}
   .search-result-name{font-size:14px;font-weight:700;color:var(--ink)}
   .search-result-meta{font-size:12.5px;color:var(--ink-soft)}
   .search-result-empty{padding:14px;font-size:13px;color:var(--ink-soft);text-align:center}
-  .sr-status{display:inline-block;font-size:10px;text-transform:uppercase;letter-spacing:.05em;padding:2px 7px;border-radius:10px;background:#f1e6cc;color:var(--gold-dark);font-weight:700;margin-left:6px;vertical-align:middle}
+  .sr-status{display:inline-block;font-size:10px;text-transform:uppercase;letter-spacing:.05em;padding:2px 7px;border-radius:10px;background:#ffffff;color:var(--gold-dark);font-weight:700;margin-left:6px;vertical-align:middle}
   .section{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 18px 20px;margin-bottom:18px}
   .section-title{font-size:15px;text-transform:uppercase;letter-spacing:.06em;color:var(--gold-dark);margin:0 0 4px;font-weight:700}
   .section-hint{font-size:12.5px;color:var(--ink-soft);margin:0 0 14px}
@@ -51,18 +51,18 @@
   .check-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px 14px}
   @media (max-width:640px){.check-grid{grid-template-columns:1fr}}
   .radio-options{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
-  .radio-options label{display:flex;align-items:center;gap:6px;font-size:13.5px;font-weight:500;color:var(--ink);background:#faf6ea;border:1px solid var(--line);padding:8px 12px;border-radius:20px;cursor:pointer}
+  .radio-options label{display:flex;align-items:center;gap:6px;font-size:13.5px;font-weight:500;color:var(--ink);background:#ffffff;border:1px solid var(--line);padding:8px 12px;border-radius:20px;cursor:pointer}
   .radio-options input{width:17px;height:17px;accent-color:var(--gold)}
   .radio-options label.checked{background:var(--gold);border-color:var(--gold);color:var(--c-ffffff)}
   .free-text{margin-top:8px}
   .photo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px;margin-top:8px}
-  .photo-cat-btn{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:16px 8px;border:2px dashed var(--line);border-radius:10px;background:#faf6ea;color:var(--gold-dark);font-weight:600;font-size:12.5px;text-align:center;cursor:pointer;min-height:76px}
-  .photo-cat-btn:active{background:#f1e6cc}
+  .photo-cat-btn{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:16px 8px;border:2px dashed var(--line);border-radius:10px;background:#ffffff;color:var(--gold-dark);font-weight:600;font-size:12.5px;text-align:center;cursor:pointer;min-height:76px}
+  .photo-cat-btn:active{background:#ffffff}
   .photo-cat-btn .icon{font-size:22px}
   .photo-thumbs{display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:10px;margin-top:16px}
   .photo-thumb{position:relative;border-radius:8px;overflow:hidden;border:1px solid var(--line);background:#eee;aspect-ratio:1}
   .photo-thumb img{width:100%;height:100%;object-fit:cover;display:block}
-  .photo-thumb .cat-tag{position:absolute;bottom:0;left:0;right:0;background:rgba(74,60,31,.75);color:var(--c-ffffff);font-size:10px;padding:3px 5px;text-align:center}
+  .photo-thumb .cat-tag{position:absolute;bottom:0;left:0;right:0;background:rgba(27,27,27,.75);color:var(--c-ffffff);font-size:10px;padding:3px 5px;text-align:center}
   .photo-thumb .del-btn{position:absolute;top:4px;right:4px;width:22px;height:22px;border-radius:50%;background:rgba(178,59,59,.9);color:var(--c-ffffff);border:none;font-size:13px;line-height:1;cursor:pointer}
   .photo-thumb.uploading{opacity:.5}
   .photo-status{font-size:12px;color:var(--ink-soft);margin-top:6px}
@@ -137,17 +137,17 @@
       <div class="field"><label>Provincia</label><input type="text" id="province"></div>
       <div class="field span2"><label>Dati catastali (foglio/particella/sub, rendita) — nota libera, facoltativa se compili le unità catastali sotto</label><input type="text" id="cadastralData"></div>
       <div class="field"><label>Superficie commerciale (m²)</label><input type="number" id="commercialSqm" min="0">
-        <button type="button" class="fpm-open" style="margin-top:6px;border:1px solid #a67f34;background:#fff;color:#3a2a08;padding:6px 12px;cursor:pointer;font-size:12px;letter-spacing:.05em" onclick="FloorplanMeasure.open({fields:{principale:'commercialSqm'},imageSrc:(window.fpImg&&fpImg.src)||null})">📏 Misura da planimetria</button></div>
+        <button type="button" class="fpm-open" style="margin-top:6px;border:1px solid #3a3a3a;background:#fff;color:#131313;padding:6px 12px;cursor:pointer;font-size:12px;letter-spacing:.05em" onclick="FloorplanMeasure.open({fields:{principale:'commercialSqm'},imageSrc:(window.fpImg&&fpImg.src)||null})">📏 Misura da planimetria</button></div>
       <div class="field"><label>Superficie catastale (m²) — totale, facoltativo se compili le unità catastali sotto</label><input type="number" id="cadastralSqm" min="0"></div>
       <div class="field span2 cadastral-units">
         <label>Unità catastali (una per ogni particella/subalterno collegato all'immobile)</label>
-        <div class="cadastral-units-note" style="font-size:12px;color:#8a7458;margin-bottom:6px">Aggiungi una sezione per ogni unità catastale distinta (es. abitazione principale, garage, cantina...): non c'è limite al numero.</div>
+        <div class="cadastral-units-note" style="font-size:12px;color:#353535;margin-bottom:6px">Aggiungi una sezione per ogni unità catastale distinta (es. abitazione principale, garage, cantina...): non c'è limite al numero.</div>
         <div id="cadastralUnitsContainer"></div>
         <div style="margin-top:10px;display:flex;gap:10px;flex-wrap:wrap;align-items:center">
           <button type="button" class="soft" id="addCadastralUnitBtn">+ Aggiungi unità catastale</button>
           <button type="button" class="soft" id="extractVisuraBtn">📄 Carica visura catastale (estrazione automatica)</button>
           <input type="file" id="visuraFileInput" accept="application/pdf,image/*" multiple style="display:none">
-          <span id="extractVisuraStatus" style="font-size:13px;color:#8a7458"></span>
+          <span id="extractVisuraStatus" style="font-size:13px;color:#353535"></span>
         </div>
       </div>
       <div class="field"><label>Vani</label><input type="number" id="rooms" min="0"></div>
@@ -547,8 +547,8 @@ function fpInit(){
 
 function fpSetTool(tool){
   fpState.tool = (fpState.tool === tool) ? null : tool;
-  document.getElementById("floorplanToolCircle").style.outline = fpState.tool === "circle" ? "2px solid #a67f34" : "";
-  document.getElementById("floorplanToolNote").style.outline = fpState.tool === "note" ? "2px solid #a67f34" : "";
+  document.getElementById("floorplanToolCircle").style.outline = fpState.tool === "circle" ? "2px solid #3a3a3a" : "";
+  document.getElementById("floorplanToolNote").style.outline = fpState.tool === "note" ? "2px solid #3a3a3a" : "";
 }
 
 function fpOnFileChange(e){
@@ -696,7 +696,7 @@ function fpRedraw(){
       noteNum++;
       var r = Math.max(14, fpState.naturalW/60);
       fpCtx.save();
-      fpCtx.fillStyle = "#a67f34";
+      fpCtx.fillStyle = "#3a3a3a";
       fpCtx.beginPath();
       fpCtx.arc(a.x, a.y, r, 0, Math.PI*2);
       fpCtx.fill();
@@ -717,7 +717,7 @@ function fpRenderNotesList(){
   var html = "";
   notes.forEach(function(n, i){
     html += '<div style="display:flex;gap:8px;align-items:flex-start;margin-top:8px">' +
-      '<span style="min-width:22px;height:22px;border-radius:50%;background:#a67f34;color:#fff;font-size:11px;display:flex;align-items:center;justify-content:center;flex:none">' + (i+1) + '</span>' +
+      '<span style="min-width:22px;height:22px;border-radius:50%;background:#3a3a3a;color:#fff;font-size:11px;display:flex;align-items:center;justify-content:center;flex:none">' + (i+1) + '</span>' +
       '<span style="font-size:13.5px;flex:1">' + fpEscape(n.text) + '</span>' +
       '</div>';
   });
@@ -817,7 +817,7 @@ function renderCadastralUnits(){
 
   container.innerHTML = cadastralUnitsState.map(function(u, idx){
     return '' +
-      '<div class="cadastral-unit-card" data-unit-id="' + u.id + '" style="border:1px solid #e4d9c8;border-radius:8px;padding:10px;margin-bottom:8px">' +
+      '<div class="cadastral-unit-card" data-unit-id="' + u.id + '" style="border:1px solid #b3b3b3;border-radius:8px;padding:10px;margin-bottom:8px">' +
         '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">' +
           '<strong>Unità catastale ' + (idx+1) + '</strong>' +
           '<button type="button" class="danger remove-cadastral-unit-btn" data-unit="' + u.id + '">Rimuovi</button>' +
@@ -832,7 +832,7 @@ function renderCadastralUnits(){
           '<label>Subalterno<input type="text" class="cad-subalterno" data-unit="' + u.id + '" value="' + escapeHTML(u.subalterno || "") + '"></label>' +
         '</div>' +
       '</div>';
-  }).join("") || '<div style="font-size:13px;color:#8a7458">Nessuna unità catastale aggiunta.</div>';
+  }).join("") || '<div style="font-size:13px;color:#353535">Nessuna unità catastale aggiunta.</div>';
 }
 
 function fileToBase64(file){
@@ -1292,5 +1292,6 @@ if(currentId){
   importFromInvestor();
 }
 </script>
+<script src="../js/ip-brand.js?v=1"></script>
 </body>
 </html>

@@ -12,7 +12,7 @@
 html,body{width:100%;min-height:100%}
 
 body{
-  background:#f4ecdf;
+  background:#ffffff;
   font-family:"Avenir Next","Helvetica Neue",Arial,sans-serif;
   color:var(--c-46371a);
 }
@@ -23,8 +23,8 @@ body::before{
   inset:0;
   z-index:-2;
   background:
-    radial-gradient(circle at center,rgba(255,255,255,.72) 0%,rgba(255,255,255,.34) 38%,rgba(244,236,223,.06) 72%),
-    #f4ecdf;
+    radial-gradient(circle at center,rgba(255,255,255,.72) 0%,rgba(255,255,255,.34) 38%,rgba(255,255,255,.06) 72%),
+    #ffffff;
 }
 
 .page{
@@ -74,8 +74,8 @@ h1{
 .warning-box strong{display:block;margin-bottom:6px;font-size:13.5px;letter-spacing:.03em}
 
 .card{
-  border:1px solid rgba(165,129,57,.30);
-  background:rgba(255,252,244,.55);
+  border:1px solid rgba(59,59,59,.30);
+  background:rgba(255,255,255,.55);
   padding:22px 24px;
   margin-bottom:20px;
 }
@@ -106,8 +106,8 @@ label{
 }
 
 button{
-  border:1px solid rgba(165,129,57,.5);
-  background:#a58139;
+  border:1px solid rgba(59,59,59,.5);
+  background:#3b3b3b;
   color:var(--c-ffffff);
   padding:10px 20px;
   font-size:12px;
@@ -135,13 +135,13 @@ button:disabled{opacity:.5;cursor:not-allowed}
 .progress-outer{
   width:100%;
   height:8px;
-  background:rgba(165,129,57,.15);
+  background:rgba(59,59,59,.15);
   margin:10px 0 4px;
 }
 .progress-inner{
   height:100%;
   width:0%;
-  background:#a58139;
+  background:#3b3b3b;
   transition:width .25s ease;
 }
 
@@ -150,7 +150,7 @@ button:disabled{opacity:.5;cursor:not-allowed}
   overflow-y:auto;
   font-size:12px;
   font-family:monospace;
-  border:1px solid rgba(165,129,57,.25);
+  border:1px solid rgba(59,59,59,.25);
   background:rgba(255,255,255,.5);
   padding:12px 14px;
   margin-top:14px;
@@ -214,7 +214,7 @@ button:disabled{opacity:.5;cursor:not-allowed}
       <div id="previewStatus" class="status-box"></div>
     </div>
     <div id="previewImageBox" style="display:none;margin-top:6px">
-      <img id="previewImage" style="max-width:100%;border:1px solid rgba(165,129,57,.30);display:block">
+      <img id="previewImage" style="max-width:100%;border:1px solid rgba(59,59,59,.30);display:block">
     </div>
   </div>
 
@@ -486,7 +486,7 @@ async function generatePreview(){
   }
 
   statusEl.textContent = "Genero anteprima...";
-  statusEl.style.color = "#8f7643";
+  statusEl.style.color = "#353535";
 
   try{
     var response = await fetch(item.url, { cache:"no-store" });
@@ -562,5 +562,6 @@ document.getElementById("opacitySlider").addEventListener("input", function(){
 
 checkAuth();
 </script>
+<script src="../js/ip-brand.js?v=1"></script>
 </body>
 </html>

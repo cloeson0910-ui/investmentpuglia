@@ -11,7 +11,7 @@
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{width:100%;min-height:100%}
 body{
-  background:#f4ecdf;
+  background:#ffffff;
   font-family:"Avenir Next","Helvetica Neue",Arial,sans-serif;
   color:var(--c-46371a);
 }
@@ -21,8 +21,8 @@ body::before{
   inset:0;
   z-index:-2;
   background:
-    radial-gradient(circle at center,rgba(255,255,255,.72) 0%,rgba(255,255,255,.34) 38%,rgba(244,236,223,.06) 72%),
-    #f4ecdf;
+    radial-gradient(circle at center,rgba(255,255,255,.72) 0%,rgba(255,255,255,.34) 38%,rgba(255,255,255,.06) 72%),
+    #ffffff;
 }
 body::after{
   content:"";
@@ -30,9 +30,9 @@ body::after{
   inset:0;
   z-index:-1;
   background:
-    repeating-linear-gradient(60deg,transparent 0 86px,rgba(188,149,78,.23) 87px,transparent 90px),
-    repeating-linear-gradient(-60deg,transparent 0 86px,rgba(188,149,78,.22) 87px,transparent 90px),
-    repeating-linear-gradient(0deg,transparent 0 148px,rgba(188,149,78,.13) 149px,transparent 152px);
+    repeating-linear-gradient(60deg,transparent 0 86px,rgba(68,68,68,.23) 87px,transparent 90px),
+    repeating-linear-gradient(-60deg,transparent 0 86px,rgba(68,68,68,.22) 87px,transparent 90px),
+    repeating-linear-gradient(0deg,transparent 0 148px,rgba(68,68,68,.13) 149px,transparent 152px);
   background-size:230px 199px;
   opacity:.30;
 }
@@ -41,8 +41,8 @@ body::after{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  border-bottom:1px solid rgba(166,127,52,.12);
-  background:rgba(244,236,223,.72);
+  border-bottom:1px solid rgba(58,58,58,.12);
+  background:rgba(255,255,255,.72);
   backdrop-filter:blur(14px);
   position:sticky;
   top:0;
@@ -54,7 +54,7 @@ body::after{
 .header-actions{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
 .header-actions a,.logout{
   padding:10px 20px;
-  border:1px solid rgba(166,127,52,.25);
+  border:1px solid rgba(58,58,58,.25);
   background:rgba(255,255,255,.25);
   cursor:pointer;
   color:var(--c-5b461d);
@@ -63,7 +63,7 @@ body::after{
   letter-spacing:.14em;
   text-transform:uppercase;
 }
-.header-actions a:hover,.logout:hover{background:#a67f34;color:var(--c-ffffff)}
+.header-actions a:hover,.logout:hover{background:#3a3a3a;color:var(--c-ffffff)}
 .container{max-width:1450px;margin:auto;padding:40px}
 .kicker{font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--c-554321);margin-bottom:12px}
 .title-row{display:flex;justify-content:space-between;align-items:flex-start;gap:22px;flex-wrap:wrap;margin-bottom:18px}
@@ -72,8 +72,8 @@ body::after{
 .primary-link{
   display:inline-block;
   padding:14px 22px;
-  border:1px solid rgba(166,127,52,.42);
-  background:#a67f34;
+  border:1px solid rgba(58,58,58,.42);
+  background:#3a3a3a;
   color:var(--c-fffaf0);
   text-decoration:none;
   text-transform:uppercase;
@@ -85,7 +85,7 @@ body::after{
   flex:1;
   min-width:280px;
   padding:14px 16px;
-  border:1px solid rgba(166,127,52,.22);
+  border:1px solid rgba(58,58,58,.22);
   background:rgba(255,255,255,.25);
   color:var(--c-46371a);
   outline:none;
@@ -97,9 +97,9 @@ body::after{
 .table-wrapper{
   background:rgba(255,255,255,.20);
   backdrop-filter:blur(8px);
-  border:1px solid rgba(166,127,52,.15);
+  border:1px solid rgba(58,58,58,.15);
   overflow:auto;
-  box-shadow:0 24px 70px rgba(127,100,48,.07);
+  box-shadow:0 24px 70px rgba(45,45,45,.07);
 }
 table{width:100%;border-collapse:collapse;min-width:1000px}
 th{
@@ -108,12 +108,12 @@ th{
   font-size:11px;
   letter-spacing:.14em;
   text-transform:uppercase;
-  border-bottom:1px solid rgba(166,127,52,.15);
+  border-bottom:1px solid rgba(58,58,58,.15);
   white-space:nowrap;
 }
 td{
   padding:16px;
-  border-bottom:1px solid rgba(166,127,52,.08);
+  border-bottom:1px solid rgba(58,58,58,.08);
   vertical-align:top;
   font-size:13px;
   line-height:1.6;
@@ -121,7 +121,7 @@ td{
 .badge{
   display:inline-block;
   padding:6px 9px;
-  border:1px solid rgba(166,127,52,.25);
+  border:1px solid rgba(58,58,58,.25);
   font-size:10px;
   letter-spacing:.08em;
   text-transform:uppercase;
@@ -132,7 +132,7 @@ td{
 .actions{display:flex;flex-direction:column;gap:6px;min-width:100px}
 .action-btn{
   padding:8px 10px;
-  border:1px solid rgba(166,127,52,.28);
+  border:1px solid rgba(58,58,58,.28);
   background:rgba(255,255,255,.20);
   color:var(--c-5b461d);
   cursor:pointer;
@@ -143,27 +143,27 @@ td{
   text-decoration:none;
   text-align:center;
 }
-.action-btn:hover{background:#a67f34;color:var(--c-ffffff)}
+.action-btn:hover{background:#3a3a3a;color:var(--c-ffffff)}
 .action-btn.danger{border-color:rgba(156,47,47,.35);color:var(--c-561a1a)}
 .action-btn.danger:hover{background:#9c2f2f;color:var(--c-ffffff)}
 .empty{padding:40px;text-align:center;opacity:.7}
 .acq-panel{
   background:rgba(255,255,255,.20);
   backdrop-filter:blur(8px);
-  border:1px solid rgba(166,127,52,.15);
-  box-shadow:0 24px 70px rgba(127,100,48,.07);
+  border:1px solid rgba(58,58,58,.15);
+  box-shadow:0 24px 70px rgba(45,45,45,.07);
   padding:22px 24px;
   margin-bottom:26px;
 }
 .acq-panel-title{font-size:14px;letter-spacing:.1em;text-transform:uppercase;color:var(--c-5b461d);margin-bottom:4px}
 .acq-panel-note{font-size:12px;color:var(--c-4f4125);margin-bottom:16px;line-height:1.6}
 .acq-list{display:flex;flex-direction:column;gap:2px}
-.acq-row{display:flex;align-items:center;gap:14px;padding:12px 4px;border-bottom:1px solid rgba(166,127,52,.10)}
+.acq-row{display:flex;align-items:center;gap:14px;padding:12px 4px;border-bottom:1px solid rgba(58,58,58,.10)}
 .acq-row:last-child{border-bottom:0}
 .acq-row-main{flex:1;min-width:0}
 .acq-row-name{font-size:13.5px;color:var(--c-5a4a2a);font-weight:600}
 .acq-row-detail{font-size:12px;color:var(--c-4f4125);margin-top:2px}
-.acq-row-badge{font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;padding:4px 8px;border:1px solid rgba(166,127,52,.25);background:rgba(255,255,255,.3);color:var(--c-5b461d);white-space:nowrap}
+.acq-row-badge{font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;padding:4px 8px;border:1px solid rgba(58,58,58,.25);background:rgba(255,255,255,.3);color:var(--c-5b461d);white-space:nowrap}
 .acq-row-badge.imported{color:var(--c-2b4626);border-color:rgba(79,127,69,.3)}
 @media(max-width:700px){
   .header{flex-direction:column;gap:18px}
@@ -474,5 +474,6 @@ document.getElementById("logoutBtn").addEventListener("click", async () => {
 })();
 </script>
 
+<script src="../js/ip-brand.js?v=1"></script>
 </body>
 </html>

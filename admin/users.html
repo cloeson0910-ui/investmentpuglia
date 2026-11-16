@@ -12,7 +12,7 @@
 html,body{width:100%;min-height:100%}
 
 body{
-  background:#f4ecdf;
+  background:#ffffff;
   font-family:"Avenir Next","Helvetica Neue",Arial,sans-serif;
   color:var(--c-46371a);
 }
@@ -23,8 +23,8 @@ body::before{
   inset:0;
   z-index:-2;
   background:
-    radial-gradient(circle at center,rgba(255,255,255,.72) 0%,rgba(255,255,255,.34) 38%,rgba(244,236,223,.06) 72%),
-    #f4ecdf;
+    radial-gradient(circle at center,rgba(255,255,255,.72) 0%,rgba(255,255,255,.34) 38%,rgba(255,255,255,.06) 72%),
+    #ffffff;
 }
 
 body::after{
@@ -33,9 +33,9 @@ body::after{
   inset:0;
   z-index:-1;
   background:
-    repeating-linear-gradient(60deg,transparent 0 86px,rgba(188,149,78,.23) 87px,transparent 90px),
-    repeating-linear-gradient(-60deg,transparent 0 86px,rgba(188,149,78,.22) 87px,transparent 90px),
-    repeating-linear-gradient(0deg,transparent 0 148px,rgba(188,149,78,.13) 149px,transparent 152px);
+    repeating-linear-gradient(60deg,transparent 0 86px,rgba(68,68,68,.23) 87px,transparent 90px),
+    repeating-linear-gradient(-60deg,transparent 0 86px,rgba(68,68,68,.22) 87px,transparent 90px),
+    repeating-linear-gradient(0deg,transparent 0 148px,rgba(68,68,68,.13) 149px,transparent 152px);
   background-size:230px 199px;
   opacity:.30;
 }
@@ -45,8 +45,8 @@ body::after{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  border-bottom:1px solid rgba(166,127,52,.14);
-  background:rgba(244,236,223,.72);
+  border-bottom:1px solid rgba(58,58,58,.14);
+  background:rgba(255,255,255,.72);
   backdrop-filter:blur(14px);
   position:sticky;
   top:0;
@@ -82,7 +82,7 @@ body::after{
   width:78%;
   height:1px;
   margin:5px auto 0;
-  background:linear-gradient(to right,transparent,rgba(197,157,72,.78),transparent);
+  background:linear-gradient(to right,transparent,rgba(71,71,71,.78),transparent);
 }
 
 .logo-sub{
@@ -104,7 +104,7 @@ body::after{
 .header-actions a,
 .logout{
   padding:11px 18px;
-  border:1px solid rgba(166,127,52,.28);
+  border:1px solid rgba(58,58,58,.28);
   background:rgba(255,255,255,.26);
   cursor:pointer;
   color:var(--c-5b461d);
@@ -116,7 +116,7 @@ body::after{
 
 .header-actions a:hover,
 .logout:hover{
-  background:#a67f34;
+  background:#3a3a3a;
   color:var(--c-ffffff);
 }
 
@@ -159,8 +159,8 @@ body::after{
 .panel{
   background:rgba(255,255,255,.20);
   backdrop-filter:blur(8px);
-  border:1px solid rgba(166,127,52,.15);
-  box-shadow:0 24px 70px rgba(127,100,48,.07);
+  border:1px solid rgba(58,58,58,.15);
+  box-shadow:0 24px 70px rgba(45,45,45,.07);
   padding:30px;
 }
 
@@ -195,8 +195,8 @@ input,
 select{
   width:100%;
   padding:15px 16px;
-  border:1px solid rgba(165,129,57,.25);
-  background:rgba(255,252,244,.35);
+  border:1px solid rgba(59,59,59,.25);
+  background:rgba(255,255,255,.35);
   color:var(--c-46371a);
   font-size:14px;
   outline:none;
@@ -206,8 +206,8 @@ select{
 button.primary{
   margin-top:8px;
   padding:14px 24px;
-  border:1px solid rgba(165,129,57,.42);
-  background:#a67f34;
+  border:1px solid rgba(59,59,59,.42);
+  background:#3a3a3a;
   color:white;
   text-transform:uppercase;
   font-size:11px;
@@ -247,13 +247,13 @@ th{
   font-size:11px;
   letter-spacing:.18em;
   text-transform:uppercase;
-  border-bottom:1px solid rgba(166,127,52,.15);
+  border-bottom:1px solid rgba(58,58,58,.15);
   white-space:nowrap;
 }
 
 td{
   padding:16px;
-  border-bottom:1px solid rgba(166,127,52,.08);
+  border-bottom:1px solid rgba(58,58,58,.08);
   vertical-align:middle;
   font-size:14px;
   line-height:1.6;
@@ -272,7 +272,7 @@ td{
 
 .small-btn{
   padding:9px 12px;
-  border:1px solid rgba(166,127,52,.25);
+  border:1px solid rgba(58,58,58,.25);
   background:rgba(255,255,255,.25);
   color:var(--c-5b461d);
   cursor:pointer;
@@ -284,7 +284,7 @@ td{
 .badge{
   display:inline-block;
   padding:7px 10px;
-  border:1px solid rgba(166,127,52,.25);
+  border:1px solid rgba(58,58,58,.25);
   font-size:10px;
   letter-spacing:.14em;
   text-transform:uppercase;
@@ -304,9 +304,9 @@ td{
 }
 
 .perm-row td{
-  background:rgba(166,127,52,.05);
+  background:rgba(58,58,58,.05);
   padding:0;
-  border-bottom:1px solid rgba(166,127,52,.15);
+  border-bottom:1px solid rgba(58,58,58,.15);
 }
 
 .perm-panel{
@@ -356,7 +356,7 @@ td{
   align-items:center;
   gap:6px;
   padding:7px 11px;
-  border:1px solid rgba(166,127,52,.25);
+  border:1px solid rgba(58,58,58,.25);
   background:rgba(255,255,255,.3);
   font-size:11px;
   cursor:pointer;
@@ -368,9 +368,9 @@ td{
 }
 
 .perm-toggle.granted{
-  background:#a67f34;
+  background:#3a3a3a;
   color:white;
-  border-color:#a67f34;
+  border-color:#3a3a3a;
 }
 
 .perm-data-row{
@@ -378,7 +378,7 @@ td{
   align-items:center;
   gap:10px;
   padding:8px 0;
-  border-bottom:1px solid rgba(166,127,52,.08);
+  border-bottom:1px solid rgba(58,58,58,.08);
   font-size:12px;
 }
 
@@ -450,10 +450,10 @@ td{
   <svg class="logo-svg" viewBox="0 0 1120 135" xmlns="http://www.w3.org/2000/svg" aria-label="IMMONOVA">
     <defs>
       <linearGradient id="goldGradientHeader" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="0%" stop-color="#8f6f2c"/>
-        <stop offset="42%" stop-color="#c79c43"/>
-        <stop offset="58%" stop-color="#f1d27a"/>
-        <stop offset="100%" stop-color="#a77d31"/>
+        <stop offset="0%" stop-color="#323232"/>
+        <stop offset="42%" stop-color="#474747"/>
+        <stop offset="58%" stop-color="#ababab"/>
+        <stop offset="100%" stop-color="#3a3a3a"/>
       </linearGradient>
     </defs>
 
@@ -1605,5 +1605,6 @@ superUserFilter.addEventListener("change", function(){
 })();
 </script>
 
+<script src="../js/ip-brand.js?v=1"></script>
 </body>
 </html>
