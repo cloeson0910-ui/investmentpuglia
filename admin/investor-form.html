@@ -1,0 +1,1694 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<link rel="stylesheet" href="../css/immonova-text-theme.css">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nuovo Contatto | IMMONOVA Admin</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:100%;min-height:100%}
+body{
+  background:#f4ecdf;
+  font-family:"Avenir Next","Helvetica Neue",Arial,sans-serif;
+  color:var(--c-46371a);
+}
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-2;
+  background:
+    radial-gradient(circle at center,rgba(255,255,255,.72) 0%,rgba(255,255,255,.34) 38%,rgba(244,236,223,.06) 72%),
+    #f4ecdf;
+}
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  background:
+    repeating-linear-gradient(60deg,transparent 0 86px,rgba(188,149,78,.23) 87px,transparent 90px),
+    repeating-linear-gradient(-60deg,transparent 0 86px,rgba(188,149,78,.22) 87px,transparent 90px),
+    repeating-linear-gradient(0deg,transparent 0 148px,rgba(188,149,78,.13) 149px,transparent 152px);
+  background-size:230px 199px;
+  opacity:.30;
+}
+.header{
+  padding:30px 40px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom:1px solid rgba(166,127,52,.12);
+  background:rgba(244,236,223,.72);
+  backdrop-filter:blur(14px);
+  position:sticky;
+  top:0;
+  z-index:10;
+}
+.logo{
+  text-decoration:none;
+  color:var(--c-5b461d);
+}
+.logo-main{
+  font-size:24px;
+  font-weight:600;
+  letter-spacing:.35em;
+}
+.logo-sub{
+  margin-top:6px;
+  font-size:9px;
+  font-weight:700;
+  letter-spacing:.18em;
+  color:var(--c-5b471f);
+}
+.header-actions{
+  display:flex;
+  gap:12px;
+  align-items:center;
+  flex-wrap:wrap;
+}
+.header-actions a,
+.logout{
+  padding:10px 20px;
+  border:1px solid rgba(166,127,52,.25);
+  background:rgba(255,255,255,.25);
+  cursor:pointer;
+  color:var(--c-5b461d);
+  text-decoration:none;
+  font-size:12px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+.header-actions a:hover,
+.logout:hover{
+  background:#a67f34;
+  color:var(--c-ffffff);
+}
+.container{
+  max-width:1280px;
+  margin:auto;
+  padding:40px;
+}
+.kicker{
+  font-size:11px;
+  letter-spacing:.32em;
+  text-transform:uppercase;
+  color:var(--c-554321);
+  margin-bottom:12px;
+}
+.title-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:22px;
+  flex-wrap:wrap;
+  margin-bottom:18px;
+}
+.title{
+  font-size:42px;
+  font-weight:200;
+  letter-spacing:.05em;
+  color:var(--c-5b461d);
+}
+.subtitle{
+  font-size:15px;
+  line-height:1.8;
+  color:var(--c-4f4125);
+  max-width:860px;
+  margin-bottom:28px;
+}
+.primary-link,
+.secondary-link,
+.submit-btn{
+  display:inline-block;
+  padding:14px 22px;
+  border:1px solid rgba(166,127,52,.42);
+  background:#a67f34;
+  color:var(--c-fffaf0);
+  text-decoration:none;
+  text-transform:uppercase;
+  font-size:11px;
+  letter-spacing:.18em;
+  cursor:pointer;
+  font-family:inherit;
+}
+.secondary-link{
+  background:rgba(255,255,255,.25);
+  color:var(--c-5b461d);
+}
+.submit-btn:disabled{
+  opacity:.55;
+  cursor:not-allowed;
+}
+.form-wrapper{
+  background:rgba(255,255,255,.20);
+  backdrop-filter:blur(8px);
+  border:1px solid rgba(166,127,52,.15);
+  box-shadow:0 24px 70px rgba(127,100,48,.07);
+  padding:34px;
+}
+.section{
+  margin-bottom:34px;
+  padding-bottom:30px;
+  border-bottom:1px solid rgba(166,127,52,.12);
+}
+.section:last-child{
+  border-bottom:0;
+  margin-bottom:0;
+  padding-bottom:0;
+}
+.section-title{
+  font-size:18px;
+  font-weight:300;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--c-5b461d);
+  margin-bottom:20px;
+}
+.record-tabs{display:flex;gap:8px;margin-bottom:20px;border-bottom:1px solid rgba(166,127,52,.25)}
+.record-tab{background:none;border:none;border-bottom:2px solid transparent;padding:10px 4px;margin-bottom:-1px;font-family:inherit;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--c-4f4125);cursor:pointer}
+.record-tab.active{color:var(--c-5b461d);border-bottom-color:#a67f34}
+.activity-list{display:flex;flex-direction:column;gap:8px}
+.activity-empty{font-size:12.5px;color:var(--c-4f4125);padding:10px 0}
+.activity-row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 14px;background:#f9f4e8;border:1px solid rgba(166,127,52,.18);border-radius:2px;flex-wrap:wrap}
+.activity-row .main{font-size:13px;color:var(--c-4a3c1d);font-weight:600}
+.activity-row .meta{font-size:11.5px;color:var(--c-4f4125);margin-top:2px}
+.activity-row .status-tag{font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;padding:3px 9px;border-radius:2px;background:rgba(166,127,52,.15);color:var(--c-5b461d);white-space:nowrap}
+.activity-row a.open-link{font-size:11.5px;color:var(--c-5b461d);text-decoration:underline;white-space:nowrap}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:18px;
+}
+.grid-3{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+.field{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+.field.full{
+  grid-column:1/-1;
+}
+label{
+  font-size:11px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--c-4f4125);
+}
+input,
+select,
+textarea{
+  width:100%;
+  padding:14px 16px;
+  border:1px solid rgba(166,127,52,.22);
+  background:rgba(255,255,255,.25);
+  color:var(--c-46371a);
+  outline:none;
+  font-size:14px;
+  font-family:inherit;
+}
+textarea{
+  min-height:120px;
+  resize:vertical;
+  line-height:1.7;
+}
+.checkbox-row{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-top:8px;
+}
+.check-card{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding:12px 14px;
+  border:1px solid rgba(166,127,52,.18);
+  background:rgba(255,255,255,.18);
+  color:var(--c-4f4125);
+  font-size:12px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  cursor:pointer;
+}
+.check-card input{
+  width:auto;
+}
+.map-field{margin-top:18px}
+.map-hint{font-size:12px;line-height:1.6;color:var(--c-4f4125);margin-bottom:10px}
+#interestAreaMap{width:100%;height:380px;border:1px solid rgba(166,127,52,.22)}
+.map-actions{display:flex;gap:10px;align-items:center;margin-top:10px;flex-wrap:wrap}
+.map-clear-btn{
+  padding:9px 14px;
+  border:1px solid rgba(156,47,47,.30);
+  background:rgba(255,255,255,.20);
+  color:var(--c-561a1a);
+  cursor:pointer;
+  font-size:10px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  font-family:inherit;
+}
+.map-clear-btn:hover{background:#9c2f2f;color:var(--c-ffffff)}
+.map-secondary-btn{
+  padding:9px 14px;
+  border:1px solid rgba(166,127,52,.28);
+  background:rgba(255,255,255,.20);
+  color:var(--c-5b461d);
+  cursor:pointer;
+  font-size:10px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  font-family:inherit;
+}
+.map-secondary-btn:hover{background:#a67f34;color:var(--c-ffffff)}
+.map-status{font-size:11.5px;color:var(--c-4f4125)}
+.footer-actions{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  gap:18px;
+  flex-wrap:wrap;
+  margin-top:32px;
+}
+.save-panel{
+  min-width:340px;
+  flex:1;
+  max-width:560px;
+}
+.progress-text{
+  min-height:18px;
+  margin-bottom:10px;
+  font-size:13px;
+  color:var(--c-4f4125);
+}
+.progress-text.success{color:var(--c-2b4626)}
+.progress-text.error{color:var(--c-561a1a)}
+.progress-bar{
+  width:100%;
+  height:6px;
+  border:1px solid rgba(166,127,52,.20);
+  background:rgba(255,255,255,.28);
+  overflow:hidden;
+  margin-bottom:14px;
+}
+.progress-fill{
+  width:0%;
+  height:100%;
+  background:#a67f34;
+  transition:width .35s ease;
+}
+@media(max-width:900px){
+  .grid,.grid-3{grid-template-columns:1fr}
+}
+@media(max-width:700px){
+  .header{flex-direction:column;gap:18px}
+  .header-actions{justify-content:center}
+  .container{padding:28px 22px}
+  .form-wrapper{padding:24px}
+  .save-panel{min-width:100%;max-width:100%}
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+  <a href="../index.html" class="logo">
+    <div class="logo-main">IMMONOVA</div>
+    <div class="logo-sub">OFF MARKET • CONSULTING</div>
+  </a>
+
+  <div class="header-actions">
+    <a href="dashboard.html" data-i18n="nav_dashboard">Dashboard</a>
+    <a href="opportunities.html" data-i18n="nav_opportunities">Immobili</a>
+    <a href="events.html" data-i18n="nav_events">Eventi</a>
+    <a href="investors.html" data-i18n="nav_investors">Contatti</a>
+    <a href="capital-partners.html" data-i18n="nav_capital_partners" id="capitalPartnersLink" style="display:none">Capital Partners</a>
+    <a href="users.html" id="usersLink" data-i18n="nav_users">Utenti</a>
+    <button class="logout" id="logoutBtn" data-i18n="logout">Logout</button>
+  </div>
+</header>
+
+<div class="container">
+
+  <div class="kicker" data-i18n="kicker">Contact Relationship Management</div>
+
+  <div class="title-row">
+    <div>
+      <h1 class="title" id="pageTitle" data-i18n="title_new">Nuovo Contatto</h1>
+      <div id="pendingNewsBadge" style="display:none;margin-top:10px;padding:8px 14px;border:1px solid rgba(196,140,20,.5);color:var(--c-5b3e07);background:rgba(196,140,20,.08);font-size:11px;letter-spacing:.1em;text-transform:uppercase"></div>
+      <div id="authorshipBadge" style="display:none;margin-top:10px;padding:8px 14px;border:1px solid rgba(166,127,52,.35);color:var(--c-46371a);background:rgba(166,127,52,.08);font-size:11px;letter-spacing:.06em"></div>
+    </div>
+    <a class="secondary-link" href="investors.html" data-i18n="btn_back_to_investors">Torna ai Contatti</a>
+  </div>
+
+  <p class="subtitle" data-i18n="subtitle">
+    Crea o aggiorna il profilo investitore con dati anagrafici, budget, aree geografiche, categorie di investimento,
+    lingua preferita e consensi per future comunicazioni email / WhatsApp.
+  </p>
+
+  <div class="record-tabs" id="recordTabs" style="display:none">
+    <button type="button" class="record-tab active" id="tabBtnData" data-tab="data">Scheda cliente</button>
+    <button type="button" class="record-tab" id="tabBtnActivity" data-tab="activity">Attività cliente</button>
+  </div>
+
+  <div id="activityTabPanel" class="section" style="display:none">
+    <h2 class="section-title">Attività cliente</h2>
+    <p style="font-size:12.5px;color:var(--c-4f4125);line-height:1.6;margin:0 0 16px">Immobili visitati, proposte ricevute e proposte inviate per conto di questo cliente.</p>
+
+    <div style="margin-bottom:18px">
+      <div style="font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--c-5b461d);margin-bottom:8px">Immobili in vendita</div>
+      <div id="activitySellerPropsList" class="activity-list"><div class="activity-empty">Caricamento...</div></div>
+    </div>
+
+    <div style="margin-bottom:18px">
+      <div style="font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--c-5b461d);margin-bottom:8px">Immobili visitati</div>
+      <div id="activityVisitsList" class="activity-list"><div class="activity-empty">Caricamento...</div></div>
+    </div>
+
+    <div>
+      <div style="font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--c-5b461d);margin-bottom:8px">Proposte (ricevute o inviate per suo conto)</div>
+      <div id="activityOffersList" class="activity-list"><div class="activity-empty">Caricamento...</div></div>
+    </div>
+  </div>
+
+  <form id="investorForm" class="form-wrapper">
+
+    <div class="section">
+      <h2 class="section-title" data-i18n="section_personal_data">Anagrafica</h2>
+
+      <div class="grid">
+        <div class="field">
+          <label data-i18n="label_first_name">Nome</label>
+          <input id="first_name" required>
+        </div>
+
+        <div class="field">
+          <label data-i18n="label_last_name">Cognome</label>
+          <input id="last_name" required>
+        </div>
+
+        <div class="field">
+          <label data-i18n="label_company">Società / Gruppo</label>
+          <input id="company">
+        </div>
+
+        <div class="field">
+          <label data-i18n="label_investor_type">Categoria</label>
+          <select id="investor_type">
+            <option value="private_investor" data-i18n="type_private_investor">Private Investor</option>
+            <option value="family_office" data-i18n="type_family_office">Family Office</option>
+            <option value="real_estate_operator" data-i18n="type_real_estate_operator">Real Estate Operator</option>
+            <option value="hospitality_group" data-i18n="type_hospitality_group">Hospitality Group</option>
+            <option value="fund" data-i18n="type_fund">Investment Fund</option>
+            <option value="advisor" data-i18n="type_advisor">Advisor</option>
+            <option value="other" data-i18n="type_other">Altro</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label data-i18n="label_country">Paese</label>
+          <input id="country">
+        </div>
+
+        <div class="field">
+          <label data-i18n="label_city">Città</label>
+          <input id="city">
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title" data-i18n="section_contacts">Contatti</h2>
+
+      <div class="grid">
+        <div class="field">
+          <label data-i18n="label_email">Email</label>
+          <input id="email" type="email">
+        </div>
+
+        <div class="field">
+          <label data-i18n="label_phone">Telefono</label>
+          <input id="phone">
+        </div>
+
+        <div class="field">
+          <label data-i18n="label_whatsapp">WhatsApp</label>
+          <input id="whatsapp">
+        </div>
+
+        <div class="field">
+          <label data-i18n="label_preferred_language">Lingua Preferita</label>
+          <select id="preferred_language">
+            <option value="it" data-i18n="lang_it">Italiano</option>
+            <option value="en" data-i18n="lang_en">Inglese</option>
+            <option value="fr" data-i18n="lang_fr">Francese</option>
+            <option value="de" data-i18n="lang_de">Tedesco</option>
+            <option value="es" data-i18n="lang_es">Spagnolo</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="checkbox-row">
+        <label class="check-card">
+          <input id="email_opt_in" type="checkbox">
+          <span data-i18n="check_email_optin">Email Opt-in</span>
+        </label>
+
+        <label class="check-card">
+          <input id="whatsapp_opt_in" type="checkbox">
+          <span data-i18n="check_whatsapp_optin">WhatsApp Opt-in</span>
+        </label>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title" data-i18n="section_client_type">Tipo Cliente</h2>
+
+      <div class="checkbox-row">
+        <label class="check-card">
+          <input id="is_investor" type="checkbox">
+          <span data-i18n="check_is_investor">Investitore</span>
+        </label>
+
+        <label class="check-card">
+          <input id="is_seller" type="checkbox">
+          <span data-i18n="check_is_seller">Venditore</span>
+        </label>
+
+        <label class="check-card">
+          <input id="is_supplier" type="checkbox">
+          <span data-i18n="check_is_supplier">Fornitore</span>
+        </label>
+      </div>
+
+      <div class="field full" id="sellerStatusField" style="margin-top:18px;display:none">
+        <label data-i18n="label_seller_status">Stato Trattativa Venditore</label>
+        <select id="seller_status">
+          <option value="da_contattare" data-i18n="seller_status_da_contattare">Da contattare</option>
+          <option value="in_trattativa" data-i18n="seller_status_in_trattativa">In trattativa</option>
+          <option value="mandato_firmato" data-i18n="seller_status_mandato_firmato">Mandato firmato</option>
+          <option value="venduto" data-i18n="seller_status_venduto">Venduto</option>
+        </select>
+      </div>
+
+      <div class="field full" id="sellerPropertiesField" style="margin-top:18px;display:none">
+        <label data-i18n="label_seller_properties">Immobili Collegati (di proprietà del cliente)</label>
+        <select id="seller_properties" multiple size="6"></select>
+        <div class="muted" style="font-size:11.5px;margin-top:6px" data-i18n="hint_seller_properties">Tieni premuto Ctrl (o Cmd su Mac) per selezionare più immobili.</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title" data-i18n="section_investment_profile">Profilo Investimento</h2>
+
+      <div class="grid-3">
+        <div class="field">
+          <label data-i18n="label_budget_min">Budget Minimo</label>
+          <input id="budget_min" type="number" min="0" step="1000">
+        </div>
+
+        <div class="field">
+          <label data-i18n="label_budget_max">Budget Massimo</label>
+          <input id="budget_max" type="number" min="0" step="1000">
+        </div>
+
+        <div class="field">
+          <label data-i18n="label_status">Stato</label>
+          <select id="status_field">
+            <option value="active" data-i18n="status_active">Attivo</option>
+            <option value="vip" data-i18n="status_vip">VIP</option>
+            <option value="inactive" data-i18n="status_inactive">Inattivo</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field full" style="margin-top:18px">
+        <label data-i18n="label_geo_areas">Aree Geografiche</label>
+        <input id="areas" data-i18n-placeholder="ph_areas" placeholder="Es. Puglia, Salento, Valle d’Itria, Costa Adriatica">
+      </div>
+
+      <div class="field full map-field">
+        <label data-i18n="label_interest_area_map">Disegna la zona di interesse sulla mappa (opzionale)</label>
+        <div class="map-hint" data-i18n="hint_interest_area_map">In aggiunta o al posto del testo qui sopra: clicca sulla mappa per aggiungere un punto alla volta e disegnare un perimetro di forma libera, poi premi "Chiudi poligono" per completarlo — puoi disegnare più zone. Alla chiusura di ogni poligono i comuni al suo interno vengono rilevati automaticamente e aggiunti al campo "Aree Geografiche" qui sopra.</div>
+        <div id="interestAreaMap"></div>
+        <div class="map-actions">
+          <button type="button" class="map-secondary-btn" id="undoAreaPointBtn" data-i18n="btn_undo_area_point">Annulla ultimo punto</button>
+          <button type="button" class="map-secondary-btn" id="finishAreaBtn" data-i18n="btn_finish_area">Chiudi poligono</button>
+          <button type="button" class="map-secondary-btn" id="undoLastAreaBtn" data-i18n="btn_undo_last_area">Elimina ultima zona</button>
+          <button type="button" class="map-clear-btn" id="clearAreaMapBtn" data-i18n="btn_clear_area_map">Cancella zona disegnata</button>
+          <span class="map-status" id="areaMapStatus"></span>
+        </div>
+      </div>
+
+      <div class="field full" style="margin-top:18px">
+        <label data-i18n="label_investment_categories">Categorie Investimento</label>
+        <div class="checkbox-row">
+          <label class="check-card"><input type="checkbox" name="category" value="villa"> <span data-i18n="cat_villa">Ville</span></label>
+          <label class="check-card"><input type="checkbox" name="category" value="apartment"> <span data-i18n="cat_apartment">Appartamenti</span></label>
+          <label class="check-card"><input type="checkbox" name="category" value="hotel"> <span data-i18n="cat_hotel">Hotel</span></label>
+          <label class="check-card"><input type="checkbox" name="category" value="resort"> <span data-i18n="cat_resort">Resort</span></label>
+          <label class="check-card"><input type="checkbox" name="category" value="village"> <span data-i18n="cat_village">Villaggi</span></label>
+          <label class="check-card"><input type="checkbox" name="category" value="development"> <span data-i18n="cat_development">Nuove Edificazioni</span></label>
+          <label class="check-card"><input type="checkbox" name="category" value="off_market"> <span data-i18n="cat_off_market">Off Market</span></label>
+          <label class="check-card"><input type="checkbox" name="category" value="land"> <span data-i18n="cat_land">Terreni</span></label>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title" data-i18n="section_crm_notes">Note CRM</h2>
+
+      <div class="field full">
+        <label data-i18n="label_internal_notes">Note interne</label>
+        <textarea id="notes" data-i18n-placeholder="ph_notes" placeholder="Preferenze, conversazioni, richieste specifiche, follow-up futuri..."></textarea>
+      </div>
+    </div>
+
+    <div class="footer-actions">
+      <a class="secondary-link" href="investors.html" data-i18n="btn_cancel">Annulla</a>
+
+      <div class="save-panel">
+        <div id="progressText" class="progress-text"></div>
+        <div class="progress-bar">
+          <div id="progressFill" class="progress-fill"></div>
+        </div>
+        <button class="submit-btn" type="submit" id="saveBtn" data-i18n="btn_save">Salva Contatto</button>
+      </div>
+    </div>
+
+  </form>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="../js/config.js"></script>
+<script src="../js/site-branding.js"></script>
+
+<script>
+const client = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+const params = new URLSearchParams(window.location.search);
+const investorId = params.get("id");
+
+const form = document.getElementById("investorForm");
+const pageTitle = document.getElementById("pageTitle");
+const saveBtn = document.getElementById("saveBtn");
+const progressText = document.getElementById("progressText");
+const progressFill = document.getElementById("progressFill");
+
+let currentUser = null;
+let currentProfile = null;
+
+// Tab "Scheda cliente" / "Attività cliente": accanto, cliccabile subito senza dover
+// scorrere tutto il form — mostrate solo per un cliente già esistente (per un contatto
+// nuovo non c'è ancora nessuna attività da vedere).
+document.getElementById("tabBtnData").addEventListener("click", function(){ switchRecordTab("data"); });
+document.getElementById("tabBtnActivity").addEventListener("click", function(){ switchRecordTab("activity"); });
+function switchRecordTab(tab){
+  document.getElementById("tabBtnData").classList.toggle("active", tab === "data");
+  document.getElementById("tabBtnActivity").classList.toggle("active", tab === "activity");
+  document.getElementById("investorForm").style.display = tab === "data" ? "" : "none";
+  document.getElementById("activityTabPanel").style.display = tab === "activity" ? "block" : "none";
+}
+let currentUserLanguage = "it";
+
+var UI_STRINGS = {
+  nav_dashboard:"Dashboard", nav_opportunities:"Immobili", nav_events:"Eventi", nav_investors:"Contatti",
+  nav_capital_partners:"Capital Partners",
+  nav_users:"Utenti", logout:"Logout",
+  kicker:"Contact Relationship Management",
+  title_new:"Nuovo Contatto", title_edit:"Modifica Contatto",
+  btn_back_to_investors:"Torna ai Contatti",
+  subtitle:"Crea o aggiorna il profilo investitore con dati anagrafici, budget, aree geografiche, categorie di investimento, lingua preferita e consensi per future comunicazioni email / WhatsApp.",
+  section_personal_data:"Anagrafica", label_first_name:"Nome", label_last_name:"Cognome", label_company:"Società / Gruppo",
+  label_investor_type:"Categoria",
+  type_private_investor:"Private Investor", type_family_office:"Family Office", type_real_estate_operator:"Real Estate Operator",
+  type_hospitality_group:"Hospitality Group", type_fund:"Investment Fund", type_advisor:"Advisor", type_other:"Altro",
+  label_country:"Paese", label_city:"Città",
+  section_client_type:"Tipo Cliente", check_is_investor:"Investitore", check_is_seller:"Venditore", check_is_supplier:"Fornitore",
+  pending_news_badge:"Notizia in fase di verifica collegata a questo contatto",
+  label_seller_status:"Stato Trattativa Venditore",
+  seller_status_da_contattare:"Da contattare", seller_status_in_trattativa:"In trattativa",
+  seller_status_mandato_firmato:"Mandato firmato", seller_status_venduto:"Venduto",
+  label_seller_properties:"Immobili Collegati (di proprietà del cliente)",
+  hint_seller_properties:"Tieni premuto Ctrl (o Cmd su Mac) per selezionare più immobili.",
+  section_contacts:"Contatti", label_email:"Email", label_phone:"Telefono", label_whatsapp:"WhatsApp",
+  label_preferred_language:"Lingua Preferita",
+  lang_it:"Italiano", lang_en:"Inglese", lang_fr:"Francese", lang_de:"Tedesco", lang_es:"Spagnolo",
+  check_email_optin:"Email Opt-in", check_whatsapp_optin:"WhatsApp Opt-in",
+  section_investment_profile:"Profilo Investimento", label_budget_min:"Budget Minimo", label_budget_max:"Budget Massimo",
+  label_status:"Stato", status_active:"Attivo", status_vip:"VIP", status_inactive:"Inattivo",
+  label_geo_areas:"Aree Geografiche", ph_areas:"Es. Puglia, Salento, Valle d\u2019Itria, Costa Adriatica",
+  label_interest_area_map:"Disegna la zona di interesse sulla mappa (opzionale)",
+  hint_interest_area_map:"In aggiunta o al posto del testo qui sopra: clicca sulla mappa per aggiungere un punto alla volta e disegnare un perimetro di forma libera, poi premi \"Chiudi poligono\" per completarlo \u2014 puoi disegnare pi\u00f9 zone. Alla chiusura di ogni poligono i comuni al suo interno vengono rilevati automaticamente e aggiunti al campo \"Aree Geografiche\" qui sopra.",
+  btn_clear_area_map:"Cancella zona disegnata",
+  btn_undo_area_point:"Annulla ultimo punto",
+  btn_finish_area:"Chiudi poligono",
+  btn_undo_last_area:"Elimina ultima zona",
+  map_status_areas:"{n} zone disegnate",
+  map_status_detecting:"Ricerca comuni nella zona in corso\u2026",
+  map_status_drawing:"{n} punti aggiunti \u2014 continua a cliccare o premi \"Chiudi poligono\" (minimo 3 punti).",
+  map_status_none:"Nessuna zona disegnata: clicca sulla mappa per iniziare (verr\u00e0 usato solo il testo qui sopra finch\u00e9 non disegni nulla).",
+  label_investment_categories:"Categorie Investimento",
+  cat_villa:"Ville", cat_apartment:"Appartamenti", cat_hotel:"Hotel", cat_resort:"Resort", cat_village:"Villaggi",
+  cat_development:"Nuove Edificazioni", cat_off_market:"Off Market", cat_land:"Terreni",
+  section_crm_notes:"Note CRM", label_internal_notes:"Note interne",
+  ph_notes:"Preferenze, conversazioni, richieste specifiche, follow-up futuri...",
+  btn_cancel:"Annulla", btn_save:"Salva Contatto", btn_update:"Aggiorna Contatto",
+  msg_profile_not_found:"Profilo utente non trovato.",
+  msg_loading_investor:"Caricamento investitore...",
+  msg_investor_not_found:"Contatto non trovato o non autorizzato.",
+  msg_checking_data:"Controllo dati investitore...",
+  msg_required_names:"Nome e cognome sono obbligatori.",
+  msg_saving_registry:"Salvataggio anagrafica investitore...",
+  msg_updating_relations:"Aggiornamento aree e categorie...",
+  msg_saved_success:"Contatto salvato correttamente.",
+  msg_save_error:"Errore durante il salvataggio."
+};
+
+var LANGUAGE_LABELS = { it:"Italiano", en:"English", fr:"Fran\u00e7ais", de:"Deutsch", es:"Espa\u00f1ol", ar:"\u0627\u0644\u0639\u0631\u0628\u064a\u0629" };
+var T = UI_STRINGS;
+
+function i18nCacheKey(lang){ return "immonova_i18n_investor_form_" + lang + "_v2"; }
+
+async function loadTranslatedStrings(lang){
+  if(lang === "it") return UI_STRINGS;
+  var cacheKey = i18nCacheKey(lang);
+  try{
+    var cached = localStorage.getItem(cacheKey);
+    if(cached){ var parsed = JSON.parse(cached); if(parsed && typeof parsed === "object") return parsed; }
+  }catch(e){}
+
+  var keys = Object.keys(UI_STRINGS);
+  var texts = keys.map(function(k){ return UI_STRINGS[k]; });
+
+  var result = await client.functions.invoke("translate-public-content", {
+    body:{
+      language: lang,
+      source_language: "it",
+      context: "IMMONOVA luxury real estate investment website. Admin form for creating/editing an investor CRM profile: personal data, contacts, investment profile, budget, geographic areas, categories, internal notes.",
+      texts: texts
+    }
+  });
+
+  if(result.error || !result.data || !result.data.success || !Array.isArray(result.data.translations)){
+    console.error("Traduzione investor-form non riuscita, uso italiano come fallback:", result.error || result.data);
+    return UI_STRINGS;
+  }
+
+  var translations = result.data.translations;
+  var translated = {};
+  keys.forEach(function(k, i){ translated[k] = translations[i] != null ? translations[i] : UI_STRINGS[k]; });
+  try{ localStorage.setItem(cacheKey, JSON.stringify(translated)); }catch(e){}
+  return translated;
+}
+
+function renderTranslatedStaticText(){
+  document.querySelectorAll("[data-i18n]").forEach(function(el){
+    var key = el.getAttribute("data-i18n");
+    if(T[key]) el.textContent = T[key];
+  });
+  document.querySelectorAll("[data-i18n-placeholder]").forEach(function(el){
+    var key = el.getAttribute("data-i18n-placeholder");
+    if(T[key]) el.setAttribute("placeholder", T[key]);
+  });
+}
+
+async function applyLanguage(lang){
+  currentUserLanguage = lang || "it";
+  document.documentElement.lang = currentUserLanguage;
+  T = await loadTranslatedStrings(currentUserLanguage);
+  renderTranslatedStaticText();
+  if(!investorId){
+    pageTitle.textContent = T.title_new;
+    saveBtn.textContent = T.btn_save;
+  }
+}
+
+
+function setProgress(message,percent,type){
+  progressText.className = "progress-text " + (type || "");
+  progressText.textContent = message || "";
+  progressFill.style.width = (percent || 0) + "%";
+}
+
+function val(id){
+  return document.getElementById(id).value.trim();
+}
+
+function numVal(id){
+  const v = document.getElementById(id).value;
+  return v === "" ? null : Number(v);
+}
+
+function boolVal(id){
+  return document.getElementById(id).checked;
+}
+
+function splitValues(value){
+  return String(value || "")
+    .split(",")
+    .map(v => v.trim())
+    .filter(Boolean);
+}
+
+/* ---- Lezione riutilizzata da users.html: leggere l'errore vero da result.error.context. ---- */
+async function extractEdgeFunctionErrorMessage(error){
+  try{
+    if(error && error.context && typeof error.context.text==="function"){
+      var raw=await error.context.text();
+      try{ var parsed=JSON.parse(raw); return parsed.error||parsed.message||raw||error.message; }
+      catch(parseErr){ return raw||error.message; }
+    }
+  }catch(e){}
+  return (error&&error.message)||String(error);
+}
+
+/* ---- Notifica automatica a tutti i collaboratori quando viene registrato un NUOVO
+   investitore (non su modifica di uno esistente): manda i criteri di ricerca cosi' chiunque
+   puo' mettersi a cercare l'immobile giusto. Non blocca mai il salvataggio se la notifica
+   fallisce: e' un effetto collaterale, non un requisito per completare l'operazione. ---- */
+async function notifyNewInvestor(id){
+  try{
+    var result = await client.functions.invoke("notify-new-investor", {
+      body:{
+        investor_id:id,
+        first_name:val("first_name"),
+        last_name:val("last_name"),
+        budget_min:numVal("budget_min"),
+        budget_max:numVal("budget_max"),
+        areas:val("areas"),
+        categories:collectCategories(),
+        notes:val("notes"),
+        interest_area_geojson: currentAreaGeoJSON || null
+      }
+    });
+
+    if(result.error){
+      var msg = await extractEdgeFunctionErrorMessage(result.error);
+      console.warn("Notifica nuovo investitore non riuscita (non bloccante):", msg);
+    }
+  }catch(e){
+    console.warn("Notifica nuovo investitore non riuscita (non bloccante):", e);
+  }
+}
+
+async function checkAuth(){
+  const { data:{ session }, error } = await client.auth.getSession();
+
+  if(error || !session){
+    window.location.href = "login.html";
+    return false;
+  }
+
+  currentUser = session.user;
+  return true;
+}
+
+async function loadProfile(){
+  var result = await client
+    .from("profiles")
+    .select("id,email,full_name,role,language,is_platform_owner")
+    .eq("id", currentUser.id)
+    .single();
+
+  if(result.error){
+    var looksLikeMissingLanguageColumn = /language/i.test(result.error.message || "") || result.error.code === "42703";
+    if(looksLikeMissingLanguageColumn){
+      console.warn("Colonna profiles.language non trovata: esegui la migrazione SQL (alter table profiles add column if not exists language text not null default 'it';). Interfaccia mostrata in italiano nel frattempo.");
+      result = await client.from("profiles").select("id,email,full_name,role,is_platform_owner").eq("id", currentUser.id).single();
+    }
+  }
+
+  if(result.error || !result.data){
+    await applyLanguage("it");
+    setProgress(T.msg_profile_not_found, 100, "error");
+    return false;
+  }
+
+  currentProfile = result.data;
+  await applyLanguage(currentProfile.language || "it");
+  return true;
+}
+
+/* ---- Zona di interesse disegnata sulla mappa: stesso meccanismo di search-mandate-form.html
+   (vedi commento li' per il dettaglio). Qui si applica all'investitore invece che al mandato:
+   salvata in investors.interest_area_geojson, in aggiunta al campo "Aree Geografiche" a testo
+   libero gia' esistente -- nessuno dei due sostituisce obbligatoriamente l'altro. ---- */
+var interestAreaMap = null;
+var areaPoints = []; // [[lat,lng], ...] della zona in corso di disegno
+var areaPreviewLine = null;
+var areaPolygons = []; // [{points:[[lat,lng],...], layer:L.Polygon}, ...] zone gia' completate
+var currentAreaGeoJSON = null;
+
+function ringFromLatLngPoints(points){
+  var ring = points.map(function(pt){ return [pt[1], pt[0]]; }); // GeoJSON vuole [lng,lat]
+  ring.push(ring[0]); // il primo anello deve chiudersi sullo stesso punto
+  return ring;
+}
+
+function recomputeAreaGeoJSON(){
+  currentAreaGeoJSON = areaPolygons.length
+    ? { type:"MultiPolygon", coordinates: areaPolygons.map(function(p){ return [ ringFromLatLngPoints(p.points) ]; }) }
+    : null;
+}
+
+function extractPolygonPointArraysFromGeoJSON(geojson){
+  if(!geojson) return [];
+  var polys = geojson.type === "MultiPolygon" ? geojson.coordinates
+    : geojson.type === "Polygon" ? [geojson.coordinates]
+    : [];
+  return polys.map(function(rings){
+    return rings[0].map(function(coord){ return [coord[1], coord[0]]; }); // torna a [lat,lng]
+  });
+}
+
+function updateAreaMapStatus(message){
+  var el = document.getElementById("areaMapStatus");
+  if(!el) return;
+  if(message){ el.textContent = message; return; }
+  var parts = [];
+  if(areaPolygons.length) parts.push(T.map_status_areas.replace("{n}", areaPolygons.length));
+  if(areaPoints.length) parts.push(T.map_status_drawing.replace("{n}", areaPoints.length));
+  el.textContent = parts.length ? parts.join(" — ") : T.map_status_none;
+}
+
+function redrawAreaPreview(){
+  if(areaPreviewLine){ interestAreaMap.removeLayer(areaPreviewLine); areaPreviewLine = null; }
+  if(areaPoints.length > 1){
+    areaPreviewLine = L.polyline(areaPoints, { color:"#a67f34", weight:3, dashArray:"6,6" }).addTo(interestAreaMap);
+  }
+}
+
+/* ---- Overpass API: trova i nodi place=city/town/village/hamlet dentro il poligono appena
+   chiuso, e ne aggiunge il nome al campo "Aree Geografiche" a testo libero. Best-effort:
+   se fallisce (rete, timeout, nessun risultato) non blocca nulla, resta solo il poligono salvato. ---- */
+async function detectPlacesInPolygon(latlngPoints){
+  var polyStr = latlngPoints.map(function(p){ return p[0]+" "+p[1]; }).join(" ");
+  var query = '[out:json][timeout:25];(node["place"~"^(city|town|village|hamlet)$"](poly:"'+polyStr+'"););out body;';
+  var res = await fetch("https://overpass-api.de/api/interpreter", {
+    method:"POST",
+    headers:{ "Content-Type":"application/x-www-form-urlencoded" },
+    body:"data="+encodeURIComponent(query)
+  });
+  if(!res.ok) throw new Error("HTTP "+res.status);
+  var json = await res.json();
+  var names = (json.elements || [])
+    .map(function(el){ return el.tags && (el.tags["name:it"] || el.tags.name); })
+    .filter(Boolean);
+  return Array.from(new Set(names));
+}
+
+/* ---- Se il poligono e' cosi' grande da coprire una BUONA PARTE del territorio di una o piu'
+   province, non ha senso elencare ogni singolo comune (lista infinita e illeggibile nel campo
+   testo): meglio scrivere direttamente "Provincia di X". Non basta controllare se il centro
+   (capoluogo) della provincia cade dentro il poligono -- un poligono puo' coprire quasi tutta
+   Brindisi e tagliare fuori solo il capoluogo stesso, e in quel caso Brindisi va comunque
+   riconosciuta. Si controlla invece quanti comuni della provincia ricadono nel poligono
+   rispetto al totale dei comuni della provincia (rapporto di copertura). ---- */
+/* ---- Ogni chiamata a Overpass e' incapsulata con un timeout lato browser (l'endpoint
+   pubblico a volte non risponde mai) e non fa mai fallire il resto: se una singola query va
+   storta, si degrada verso il comportamento piu' semplice (elenco comuni), MAI verso un campo
+   vuoto -- prima di questa versione un solo errore in una delle tante chiamate faceva saltare
+   tutto il resto senza aggiungere nulla. ---- */
+async function runOverpassQuery(query, timeoutMs){
+  var controller = new AbortController();
+  var timer = setTimeout(function(){ controller.abort(); }, timeoutMs || 20000);
+  try{
+    var res = await fetch("https://overpass-api.de/api/interpreter", {
+      method:"POST",
+      headers:{ "Content-Type":"application/x-www-form-urlencoded" },
+      body:"data="+encodeURIComponent(query),
+      signal: controller.signal
+    });
+    if(!res.ok) throw new Error("HTTP "+res.status);
+    return await res.json();
+  }finally{
+    clearTimeout(timer);
+  }
+}
+
+function overpassCountAt(json, index){
+  var el = (json.elements || [])[index];
+  return el && el.tags ? Number(el.tags.nodes || el.tags.total || 0) : 0;
+}
+
+async function findCandidateProvinces(polyStr){
+  var query = '[out:json][timeout:20];(relation["admin_level"="6"]["boundary"="administrative"](poly:"'+polyStr+'"););out ids tags;';
+  var json = await runOverpassQuery(query);
+  return (json.elements || [])
+    .map(function(el){ return { id: el.id, name: el.tags && (el.tags["name:it"] || el.tags.name) }; })
+    .filter(function(p){ return p.name; });
+}
+
+/* ---- Una SOLA richiesta a Overpass per TUTTE le province candidate insieme (conta comuni
+   totali e comuni dentro il poligono per ciascuna), invece di due richieste per provincia:
+   molto piu' veloce e molto meno soggetto ai limiti dell'endpoint pubblico. L'id di un'area
+   Overpass ricavata da una relation e' sempre 3600000000 + id relation. ---- */
+async function detectCoveredProvinces(candidates, polyStr){
+  if(!candidates.length) return [];
+
+  var stmts = "";
+  candidates.forEach(function(c, i){
+    var areaId = 3600000000 + c.id;
+    stmts += 'area(id:'+areaId+')->.a'+i+';';
+    stmts += 'node["place"~"^(city|town|village|hamlet)$"](area.a'+i+')->.all'+i+';';
+    stmts += 'node.all'+i+'(poly:"'+polyStr+'")->.matched'+i+';';
+  });
+  var outs = "";
+  candidates.forEach(function(c, i){
+    outs += '(.all'+i+';);out count;(.matched'+i+';);out count;';
+  });
+
+  var json = await runOverpassQuery('[out:json][timeout:20];' + stmts + outs, 25000);
+
+  var covered = [];
+  candidates.forEach(function(c, i){
+    var total = overpassCountAt(json, i*2);
+    var matched = overpassCountAt(json, i*2 + 1);
+    if(total > 0 && (matched >= 5 || (matched / total) >= 0.35)){
+      covered.push(c);
+    }
+  });
+  return covered;
+}
+
+/* ---- Una SOLA richiesta per i nomi di TUTTI i comuni delle province coperte insieme
+   (unione), da escludere dalla lista puntuale per non ripetere le stesse zone due volte. ---- */
+async function listPlaceNamesInProvinces(covered){
+  if(!covered.length) return [];
+
+  var stmts = "";
+  covered.forEach(function(c, i){
+    var areaId = 3600000000 + c.id;
+    stmts += 'area(id:'+areaId+')->.a'+i+';';
+    stmts += 'node["place"~"^(city|town|village|hamlet)$"](area.a'+i+')->.n'+i+';';
+  });
+  var union = covered.map(function(c, i){ return '.n'+i+';'; }).join("");
+
+  var json = await runOverpassQuery('[out:json][timeout:20];' + stmts + '(' + union + ');out body;', 25000);
+  return (json.elements || [])
+    .map(function(el){ return el.tags && (el.tags["name:it"] || el.tags.name); })
+    .filter(Boolean);
+}
+
+/* ---- Prova prima con le province (zona molto grande): per quelle abbastanza coperte usa
+   "Provincia di X" ed esclude i loro comuni dalla lista puntuale, per non ripetere le stesse
+   zone due volte. I comuni restanti (fuori da qualsiasi provincia coperta) vengono comunque
+   elencati uno per uno, con un tetto massimo per non riempire il campo all'infinito.
+   Ogni fase e' isolata: se il rilevamento province fallisce (rete lenta, endpoint pubblico
+   sovraccarico), si torna comunque al semplice elenco comuni invece di lasciare tutto vuoto. ---- */
+async function detectAreaNamesInPolygon(latlngPoints){
+  var MAX_TOWN_NAMES = 20;
+  var polyStr = latlngPoints.map(function(p){ return p[0]+" "+p[1]; }).join(" ");
+
+  var covered = [];
+  try{
+    var candidates = await findCandidateProvinces(polyStr);
+    covered = await detectCoveredProvinces(candidates, polyStr);
+  }catch(e){
+    console.warn("Rilevamento province non riuscito, si prova comunque con i comuni (non bloccante):", e);
+  }
+
+  var towns = await detectPlacesInPolygon(latlngPoints);
+
+  if(!covered.length){
+    return towns.slice(0, MAX_TOWN_NAMES);
+  }
+
+  var excludeLower = new Set();
+  try{
+    var provinceTownNames = await listPlaceNamesInProvinces(covered);
+    provinceTownNames.forEach(function(n){ excludeLower.add(n.toLowerCase()); });
+  }catch(e){
+    console.warn("Lettura comuni delle province coperte non riuscita (non bloccante):", e);
+  }
+
+  var remainingTowns = towns.filter(function(t){ return !excludeLower.has(t.toLowerCase()); }).slice(0, MAX_TOWN_NAMES);
+  var provinceNames = covered.map(function(p){ return "Provincia di " + p.name; });
+  return provinceNames.concat(remainingTowns);
+}
+
+function mergeNamesIntoAreasField(names){
+  if(!names.length) return;
+  var field = document.getElementById("areas");
+  if(!field) return;
+  var existing = field.value.split(",").map(function(s){ return s.trim(); }).filter(Boolean);
+  var existingLower = existing.map(function(s){ return s.toLowerCase(); });
+  names.forEach(function(n){
+    if(existingLower.indexOf(n.toLowerCase()) === -1){
+      existing.push(n);
+      existingLower.push(n.toLowerCase());
+    }
+  });
+  field.value = existing.join(", ");
+}
+
+async function finishAreaPolygon(){
+  if(areaPoints.length < 3) return;
+  if(areaPreviewLine){ interestAreaMap.removeLayer(areaPreviewLine); areaPreviewLine = null; }
+
+  var closedPoints = areaPoints.slice();
+  var layer = L.polygon(closedPoints, { color:"#a67f34", weight:2, fillOpacity:.18 }).addTo(interestAreaMap);
+  areaPolygons.push({ points:closedPoints, layer:layer });
+  areaPoints = [];
+  recomputeAreaGeoJSON();
+  updateAreaMapStatus();
+
+  updateAreaMapStatus(T.map_status_detecting);
+  try{
+    var names = await detectAreaNamesInPolygon(closedPoints);
+    mergeNamesIntoAreasField(names);
+  }catch(e){
+    console.warn("Rilevamento comuni/province nella zona non riuscito (non bloccante):", e);
+  }
+  updateAreaMapStatus();
+}
+
+function undoLastAreaPolygon(){
+  if(!areaPolygons.length) return;
+  var last = areaPolygons.pop();
+  interestAreaMap.removeLayer(last.layer);
+  recomputeAreaGeoJSON();
+  updateAreaMapStatus();
+}
+
+function resetAreaDrawing(){
+  areaPoints = [];
+  if(areaPreviewLine){ interestAreaMap.removeLayer(areaPreviewLine); areaPreviewLine = null; }
+  areaPolygons.forEach(function(p){ interestAreaMap.removeLayer(p.layer); });
+  areaPolygons = [];
+  currentAreaGeoJSON = null;
+  updateAreaMapStatus();
+}
+
+function initInterestAreaMap(){
+  if(interestAreaMap || typeof L === "undefined") return;
+
+  interestAreaMap = L.map("interestAreaMap").setView([41.9, 12.6], 6); // centro Italia
+
+  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    attribution: "&copy; OpenStreetMap contributors",
+    maxZoom: 19
+  }).addTo(interestAreaMap);
+
+  interestAreaMap.on("click", function(e){
+    areaPoints.push([e.latlng.lat, e.latlng.lng]);
+    redrawAreaPreview();
+    updateAreaMapStatus();
+  });
+
+  document.getElementById("finishAreaBtn").addEventListener("click", finishAreaPolygon);
+  document.getElementById("undoAreaPointBtn").addEventListener("click", function(){
+    if(!areaPoints.length) return;
+    areaPoints.pop();
+    redrawAreaPreview();
+    updateAreaMapStatus();
+  });
+  document.getElementById("undoLastAreaBtn").addEventListener("click", undoLastAreaPolygon);
+  document.getElementById("clearAreaMapBtn").addEventListener("click", resetAreaDrawing);
+
+  updateAreaMapStatus();
+  setTimeout(function(){ interestAreaMap.invalidateSize(); }, 200);
+}
+
+function loadAreaGeoJSONOntoMap(geojson){
+  if(!interestAreaMap || !geojson) return;
+  try{
+    var pointArrays = extractPolygonPointArraysFromGeoJSON(geojson);
+    if(!pointArrays.length) return;
+    areaPolygons.forEach(function(p){ interestAreaMap.removeLayer(p.layer); });
+    areaPolygons = [];
+    var allBounds = null;
+    pointArrays.forEach(function(points){
+      var closedPoints = points.slice();
+      var layer = L.polygon(closedPoints, { color:"#a67f34", weight:2, fillOpacity:.18 }).addTo(interestAreaMap);
+      areaPolygons.push({ points:closedPoints, layer:layer });
+      allBounds = allBounds ? allBounds.extend(layer.getBounds()) : layer.getBounds();
+    });
+    recomputeAreaGeoJSON();
+    if(allBounds) interestAreaMap.fitBounds(allBounds, { maxZoom:12 });
+    updateAreaMapStatus();
+  }catch(e){
+    console.warn("Zona di interesse salvata non valida, mappa lasciata vuota:", e);
+  }
+}
+
+/* ---- Se questa scheda e' stata generata (o e' comunque collegata) da una notizia ancora
+   "in fase di verifica", lo si segnala qui in cima -- cosi' chi apre la scheda sa che
+   l'origine del contatto non e' ancora stata confermata da un admin. Best-effort: se la
+   tabella immonova_news non e' raggiungibile (utente senza accesso alle notizie) non blocca
+   il caricamento della scheda, semplicemente non mostra il badge. ---- */
+async function checkPendingNewsBadge(id){
+  try{
+    const { data, error } = await client
+      .from("immonova_news")
+      .select("id,title")
+      .eq("linked_investor_id", id)
+      .eq("status", "in_verifica")
+      .limit(1);
+
+    if(!error && data && data.length){
+      var badge = document.getElementById("pendingNewsBadge");
+      badge.textContent = T.pending_news_badge;
+      badge.style.display = "inline-block";
+    }
+  }catch(e){
+    console.warn("Verifica notizia collegata non riuscita (non bloccante):", e);
+  }
+}
+
+function escapeHTML(value){
+  return String(value == null ? "" : value)
+    .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+}
+
+var OFFER_STATUS_LABELS = {
+  bozza:"Bozza", inviata:"Inviata", accettata:"Accettata", rifiutata:"Rifiutata",
+  controfferta_ricevuta:"Controfferta ricevuta", ritirata:"Ritirata", scaduta:"Scaduta"
+};
+
+/* "Attività cliente": visite fatte, proposte ricevute e proposte inviate per suo conto —
+   dati già esistenti (property_visits, opportunity_offers) collegati via investor_id,
+   qui solo raccolti e mostrati insieme in un unico posto sulla scheda del cliente. Best
+   effort: un fallimento qui non deve mai bloccare il resto della scheda già caricata. */
+async function loadInvestorActivity(id){
+  var sellerPropsBox = document.getElementById("activitySellerPropsList");
+  var visitsBox = document.getElementById("activityVisitsList");
+  var offersBox = document.getElementById("activityOffersList");
+  var sellerOpportunityIds = [];
+
+  try{
+    var sellerPropsRes = await client
+      .from("investor_seller_properties")
+      .select("opportunity_id, opportunities(id, title, commercial_status)")
+      .eq("investor_id", id);
+
+    if(sellerPropsRes.error) throw sellerPropsRes.error;
+    var sellerProps = sellerPropsRes.data || [];
+    sellerOpportunityIds = sellerProps.map(function(r){ return r.opportunity_id; }).filter(function(v){ return v != null; });
+
+    if(!sellerProps.length){
+      sellerPropsBox.innerHTML = '<div class="activity-empty">Nessun immobile in vendita per questo cliente.</div>';
+    }else{
+      sellerPropsBox.innerHTML = sellerProps.map(function(r){
+        var title = (r.opportunities && r.opportunities.title) || "Immobile #" + r.opportunity_id;
+        var commercialStatus = r.opportunities ? r.opportunities.commercial_status : null;
+        var statusText = commercialStatus === "sold" ? "Venduto" : (commercialStatus ? "In vendita" : "");
+        return '<div class="activity-row">' +
+          '<div><div class="main">' + escapeHTML(title) + '</div><div class="meta">Immobile in vendita' + (statusText ? " · " + statusText : "") + '</div></div>' +
+          '<a class="open-link" href="opportunity-edit.html?id=' + encodeURIComponent(r.opportunity_id) + '">Apri immobile</a>' +
+          '</div>';
+      }).join("");
+    }
+  }catch(e){
+    console.warn("Attività cliente: immobili in vendita non caricati (non bloccante):", e);
+    sellerPropsBox.innerHTML = '<div class="activity-empty">Impossibile caricare gli immobili in vendita.</div>';
+  }
+
+  try{
+    var visitsRes = await client
+      .from("property_visits")
+      .select("id, visit_date, pdf_url, created_at, opportunities(id, title)")
+      .eq("investor_id", id)
+      .order("visit_date", { ascending: false });
+
+    if(visitsRes.error) throw visitsRes.error;
+    var visits = visitsRes.data || [];
+    if(!visits.length){
+      visitsBox.innerHTML = '<div class="activity-empty">Nessuna visita registrata per questo cliente.</div>';
+    }else{
+      visitsBox.innerHTML = visits.map(function(v){
+        var title = (v.opportunities && v.opportunities.title) || "Immobile #" + (v.opportunities ? v.opportunities.id : "?");
+        var dateText = v.visit_date ? new Date(v.visit_date).toLocaleDateString("it-IT", {day:"2-digit", month:"long", year:"numeric"}) : "";
+        return '<div class="activity-row">' +
+          '<div><div class="main">' + escapeHTML(title) + '</div><div class="meta">Visita' + (dateText ? " del " + dateText : "") + '</div></div>' +
+          (v.pdf_url ? '<a class="open-link" href="' + escapeHTML(v.pdf_url) + '" target="_blank" rel="noopener">Apri scheda visita</a>' : '') +
+          '</div>';
+      }).join("");
+    }
+  }catch(e){
+    console.warn("Attività cliente: visite non caricate (non bloccante):", e);
+    visitsBox.innerHTML = '<div class="activity-empty">Impossibile caricare le visite.</div>';
+  }
+
+  try{
+    var buyerOffersRes = await client
+      .from("opportunity_offers")
+      .select("id, offer_kind, status, offered_price, created_at, buyer_signed_at, opportunities(id, title)")
+      .eq("investor_id", id)
+      .order("created_at", { ascending: false });
+    if(buyerOffersRes.error) throw buyerOffersRes.error;
+    var buyerOffers = (buyerOffersRes.data || []).map(function(o){ o.__role = "buyer"; return o; });
+
+    var sellerOffers = [];
+    if(sellerOpportunityIds.length){
+      var sellerOffersRes = await client
+        .from("opportunity_offers")
+        .select("id, offer_kind, status, offered_price, created_at, seller_signed_at, opportunities(id, title), investors!opportunity_offers_investor_id_fkey(first_name, last_name)")
+        .in("opportunity_id", sellerOpportunityIds)
+        .order("created_at", { ascending: false });
+      if(sellerOffersRes.error) throw sellerOffersRes.error;
+      sellerOffers = (sellerOffersRes.data || []).map(function(o){ o.__role = "seller"; return o; });
+    }
+
+    var offers = buyerOffers.concat(sellerOffers).sort(function(a, b){
+      return new Date(b.created_at || 0) - new Date(a.created_at || 0);
+    });
+
+    if(!offers.length){
+      offersBox.innerHTML = '<div class="activity-empty">Nessuna proposta collegata a questo cliente.</div>';
+    }else{
+      offersBox.innerHTML = offers.map(function(o){
+        var title = (o.opportunities && o.opportunities.title) || "Immobile #" + (o.opportunities ? o.opportunities.id : "?");
+        var kindLabel = o.offer_kind === "controfferta" ? "Controfferta" : "Proposta d'acquisto";
+        var buyerName = o.investors ? [o.investors.first_name, o.investors.last_name].filter(Boolean).join(" ") : "";
+        var roleLabel = o.__role === "seller" ? ("Offerta ricevuta sul suo immobile" + (buyerName ? " da " + escapeHTML(buyerName) : "")) : "Come acquirente";
+        var priceText = o.offered_price ? "€ " + Number(o.offered_price).toLocaleString("it-IT") : "";
+        var dateText = o.created_at ? new Date(o.created_at).toLocaleDateString("it-IT", {day:"2-digit", month:"long", year:"numeric"}) : "";
+        var statusLabel = OFFER_STATUS_LABELS[o.status] || o.status || "";
+        var signedAt = o.__role === "seller" ? o.seller_signed_at : o.buyer_signed_at;
+        var signedNote = signedAt ? " · firmata dal cliente" : "";
+        var soldNote = "";
+        if(o.__role === "seller" && o.status === "accettata"){
+          soldNote = '<div class="meta" style="color:var(--c-5b461d);font-weight:700;">💰 Vendita conclusa — potenziale liquidità' + (priceText ? " di circa " + escapeHTML(priceText) : "") + ' disponibile per un nuovo investimento</div>';
+        }
+        return '<div class="activity-row">' +
+          '<div><div class="main">' + escapeHTML(title) + '</div><div class="meta">' + roleLabel + " · " + kindLabel + (priceText ? " — " + escapeHTML(priceText) : "") + (dateText ? " · " + dateText : "") + escapeHTML(signedNote) + '</div>' + soldNote + '</div>' +
+          '<span class="status-tag">' + escapeHTML(statusLabel) + '</span>' +
+          '<a class="open-link" href="offer-detail.html?offer_id=' + encodeURIComponent(o.id) + '">Apri proposta</a>' +
+          '</div>';
+      }).join("");
+    }
+  }catch(e){
+    console.warn("Attività cliente: proposte non caricate (non bloccante):", e);
+    offersBox.innerHTML = '<div class="activity-empty">Impossibile caricare le proposte.</div>';
+  }
+}
+
+async function showAuthorshipBadge(createdBy, createdAt){
+  var el = document.getElementById("authorshipBadge");
+  if(!el) return;
+
+  var dateStr = createdAt ? new Date(createdAt).toLocaleString("it-IT") : "";
+
+  if(!createdBy){
+    el.textContent = "Paternità: non disponibile (record storico precedente alla registrazione automatica dell'autore)" + (dateStr ? " · " + dateStr : "");
+    el.style.display = "";
+    return;
+  }
+
+  el.textContent = "Caricamento paternità...";
+  el.style.display = "";
+
+  var result = await client.from("profiles").select("email,full_name").eq("id", createdBy).single();
+
+  if(result.error || !result.data){
+    el.textContent = "Creato da: utente non trovato (id " + createdBy + ")" + (dateStr ? " · " + dateStr : "");
+    return;
+  }
+
+  var who = result.data.full_name ? (result.data.full_name + " (" + result.data.email + ")") : result.data.email;
+  el.textContent = "Creato da: " + who + (dateStr ? " · " + dateStr : "");
+}
+
+/* Stessa logica di investors.html: proprietario del record, admin/owner, oppure accesso
+   "write"/"both" concesso esplicitamente dal master -- altrimenti e' sola lettura. */
+async function canEditThisInvestor(createdBy){
+  if(!investorId) return true; // nuovo contatto: chiunque arrivi qui sta creando il proprio
+  /* SOLO is_platform_owner ha il bypass totale -- role="admin" da solo NON basta (vedi stessa
+     nota in investors.html). */
+  if(currentProfile && currentProfile.is_platform_owner) return true;
+  if(createdBy && String(createdBy) === String(currentUser.id)) return true;
+  if(!createdBy) return false;
+
+  const { data, error } = await client
+    .from("immonova_managed_access")
+    .select("access")
+    .eq("collaborator_id", currentUser.id)
+    .eq("manager_id", createdBy)
+    .eq("resource_key", "contacts")
+    .maybeSingle();
+
+  if(error){
+    console.warn("Verifica permesso modifica non riuscita (non bloccante):", error.message);
+    return false;
+  }
+
+  return !!data && (data.access === "write" || data.access === "both");
+}
+
+function lockFormAsReadOnly(){
+  form.querySelectorAll("input,select,textarea,button:not(#saveBtn)").forEach(el => {
+    if(el.type === "button" || el.tagName === "A") return;
+    el.disabled = true;
+  });
+  saveBtn.style.display = "none";
+
+  var notice = document.createElement("div");
+  notice.style.cssText = "margin-top:14px;padding:10px 14px;border:1px solid rgba(166,127,52,.35);color:var(--c-46371a);background:rgba(166,127,52,.08);font-size:12px;letter-spacing:.04em";
+  notice.textContent = "Accesso in sola lettura: questo contatto non è tuo e non hai il permesso di modificarlo.";
+  form.insertBefore(notice, form.firstChild);
+}
+
+async function loadInvestor(){
+  if(!investorId) return;
+
+  pageTitle.textContent = T.title_edit;
+  document.title = "Modifica Contatto | IMMONOVA Admin";
+  saveBtn.textContent = T.btn_update;
+
+  setProgress(T.msg_loading_investor, 25, "");
+
+  const { data, error } = await client
+    .from("investors")
+    .select("*, investor_categories(category), investor_areas(area), investor_seller_properties(opportunity_id)")
+    .eq("id", investorId)
+    .single();
+
+  if(error || !data){
+    setProgress(T.msg_investor_not_found, 100, "error");
+    return;
+  }
+
+  /* ---- Paternità visibile SOLO a te (is_platform_owner): nessun collaboratore o master deve
+     poterla vedere, per garantire sicurezza e correttezza tra colleghi, come richiesto esplicitamente.
+     Il record potrebbe non avere created_by (dati storici antecedenti a questa logica): in quel
+     caso lo segnaliamo chiaramente invece di nasconderlo, cosi' resta visibile che manca. ---- */
+  if(currentProfile && currentProfile.is_platform_owner){
+    showAuthorshipBadge(data.created_by, data.created_at);
+  }
+
+  /* ---- PROBLEMA SEGNALATO 25/10/2026: un collaboratore con accesso in sola lettura poteva
+     aprire direttamente questa pagina via URL (anche se investors.html gli nasconde il link
+     "Modifica"), scrivere nei campi e provare a salvare -- il salvataggio falliva solo dopo,
+     per via della RLS. Qui si blocca il form PRIMA, appena si scopre che l'accesso e' read-only. ---- */
+  const editable = await canEditThisInvestor(data.created_by);
+  if(!editable){
+    lockFormAsReadOnly();
+  }
+
+  var fullNameForTitle = [data.first_name, data.last_name].filter(Boolean).join(" ");
+  if(fullNameForTitle){
+    pageTitle.textContent = T.title_edit + " — " + fullNameForTitle;
+    document.title = fullNameForTitle + " | Modifica Contatto | IMMONOVA Admin";
+  }
+
+  document.getElementById("first_name").value = data.first_name || "";
+  document.getElementById("last_name").value = data.last_name || "";
+  document.getElementById("company").value = data.company || "";
+  document.getElementById("investor_type").value = data.investor_type || "private_investor";
+  document.getElementById("country").value = data.country || "";
+  document.getElementById("city").value = data.city || "";
+  document.getElementById("email").value = data.email || "";
+  document.getElementById("phone").value = data.phone || "";
+  document.getElementById("whatsapp").value = data.whatsapp || "";
+  document.getElementById("preferred_language").value = data.preferred_language || "it";
+  document.getElementById("email_opt_in").checked = !!data.email_opt_in;
+  document.getElementById("whatsapp_opt_in").checked = !!data.whatsapp_opt_in;
+  document.getElementById("budget_min").value = data.budget_min ?? "";
+  document.getElementById("budget_max").value = data.budget_max ?? "";
+  document.getElementById("status_field").value = data.status || "active";
+  document.getElementById("notes").value = data.notes || "";
+
+  document.getElementById("is_investor").checked = data.is_investor !== false;
+  document.getElementById("is_seller").checked = !!data.is_seller;
+  document.getElementById("is_supplier").checked = !!data.is_supplier;
+  document.getElementById("seller_status").value = data.seller_status || "da_contattare";
+  updateSellerFieldsVisibility();
+
+  const linkedProperties = (data.investor_seller_properties || []).map(row => String(row.opportunity_id));
+  Array.from(document.getElementById("seller_properties").options).forEach(opt => {
+    opt.selected = linkedProperties.includes(opt.value);
+  });
+
+  const areas = (data.investor_areas || []).map(row => row.area).filter(Boolean);
+  document.getElementById("areas").value = areas.join(", ");
+
+  await checkPendingNewsBadge(investorId);
+
+  if(data.interest_area_geojson){
+    loadAreaGeoJSONOntoMap(data.interest_area_geojson);
+  }
+
+  const categories = (data.investor_categories || []).map(row => row.category).filter(Boolean);
+  document.querySelectorAll('input[name="category"]').forEach(input => {
+    input.checked = categories.includes(input.value);
+  });
+
+  document.getElementById("recordTabs").style.display = "flex";
+  loadInvestorActivity(investorId);
+
+  setProgress("", 0, "");
+}
+
+function collectInvestorPayload(){
+  const payload = {
+    first_name: val("first_name"),
+    last_name: val("last_name"),
+    company: val("company") || null,
+    investor_type: val("investor_type") || "private_investor",
+    country: val("country") || null,
+    city: val("city") || null,
+    email: val("email") || null,
+    phone: val("phone") || null,
+    whatsapp: val("whatsapp") || null,
+    preferred_language: val("preferred_language") || "it",
+    email_opt_in: boolVal("email_opt_in"),
+    whatsapp_opt_in: boolVal("whatsapp_opt_in"),
+    budget_min: numVal("budget_min"),
+    budget_max: numVal("budget_max"),
+    status: val("status_field") || "active",
+    notes: val("notes") || null,
+    is_investor: boolVal("is_investor"),
+    is_seller: boolVal("is_seller"),
+    is_supplier: boolVal("is_supplier"),
+    seller_status: boolVal("is_seller") ? (val("seller_status") || "da_contattare") : null,
+    interest_area_geojson: currentAreaGeoJSON || null,
+    updated_at: new Date().toISOString()
+  };
+
+  if(!investorId){
+    payload.created_by = currentUser.id;
+  }
+
+  return payload;
+}
+
+function collectCategories(){
+  return Array.from(document.querySelectorAll('input[name="category"]:checked'))
+    .map(input => input.value);
+}
+
+async function saveInvestor(event){
+  event.preventDefault();
+
+  saveBtn.disabled = true;
+  setProgress(T.msg_checking_data, 10, "");
+
+  const payload = collectInvestorPayload();
+
+  if(!payload.first_name || !payload.last_name){
+    setProgress(T.msg_required_names, 100, "error");
+    saveBtn.disabled = false;
+    return;
+  }
+
+  let savedId = investorId;
+  const isNewInvestor = !investorId;
+
+  setProgress(T.msg_saving_registry, 35, "");
+
+  if(investorId){
+    const { error } = await client
+      .from("investors")
+      .update(payload)
+      .eq("id", investorId);
+
+    if(error) throw error;
+  }else{
+    const { data, error } = await client
+      .from("investors")
+      .insert(payload)
+      .select("id")
+      .single();
+
+    if(error) throw error;
+
+    savedId = data.id;
+  }
+
+  setProgress(T.msg_updating_relations, 65, "");
+  await saveRelations(savedId);
+
+  /* ---- La notifica broadcast a tutti i collaboratori serve SOLO per chi cerca un immobile
+     da comprare (investitori): un venditore o un fornitore NON deve mai generare questa mail
+     a tutto lo staff -- sono i dati del cliente, non un annuncio da girare a chiunque. ---- */
+  if(isNewInvestor && boolVal("is_investor")){
+    await notifyNewInvestor(savedId);
+  }
+
+  setProgress(T.msg_saved_success, 100, "success");
+
+  setTimeout(() => {
+    window.location.href = "investors.html";
+  }, 800);
+}
+
+async function saveRelations(id){
+  const categories = collectCategories();
+  const areas = splitValues(val("areas"));
+
+  const delCat = await client
+    .from("investor_categories")
+    .delete()
+    .eq("investor_id", id);
+
+  if(delCat.error) throw delCat.error;
+
+  const delArea = await client
+    .from("investor_areas")
+    .delete()
+    .eq("investor_id", id);
+
+  if(delArea.error) throw delArea.error;
+
+  if(categories.length){
+    const rows = categories.map(category => ({
+      investor_id:id,
+      category
+    }));
+
+    const { error } = await client
+      .from("investor_categories")
+      .insert(rows);
+
+    if(error) throw error;
+  }
+
+  if(areas.length){
+    const rows = areas.map(area => ({
+      investor_id:id,
+      area
+    }));
+
+    const { error } = await client
+      .from("investor_areas")
+      .insert(rows);
+
+    if(error) throw error;
+  }
+
+  const sellerProperties = collectSellerProperties();
+
+  const delProps = await client
+    .from("investor_seller_properties")
+    .delete()
+    .eq("investor_id", id);
+
+  if(delProps.error) throw delProps.error;
+
+  if(sellerProperties.length){
+    const rows = sellerProperties.map(opportunity_id => ({
+      investor_id:id,
+      opportunity_id
+    }));
+
+    const { error } = await client
+      .from("investor_seller_properties")
+      .insert(rows);
+
+    if(error) throw error;
+  }
+}
+
+function collectSellerProperties(){
+  if(!boolVal("is_seller")) return [];
+  return Array.from(document.getElementById("seller_properties").selectedOptions).map(opt => opt.value);
+}
+
+function updateSellerFieldsVisibility(){
+  const isSeller = boolVal("is_seller");
+  document.getElementById("sellerStatusField").style.display = isSeller ? "" : "none";
+  document.getElementById("sellerPropertiesField").style.display = isSeller ? "" : "none";
+}
+
+async function loadOpportunitiesForSelect(){
+  const select = document.getElementById("seller_properties");
+  const { data, error } = await client
+    .from("opportunities")
+    .select("id, title")
+    .order("title", { ascending:true });
+
+  if(error){
+    console.warn("Caricamento immobili non riuscito (non bloccante):", error.message);
+    return;
+  }
+
+  select.innerHTML = (data || []).map(opp =>
+    '<option value="'+String(opp.id)+'">'+(opp.title || ("Opportunità #"+opp.id)).replace(/</g,"&lt;")+'</option>'
+  ).join("");
+}
+
+document.getElementById("is_seller").addEventListener("change", updateSellerFieldsVisibility);
+
+form.addEventListener("submit", async event => {
+  try{
+    await saveInvestor(event);
+  }catch(error){
+    console.error(error);
+    setProgress(error.message || T.msg_save_error, 100, "error");
+    saveBtn.disabled = false;
+  }
+});
+
+document.getElementById("logoutBtn").addEventListener("click", async () => {
+  await client.auth.signOut();
+  window.location.href = "../index.html";
+});
+
+/* ---- Stesso meccanismo di investors.html: il link "Capital Partners" resta
+   nascosto finché non si conferma che questo utente ha accesso alla sezione
+   riservata (proprietario o admin con permesso esplicito). ---- */
+async function revealCapitalPartnersLinkIfAllowed(){
+  try{
+    const { data, error } = await client.rpc("has_capital_partners_access");
+    if(!error && data){
+      document.getElementById("capitalPartnersLink").style.display = "";
+    }
+  }catch(e){
+    console.warn("Verifica accesso Capital Partners non riuscita (non bloccante):", e);
+  }
+}
+
+(async function init(){
+  if(await checkAuth()){
+    const ok = await loadProfile();
+    if(ok){
+      initInterestAreaMap();
+      await loadOpportunitiesForSelect();
+      if(!investorId){
+        document.getElementById("is_investor").checked = true;
+      }
+      await loadInvestor();
+      updateSellerFieldsVisibility();
+      await revealCapitalPartnersLinkIfAllowed();
+    }
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,1238 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<link rel="stylesheet" href="../css/immonova-text-theme.css">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contatti | IMMONOVA Admin</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:100%;min-height:100%}
+body{
+  background:#f4ecdf;
+  font-family:"Avenir Next","Helvetica Neue",Arial,sans-serif;
+  color:var(--c-46371a);
+}
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-2;
+  background:
+    radial-gradient(circle at center,rgba(255,255,255,.72) 0%,rgba(255,255,255,.34) 38%,rgba(244,236,223,.06) 72%),
+    #f4ecdf;
+}
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  background:
+    repeating-linear-gradient(60deg,transparent 0 86px,rgba(188,149,78,.23) 87px,transparent 90px),
+    repeating-linear-gradient(-60deg,transparent 0 86px,rgba(188,149,78,.22) 87px,transparent 90px),
+    repeating-linear-gradient(0deg,transparent 0 148px,rgba(188,149,78,.13) 149px,transparent 152px);
+  background-size:230px 199px;
+  opacity:.30;
+}
+.header{
+  padding:30px 40px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom:1px solid rgba(166,127,52,.12);
+  background:rgba(244,236,223,.72);
+  backdrop-filter:blur(14px);
+  position:sticky;
+  top:0;
+  z-index:10;
+}
+.logo{
+  text-decoration:none;
+  color:var(--c-5b461d);
+}
+.logo-main{
+  font-size:24px;
+  font-weight:600;
+  letter-spacing:.35em;
+}
+.logo-sub{
+  margin-top:6px;
+  font-size:9px;
+  font-weight:700;
+  letter-spacing:.18em;
+  color:var(--c-5b471f);
+}
+.header-actions{
+  display:flex;
+  gap:12px;
+  align-items:center;
+  flex-wrap:wrap;
+}
+.header-actions a,
+.logout{
+  padding:10px 20px;
+  border:1px solid rgba(166,127,52,.25);
+  background:rgba(255,255,255,.25);
+  cursor:pointer;
+  color:var(--c-5b461d);
+  text-decoration:none;
+  font-size:12px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+.header-actions a:hover,
+.logout:hover{
+  background:#a67f34;
+  color:var(--c-ffffff);
+}
+.container{
+  max-width:1500px;
+  margin:auto;
+  padding:40px;
+}
+.kicker{
+  font-size:11px;
+  letter-spacing:.32em;
+  text-transform:uppercase;
+  color:var(--c-554321);
+  margin-bottom:12px;
+}
+.title-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:22px;
+  flex-wrap:wrap;
+  margin-bottom:18px;
+}
+.title{
+  font-size:42px;
+  font-weight:200;
+  letter-spacing:.05em;
+  color:var(--c-5b461d);
+}
+.subtitle{
+  font-size:15px;
+  line-height:1.8;
+  color:var(--c-4f4125);
+  max-width:860px;
+  margin-bottom:28px;
+}
+.primary-link{
+  display:inline-block;
+  padding:14px 22px;
+  border:1px solid rgba(166,127,52,.42);
+  background:#a67f34;
+  color:var(--c-fffaf0);
+  text-decoration:none;
+  text-transform:uppercase;
+  font-size:11px;
+  letter-spacing:.18em;
+}
+.stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
+  margin-bottom:28px;
+}
+.stat{
+  min-height:130px;
+  padding:22px;
+  border:1px solid rgba(166,127,52,.18);
+  background:rgba(255,255,255,.22);
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+.stat-label{
+  font-size:10px;
+  line-height:1.5;
+  letter-spacing:.20em;
+  text-transform:uppercase;
+  color:var(--c-4f4125);
+}
+.stat-value{
+  font-size:44px;
+  line-height:1;
+  font-weight:200;
+  color:var(--c-5b461d);
+}
+.toolbar{
+  display:grid;
+  grid-template-columns:1.4fr repeat(4,.8fr);
+  gap:12px;
+  margin-bottom:24px;
+}
+.search,
+.filter{
+  padding:14px 16px;
+  border:1px solid rgba(166,127,52,.22);
+  background:rgba(255,255,255,.25);
+  color:var(--c-46371a);
+  outline:none;
+  font-size:14px;
+  font-family:inherit;
+}
+.table-wrapper{
+  background:rgba(255,255,255,.20);
+  backdrop-filter:blur(8px);
+  border:1px solid rgba(166,127,52,.15);
+  overflow:auto;
+  box-shadow:0 24px 70px rgba(127,100,48,.07);
+}
+table{
+  width:100%;
+  border-collapse:collapse;
+  min-width:1280px;
+}
+th{
+  text-align:left;
+  padding:18px;
+  font-size:11px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  border-bottom:1px solid rgba(166,127,52,.15);
+  white-space:nowrap;
+}
+td{
+  padding:18px;
+  border-bottom:1px solid rgba(166,127,52,.08);
+  vertical-align:top;
+  font-size:14px;
+  line-height:1.6;
+}
+.name{
+  color:var(--c-5b461d);
+  font-size:17px;
+  margin-bottom:4px;
+}
+.muted{
+  color:var(--c-4f4125);
+  font-size:12px;
+  line-height:1.6;
+}
+.badge{
+  display:inline-block;
+  padding:7px 10px;
+  border:1px solid rgba(166,127,52,.25);
+  background:rgba(255,255,255,.22);
+  color:var(--c-5b461d);
+  font-size:10px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  margin:2px 4px 2px 0;
+  white-space:nowrap;
+}
+.badge.vip{color:var(--c-1f1a12);border-color:rgba(166,127,52,.55);background:linear-gradient(135deg,rgba(166,127,52,.24),rgba(255,255,255,.28))}
+.badge.active{color:var(--c-2b4626);border-color:rgba(79,127,69,.34);background:rgba(79,127,69,.08)}
+.badge.inactive{color:var(--c-561a1a);border-color:rgba(156,47,47,.35);background:rgba(156,47,47,.07)}
+.badge.optin{color:var(--c-2b4626);border-color:rgba(79,127,69,.34);background:rgba(79,127,69,.08)}
+.badge.noopt{color:var(--c-4f3216);border-color:rgba(143,91,40,.34);background:rgba(143,91,40,.08)}
+.actions{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+.actions a,
+.actions button{
+  padding:9px 12px;
+  border:1px solid rgba(166,127,52,.25);
+  background:rgba(255,255,255,.25);
+  cursor:pointer;
+  color:var(--c-5b461d);
+  text-decoration:none;
+  font-size:10px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+.actions .danger{
+  color:var(--c-561a1a);
+  border-color:rgba(156,47,47,.35);
+}
+.status{
+  margin-bottom:18px;
+  min-height:20px;
+  font-size:13px;
+}
+.success{color:var(--c-2b4626)}
+.error{color:var(--c-561a1a)}
+.empty{
+  padding:40px;
+  text-align:center;
+  opacity:.7;
+}
+@media(max-width:1050px){
+  .stats{grid-template-columns:1fr 1fr}
+  .toolbar{grid-template-columns:1fr 1fr}
+}
+@media(max-width:700px){
+  .header{flex-direction:column;gap:18px}
+  .header-actions{justify-content:center}
+  .container{padding:28px 22px}
+  .stats,.toolbar{grid-template-columns:1fr}
+}
+.badge-map{cursor:pointer}
+.contact-tab{
+  background:transparent;border:1px solid rgba(255,255,255,.15);color:inherit;
+  padding:8px 16px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;
+  cursor:pointer;border-radius:2px;
+}
+.contact-tab.active{background:rgba(196,140,20,.15);border-color:rgba(196,140,20,.6);color:var(--c-6c4d0b)}
+.badge-map:hover{filter:brightness(0.95)}
+.area-map-modal-overlay{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(50,38,14,.55);
+  z-index:1000;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+.area-map-modal-overlay.open{display:flex}
+.area-map-modal{
+  background:#fbf6ec;
+  border-radius:12px;
+  box-shadow:0 20px 60px rgba(0,0,0,.35);
+  width:100%;
+  max-width:640px;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+}
+.area-map-modal-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:14px 18px;
+  border-bottom:1px solid rgba(166,127,52,.22);
+  font-weight:600;
+  color:var(--c-46371a);
+}
+.area-map-modal-close{
+  background:none;
+  border:none;
+  font-size:26px;
+  line-height:1;
+  cursor:pointer;
+  color:var(--c-46371a);
+  padding:0 4px;
+}
+.area-map-modal-close:hover{color:var(--c-5a480f)}
+#areaMapModalMap{width:100%;height:420px}
+.match-row td{padding-top:0;padding-bottom:12px;border-bottom:1px solid rgba(166,127,52,.08)}
+.inv-match-list{display:flex;gap:10px;flex-wrap:wrap;padding:8px 4px 2px}
+.inv-match-card{display:flex;align-items:center;gap:8px;text-decoration:none;color:inherit;border:1px solid rgba(166,127,52,.25);background:#fff;padding:6px 10px;max-width:230px}
+.inv-match-card:hover{border-color:#a67f34}
+.inv-match-card img{width:40px;height:40px;object-fit:cover;flex-shrink:0;border:1px solid rgba(166,127,52,.15)}
+.inv-match-noimg{width:40px;height:40px;flex-shrink:0;background:rgba(166,127,52,.1);border:1px solid rgba(166,127,52,.15)}
+.inv-match-info{min-width:0}
+.inv-match-title{font-size:11.5px;color:var(--c-4a3c1f);line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:150px}
+.inv-match-price{font-size:11px;font-weight:600;color:var(--c-5b461d)}
+.inv-match-label{font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--c-4f4125);padding:4px 4px 0}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+  <a href="../index.html" class="logo">
+    <div class="logo-main">IMMONOVA</div>
+    <div class="logo-sub">OFF MARKET • CONSULTING</div>
+  </a>
+
+  <div class="header-actions">
+    <a href="dashboard.html" data-i18n="nav_dashboard">Dashboard</a>
+    <a href="opportunities.html" data-i18n="nav_opportunities">Immobili</a>
+    <a href="events.html" data-i18n="nav_events">Eventi</a>
+    <a href="investors.html" data-i18n="nav_investors">Contatti</a>
+    <a href="capital-partners.html" data-i18n="nav_capital_partners" id="capitalPartnersLink" style="display:none">Capital Partners</a>
+    <a href="users.html" id="usersLink" data-i18n="nav_users">Utenti</a>
+    <button class="logout" id="logoutBtn" data-i18n="logout">Logout</button>
+  </div>
+</header>
+
+<div class="container">
+
+  <div class="kicker" data-i18n="kicker">Contact Relationship Management</div>
+
+  <div class="title-row">
+    <div>
+      <h1 class="title" data-i18n="title">Contatti</h1>
+    </div>
+    <a class="primary-link" href="investor-form.html" data-i18n="btn_new_investor">Nuovo Contatto</a>
+  </div>
+
+  <p class="subtitle" data-i18n="subtitle">
+    Anagrafica contatti IMMONOVA (venditori, investitori, fornitori) con preferenze di budget, aree, categorie, lingua e consenso per inviti email / WhatsApp.
+  </p>
+
+  <div id="status" class="status"></div>
+
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-label" data-i18n="stat_total">Contatti<br>Totali</div>
+      <div class="stat-value" id="totalCount">0</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label" data-i18n="stat_email_optin">Email<br>Opt-in</div>
+      <div class="stat-value" id="emailCount">0</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label" data-i18n="stat_whatsapp_optin">WhatsApp<br>Opt-in</div>
+      <div class="stat-value" id="whatsappCount">0</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label" data-i18n="stat_vip_pipeline">VIP / Active<br>Pipeline</div>
+      <div class="stat-value" id="vipCount">0</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label" data-i18n="stat_sellers">Venditori</div>
+      <div class="stat-value" id="sellerCount">0</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label" data-i18n="stat_suppliers">Fornitori</div>
+      <div class="stat-value" id="supplierCount">0</div>
+    </div>
+  </div>
+
+  <div class="contact-tabs" style="display:flex;gap:8px;margin:0 0 14px">
+    <button type="button" class="contact-tab active" data-tab="" data-i18n="tab_all">Tutti</button>
+    <button type="button" class="contact-tab" data-tab="seller" data-i18n="tab_sellers">Venditori</button>
+    <button type="button" class="contact-tab" data-tab="investor" data-i18n="tab_investors">Investitori</button>
+    <button type="button" class="contact-tab" data-tab="supplier" data-i18n="tab_suppliers">Fornitori</button>
+  </div>
+
+  <div class="toolbar">
+    <input id="searchInput" class="search" data-i18n-placeholder="ph_search" placeholder="Cerca nome, email, società, paese, zona...">
+
+    <select id="statusFilter" class="filter">
+      <option value="" data-i18n="filter_all_status">Tutti gli stati</option>
+      <option value="active" data-i18n="filter_active">Attivi</option>
+      <option value="vip" data-i18n="filter_vip">VIP</option>
+      <option value="inactive" data-i18n="filter_inactive">Inattivi</option>
+    </select>
+
+    <select id="categoryFilter" class="filter">
+      <option value="" data-i18n="filter_all_categories">Tutte le categorie</option>
+    </select>
+
+    <select id="areaFilter" class="filter">
+      <option value="" data-i18n="filter_all_areas">Tutte le aree</option>
+    </select>
+
+    <select id="channelFilter" class="filter">
+      <option value="" data-i18n="filter_all_consents">Tutti i consensi</option>
+      <option value="email" data-i18n="filter_email_optin">Email opt-in</option>
+      <option value="whatsapp" data-i18n="filter_whatsapp_optin">WhatsApp opt-in</option>
+      <option value="both" data-i18n="filter_email_whatsapp">Email + WhatsApp</option>
+    </select>
+
+    <select id="clientTypeFilter" class="filter">
+      <option value="" data-i18n="filter_all_client_types">Tutti i tipi cliente</option>
+      <option value="investor" data-i18n="filter_investor_only">Solo investitore</option>
+      <option value="seller" data-i18n="filter_seller_only">Solo venditore</option>
+      <option value="both" data-i18n="filter_investor_seller">Investitore + Venditore</option>
+    </select>
+  </div>
+
+  <div id="areaMapModalOverlay" class="area-map-modal-overlay" onclick="if(event.target===this) closeAreaMapModal()">
+    <div class="area-map-modal">
+      <div class="area-map-modal-head">
+        <span id="areaMapModalTitle"></span>
+        <button type="button" class="area-map-modal-close" onclick="closeAreaMapModal()" aria-label="Chiudi">&times;</button>
+      </div>
+      <div id="areaMapModalMap"></div>
+    </div>
+  </div>
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th data-i18n="th_investor">Investitore</th>
+          <th data-i18n="th_contacts">Contatti</th>
+          <th data-i18n="th_profile">Profilo</th>
+          <th data-i18n="th_budget">Budget</th>
+          <th data-i18n="th_areas">Aree</th>
+          <th data-i18n="th_categories">Categorie</th>
+          <th data-i18n="th_consents">Consensi</th>
+          <th id="thAuthorship" data-i18n="th_authorship" style="display:none">Creato da</th>
+          <th data-i18n="th_actions">Azioni</th>
+        </tr>
+      </thead>
+      <tbody id="investorsTable">
+        <tr><td colspan="8" class="empty" data-i18n="loading">Caricamento investitori...</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../js/config.js"></script>
+<script src="../js/site-branding.js"></script>
+
+<script>
+const client = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+const table = document.getElementById("investorsTable");
+const statusBox = document.getElementById("status");
+const searchInput = document.getElementById("searchInput");
+const statusFilter = document.getElementById("statusFilter");
+const categoryFilter = document.getElementById("categoryFilter");
+const areaFilter = document.getElementById("areaFilter");
+const channelFilter = document.getElementById("channelFilter");
+const clientTypeFilter = document.getElementById("clientTypeFilter");
+
+let currentUser = null;
+let currentProfile = null;
+let allInvestors = [];
+let currentUserLanguage = "it";
+let isOwner = false;
+let isAdmin = false;
+let authorEmailsById = {}; // created_by uuid -> "nome (email)" oppure "email" -- popolata solo se isOwner
+let myContactsGrants = {}; // manager_id (master) -> access ("read"/"write"/"both") per resource_key="contacts"
+
+/* ---- Immobili compatibili per ogni contatto (26/10/2026): stesso sistema di punteggio usato
+   per il matching mandato->immobili in search-mandate-form.html (che a sua volta riprende
+   calculateInvestorMatches di opportunity-edit.html), qui applicato nel verso
+   contatto->immobili: budget (40pt/12pt parziale), categoria (30pt), area (20pt). Caricati UNA
+   SOLA VOLTA (non per ogni contatto) e poi incrociati in memoria per ciascun contatto in
+   renderTable(). ---- */
+var allOpportunitiesForMatch = [];
+var opportunitiesForMatchLoaded = false;
+
+function normalizeInvMatchText(value){
+  return String(value || "")
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[̀-ͯ]/g, "")
+    .trim();
+}
+
+function extractInvMatchMoney(value){
+  var raw = String(value || "")
+    .replace(/€/g, "")
+    .replace(/\s/g, "")
+    .replace(/\./g, "")
+    .replace(/,/g, ".");
+  var match = raw.match(/[0-9]+(\.[0-9]+)?/);
+  return match ? Number(match[0]) : null;
+}
+
+async function loadOpportunitiesForMatch(){
+  if(opportunitiesForMatchLoaded) return;
+
+  var result = await client
+    .from("opportunities")
+    .select("id,title,category,location,municipality,province,region,locality,formatted_address,price,cover_image,commercial_status")
+    .not("commercial_status", "in", "(sold,withdrawn)")
+    .order("created_at", { ascending:false });
+
+  if(result.error){
+    console.warn("Caricamento immobili per matching contatti non riuscito (non bloccante):", result.error.message);
+    allOpportunitiesForMatch = [];
+  }else{
+    allOpportunitiesForMatch = result.data || [];
+  }
+  opportunitiesForMatchLoaded = true;
+}
+
+function calculateInvestorOpportunityMatches(inv){
+  var budgetMin = inv.budget_min, budgetMax = inv.budget_max;
+  var categories = (inv.investor_categories || []).map(function(c){ return normalizeInvMatchText(c.category); }).filter(Boolean);
+  var areaNames = (inv.investor_areas || []).map(function(a){ return normalizeInvMatchText(a.area); }).filter(Boolean);
+  if(inv.country) areaNames.push(normalizeInvMatchText(inv.country));
+  if(inv.city) areaNames.push(normalizeInvMatchText(inv.city));
+
+  return allOpportunitiesForMatch.map(function(opp){
+    var score = 0;
+    var oppPrice = extractInvMatchMoney(opp.price);
+
+    if(oppPrice && ((!budgetMin || oppPrice >= budgetMin) && (!budgetMax || oppPrice <= budgetMax))){
+      score += 40;
+    }else if(!oppPrice && (budgetMin || budgetMax)){
+      score += 12;
+    }
+
+    var oppCategory = normalizeInvMatchText(opp.category);
+    if(categories.length && oppCategory && categories.indexOf(oppCategory) >= 0){
+      score += 30;
+    }
+
+    var oppAreas = [opp.location, opp.municipality, opp.province, opp.region, opp.locality, opp.formatted_address]
+      .map(normalizeInvMatchText).filter(Boolean);
+    var areaMatch = areaNames.length && oppAreas.some(function(oppArea){
+      return areaNames.some(function(invArea){
+        return oppArea.indexOf(invArea) >= 0 || invArea.indexOf(oppArea) >= 0;
+      });
+    });
+    if(areaMatch) score += 20;
+
+    return { opportunity:opp, score:score };
+  }).filter(function(m){
+    return m.score > 0;
+  }).sort(function(a, b){
+    return b.score - a.score;
+  });
+}
+
+function renderInvestorOpportunityMatches(inv){
+  var matches = calculateInvestorOpportunityMatches(inv);
+  if(!matches.length) return "";
+
+  return '<tr class="match-row"><td colspan="99">' +
+    '<div class="inv-match-label">'+esc(T.inv_match_label)+'</div>' +
+    '<div class="inv-match-list">' +
+    matches.slice(0, 8).map(function(m){
+      var opp = m.opportunity;
+      var img = opp.cover_image
+        ? '<img src="'+esc(opp.cover_image)+'" alt="">'
+        : '<div class="inv-match-noimg"></div>';
+      return '<a class="inv-match-card" href="opportunity-edit.html?id='+encodeURIComponent(opp.id)+'" target="_blank">' +
+        img +
+        '<div class="inv-match-info">' +
+          '<div class="inv-match-title">'+esc(opp.title || ("Opportunità #"+opp.id))+'</div>' +
+          '<div class="inv-match-price">'+esc(opp.price || "")+'</div>' +
+        '</div>' +
+      '</a>';
+    }).join("") +
+    '</div></td></tr>';
+}
+
+/* ---- i18n: stesso meccanismo delle altre pagine admin (vedi users.html). loadProfile() qui
+   caricava gia' il profilo per il controllo ruolo admin; estesa per includere anche "language"
+   invece di una chiamata separata. categoryFilter/areaFilter sono ricostruiti dinamicamente da
+   buildFilters() con dati reali (nomi di categorie/aree salvati dagli investitori), quindi NON
+   sono nel dizionario tradotto -- sono dati, non interfaccia. ---- */
+var UI_STRINGS = {
+  nav_dashboard:"Dashboard", nav_opportunities:"Immobili", nav_events:"Eventi", nav_investors:"Contatti",
+  nav_capital_partners:"Capital Partners",
+  nav_users:"Utenti", logout:"Logout",
+  kicker:"Contact Relationship Management", title:"Contatti", btn_new_investor:"Nuovo Contatto",
+  stat_suppliers:"Fornitori", tab_all:"Tutti", tab_sellers:"Venditori", tab_investors:"Investitori", tab_suppliers:"Fornitori",
+  subtitle:"Anagrafica investitori IMMONOVA con preferenze di budget, aree, categorie, lingua e consenso per inviti email / WhatsApp.",
+  stat_total:"Contatti<br>Totali", stat_email_optin:"Email<br>Opt-in", stat_whatsapp_optin:"WhatsApp<br>Opt-in",
+  stat_vip_pipeline:"VIP / Active<br>Pipeline", stat_sellers:"Venditori",
+  ph_search:"Cerca nome, email, società, paese, zona...",
+  filter_all_status:"Tutti gli stati", filter_active:"Attivi", filter_vip:"VIP", filter_inactive:"Inattivi",
+  filter_all_categories:"Tutte le categorie", filter_all_areas:"Tutte le aree",
+  filter_all_consents:"Tutti i consensi", filter_email_optin:"Email opt-in", filter_whatsapp_optin:"WhatsApp opt-in",
+  filter_email_whatsapp:"Email + WhatsApp",
+  filter_all_client_types:"Tutti i tipi cliente", filter_investor_only:"Solo investitore", filter_seller_only:"Solo venditore",
+  filter_investor_seller:"Investitore + Venditore",
+  client_type_investor:"Investitore", client_type_seller:"Venditore",
+  seller_status_da_contattare:"Da contattare", seller_status_in_trattativa:"In trattativa",
+  seller_status_mandato_firmato:"Mandato firmato", seller_status_venduto:"Venduto",
+  th_investor:"Investitore", th_contacts:"Contatti", th_profile:"Profilo", th_budget:"Budget",
+  th_areas:"Aree", th_categories:"Categorie", th_consents:"Consensi", th_actions:"Azioni",
+  th_authorship:"Creato da", authorship_unknown:"Non disponibile (record storico)",
+  area_map_badge:"🗺 Zona su mappa", area_map_badge_title:"Clicca per vedere la zona di interesse disegnata sulla mappa",
+  loading:"Caricamento investitori...",
+  budget_from:"Da ", budget_to:"Fino a ", budget_not_indicated:"Non indicato",
+  type_private:"Private Investor", type_family_office:"Family Office", type_real_estate_operator:"Real Estate Operator",
+  type_hospitality_group:"Hospitality Group", type_fund:"Investment Fund", type_advisor:"Advisor", type_other:"Altro",
+  type_default:"Investor",
+  status_active:"Attivo", status_vip:"VIP", status_inactive:"Inattivo",
+  msg_profile_not_found:"Profilo utente non trovato.",
+  msg_access_denied:"Accesso riservato agli admin.", empty_unauthorized:"Accesso non autorizzato.",
+  loading_error:"Errore caricamento investitori.",
+  empty_none:"Nessun investitore trovato.",
+  lang_prefix:"Lingua: ",
+  action_edit:"Modifica", action_email:"Email", action_whatsapp:"WhatsApp", action_delete:"Elimina",
+  action_readonly:"Solo lettura", action_readonly_title:"Accesso in sola lettura: non puoi modificare o eliminare questo contatto",
+  confirm_delete_investor:"Eliminare definitivamente questo investitore?",
+  msg_deleting:"Eliminazione contatto...", msg_deleted:"Contatto eliminato.",
+  inv_match_label:"Immobili compatibili"
+};
+
+var LANGUAGE_LABELS = { it:"Italiano", en:"English", fr:"Français", de:"Deutsch", es:"Español", ar:"العربية" };
+var T = UI_STRINGS;
+
+function i18nCacheKey(lang){ return "immonova_i18n_investors_" + lang + "_v1"; }
+
+async function loadTranslatedStrings(lang){
+  if(lang === "it") return UI_STRINGS;
+  var cacheKey = i18nCacheKey(lang);
+  try{
+    var cached = localStorage.getItem(cacheKey);
+    if(cached){ var parsed = JSON.parse(cached); if(parsed && typeof parsed === "object") return parsed; }
+  }catch(e){}
+
+  var keys = Object.keys(UI_STRINGS);
+  var texts = keys.map(function(k){ return UI_STRINGS[k]; });
+
+  var result = await client.functions.invoke("translate-public-content", {
+    body:{
+      language: lang,
+      source_language: "it",
+      context: "IMMONOVA luxury real estate investment website. Admin page listing investor CRM profiles: stats, filters, table headers, badges, action buttons.",
+      texts: texts
+    }
+  });
+
+  if(result.error || !result.data || !result.data.success || !Array.isArray(result.data.translations)){
+    console.error("Traduzione investors non riuscita, uso italiano come fallback:", result.error || result.data);
+    return UI_STRINGS;
+  }
+
+  var translations = result.data.translations;
+  var translated = {};
+  keys.forEach(function(k, i){ translated[k] = translations[i] != null ? translations[i] : UI_STRINGS[k]; });
+  try{ localStorage.setItem(cacheKey, JSON.stringify(translated)); }catch(e){}
+  return translated;
+}
+
+function renderTranslatedStaticText(){
+  document.querySelectorAll("[data-i18n]").forEach(function(el){
+    var key = el.getAttribute("data-i18n");
+    if(T[key]) el.innerHTML = T[key];
+  });
+  document.querySelectorAll("[data-i18n-placeholder]").forEach(function(el){
+    var key = el.getAttribute("data-i18n-placeholder");
+    if(T[key]) el.setAttribute("placeholder", T[key]);
+  });
+}
+
+async function applyLanguage(lang){
+  currentUserLanguage = lang || "it";
+  document.documentElement.lang = currentUserLanguage;
+  T = await loadTranslatedStrings(currentUserLanguage);
+  renderTranslatedStaticText();
+}
+
+
+function esc(v){
+  return String(v ?? "")
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+}
+
+function setStatus(message,type){
+  statusBox.className = "status " + (type || "");
+  statusBox.textContent = message || "";
+}
+
+function fmtBudget(min,max){
+  const f = n => new Intl.NumberFormat(currentUserLanguage === "it" ? "it-IT" : currentUserLanguage, {
+    style:"currency",
+    currency:"EUR",
+    maximumFractionDigits:0
+  }).format(Number(n));
+
+  if(min && max) return f(min) + " - " + f(max);
+  if(min) return T.budget_from + f(min);
+  if(max) return T.budget_to + f(max);
+  return T.budget_not_indicated;
+}
+
+function typeLabel(type){
+  const map = {
+    private:T.type_private,
+    private_investor:T.type_private,
+    family_office:T.type_family_office,
+    real_estate_operator:T.type_real_estate_operator,
+    hospitality_group:T.type_hospitality_group,
+    fund:T.type_fund,
+    advisor:T.type_advisor,
+    other:T.type_other
+  };
+  return map[type] || type || T.type_default;
+}
+
+function statusLabel(status){
+  const map = {
+    active:T.status_active,
+    vip:T.status_vip,
+    inactive:T.status_inactive
+  };
+  return map[status] || status || T.status_active;
+}
+
+function sellerStatusLabel(status){
+  const map = {
+    da_contattare:T.seller_status_da_contattare,
+    in_trattativa:T.seller_status_in_trattativa,
+    mandato_firmato:T.seller_status_mandato_firmato,
+    venduto:T.seller_status_venduto
+  };
+  return map[status] || status || "";
+}
+
+async function checkAuth(){
+  const { data:{ session }, error } = await client.auth.getSession();
+
+  if(error || !session){
+    window.location.href = "login.html";
+    return false;
+  }
+
+  currentUser = session.user;
+  return true;
+}
+
+async function loadProfile(){
+  var result = await client
+    .from("profiles")
+    .select("id,email,full_name,role,language,is_super_user,is_platform_owner")
+    .eq("id", currentUser.id)
+    .single();
+
+  if(result.error){
+    /* Stesso fix delle altre pagine admin: se la colonna "language" non e' stata ancora
+       migrata su Supabase, non trattare l'errore come fatale -- riprova senza quella colonna. */
+    var looksLikeMissingLanguageColumn = /language/i.test(result.error.message || "") || result.error.code === "42703";
+    if(looksLikeMissingLanguageColumn){
+      console.warn("Colonna profiles.language non trovata: esegui la migrazione SQL (alter table profiles add column if not exists language text not null default 'it';). Interfaccia mostrata in italiano nel frattempo.");
+      result = await client.from("profiles").select("id,email,full_name,role,is_super_user,is_platform_owner").eq("id", currentUser.id).single();
+    }
+  }
+
+  if(result.error || !result.data){
+    await applyLanguage("it");
+    setStatus(T.msg_profile_not_found, "error");
+    return false;
+  }
+
+  currentProfile = result.data;
+  await applyLanguage(currentProfile.language || "it");
+
+  /* Colonna "Creato da": visibile SOLO a te (is_platform_owner), per garantire sicurezza e
+     correttezza tra colleghi -- nessun master o collaboratore deve vederla, come richiesto
+     esplicitamente. */
+  isOwner = !!currentProfile.is_platform_owner;
+  isAdmin = currentProfile.role === "admin";
+  if(isOwner){
+    document.getElementById("thAuthorship").style.display = "";
+  }
+
+  /* FIX 25/10/2026: prima questa pagina si bloccava del tutto (nemmeno la query partiva) per
+     chiunque non fosse admin o master (is_super_user) -- quindi anche un collaboratore a cui
+     il suo master aveva esplicitamente concesso accesso ai contatti (immonova_managed_access,
+     resource_key='contacts') veniva comunque respinto qui, PRIMA che quel permesso venisse mai
+     controllato. Ora chiunque sia autenticato puo' aprire la pagina: a decidere QUALI contatti
+     vede davvero ci pensa la RLS sul database (i propri + quelli che gli sono stati estesi),
+     non piu' questo blocco lato pagina. Se non vede nulla, la lista sara' semplicemente vuota. */
+  return true;
+}
+
+async function loadInvestors(){
+  setStatus("", "");
+
+  await loadOpportunitiesForMatch();
+
+  const { data, error } = await client
+    .from("investors")
+    .select("*, investor_categories(category), investor_areas(area), investor_seller_properties(opportunity_id)")
+    .order("created_at", { ascending:false });
+
+  if(error){
+    console.error(error);
+    table.innerHTML = '<tr><td colspan="8" class="empty">'+esc(T.loading_error)+'</td></tr>';
+    setStatus(error.message, "error");
+    return;
+  }
+
+  allInvestors = data || [];
+
+  if(isOwner){
+    await loadAuthorEmails();
+  }
+  if(!isOwner){
+    await loadMyContactsGrants();
+  }
+
+  buildFilters();
+  renderStats();
+  applyFilters();
+}
+
+/* ---- PROBLEMA SEGNALATO 25/10/2026: un collaboratore con accesso in SOLA LETTURA ai contatti
+   di un suo master poteva comunque cliccare "Modifica", scrivere nei campi e provare a salvare
+   -- il salvataggio falliva silenziosamente per via della RLS, ma il pulsante non doveva
+   nemmeno essere cliccabile. Qui si recupera il livello di accesso reale (read/write/both) per
+   ogni master che ha esteso i contatti a questo collaboratore, cosi' da poter mostrare
+   "Modifica" SOLO quando il permesso lo consente davvero. ---- */
+async function loadMyContactsGrants(){
+  const { data, error } = await client
+    .from("immonova_managed_access")
+    .select("manager_id,access")
+    .eq("collaborator_id", currentUser.id)
+    .eq("resource_key", "contacts");
+
+  if(error){
+    console.warn("Caricamento permessi contatti non riuscito (non bloccante):", error.message);
+    return;
+  }
+
+  myContactsGrants = {};
+  (data || []).forEach(row => { myContactsGrants[row.manager_id] = row.access; });
+}
+
+/* Puo' modificare/eliminare un contatto se: e' il proprietario del record, se e' admin/owner,
+   oppure se il master che glielo ha concesso ha scelto "write" o "both" (non solo "read"). */
+function canEditInvestor(inv){
+  /* SOLO is_platform_owner ha il bypass totale -- role="admin" da solo NON basta, altrimenti
+     i 3 account admin non-owner scoperti nell'audit (non master di questi dati) potrebbero
+     modificare contatti altrui senza alcun permesso esplicito. */
+  if(isOwner) return true;
+  if(inv.created_by && String(inv.created_by) === String(currentUser.id)) return true;
+  if(inv.created_by){
+    const access = myContactsGrants[inv.created_by];
+    if(access === "write" || access === "both") return true;
+  }
+  return false;
+}
+
+/* ---- Solo per te (is_platform_owner): recupera email/nome di chi ha creato ogni contatto,
+   cosi' da poter vedere sempre la paternita' reale -- requisito esplicito di sicurezza tra
+   colleghi. Non viene mai esposta a master o collaboratori. ---- */
+async function loadAuthorEmails(){
+  const ids = [...new Set(allInvestors.map(i => i.created_by).filter(Boolean))];
+  if(!ids.length) return;
+
+  const { data, error } = await client
+    .from("profiles")
+    .select("id,email,full_name")
+    .in("id", ids);
+
+  if(error){
+    console.warn("Caricamento paternità contatti non riuscito (non bloccante):", error.message);
+    return;
+  }
+
+  authorEmailsById = {};
+  (data || []).forEach(p => {
+    authorEmailsById[p.id] = p.full_name ? (p.full_name + " (" + p.email + ")") : p.email;
+  });
+}
+
+function buildFilters(){
+  const categories = new Set();
+  const areas = new Set();
+
+  allInvestors.forEach(inv => {
+    (inv.investor_categories || []).forEach(row => {
+      if(row.category) categories.add(row.category);
+    });
+    (inv.investor_areas || []).forEach(row => {
+      if(row.area) areas.add(row.area);
+    });
+  });
+
+  categoryFilter.innerHTML = '<option value="">'+esc(T.filter_all_categories)+'</option>' +
+    [...categories].sort().map(v => '<option value="'+esc(v)+'">'+esc(v)+'</option>').join("");
+
+  areaFilter.innerHTML = '<option value="">'+esc(T.filter_all_areas)+'</option>' +
+    [...areas].sort().map(v => '<option value="'+esc(v)+'">'+esc(v)+'</option>').join("");
+}
+
+function renderStats(){
+  document.getElementById("totalCount").textContent = allInvestors.length;
+  document.getElementById("emailCount").textContent = allInvestors.filter(i => i.email_opt_in).length;
+  document.getElementById("whatsappCount").textContent = allInvestors.filter(i => i.whatsapp_opt_in).length;
+  document.getElementById("vipCount").textContent = allInvestors.filter(i => i.status === "vip" || i.status === "active").length;
+  document.getElementById("sellerCount").textContent = allInvestors.filter(i => i.is_seller).length;
+  document.getElementById("supplierCount").textContent = allInvestors.filter(i => i.is_supplier).length;
+}
+
+function investorSearchText(inv){
+  const categories = (inv.investor_categories || []).map(x => x.category).join(" ");
+  const areas = (inv.investor_areas || []).map(x => x.area).join(" ");
+
+  return [
+    inv.first_name,
+    inv.last_name,
+    inv.company,
+    inv.email,
+    inv.phone,
+    inv.whatsapp,
+    inv.country,
+    inv.city,
+    inv.preferred_language,
+    inv.investor_type,
+    inv.status,
+    inv.seller_status,
+    categories,
+    areas,
+    inv.notes
+  ].join(" ").toLowerCase();
+}
+
+var activeContactTab = "";
+
+function applyFilters(){
+  const query = searchInput.value.trim().toLowerCase();
+  const status = statusFilter.value;
+  const category = categoryFilter.value;
+  const area = areaFilter.value;
+  const channel = channelFilter.value;
+  const clientType = clientTypeFilter.value;
+
+  const filtered = allInvestors.filter(inv => {
+    const matchesSearch = !query || investorSearchText(inv).includes(query);
+    const matchesStatus = !status || inv.status === status;
+
+    const categories = (inv.investor_categories || []).map(x => x.category);
+    const areas = (inv.investor_areas || []).map(x => x.area);
+
+    const matchesCategory = !category || categories.includes(category);
+    const matchesArea = !area || areas.includes(area);
+
+    let matchesChannel = true;
+    if(channel === "email") matchesChannel = !!inv.email_opt_in;
+    if(channel === "whatsapp") matchesChannel = !!inv.whatsapp_opt_in;
+    if(channel === "both") matchesChannel = !!inv.email_opt_in && !!inv.whatsapp_opt_in;
+
+    const isInvestor = inv.is_investor !== false;
+    const isSeller = !!inv.is_seller;
+    const isSupplier = !!inv.is_supplier;
+    let matchesClientType = true;
+    if(clientType === "investor") matchesClientType = isInvestor && !isSeller;
+    if(clientType === "seller") matchesClientType = isSeller && !isInvestor;
+    if(clientType === "both") matchesClientType = isInvestor && isSeller;
+
+    let matchesTab = true;
+    if(activeContactTab === "seller") matchesTab = isSeller;
+    if(activeContactTab === "investor") matchesTab = isInvestor;
+    if(activeContactTab === "supplier") matchesTab = isSupplier;
+
+    return matchesSearch && matchesStatus && matchesCategory && matchesArea && matchesChannel && matchesClientType && matchesTab;
+  });
+
+  renderTable(filtered);
+}
+
+document.querySelectorAll(".contact-tab").forEach(function(btn){
+  btn.addEventListener("click", function(){
+    document.querySelectorAll(".contact-tab").forEach(function(b){ b.classList.remove("active"); });
+    btn.classList.add("active");
+    activeContactTab = btn.getAttribute("data-tab") || "";
+    applyFilters();
+  });
+});
+
+/* ---- Popup con mappa: mostra la/le zone di interesse disegnate per un investitore,
+   cliccando sul badge "Zona su mappa" nella tabella. Sola visualizzazione, nessuna modifica. ---- */
+var areaMapModalMapInstance = null;
+
+function openAreaMapModal(investorId){
+  var inv = allInvestors.find(function(i){ return String(i.id) === String(investorId); });
+  if(!inv || !inv.interest_area_geojson) return;
+
+  var titleEl = document.getElementById("areaMapModalTitle");
+  titleEl.textContent = ((inv.first_name || "") + " " + (inv.last_name || "")).trim() || (T.area_map_badge || "Zona su mappa");
+
+  document.getElementById("areaMapModalOverlay").classList.add("open");
+
+  setTimeout(function(){
+    if(!areaMapModalMapInstance){
+      areaMapModalMapInstance = L.map("areaMapModalMap");
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution: "&copy; OpenStreetMap contributors",
+        maxZoom: 19
+      }).addTo(areaMapModalMapInstance);
+    }else{
+      areaMapModalMapInstance.eachLayer(function(layer){
+        if(layer instanceof L.GeoJSON) areaMapModalMapInstance.removeLayer(layer);
+      });
+    }
+
+    try{
+      var geoLayer = L.geoJSON(inv.interest_area_geojson, {
+        style:{ color:"#a67f34", weight:2, fillOpacity:.18 }
+      }).addTo(areaMapModalMapInstance);
+      areaMapModalMapInstance.invalidateSize();
+      areaMapModalMapInstance.fitBounds(geoLayer.getBounds(), { maxZoom:12 });
+    }catch(e){
+      console.warn("Zona di interesse non valida:", e);
+      areaMapModalMapInstance.setView([41.9, 12.6], 6);
+    }
+  }, 50);
+}
+
+function closeAreaMapModal(){
+  document.getElementById("areaMapModalOverlay").classList.remove("open");
+}
+
+document.addEventListener("keydown", function(e){
+  if(e.key === "Escape") closeAreaMapModal();
+});
+
+function renderBadges(values){
+  if(!values || !values.length){
+    return '<span class="muted">-</span>';
+  }
+
+  return values.map(v => '<span class="badge">'+esc(v)+'</span>').join("");
+}
+
+function renderTable(data){
+  if(!data.length){
+    table.innerHTML = '<tr><td colspan="8" class="empty">'+esc(T.empty_none)+'</td></tr>';
+    return;
+  }
+
+  table.innerHTML = data.map(inv => {
+    const categories = (inv.investor_categories || []).map(x => x.category).filter(Boolean);
+    const areas = (inv.investor_areas || []).map(x => x.area).filter(Boolean);
+    const statusClass = inv.status === "vip" ? "vip" : (inv.status === "inactive" ? "inactive" : "active");
+
+    return `
+      <tr>
+        <td>
+          <div class="name">${esc((inv.first_name || "") + " " + (inv.last_name || ""))}</div>
+          <div class="muted">${esc(inv.company || "")}</div>
+          <span class="badge ${statusClass}">${esc(statusLabel(inv.status))}</span>
+          ${inv.is_investor !== false ? '<span class="badge">'+esc(T.client_type_investor)+'</span>' : ""}
+          ${inv.is_seller ? '<span class="badge">'+esc(T.client_type_seller)+(inv.seller_status ? " · "+esc(sellerStatusLabel(inv.seller_status)) : "")+'</span>' : ""}
+          ${inv.is_supplier ? '<span class="badge">'+esc(T.stat_suppliers)+'</span>' : ""}
+        </td>
+
+        <td>
+          <div>${esc(inv.email || "-")}</div>
+          <div class="muted">${esc(inv.phone || "")}</div>
+          <div class="muted">${inv.whatsapp ? "WA: " + esc(inv.whatsapp) : ""}</div>
+        </td>
+
+        <td>
+          <span class="badge">${esc(typeLabel(inv.investor_type))}</span>
+          <div class="muted">${esc(inv.country || "")}${inv.city ? " · " + esc(inv.city) : ""}</div>
+          <div class="muted">${esc(T.lang_prefix)}${esc((inv.preferred_language || "it").toUpperCase())}</div>
+        </td>
+
+        <td>${esc(fmtBudget(inv.budget_min, inv.budget_max))}</td>
+
+        <td>${renderBadges(areas)}${inv.interest_area_geojson ? '<span class="badge badge-map" title="'+esc(T.area_map_badge_title)+'" onclick="openAreaMapModal(\''+inv.id+'\')">'+esc(T.area_map_badge)+'</span>' : ""}</td>
+
+        <td>${renderBadges(categories)}</td>
+
+        <td>
+          <span class="badge ${inv.email_opt_in ? "optin" : "noopt"}">Email ${inv.email_opt_in ? "OK" : "NO"}</span>
+          <span class="badge ${inv.whatsapp_opt_in ? "optin" : "noopt"}">WA ${inv.whatsapp_opt_in ? "OK" : "NO"}</span>
+        </td>
+
+        ${isOwner ? `<td class="muted">${esc(inv.created_by ? (authorEmailsById[inv.created_by] || inv.created_by) : T.authorship_unknown)}</td>` : ""}
+
+        <td>
+          <div class="actions">
+            ${canEditInvestor(inv)
+              ? `<a href="investor-form.html?id=${encodeURIComponent(inv.id)}">${esc(T.action_edit)}</a>`
+              : `<span class="badge" title="${esc(T.action_readonly_title)}">${esc(T.action_readonly)}</span>`}
+            <a href="mailto:${encodeURIComponent(inv.email || "")}">${esc(T.action_email)}</a>
+            ${inv.whatsapp ? `<a href="https://wa.me/${encodeURIComponent(String(inv.whatsapp).replace(/[^0-9]/g,""))}" target="_blank">${esc(T.action_whatsapp)}</a>` : ""}
+            ${canEditInvestor(inv) ? `<button class="danger" onclick="deleteInvestor('${inv.id}')">${esc(T.action_delete)}</button>` : ""}
+          </div>
+        </td>
+      </tr>
+      ${renderInvestorOpportunityMatches(inv)}
+    `;
+  }).join("");
+}
+
+/* ---- Prima di cancellare, si tiene da parte un riassunto della scheda (nome, tipo cliente,
+   budget, aree, categorie, note) cosi' da poterlo mandare via email allo staff DOPO che la
+   cancellazione e' andata a buon fine -- altrimenti chi non ha ancora visto la richiesta la
+   perde senza sapere che esisteva. Notifica best-effort: se fallisce non blocca nulla, la
+   cancellazione resta comunque valida. ---- */
+window.deleteInvestor = async function(id){
+  if(!confirm(T.confirm_delete_investor)){
+    return;
+  }
+
+  const inv = allInvestors.find(function(i){ return String(i.id) === String(id); });
+
+  setStatus(T.msg_deleting, "");
+
+  const { error } = await client
+    .from("investors")
+    .delete()
+    .eq("id", id);
+
+  if(error){
+    setStatus(error.message, "error");
+    return;
+  }
+
+  setStatus(T.msg_deleted, "success");
+
+  if(inv){
+    notifyDeletedInvestor(inv).catch(function(e){
+      console.warn("Notifica investitore eliminato non riuscita (non bloccante):", e);
+    });
+  }
+
+  await loadInvestors();
+};
+
+async function notifyDeletedInvestor(inv){
+  const categories = (inv.investor_categories || []).map(x => x.category).filter(Boolean);
+  const areas = (inv.investor_areas || []).map(x => x.area).filter(Boolean);
+
+  const result = await client.functions.invoke("notify-deleted-investor", {
+    body:{
+      first_name: inv.first_name,
+      last_name: inv.last_name,
+      is_investor: inv.is_investor !== false,
+      is_seller: !!inv.is_seller,
+      budget_min: inv.budget_min,
+      budget_max: inv.budget_max,
+      areas: areas.join(", "),
+      categories: categories,
+      notes: inv.notes,
+      deleted_by_email: (currentUser && currentUser.email) || ""
+    }
+  });
+
+  if(result.error){
+    console.warn("Notifica investitore eliminato non riuscita (non bloccante):", result.error);
+  }
+}
+
+searchInput.addEventListener("input", applyFilters);
+statusFilter.addEventListener("change", applyFilters);
+categoryFilter.addEventListener("change", applyFilters);
+areaFilter.addEventListener("change", applyFilters);
+channelFilter.addEventListener("change", applyFilters);
+clientTypeFilter.addEventListener("change", applyFilters);
+
+document.getElementById("logoutBtn").addEventListener("click", async () => {
+  await client.auth.signOut();
+  window.location.href = "../index.html";
+});
+
+/* ---- Il link "Capital Partners" è nascosto di default: compare solo se
+   questo utente ha accesso alla sezione riservata (proprietario o admin a
+   cui è stato concesso esplicitamente il permesso). Stesso controllo
+   applicato lato RLS su Supabase, qui serve solo per la UI. ---- */
+async function revealCapitalPartnersLinkIfAllowed(){
+  try{
+    const { data, error } = await client.rpc("has_capital_partners_access");
+    if(!error && data){
+      document.getElementById("capitalPartnersLink").style.display = "";
+    }
+  }catch(e){
+    console.warn("Verifica accesso Capital Partners non riuscita (non bloccante):", e);
+  }
+}
+
+(async function init(){
+  if(await checkAuth()){
+    const ok = await loadProfile();
+    if(ok){
+      await loadInvestors();
+      await revealCapitalPartnersLinkIfAllowed();
+    }
+  }
+})();
+</script>
+</body>
+</html>

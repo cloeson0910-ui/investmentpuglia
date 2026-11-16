@@ -1,0 +1,1609 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<link rel="stylesheet" href="../css/immonova-text-theme.css">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Utenti | IMMONOVA Admin</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:100%;min-height:100%}
+
+body{
+  background:#f4ecdf;
+  font-family:"Avenir Next","Helvetica Neue",Arial,sans-serif;
+  color:var(--c-46371a);
+}
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-2;
+  background:
+    radial-gradient(circle at center,rgba(255,255,255,.72) 0%,rgba(255,255,255,.34) 38%,rgba(244,236,223,.06) 72%),
+    #f4ecdf;
+}
+
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  background:
+    repeating-linear-gradient(60deg,transparent 0 86px,rgba(188,149,78,.23) 87px,transparent 90px),
+    repeating-linear-gradient(-60deg,transparent 0 86px,rgba(188,149,78,.22) 87px,transparent 90px),
+    repeating-linear-gradient(0deg,transparent 0 148px,rgba(188,149,78,.13) 149px,transparent 152px);
+  background-size:230px 199px;
+  opacity:.30;
+}
+
+.header{
+  padding:24px 42px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom:1px solid rgba(166,127,52,.14);
+  background:rgba(244,236,223,.72);
+  backdrop-filter:blur(14px);
+  position:sticky;
+  top:0;
+  z-index:10;
+}
+
+.logo{
+  text-decoration:none;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+}
+
+.logo-svg{
+  width:230px;
+  height:auto;
+  display:block;
+}
+
+.logo-fill{
+  fill:none;
+  stroke:url(#goldGradientHeader);
+  stroke-width:3.2;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+
+.logo-i{
+  fill:url(#goldGradientHeader);
+}
+
+.logo-line{
+  width:78%;
+  height:1px;
+  margin:5px auto 0;
+  background:linear-gradient(to right,transparent,rgba(197,157,72,.78),transparent);
+}
+
+.logo-sub{
+  margin-top:5px;
+  color:var(--c-5b471f);
+  font-size:8px;
+  font-weight:700;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+.header-actions{
+  display:flex;
+  gap:12px;
+  align-items:center;
+  flex-wrap:wrap;
+}
+
+.header-actions a,
+.logout{
+  padding:11px 18px;
+  border:1px solid rgba(166,127,52,.28);
+  background:rgba(255,255,255,.26);
+  cursor:pointer;
+  color:var(--c-5b461d);
+  text-decoration:none;
+  font-size:11px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+}
+
+.header-actions a:hover,
+.logout:hover{
+  background:#a67f34;
+  color:var(--c-ffffff);
+}
+
+.container{
+  max-width:1380px;
+  margin:auto;
+  padding:40px;
+}
+
+.kicker{
+  font-size:11px;
+  letter-spacing:.32em;
+  text-transform:uppercase;
+  color:var(--c-554321);
+  margin-bottom:12px;
+}
+
+.title{
+  font-size:42px;
+  font-weight:200;
+  letter-spacing:.05em;
+  color:var(--c-5b461d);
+  margin-bottom:18px;
+}
+
+.subtitle{
+  font-size:15px;
+  line-height:1.8;
+  color:var(--c-4f4125);
+  max-width:900px;
+  margin-bottom:34px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:420px 1fr;
+  gap:28px;
+}
+
+.panel{
+  background:rgba(255,255,255,.20);
+  backdrop-filter:blur(8px);
+  border:1px solid rgba(166,127,52,.15);
+  box-shadow:0 24px 70px rgba(127,100,48,.07);
+  padding:30px;
+}
+
+.panel-title{
+  font-size:13px;
+  letter-spacing:.24em;
+  text-transform:uppercase;
+  color:var(--c-554321);
+  margin-bottom:22px;
+}
+
+.form{
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+}
+
+.field{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+label{
+  font-size:10px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--c-5b471f);
+}
+
+input,
+select{
+  width:100%;
+  padding:15px 16px;
+  border:1px solid rgba(165,129,57,.25);
+  background:rgba(255,252,244,.35);
+  color:var(--c-46371a);
+  font-size:14px;
+  outline:none;
+  font-family:inherit;
+}
+
+button.primary{
+  margin-top:8px;
+  padding:14px 24px;
+  border:1px solid rgba(165,129,57,.42);
+  background:#a67f34;
+  color:white;
+  text-transform:uppercase;
+  font-size:11px;
+  font-weight:500;
+  letter-spacing:.22em;
+  cursor:pointer;
+}
+
+button.primary:disabled{
+  opacity:.5;
+  cursor:not-allowed;
+}
+
+.status{
+  margin-top:18px;
+  min-height:20px;
+  font-size:13px;
+  line-height:1.6;
+}
+
+.success{color:var(--c-2b4626)}
+.error{color:var(--c-561a1a)}
+
+.table-wrapper{
+  overflow:auto;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  min-width:1340px;
+}
+
+th{
+  text-align:left;
+  padding:16px;
+  font-size:11px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  border-bottom:1px solid rgba(166,127,52,.15);
+  white-space:nowrap;
+}
+
+td{
+  padding:16px;
+  border-bottom:1px solid rgba(166,127,52,.08);
+  vertical-align:middle;
+  font-size:14px;
+  line-height:1.6;
+}
+
+.small-select{
+  padding:10px 12px;
+  font-size:12px;
+}
+
+.small-input{
+  padding:10px 12px;
+  font-size:12px;
+  min-width:150px;
+}
+
+.small-btn{
+  padding:9px 12px;
+  border:1px solid rgba(166,127,52,.25);
+  background:rgba(255,255,255,.25);
+  color:var(--c-5b461d);
+  cursor:pointer;
+  font-size:10px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+
+.badge{
+  display:inline-block;
+  padding:7px 10px;
+  border:1px solid rgba(166,127,52,.25);
+  font-size:10px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--c-5b461d);
+  background:rgba(255,255,255,.22);
+}
+
+.badge.off{
+  color:var(--c-561a1a);
+  border-color:rgba(156,47,47,.35);
+}
+
+.empty{
+  padding:34px;
+  text-align:center;
+  opacity:.7;
+}
+
+.perm-row td{
+  background:rgba(166,127,52,.05);
+  padding:0;
+  border-bottom:1px solid rgba(166,127,52,.15);
+}
+
+.perm-panel{
+  padding:22px 26px 26px;
+  display:none;
+}
+
+.perm-panel.open{
+  display:block;
+}
+
+.perm-cols{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:26px;
+}
+
+.perm-col-title{
+  font-size:11px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--c-554321);
+  margin-bottom:12px;
+}
+
+.perm-section{
+  margin-bottom:14px;
+}
+
+.perm-section-label{
+  font-size:10px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--c-6b5636);
+  opacity:.75;
+  margin-bottom:6px;
+}
+
+.perm-toggle-list{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+
+.perm-toggle{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  padding:7px 11px;
+  border:1px solid rgba(166,127,52,.25);
+  background:rgba(255,255,255,.3);
+  font-size:11px;
+  cursor:pointer;
+  user-select:none;
+}
+
+.perm-toggle input{
+  width:auto;
+}
+
+.perm-toggle.granted{
+  background:#a67f34;
+  color:white;
+  border-color:#a67f34;
+}
+
+.perm-data-row{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:8px 0;
+  border-bottom:1px solid rgba(166,127,52,.08);
+  font-size:12px;
+}
+
+.perm-data-row label{
+  flex:1;
+  font-size:12px;
+  letter-spacing:0;
+  text-transform:none;
+  color:var(--c-46371a);
+}
+
+.perm-data-row select{
+  width:auto;
+  padding:7px 10px;
+  font-size:11px;
+}
+
+.perm-note{
+  font-size:11px;
+  opacity:.7;
+  margin-top:10px;
+  line-height:1.6;
+}
+
+@media(max-width:980px){
+  .grid{
+    grid-template-columns:1fr;
+  }
+
+  .perm-cols{
+    grid-template-columns:1fr;
+  }
+
+  .header{
+    flex-direction:column;
+    gap:18px;
+  }
+
+  .logo{
+    align-items:center;
+  }
+
+  .logo-svg{
+    width:250px;
+  }
+
+  .header-actions{
+    justify-content:center;
+  }
+}
+
+@media(max-width:600px){
+  .container{
+    padding:28px 22px;
+  }
+
+  .title{
+    font-size:34px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+
+<a href="../index.html" class="logo" aria-label="IMMONOVA Home">
+  <svg class="logo-svg" viewBox="0 0 1120 135" xmlns="http://www.w3.org/2000/svg" aria-label="IMMONOVA">
+    <defs>
+      <linearGradient id="goldGradientHeader" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#8f6f2c"/>
+        <stop offset="42%" stop-color="#c79c43"/>
+        <stop offset="58%" stop-color="#f1d27a"/>
+        <stop offset="100%" stop-color="#a77d31"/>
+      </linearGradient>
+    </defs>
+
+    <rect class="logo-i" x="35" y="20" width="5" height="95" rx="2.5"/>
+    <path class="logo-fill" d="M105 115 L105 20 L155 115 L205 20 L205 115" />
+    <path class="logo-fill" d="M265 115 L265 20 L315 115 L365 20 L365 115" />
+    <ellipse class="logo-fill" cx="465" cy="67.5" rx="48" ry="48" />
+    <path class="logo-fill" d="M555 115 L555 20 L635 115 L635 20" />
+    <ellipse class="logo-fill" cx="735" cy="67.5" rx="48" ry="48" />
+    <path class="logo-fill" d="M810 20 L860 115 L910 20" />
+    <path class="logo-fill" d="M915 115 L965 20 L1015 115" />
+  </svg>
+
+  <div class="logo-line"></div>
+  <span class="logo-sub">OFF MARKET • CONSULTING</span>
+</a>
+
+<div class="header-actions">
+  <a href="dashboard.html" data-i18n="nav_dashboard">Dashboard</a>
+  <a href="opportunities.html" data-i18n="nav_opportunities">Proposte</a>
+  <a href="opportunity-form.html" data-i18n="nav_new">Nuova Proposta</a>
+  <button class="logout" id="logoutBtn" data-i18n="logout">Logout</button>
+</div>
+
+</header>
+
+<main class="container">
+
+  <div class="kicker" data-i18n="kicker">Area Admin</div>
+  <h1 class="title" data-i18n="title">Utenti</h1>
+
+  <p class="subtitle" data-i18n="subtitle">
+    Gestisci gli accessi, i ruoli operativi, le pagine e i dati di ogni collaboratore in un unico posto.
+  </p>
+
+  <div class="grid">
+
+    <section class="panel">
+      <div class="panel-title" data-i18n="panel_new_user">Nuovo Utente</div>
+
+      <form class="form" id="userForm">
+
+        <div class="field">
+          <label for="full_name" data-i18n="label_full_name">Nome completo</label>
+          <input type="text" id="full_name" required>
+        </div>
+
+        <div class="field">
+          <label for="email" data-i18n="label_email">Email</label>
+          <input type="email" id="email" required>
+        </div>
+
+        <div class="field">
+          <label for="phone" data-i18n="label_phone">Telefono</label>
+          <input type="text" id="phone">
+        </div>
+
+        <div class="field">
+          <label for="password" data-i18n="label_password">Password temporanea</label>
+          <input type="text" id="password" minlength="6" required>
+        </div>
+
+        <div class="field">
+          <label for="role" data-i18n="label_role">Ruolo accesso</label>
+          <select id="role" required>
+            <option value="user" data-i18n="role_user">User</option>
+            <option value="admin" data-i18n="role_admin">Admin</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="professional_role" data-i18n="label_professional_role">Incarico operativo</label>
+          <select id="professional_role" required></select>
+          <div class="perm-note" data-i18n="note_master_creates_substructure">Scegliendo "Master" questa persona potrà creare e gestire una propria sottostruttura di collaboratori (sarà visibile chiaramente in tabella).</div>
+        </div>
+
+        <div class="field" id="newAgencyNameBlock" style="display:none">
+          <label for="agency_name" data-i18n="label_agency_name">Nome agenzia / struttura</label>
+          <input type="text" id="agency_name" placeholder="Es. Studio Immobiliare Rossi">
+        </div>
+
+        <div class="field" id="belongsToAgencyBlock">
+          <label for="managed_by" data-i18n="label_managed_by">Appartiene alla struttura di</label>
+          <select id="managed_by">
+            <option value="" data-i18n="opt_immonova_direct">IMMONOVA — personale diretto (nessuna struttura)</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="language" data-i18n="label_language">Lingua</label>
+          <select id="language" required>
+            <option value="it">Italiano</option>
+            <option value="en">English</option>
+            <option value="fr">Français</option>
+            <option value="de">Deutsch</option>
+            <option value="es">Español</option>
+            <option value="ar">العربية</option>
+          </select>
+        </div>
+
+        <button type="submit" class="primary" id="createBtn" data-i18n="btn_create">
+          Crea Utente
+        </button>
+
+        <div id="status" class="status"></div>
+
+      </form>
+    </section>
+
+    <section class="panel">
+      <div class="panel-title" data-i18n="panel_existing_users">Utenti Esistenti</div>
+
+      <div class="field" style="max-width:360px;margin-bottom:16px">
+        <label for="superUserFilter" data-i18n="label_super_user_filter">Filtra per Super User</label>
+        <select id="superUserFilter"></select>
+      </div>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th data-i18n="th_name">Nome</th>
+              <th data-i18n="th_email">Email</th>
+              <th data-i18n="th_phone">Telefono</th>
+              <th data-i18n="th_is_super_user">Struttura</th>
+              <th data-i18n="th_agency_name">Agenzia</th>
+              <th data-i18n="th_super_user">Gestito da</th>
+              <th data-i18n="th_access">Accesso</th>
+              <th data-i18n="th_role">Incarico</th>
+              <th data-i18n="th_language">Lingua</th>
+              <th data-i18n="th_status">Stato</th>
+              <th data-i18n="th_password">Password</th>
+              <th data-i18n="th_created">Creato</th>
+              <th data-i18n="th_permissions">Permessi</th>
+              <th data-i18n="th_actions">Azioni</th>
+            </tr>
+          </thead>
+
+          <tbody id="usersTable">
+            <tr>
+              <td colspan="14" class="empty" data-i18n="empty_loading">Caricamento...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </div>
+
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../js/config.js"></script>
+<script src="../js/site-branding.js"></script>
+<script src="../js/page-catalog.js"></script>
+
+<script>
+var client = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_ANON_KEY
+);
+
+var userForm = document.getElementById("userForm");
+var statusBox = document.getElementById("status");
+var createBtn = document.getElementById("createBtn");
+var usersTable = document.getElementById("usersTable");
+var superUserFilter = document.getElementById("superUserFilter");
+
+var currentUser = null;
+var currentProfile = null;
+var currentUserLanguage = "it";
+var allUsersData = [];
+var superUserFilterValue = "";
+var professionalRoles = [];
+
+/* ---- Catalogo delle PAGINE che si possono concedere da qui: ora vive in un unico file
+   condiviso (../js/page-catalog.js, incluso sopra come <script>) insieme a dashboard.html, cosi'
+   le due pagine non possono piu' disallinearsi (vedi commento nel file per il perche'). ---- */
+
+/* ---- Catalogo delle RISORSE DATI concedibili per utente specifico (immonova_managed_access,
+   resource_key). Queste sono le categorie che Claudio ha chiesto: notizie, note vocali,
+   valutazioni, acquisizioni, documenti, contatti, investitori. Le richieste (lead dal sito)
+   NON sono qui apposta: restano visibili a tutti per policy, non sono un permesso
+   concedibile singolarmente. ---- */
+var DATA_RESOURCE_CATALOG = [
+  {key:"contacts", label:"Contatti / Investitori"},
+  {key:"documents", label:"Documenti"},
+  {key:"valuations", label:"Valutazioni"},
+  {key:"notes", label:"Notizie / Note vocali"},
+  {key:"acquisitions", label:"Acquisizioni"},
+  {key:"reports", label:"Dossier Immobili"}
+];
+
+var ACCESS_LEVELS = [
+  {value:"", label:"Nessuno"},
+  {value:"read", label:"Sola lettura"},
+  {value:"write", label:"Lettura e scrittura"},
+  {value:"both", label:"Lettura e scrittura"}
+];
+
+/* ---- i18n: dizionario delle stringhe statiche italiane di questa pagina. Vedi
+   /js/i18n.js (da estrarre in futuro in un file condiviso) per riusare lo stesso
+   meccanismo sulle altre pagine admin: basta includere lo script, definire il proprio
+   UI_STRINGS con le stringhe della pagina, marcare gli elementi statici con
+   data-i18n="chiave", e chiamare initI18nAndAuth() al posto di checkAuth() diretto. ---- */
+var UI_STRINGS = {
+  nav_dashboard: "Dashboard",
+  nav_opportunities: "Proposte",
+  nav_new: "Nuova Proposta",
+  logout: "Logout",
+  kicker: "Area Admin",
+  title: "Utenti",
+  subtitle: "Gestisci gli accessi, i ruoli operativi, le pagine e i dati di ogni collaboratore in un unico posto.",
+  panel_new_user: "Nuovo Utente",
+  label_full_name: "Nome completo",
+  label_email: "Email",
+  label_phone: "Telefono",
+  label_password: "Password temporanea",
+  label_role: "Ruolo accesso",
+  label_is_super_user: "È un Super User (gestisce un'agenzia partner esterna)",
+  label_agency_name: "Nome agenzia",
+  label_managed_by: "Agenzia di appartenenza",
+  opt_immonova_direct: "IMMONOVA — personale diretto (nessuna agenzia)",
+  label_professional_role: "Incarico operativo",
+  opt_add_new_role: "+ Aggiungi nuova posizione...",
+  label_language: "Lingua",
+  role_user: "User",
+  role_admin: "Admin",
+  btn_create: "Crea Utente",
+  btn_creating: "Creazione...",
+  panel_existing_users: "Utenti Esistenti",
+  label_super_user_filter: "Filtra per Super User",
+  th_super_user: "Super User",
+  filter_all_super_users: "Tutti",
+  filter_no_super_user: "Senza Super User assegnato",
+  opt_no_super_user: "Nessuno",
+  th_is_super_user: "Struttura",
+  th_agency_name: "Agenzia",
+  opt_is_super_user: "Sì, Super User",
+  opt_not_super_user: "No",
+  th_name: "Nome",
+  th_email: "Email",
+  th_phone: "Telefono",
+  th_access: "Accesso",
+  th_role: "Incarico",
+  th_language: "Lingua",
+  th_status: "Stato",
+  th_password: "Password",
+  th_created: "Creato",
+  th_permissions: "Permessi",
+  th_actions: "Azioni",
+  btn_delete: "Elimina",
+  btn_permissions: "Pagine e Dati",
+  perm_col_pages: "Pagine concesse",
+  perm_col_data: "Dati concessi",
+  perm_note: "Puoi concedere solo le pagine e i dati che possiedi tu stesso, solo ai tuoi collaboratori diretti. Le modifiche si salvano subito, una per una.",
+  confirm_delete_user: "Vuoi eliminare definitivamente l'accesso di",
+  msg_deleting: "Eliminazione in corso...",
+  msg_deleted: "Utente eliminato correttamente.",
+  msg_delete_error: "Errore durante l'eliminazione dell'utente.",
+  msg_email_update_error: "Errore durante l'aggiornamento dell'email.",
+  status_active: "Attivo",
+  status_inactive: "Non attivo",
+  btn_reset: "Reset",
+  empty_loading: "Caricamento...",
+  empty_error: "Errore nel caricamento utenti.",
+  empty_none: "Nessun utente presente.",
+  msg_creating: "Creazione utente in corso...",
+  msg_created: "Utente creato correttamente.",
+  msg_created_email_ok: "Utente creato correttamente. Email con le credenziali inviata.",
+  msg_created_email_fail: "Utente creato correttamente, ma l'invio della mail con le credenziali è fallito: ",
+  msg_updating: "Aggiornamento utente...",
+  msg_updated: "Utente aggiornato correttamente.",
+  msg_reset_progress: "Reset password in corso...",
+  msg_reset_done: "Password aggiornata correttamente.",
+  msg_password_len: "La password deve avere almeno 6 caratteri.",
+  msg_create_error: "Errore durante la creazione utente.",
+  msg_reset_error: "Errore durante il reset password.",
+  msg_translate_error: "Traduzione non disponibile al momento: interfaccia mostrata in italiano.",
+  prompt_new_password: "Inserisci nuova password temporanea per ",
+  prompt_new_role_label: "Nome della nuova posizione (es. Architetto, Geometra...)"
+};
+
+var LANGUAGE_LABELS = { it:"Italiano", en:"English", fr:"Français", de:"Deutsch", es:"Español", ar:"العربية" };
+
+/* T contiene sempre le stringhe da usare per RENDERIZZARE (italiano finché la traduzione
+   non è pronta, poi sostituito con la versione tradotta). Le funzioni che costruiscono
+   HTML dinamico (tabella utenti, messaggi di stato, prompt) leggono sempre da T, mai
+   direttamente da UI_STRINGS, così quando la traduzione arriva basta richiamare
+   renderTranslatedStaticText() + loadUsers() per aggiornare tutto. */
+var T = UI_STRINGS;
+
+function i18nCacheKey(lang){
+  return "immonova_i18n_" + lang + "_v1";
+}
+
+async function loadTranslatedStrings(lang){
+  if(lang === "it") return UI_STRINGS;
+
+  var cacheKey = i18nCacheKey(lang);
+  try{
+    var cached = localStorage.getItem(cacheKey);
+    if(cached){
+      var parsed = JSON.parse(cached);
+      if(parsed && typeof parsed === "object") return parsed;
+    }
+  }catch(e){}
+
+  var keys = Object.keys(UI_STRINGS);
+  var texts = keys.map(function(k){ return UI_STRINGS[k]; });
+
+  var result = await client.functions.invoke("translate-public-content", {
+    body:{
+      language: lang,
+      source_language: "it",
+      context: "IMMONOVA luxury real estate investment website. This is the admin panel for managing user accounts (labels, table headers, buttons, status messages).",
+      texts: texts
+    }
+  });
+
+  if(result.error || !result.data || !result.data.success || !Array.isArray(result.data.translations)){
+    console.error("Traduzione non riuscita, uso italiano come fallback:", result.error || result.data);
+    return UI_STRINGS;
+  }
+
+  var translations = result.data.translations;
+  var translated = {};
+  keys.forEach(function(k, i){ translated[k] = translations[i] != null ? translations[i] : UI_STRINGS[k]; });
+
+  try{ localStorage.setItem(cacheKey, JSON.stringify(translated)); }catch(e){}
+
+  return translated;
+}
+
+function renderTranslatedStaticText(){
+  var nodes = document.querySelectorAll("[data-i18n]");
+  nodes.forEach(function(el){
+    var key = el.getAttribute("data-i18n");
+    if(!T[key]) return;
+    if(el.tagName === "OPTION" || el.tagName === "BUTTON" || el.tagName === "LABEL" || el.tagName === "A" || el.tagName === "TH" || el.tagName === "TD"){
+      el.textContent = T[key];
+    }else{
+      el.textContent = T[key];
+    }
+  });
+}
+
+async function applyLanguage(lang){
+  currentUserLanguage = lang || "it";
+  document.documentElement.lang = currentUserLanguage;
+  T = await loadTranslatedStrings(currentUserLanguage);
+  renderTranslatedStaticText();
+}
+
+function escapeHTML(value){
+  return String(value === null || value === undefined ? "" : value)
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+}
+
+function setStatus(message, type){
+  statusBox.className = "status " + (type || "");
+  statusBox.textContent = message || "";
+}
+
+/* CRUCIALE: quando una edge function risponde con un codice HTTP non-2xx (es. 400),
+   supabase-js NON mette il corpo JSON della risposta in result.data -- lo lascia null, e
+   result.error è un oggetto generico (FunctionsHttpError) il cui .message è sempre il testo
+   fisso "Edge Function returned a non-2xx status code", MAI il messaggio vero scritto dalla
+   funzione. Il corpo JSON vero è raggiungibile SOLO leggendo error.context, che è l'oggetto
+   Response grezzo della fetch sottostante -- va letto e parsato a parte. Senza questo, il
+   messaggio di errore reale resta invisibile per sempre, qualunque cosa si guardi nella
+   tab Network del browser. */
+async function extractEdgeFunctionErrorMessage(result, fallback){
+  if(result.data && result.data.message){
+    return result.data.message;
+  }
+  if(result.error && result.error.context && typeof result.error.context.json === "function"){
+    try{
+      var body = await result.error.context.clone().json();
+      if(body && body.message) return body.message;
+    }catch(e){}
+    try{
+      var text = await result.error.context.clone().text();
+      if(text) return text;
+    }catch(e){}
+  }
+  if(result.error && result.error.message){
+    return result.error.message;
+  }
+  return fallback;
+}
+
+function formatDate(value){
+  if(!value){
+    return "";
+  }
+
+  return new Date(value).toLocaleDateString(currentUserLanguage === "it" ? "it-IT" : currentUserLanguage, {
+    day:"2-digit",
+    month:"2-digit",
+    year:"numeric"
+  });
+}
+
+async function checkAuth(){
+  var result = await client.auth.getSession();
+
+  if(result.error || !result.data.session){
+    window.location.href = "login.html";
+    return false;
+  }
+
+  currentUser = result.data.session.user;
+  return true;
+}
+
+async function checkAdmin(){
+  var result = await client
+    .from("profiles")
+    .select("id,role,language,is_super_user,is_platform_owner")
+    .eq("id", currentUser.id)
+    .single();
+
+  if(result.error || !result.data || result.data.role !== "admin"){
+    window.location.href = "dashboard.html";
+    return false;
+  }
+
+  currentProfile = result.data;
+
+  await applyLanguage(result.data.language || "it");
+
+  return true;
+}
+
+function languageOptionsHTML(selected){
+  var out = "";
+  Object.keys(LANGUAGE_LABELS).forEach(function(code){
+    out += '<option value="' + code + '" ' + (selected === code ? "selected" : "") + '>' + LANGUAGE_LABELS[code] + '</option>';
+  });
+  return out;
+}
+
+/* ---- Posizioni professionali: caricate da immonova_professional_roles, non piu'
+   hardcoded. "+ Aggiungi nuova posizione..." in fondo al menu permette di crearne una
+   nuova al volo, senza mai dover toccare il codice di questa pagina. ---- */
+async function loadProfessionalRoles(){
+  var result = await client
+    .from("immonova_professional_roles")
+    .select("key,label")
+    .order("label", { ascending:true });
+
+  if(!result.error && Array.isArray(result.data)){
+    professionalRoles = result.data;
+  }else{
+    professionalRoles = [
+      {key:"collaboratore", label:"Collaboratore"},
+      {key:"segnalatore", label:"Segnalatore"},
+      {key:"tecnico", label:"Tecnico"}
+    ];
+  }
+}
+
+function professionalRoleOptionsHTML(selected){
+  var out = "";
+  professionalRoles.forEach(function(r){
+    out += '<option value="' + escapeHTML(r.key) + '" ' + (selected === r.key ? "selected" : "") + '>' + escapeHTML(r.label) + '</option>';
+  });
+  out += '<option value="__new__" data-i18n="opt_add_new_role">' + escapeHTML(T.opt_add_new_role) + '</option>';
+  return out;
+}
+
+function renderProfessionalRoleSelect(){
+  var select = document.getElementById("professional_role");
+  var currentValue = select.value;
+  select.innerHTML = professionalRoleOptionsHTML(currentValue);
+  if(currentValue && currentValue !== "__new__") select.value = currentValue;
+}
+
+/* ---- Gestisce la creazione al volo di una nuova posizione da QUALSIASI select di
+   incarico operativo (sia nel form "Nuovo Utente" sia nelle righe della tabella). Se
+   l'utente sceglie "+ Aggiungi nuova posizione...", chiede il nome, la salva nel database
+   e la seleziona subito -- cosi' e' disponibile ovunque da quel momento in poi. ---- */
+async function handleProfessionalRoleChange(selectEl, onResolved){
+  if(selectEl.value !== "__new__"){
+    onResolved(selectEl.value);
+    return;
+  }
+
+  var label = prompt(T.prompt_new_role_label);
+  if(!label || !label.trim()){
+    selectEl.value = professionalRoles[0] ? professionalRoles[0].key : "";
+    return;
+  }
+
+  var key = label.trim().toLowerCase()
+    .normalize("NFD").replace(/[̀-ͯ]/g, "")
+    .replace(/[^a-z0-9]+/g, "_").replace(/^_+|_+$/g, "");
+
+  var insertResult = await client
+    .from("immonova_professional_roles")
+    .insert({ key:key, label:label.trim(), created_by:currentUser.id })
+    .select()
+    .single();
+
+  if(insertResult.error){
+    alert("Non sono riuscito a creare la posizione: " + insertResult.error.message);
+    selectEl.value = professionalRoles[0] ? professionalRoles[0].key : "";
+    return;
+  }
+
+  await loadProfessionalRoles();
+  document.querySelectorAll(".professional-role-select").forEach(function(el){
+    var val = el.getAttribute("data-value") || "";
+    el.innerHTML = professionalRoleOptionsHTML(val);
+  });
+  renderProfessionalRoleSelect();
+
+  var newSelect = document.getElementById("professional_role");
+  if(newSelect) newSelect.value = key;
+
+  onResolved(key);
+}
+
+async function loadUsers(){
+  var result = await client
+    .from("profiles")
+    .select("id,email,full_name,phone,role,professional_role,language,active,created_at,is_super_user,managed_by,agency_name")
+    .order("created_at", { ascending:false });
+
+  if(result.error){
+    // Colonna is_super_user/managed_by/agency_name non ancora presente (SQL non eseguita):
+    // riprova senza, cosi' la pagina resta comunque utilizzabile finche' non esegui la migrazione.
+    if(result.error.code === "42703"){
+      result = await client
+        .from("profiles")
+        .select("id,email,full_name,phone,role,professional_role,language,active,created_at")
+        .order("created_at", { ascending:false });
+    }
+  }
+
+  if(result.error){
+    usersTable.innerHTML = '<tr><td colspan="14" class="empty">' + escapeHTML(T.empty_error) + '</td></tr>';
+    return;
+  }
+
+  allUsersData = result.data || [];
+  renderSuperUserFilterOptions();
+  renderUsersTable();
+  populateAgencySelect();
+}
+
+/* ---- Etichetta di un'agenzia (= un super user): usa il nome agenzia se impostato,
+   altrimenti ripiega sul nome/email della persona -- cosi' resta sempre leggibile anche
+   per le agenzie create prima che il campo agency_name esistesse. ---- */
+function agencyLabel(su){
+  return su.agency_name || su.full_name || su.email || su.id;
+}
+
+/* ---- Quanti collaboratori diretti ha una persona nella propria sottostruttura
+   (managed_by punta a lei). Usato per il badge MASTER in tabella, cosi' si vede subito
+   "chi è master di chi" senza dover aprire il filtro. ---- */
+function countDirectReports(userId){
+  var count = 0;
+  allUsersData.forEach(function(u){ if(u.managed_by === userId) count++; });
+  return count;
+}
+
+/* ---- Popola il filtro "Filtra per Super User" con la lista dei super user esistenti,
+   ognuno con il conteggio di quanti collaboratori gestisce -- cosi' si vede subito chi
+   gestisce quanti utenti, senza doverli contare a mano riga per riga. ---- */
+function renderSuperUserFilterOptions(){
+  var superUsers = allUsersData.filter(function(u){ return !!u.is_super_user; });
+
+  var countByManager = {};
+  allUsersData.forEach(function(u){
+    if(u.managed_by) countByManager[u.managed_by] = (countByManager[u.managed_by] || 0) + 1;
+  });
+
+  var options = '<option value="">' + escapeHTML(T.filter_all_super_users) + '</option>';
+  superUsers.forEach(function(su){
+    var count = countByManager[su.id] || 0;
+    var label = agencyLabel(su) + " (" + count + ")";
+    options += '<option value="' + su.id + '" ' + (superUserFilterValue === su.id ? "selected" : "") + '>' + escapeHTML(label) + '</option>';
+  });
+  options += '<option value="__none__" ' + (superUserFilterValue === "__none__" ? "selected" : "") + '>' + escapeHTML(T.filter_no_super_user) + '</option>';
+
+  superUserFilter.innerHTML = options;
+}
+
+/* ---- Popola il menu "Agenzia di appartenenza" nel form di creazione nuovo utente, con
+   l'elenco delle agenzie (super user) già esistenti -- cosi' si assegna subito il
+   collaboratore alla sua agenzia invece di doverlo fare dopo dalla tabella qui sotto. ---- */
+function populateAgencySelect(){
+  var select = document.getElementById("managed_by");
+  if(!select) return;
+
+  var superUsers = allUsersData.filter(function(u){ return !!u.is_super_user; });
+  var currentValue = select.value;
+
+  var options = '<option value="" data-i18n="opt_immonova_direct">' + escapeHTML(T.opt_immonova_direct) + '</option>';
+  superUsers.forEach(function(su){
+    options += '<option value="' + su.id + '">' + escapeHTML(agencyLabel(su)) + '</option>';
+  });
+
+  select.innerHTML = options;
+  select.value = currentValue;
+}
+
+function superUserOptionsHTML(user){
+  var superUsers = allUsersData.filter(function(u){ return !!u.is_super_user && u.id !== user.id; });
+  var out = '<option value="">' + escapeHTML(T.opt_no_super_user) + '</option>';
+  superUsers.forEach(function(su){
+    var label = agencyLabel(su);
+    out += '<option value="' + su.id + '" ' + (user.managed_by === su.id ? "selected" : "") + '>' + escapeHTML(label) + '</option>';
+  });
+  return out;
+}
+
+function renderUsersTable(){
+  var data = allUsersData.filter(function(u){
+    if(!superUserFilterValue) return true;
+    if(superUserFilterValue === "__none__") return !u.managed_by;
+    return u.managed_by === superUserFilterValue;
+  });
+
+  if(data.length === 0){
+    usersTable.innerHTML = '<tr><td colspan="14" class="empty">' + escapeHTML(T.empty_none) + '</td></tr>';
+    return;
+  }
+
+  var html = "";
+
+  for(var i = 0; i < data.length; i++){
+    var user = data[i];
+
+    html += `
+      <tr>
+        <td>
+          <input
+            class="small-input"
+            type="text"
+            value="${escapeHTML(user.full_name || "")}"
+            onchange="updateUserField('${user.id}', 'full_name', this.value)"
+          >
+        </td>
+
+        <td>
+          <input
+            class="small-input"
+            type="email"
+            value="${escapeHTML(user.email || "")}"
+            onchange="updateUserEmail('${user.id}', this.value, this)"
+          >
+        </td>
+
+        <td>
+          <input
+            class="small-input"
+            type="text"
+            value="${escapeHTML(user.phone || "")}"
+            onchange="updateUserField('${user.id}', 'phone', this.value)"
+          >
+        </td>
+
+        <td>
+          ${user.is_super_user
+            ? `<span class="badge">MASTER · ${countDirectReports(user.id)} collab.</span>`
+            : `<span style="opacity:.45">—</span>`
+          }
+        </td>
+
+        <td>
+          ${user.is_super_user
+            ? `<input class="small-input" type="text" value="${escapeHTML(user.agency_name || "")}" placeholder="${escapeHTML(T.label_agency_name)}" onchange="updateUserField('${user.id}', 'agency_name', this.value)">`
+            : `<span style="opacity:.45">—</span>`
+          }
+        </td>
+
+        <td>
+          <select class="small-select" onchange="updateUserManagedBy('${user.id}', this.value)" ${user.is_super_user ? "disabled" : ""}>
+            ${superUserOptionsHTML(user)}
+          </select>
+        </td>
+
+        <td>
+          <select class="small-select" onchange="updateUserField('${user.id}', 'role', this.value)" ${user.id === currentUser.id ? "disabled" : ""}>
+            <option value="user" ${user.role === "user" ? "selected" : ""}>${escapeHTML(T.role_user)}</option>
+            <option value="admin" ${user.role === "admin" ? "selected" : ""}>${escapeHTML(T.role_admin)}</option>
+          </select>
+        </td>
+
+        <td>
+          <select class="small-select professional-role-select" data-value="${escapeHTML(user.professional_role || "")}" onchange="handleProfessionalRoleChange(this, function(key){ updateUserRoleAndStructure('${user.id}', key); })">
+            ${professionalRoleOptionsHTML(user.professional_role)}
+          </select>
+        </td>
+
+        <td>
+          <select class="small-select" onchange="updateUserField('${user.id}', 'language', this.value)">
+            ${languageOptionsHTML(user.language || "it")}
+          </select>
+        </td>
+
+        <td>
+          <select class="small-select" onchange="updateUserField('${user.id}', 'active', this.value === 'true')" ${user.id === currentUser.id ? "disabled" : ""}>
+            <option value="true" ${user.active !== false ? "selected" : ""}>${escapeHTML(T.status_active)}</option>
+            <option value="false" ${user.active === false ? "selected" : ""}>${escapeHTML(T.status_inactive)}</option>
+          </select>
+        </td>
+
+        <td>
+          <button class="small-btn" onclick="resetPassword('${user.id}', '${escapeHTML(user.email || "")}')">
+            ${escapeHTML(T.btn_reset)}
+          </button>
+        </td>
+
+        <td>${formatDate(user.created_at)}</td>
+
+        <td>
+          <button class="small-btn" onclick="togglePermissionsPanel('${user.id}')">
+            ${escapeHTML(T.btn_permissions)}
+          </button>
+        </td>
+
+        <td>
+          <button class="small-btn" onclick="deleteUser('${user.id}', '${escapeHTML(user.full_name || user.email || "")}')" ${user.id === currentUser.id ? "disabled" : ""}>
+            ${escapeHTML(T.btn_delete)}
+          </button>
+        </td>
+      </tr>
+      <tr class="perm-row" id="permRow_${user.id}">
+        <td colspan="14">
+          <div class="perm-panel" id="permPanel_${user.id}"></div>
+        </td>
+      </tr>
+    `;
+  }
+
+  usersTable.innerHTML = html;
+}
+
+async function updateUserField(userId, field, value){
+  setStatus(T.msg_updating, "");
+
+  var updateData = {};
+  updateData[field] = value;
+
+  var result = await client
+    .from("profiles")
+    .update(updateData)
+    .eq("id", userId);
+
+  if(result.error){
+    setStatus(result.error.message, "error");
+    alert("SALVATAGGIO NON RIUSCITO (" + field + "): " + result.error.message);
+    await loadUsers();
+    return;
+  }
+
+  setStatus(T.msg_updated, "success");
+
+  /* Se l'admin ha appena cambiato la PROPRIA lingua da questa tabella, la UI corrente
+     si ritraduce subito invece di aspettare un refresh di pagina. */
+  if(field === "language" && userId === currentUser.id){
+    await applyLanguage(value);
+  }
+
+  await loadUsers();
+}
+
+/* ---- Assegna/cambia il super user che gestisce questo utente (profiles.managed_by).
+   Il valore vuoto ("Nessuno") va salvato come null, non come stringa vuota. ---- */
+async function updateUserManagedBy(userId, value){
+  await updateUserField(userId, "managed_by", value || null);
+}
+
+/* ---- Cambiando l'incarico operativo di una riga esistente, se diventa (o smette di
+   essere) "Master" aggiorna anche is_super_user di conseguenza -- cosi' la sottostruttura
+   si attiva/disattiva sempre insieme all'incarico, senza un secondo passaggio separato. ---- */
+async function updateUserRoleAndStructure(userId, newRole){
+  var wasMaster = false;
+  allUsersData.forEach(function(u){ if(u.id === userId) wasMaster = !!u.is_super_user; });
+  var willBeMaster = newRole === "master";
+
+  setStatus(T.msg_updating, "");
+  var result = await client.from("profiles").update({
+    professional_role: newRole,
+    is_super_user: willBeMaster
+  }).eq("id", userId);
+
+  if(result.error){
+    setStatus(result.error.message, "error");
+    alert("SALVATAGGIO NON RIUSCITO: " + result.error.message);
+    await loadUsers();
+    return;
+  }
+
+  if(wasMaster && !willBeMaster){
+    alert("Attenzione: questa persona non è più Master. Se aveva collaboratori nella propria struttura, controlla la colonna \"Appartiene alla struttura di\" dei suoi ex-collaboratori -- restano assegnati a lei finché non li riassegni tu.");
+  }
+
+  setStatus(T.msg_updated, "success");
+  await loadUsers();
+}
+
+async function updateUserEmail(userId, newEmail, inputEl){
+  setStatus(T.msg_updating, "");
+
+  var result = await client.functions.invoke("update-user-email", {
+    body:{
+      user_id:userId,
+      new_email:newEmail
+    }
+  });
+
+  if(result.error || !result.data || !result.data.success){
+    var message = await extractEdgeFunctionErrorMessage(result, T.msg_email_update_error);
+    setStatus(message, "error");
+    alert("SALVATAGGIO EMAIL NON RIUSCITO: " + message);
+    await loadUsers();
+    return;
+  }
+
+  setStatus(T.msg_updated, "success");
+  await loadUsers();
+}
+
+async function deleteUser(userId, label){
+  var confirmed = confirm(T.confirm_delete_user + " " + label + "?");
+
+  if(!confirmed){
+    return;
+  }
+
+  setStatus(T.msg_deleting, "");
+
+  var result = await client.functions.invoke("delete-user", {
+    body:{
+      user_id:userId
+    }
+  });
+
+  if(result.error || !result.data || !result.data.success){
+    var message = await extractEdgeFunctionErrorMessage(result, T.msg_delete_error);
+    setStatus(message, "error");
+    alert("ELIMINAZIONE NON RIUSCITA: " + message);
+    return;
+  }
+
+  setStatus(T.msg_deleted, "success");
+  await loadUsers();
+}
+
+async function resetPassword(userId, email){
+  var newPassword = prompt(T.prompt_new_password + email);
+
+  if(!newPassword){
+    return;
+  }
+
+  if(newPassword.length < 6){
+    setStatus(T.msg_password_len, "error");
+    return;
+  }
+
+  setStatus(T.msg_reset_progress, "");
+
+  var result = await client.functions.invoke("reset-user-password", {
+    body:{
+      user_id:userId,
+      password:newPassword
+    }
+  });
+
+  if(result.error || !result.data || !result.data.success){
+    var message = await extractEdgeFunctionErrorMessage(result, T.msg_reset_error);
+    setStatus(message, "error");
+    return;
+  }
+
+  setStatus(T.msg_reset_done, "success");
+}
+
+/* =====================================================================================
+   PANNELLO PERMESSI PER RIGA -- sostituisce permissions.html e page-access.html: tutto
+   qui, nella riga del collaboratore. Due colonne: Pagine (immonova_page_grants) e Dati
+   (immonova_managed_access). Chi guarda puo' concedere SOLO cio' che possiede lui stesso
+   (le pagine/i tipi di dato marcati "posseduti" sotto), e SOLO ai propri diretti
+   sotto-collaboratori -- la stessa regola gia' imposta lato server dalle policy RLS, qui
+   replicata anche in UI cosi' non si vedono controlli che poi il server rifiuterebbe.
+   ===================================================================================== */
+var openPermUserId = null;
+var myOwnedPages = null;      // Set di page_key che IO possiedo (null finche' non caricato)
+var myOwnedDataGrants = null; // { resource_key: access } che IO possiedo come dato MIO
+
+async function loadMyOwnedPages(){
+  if(myOwnedPages) return myOwnedPages;
+  /* FIX 25/10/2026: il bypass "vedo/possiedo tutte le pagine" deve scattare SOLO per
+     is_platform_owner (tu, e solo tu) -- non per role="admin", perche' esistono altri account
+     con role="admin" che non sono te e NON devono poter concedere pagine che non possiedono
+     davvero. Prima questo controllo usava role="admin", quindi un account non-admin (anche se
+     per errore flaggato is_platform_owner) non vedeva l'elenco completo, mentre un account
+     admin-ma-non-owner lo avrebbe visto per sbaglio: entrambi i casi sono ora corretti. */
+  if(currentProfile && currentProfile.is_platform_owner){
+    myOwnedPages = new Set(PAGE_CATALOG.map(function(p){ return p.key; }));
+    return myOwnedPages;
+  }
+  var result = await client.from("immonova_page_grants").select("page_key").eq("user_id", currentUser.id);
+  myOwnedPages = new Set((!result.error && result.data) ? result.data.map(function(r){ return r.page_key; }) : []);
+  return myOwnedPages;
+}
+
+async function togglePermissionsPanel(userId){
+  var panel = document.getElementById("permPanel_" + userId);
+  if(!panel) return;
+
+  if(openPermUserId === userId){
+    panel.classList.remove("open");
+    panel.innerHTML = "";
+    openPermUserId = null;
+    return;
+  }
+
+  // Chiude un eventuale pannello gia' aperto su un'altra riga.
+  if(openPermUserId){
+    var prevPanel = document.getElementById("permPanel_" + openPermUserId);
+    if(prevPanel){ prevPanel.classList.remove("open"); prevPanel.innerHTML = ""; }
+  }
+
+  openPermUserId = userId;
+  panel.classList.add("open");
+  panel.innerHTML = '<div class="perm-note">Caricamento permessi...</div>';
+
+  await loadMyOwnedPages();
+
+  var pagesResult = await client.from("immonova_page_grants").select("page_key").eq("user_id", userId);
+  var grantedPages = new Set((!pagesResult.error && pagesResult.data) ? pagesResult.data.map(function(r){ return r.page_key; }) : []);
+
+  var dataResult = await client.from("immonova_managed_access").select("resource_key,access").eq("manager_id", currentUser.id).eq("collaborator_id", userId);
+  var grantedData = {};
+  if(!dataResult.error && dataResult.data){
+    dataResult.data.forEach(function(r){ grantedData[r.resource_key] = r.access; });
+  }
+
+  renderPermissionsPanel(panel, userId, grantedPages, grantedData);
+}
+
+function renderPermissionsPanel(panel, userId, grantedPages, grantedData){
+  var bySection = {};
+  PAGE_CATALOG.forEach(function(p){
+    if(!bySection[p.section]) bySection[p.section] = [];
+    bySection[p.section].push(p);
+  });
+
+  var pagesHTML = "";
+  Object.keys(bySection).forEach(function(section){
+    pagesHTML += '<div class="perm-section"><div class="perm-section-label">' + escapeHTML(section) + '</div><div class="perm-toggle-list">';
+    bySection[section].forEach(function(p){
+      var owned = myOwnedPages.has(p.key);
+      var granted = grantedPages.has(p.key);
+      pagesHTML += '<label class="perm-toggle ' + (granted ? "granted" : "") + '" style="' + (owned ? "" : "opacity:.35;cursor:not-allowed") + '">'
+        + '<input type="checkbox" ' + (granted ? "checked" : "") + ' ' + (owned ? "" : "disabled")
+        + ' onchange="togglePageGrant(\'' + userId + '\', \'' + p.key + '\', this.checked)"> '
+        + escapeHTML(p.label) + '</label>';
+    });
+    pagesHTML += '</div></div>';
+  });
+
+  var dataHTML = "";
+  DATA_RESOURCE_CATALOG.forEach(function(r){
+    var current = grantedData[r.key] || "";
+    dataHTML += '<div class="perm-data-row"><label>' + escapeHTML(r.label) + '</label>'
+      + '<select onchange="updateDataGrant(\'' + userId + '\', \'' + r.key + '\', this.value)">'
+      + ['', 'read', 'both'].map(function(level){
+          var levelLabel = level === "" ? "Nessuno" : (level === "read" ? "Sola lettura" : "Lettura e scrittura");
+          return '<option value="' + level + '" ' + (current === level ? "selected" : "") + '>' + escapeHTML(levelLabel) + '</option>';
+        }).join("")
+      + '</select></div>';
+  });
+
+  panel.innerHTML = '<div class="perm-cols">'
+    + '<div><div class="perm-col-title">' + escapeHTML(T.perm_col_pages) + '</div>' + pagesHTML + '</div>'
+    + '<div><div class="perm-col-title">' + escapeHTML(T.perm_col_data) + '</div>' + dataHTML + '</div>'
+    + '</div>'
+    + '<div class="perm-note">' + escapeHTML(T.perm_note) + '</div>';
+}
+
+async function togglePageGrant(userId, pageKey, checked){
+  if(checked){
+    var result = await client.from("immonova_page_grants").insert({
+      user_id:userId, page_key:pageKey, section:(PAGE_CATALOG.find(function(p){ return p.key === pageKey; }) || {}).section || "",
+      granted_by:currentUser.id
+    });
+    if(result.error){
+      alert("Non sono riuscito a concedere la pagina: " + result.error.message);
+      togglePermissionsPanel(userId); togglePermissionsPanel(userId);
+      return;
+    }
+  }else{
+    var delResult = await client.from("immonova_page_grants").delete().eq("user_id", userId).eq("page_key", pageKey);
+    if(delResult.error){
+      alert("Non sono riuscito a revocare la pagina: " + delResult.error.message);
+      return;
+    }
+  }
+}
+
+async function updateDataGrant(userId, resourceKey, access){
+  if(!access){
+    var delResult = await client.from("immonova_managed_access").delete()
+      .eq("manager_id", currentUser.id).eq("collaborator_id", userId).eq("resource_key", resourceKey);
+    if(delResult.error){ alert("Non sono riuscito a revocare: " + delResult.error.message); }
+    return;
+  }
+  var result = await client.from("immonova_managed_access").upsert({
+    manager_id:currentUser.id, collaborator_id:userId, resource_key:resourceKey, access:access
+  }, { onConflict:"manager_id,collaborator_id,resource_key" });
+  if(result.error){ alert("Non sono riuscito a salvare il permesso: " + result.error.message); }
+}
+
+userForm.addEventListener("submit", async function(e){
+  e.preventDefault();
+
+  setStatus(T.msg_creating, "");
+  createBtn.disabled = true;
+  createBtn.textContent = T.btn_creating;
+
+  var full_name = document.getElementById("full_name").value.trim();
+  var email = document.getElementById("email").value.trim();
+  var phone = document.getElementById("phone").value.trim();
+  var password = document.getElementById("password").value;
+  var role = document.getElementById("role").value;
+  var professional_role = document.getElementById("professional_role").value;
+  var language = document.getElementById("language").value;
+  var is_super_user = (professional_role === "master") && role !== "admin";
+  var agency_name = document.getElementById("agency_name").value.trim();
+  var managed_by = document.getElementById("managed_by").value;
+
+  var result = await client.functions.invoke("create-user", {
+    body:{
+      full_name:full_name,
+      email:email,
+      phone:phone,
+      password:password,
+      role:role,
+      professional_role:professional_role,
+      language:language,
+      is_super_user:is_super_user,
+      agency_name:agency_name,
+      managed_by:managed_by || null
+    }
+  });
+
+  if(result.error || !result.data || !result.data.success){
+    var message = await extractEdgeFunctionErrorMessage(result, T.msg_create_error);
+    setStatus(message, "error");
+    createBtn.disabled = false;
+    createBtn.textContent = T.btn_create;
+    return;
+  }
+
+  /* create-user ora restituisce anche email_sent/email_error (vedi edge function
+     aggiornata): lo mostriamo così sai subito se la mail con le credenziali è partita,
+     senza doverlo controllare da nessun'altra parte. Popup a comparsa OLTRE alla barra di
+     stato: quest'ultima si è dimostrata facile da non notare, il popup no. */
+  if(result.data.email_sent === false){
+    setStatus(T.msg_created_email_fail + (result.data.email_error || ""), "error");
+    alert("UTENTE CREATO, MA LA MAIL CON LE CREDENZIALI NON È PARTITA.\n\nMotivo: " + (result.data.email_error || "sconosciuto") + "\n\nComunica tu stesso email + password temporanea a " + full_name + ".");
+  }else if(result.data.email_sent === true){
+    setStatus(T.msg_created_email_ok, "success");
+    alert("UTENTE CREATO E MAIL CON LE CREDENZIALI INVIATA a " + email + ".");
+  }else{
+    setStatus(T.msg_created, "success");
+    alert("UTENTE CREATO. Nessuna informazione sull'invio email restituita dal server: controlla se stai usando l'ultima versione di create-user.ts caricata su Supabase.");
+  }
+
+  userForm.reset();
+  createBtn.disabled = false;
+  createBtn.textContent = T.btn_create;
+  syncAgencyFieldsVisibility();
+  renderProfessionalRoleSelect();
+
+  await loadUsers();
+});
+
+/* ---- Mostra "Nome agenzia" solo se si sta creando un Super User, oppure "Agenzia di
+   appartenenza" solo se non lo è -- i due concetti si escludono a vicenda (un Super User
+   è la radice della propria agenzia, non può appartenere a un'altra). Se il ruolo accesso
+   è Admin, il blocco Super User/agenzia viene nascosto del tutto (un admin non appartiene
+   mai a un'agenzia esterna, vede/gestisce tutto per definizione). ---- */
+/* ---- "Master" = chi puo' creare/gestire una propria sottostruttura di collaboratori.
+   Non e' piu' un checkbox separato da ricordarsi: deriva direttamente dalla scelta
+   dell'incarico operativo. Scegli "Master" -> diventa automaticamente capostruttura
+   (is_super_user=true lato database); qualunque altro incarico -> normale collaboratore
+   appartenente alla struttura di qualcun altro. ---- */
+function isMasterRoleSelected(){
+  return document.getElementById("professional_role").value === "master";
+}
+
+function syncAgencyFieldsVisibility(){
+  var roleValue = document.getElementById("role").value;
+  var isMaster = isMasterRoleSelected();
+  var newAgencyNameBlock = document.getElementById("newAgencyNameBlock");
+  var belongsToAgencyBlock = document.getElementById("belongsToAgencyBlock");
+
+  var isAdminRole = roleValue === "admin";
+
+  newAgencyNameBlock.style.display = (!isAdminRole && isMaster) ? "" : "none";
+  belongsToAgencyBlock.style.display = (!isAdminRole && !isMaster) ? "" : "none";
+
+  document.getElementById("agency_name").required = (!isAdminRole && isMaster);
+}
+
+document.getElementById("role").addEventListener("change", syncAgencyFieldsVisibility);
+syncAgencyFieldsVisibility();
+
+document.getElementById("professional_role").addEventListener("change", function(){
+  var el = this;
+  handleProfessionalRoleChange(el, function(){ syncAgencyFieldsVisibility(); });
+});
+
+document.getElementById("logoutBtn").addEventListener("click", async function(){
+  await client.auth.signOut();
+  window.location.href = "../index.html";
+});
+
+superUserFilter.addEventListener("change", function(){
+  superUserFilterValue = superUserFilter.value;
+  renderUsersTable();
+});
+
+(async function init(){
+  var logged = await checkAuth();
+
+  if(logged){
+    var admin = await checkAdmin();
+
+    if(admin){
+      await loadProfessionalRoles();
+      renderProfessionalRoleSelect();
+      await loadUsers();
+    }
+  }
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<link rel="stylesheet" href="../css/immonova-text-theme.css">
+
+<meta charset="UTF-8">
+<title>IMMONOVA — Editor Virtual Tour</title>
+<style>
+  :root{--gold:#a67f34}
+  body{font-family:Arial,Helvetica,sans-serif;margin:0;background:#f4f2ee;color:var(--c-2b2b2b)}
+  header{background:#1c1c1c;color:var(--c-ffffff);padding:14px 20px;display:flex;justify-content:space-between;align-items:center}
+  header h1{font-size:15px;margin:0;font-weight:600}
+  header .opp{font-size:12px;color:var(--c-c9a568)}
+  .wrap{display:flex;gap:16px;padding:16px;align-items:flex-start}
+  .panel{background:#fff;border:1px solid #ddd;border-radius:6px;padding:14px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+  .left{width:290px;flex-shrink:0}
+  .left h2{font-size:13px;margin:0 0 10px}
+  .scene-item{padding:8px;border:1px solid #eee;border-radius:4px;margin-bottom:6px;font-size:12px}
+  .scene-item.active{border-color:var(--gold);background:#fbf6ea}
+  .scene-item .row{display:flex;justify-content:space-between;align-items:center;cursor:pointer}
+  .scene-item button{border:none;background:none;color:var(--c-67131c);cursor:pointer;font-size:11px;margin-left:4px}
+  .scene-item .ord{color:var(--c-888888);cursor:pointer;font-size:13px;margin-left:4px}
+  .btn{background:var(--gold);color:var(--c-ffffff);border:none;border-radius:4px;padding:8px 12px;font-size:12px;cursor:pointer;width:100%;margin-top:6px}
+  .btn.secondary{background:#eee;color:var(--c-333333)}
+  input[type=file]{font-size:11px;width:100%}
+  input[type=text]{width:100%;padding:6px;font-size:12px;border:1px solid #ccc;border-radius:4px;box-sizing:border-box;margin-top:4px}
+  label{font-size:11px;color:var(--c-383838);display:block;margin-top:10px}
+  .center{flex:1;min-width:0}
+  #stage{width:100%;height:520px;background:#111;border-radius:6px;position:relative;overflow:hidden;cursor:crosshair}
+  #stage img{position:absolute;top:0;left:0;max-width:none;pointer-events:none}
+  .hs-mark{position:absolute;top:50%;transform:translate(-50%,-50%);width:28px;height:28px;border-radius:50%;background:rgba(198,150,60,.85);border:2px solid #fff;color:var(--c-ffffff);display:flex;align-items:center;justify-content:center;font-size:13px;cursor:pointer}
+  .hint{font-size:11px;color:var(--c-888888);margin-top:8px;line-height:1.5}
+  .hotspot-list{margin-top:12px;font-size:12px}
+  .hotspot-list div{display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid #f0f0f0}
+  .hotspot-list button{border:none;background:none;color:var(--c-67131c);cursor:pointer;font-size:11px}
+  .status{font-size:12px;margin-top:10px;padding:8px;border-radius:4px}
+  .status.ok{background:#eaf6ee;color:var(--c-1a7a3c)}
+  .status.err{background:#fbeaea;color:var(--c-67131c)}
+  .drag-hint{font-size:11px;color:var(--c-999999);margin-top:4px}
+  .compose-box{border-top:1px dashed #ddd;margin-top:16px;padding-top:12px}
+  .compose-box h3{font-size:12px;margin:0 0 6px}
+  input[type=number]{width:70px;padding:5px;font-size:12px;border:1px solid #ccc;border-radius:4px}
+  #composePreview{width:100%;height:90px;background:#111;border-radius:4px;margin-top:8px;display:none}
+  .row-inline{display:flex;align-items:center;gap:8px;margin-top:8px;flex-wrap:wrap}
+  .row-inline label{margin:0;display:flex;align-items:center;gap:4px}
+</style>
+</head>
+<body>
+<header>
+  <h1>Editor Virtual Tour — IMMONOVA</h1>
+  <span class="opp" id="oppLabel">opportunity_id: —</span>
+</header>
+
+<div class="wrap">
+  <div class="panel left">
+    <h2>Scene (stanze)</h2>
+    <button class="btn secondary" id="reloadBtn" style="margin-top:0">🔄 Ricarica tour (vedi eventuali ambienti aggiunti da telefono)</button>
+    <div id="sceneList" style="margin-top:10px"></div>
+    <label>Nuova scena — nome stanza</label>
+    <input type="text" id="newSceneTitle" placeholder="es. Cucina">
+    <label>Foto panoramica (modalità "Panorama" nativa del telefono — non "Fotosfera")</label>
+    <input type="file" id="newSceneFile" accept="image/*">
+    <div class="row-inline">
+      <label><input type="checkbox" id="newSceneLoop"> è già un giro a 360° pieno (nessun bordo)</label>
+    </div>
+    <button class="btn" id="addSceneBtn">+ Aggiungi scena</button>
+
+    <div class="hint">
+      La foto va scattata con la modalità <b>Panorama</b> normale della fotocamera
+      (quella già integrata in ogni telefono, non un'app esterna): ruota lentamente
+      su te stesso tenendo il telefono orizzontale. Non serve un giro completo —
+      anche 150-200° vanno benissimo, non compaiono soffitto/pavimento.
+    </div>
+
+    <div class="compose-box">
+      <h3>Oppure componi la scena da 2 o più panoramiche parziali</h3>
+      <div class="hint" style="margin-top:0">
+        Utile se una singola panoramica non basta a coprire tutto l'ambiente: carica 2-3 foto
+        scattate ruotando in sequenza (ognuna con un buon margine di sovrapposizione — 15-20% —
+        con la precedente), e vengono unite in una sola immagine continua. Con "chiudi il cerchio"
+        selezionato, il giro diventa un 360° pieno senza bordi: si può trascinare all'infinito.
+      </div>
+      <label>Foto in ordine (seleziona più file insieme)</label>
+      <input type="file" id="composeFiles" accept="image/*" multiple>
+      <div class="row-inline">
+        <label>Sovrapposizione <input type="number" id="composeOverlap" value="18" min="5" max="40">%</label>
+        <label><input type="checkbox" id="composeLoop"> chiudi il cerchio (360° pieno)</label>
+      </div>
+      <button class="btn secondary" id="composePreviewBtn" style="margin-top:8px">Genera anteprima</button>
+      <canvas id="composePreview"></canvas>
+      <label>Nome stanza per questa composizione</label>
+      <input type="text" id="composeTitle" placeholder="es. Soggiorno">
+      <button class="btn" id="composeUseBtn" style="margin-top:8px" disabled>Usa questa composizione come nuova scena</button>
+      <div id="composeStatus" style="font-size:11.5px;margin-top:6px"></div>
+    </div>
+
+    <button class="btn secondary" id="saveBtn" style="margin-top:16px">Salva tour su IMMONOVA</button>
+    <button class="btn" id="clearTourBtn" style="margin-top:6px;background:#8a2c2c">🗑 Svuota virtual tour</button>
+    <div id="status"></div>
+  </div>
+
+  <div class="center panel">
+    <div id="stage"><div id="hsLayer" style="position:absolute;inset:0"></div></div>
+    <div class="hint" id="editHint">Carica almeno una scena per iniziare. Trascina la foto per scorrerla, clicca per aggiungere un hotspot che porta a un'altra stanza.</div>
+    <div class="hotspot-list" id="hotspotList"></div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../js/config.js"></script>
+<script>
+/* SUPABASE_URL e SUPABASE_ANON_KEY arrivano da ../js/config.js, esattamente come in
+   opportunity-edit.html. Se questo file non sta nella stessa cartella di
+   opportunity-edit.html, correggi il percorso qui sopra. */
+var BUCKET = "virtual-tours-360";
+
+var params = new URLSearchParams(location.search);
+var opportunityId = params.get("opportunity_id");
+document.getElementById("oppLabel").textContent = "opportunity_id: " + (opportunityId || "MANCANTE — apri questa pagina con ?opportunity_id=123");
+
+var supabaseClient = (typeof SUPABASE_URL !== "undefined" && SUPABASE_URL)
+  ? supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
+  : null;
+
+var tour = { scenes: [] };
+var activeSceneId = null;
+
+/* Stato di visualizzazione/trascinamento della foto nello stage, stessa logica
+   del viewer pubblico (virtual-tour-360-viewer.js): si trascina la stessa
+   immagine, movimento continuo, bloccato ai bordi reali della foto, con lo
+   stesso margine verticale per il piccolo tilt su/giù. */
+var VERTICAL_OVERSCAN = 1.22;
+var view = { offset: 0, minOffset: 0, maxOffset: 0, imgW: 0, offsetY: 0, minOffsetY: 0, maxOffsetY: 0 };
+
+function slugify(s) {
+  return String(s || "scena").toLowerCase().trim()
+    .replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "") || ("scena-" + Date.now());
+}
+
+function findScene(id) { return tour.scenes.find(function (s) { return s.id === id; }); }
+function clamp(v, lo, hi) { return Math.max(lo, Math.min(hi, v)); }
+
+function renderSceneList() {
+  var el = document.getElementById("sceneList");
+  el.innerHTML = "";
+  tour.scenes.forEach(function (s, i) {
+    var div = document.createElement("div");
+    div.className = "scene-item" + (s.id === activeSceneId ? " active" : "");
+    var row = document.createElement("div");
+    row.className = "row";
+    var nameSpan = document.createElement("span");
+    nameSpan.textContent = s.title || s.id;
+    nameSpan.style.flex = "1";
+    nameSpan.onclick = function () { activateScene(s.id); };
+    row.appendChild(nameSpan);
+    var up = document.createElement("span");
+    up.className = "ord"; up.textContent = "▲";
+    up.onclick = function (e) { e.stopPropagation(); moveScene(i, -1); };
+    var down = document.createElement("span");
+    down.className = "ord"; down.textContent = "▼";
+    down.onclick = function (e) { e.stopPropagation(); moveScene(i, 1); };
+    var del = document.createElement("button");
+    del.textContent = "elimina";
+    del.onclick = function (e) { e.stopPropagation(); removeScene(s.id); };
+    row.appendChild(up); row.appendChild(down); row.appendChild(del);
+    div.appendChild(row);
+    el.appendChild(div);
+  });
+}
+
+function moveScene(index, dir) {
+  var newIndex = index + dir;
+  if (newIndex < 0 || newIndex >= tour.scenes.length) return;
+  var tmp = tour.scenes[index];
+  tour.scenes[index] = tour.scenes[newIndex];
+  tour.scenes[newIndex] = tmp;
+  renderSceneList();
+  setStatus("Ordine cambiato — ricordati di salvare.", "ok");
+}
+
+function renderHotspotList() {
+  var scene = findScene(activeSceneId);
+  var el = document.getElementById("hotspotList");
+  el.innerHTML = "";
+  if (!scene) return;
+  (scene.hotspots || []).forEach(function (h, idx) {
+    var row = document.createElement("div");
+    var targetScene = findScene(h.target_scene_id);
+    row.innerHTML = '<span>→ ' + (h.text || "") + " (" + (targetScene ? targetScene.title : h.target_scene_id) + ")</span>";
+    var btn = document.createElement("button");
+    btn.textContent = "rimuovi";
+    btn.onclick = function () { scene.hotspots.splice(idx, 1); renderStageHotspots(); renderHotspotList(); };
+    row.appendChild(btn);
+    el.appendChild(row);
+  });
+}
+
+function mod(a, n) { return ((a % n) + n) % n; }
+
+function recomputeBounds() {
+  var stage = document.getElementById("stage");
+  var img = stage.querySelector("img");
+  if (!img) return;
+  var scene = findScene(activeSceneId);
+  var loop = !!(scene && scene.loop);
+  var cw = stage.clientWidth, ch = stage.clientHeight;
+  var natW = img.naturalWidth || 1, natH = img.naturalHeight || 1;
+  var scaledH = ch * VERTICAL_OVERSCAN;
+  view.imgW = scaledH * (natW / natH);
+  view.loop = loop;
+  img.style.width = view.imgW + "px";
+  img.style.height = scaledH + "px";
+  if (loop) {
+    view.minOffset = -Infinity;
+    view.maxOffset = Infinity;
+  } else if (view.imgW <= cw) {
+    view.minOffset = view.maxOffset = (cw - view.imgW) / 2;
+  } else {
+    view.maxOffset = 0;
+    view.minOffset = cw - view.imgW;
+  }
+  view.maxOffsetY = 0;
+  view.minOffsetY = ch - scaledH;
+  if (view.offsetY === 0 && view.minOffsetY !== 0) view.offsetY = view.minOffsetY / 2;
+  view.offset = clamp(view.offset, view.minOffset, view.maxOffset);
+  view.offsetY = clamp(view.offsetY, view.minOffsetY, view.maxOffsetY);
+  applyStageTransform();
+  renderStageHotspots();
+}
+
+function applyStageTransform() {
+  var img = document.querySelector("#stage img");
+  if (!img) return;
+  var x = view.loop ? -mod(-view.offset, view.imgW) - view.imgW : view.offset;
+  img.style.transform = "translate(" + x + "px," + view.offsetY + "px)";
+  if (view.loop) {
+    var img2 = document.getElementById("stageImgLoop");
+    if (!img2) {
+      img2 = img.cloneNode(true);
+      img2.id = "stageImgLoop";
+      img.parentNode.insertBefore(img2, img.nextSibling);
+    }
+    img2.src = img.src;
+    img2.style.width = img.style.width;
+    img2.style.height = img.style.height;
+    img2.style.transform = "translate(" + (x + view.imgW) + "px," + view.offsetY + "px)";
+    img2.style.display = "block";
+  } else {
+    var existing = document.getElementById("stageImgLoop");
+    if (existing) existing.style.display = "none";
+  }
+}
+
+function renderStageHotspots() {
+  var hsLayer = document.getElementById("hsLayer");
+  hsLayer.innerHTML = "";
+  var scene = findScene(activeSceneId);
+  if (!scene) return;
+  (scene.hotspots || []).forEach(function (h) {
+    var base = view.loop ? mod(view.offset + (h.x_pct / 100) * view.imgW, view.imgW) - view.imgW : (view.offset + (h.x_pct / 100) * view.imgW);
+    var copies = view.loop ? [0, view.imgW, view.imgW * 2] : [0];
+    copies.forEach(function (extra) {
+      var mark = document.createElement("div");
+      mark.className = "hs-mark";
+      mark.style.left = (base + extra) + "px";
+      mark.textContent = "→";
+      mark.title = h.text || "";
+      hsLayer.appendChild(mark);
+    });
+  });
+}
+
+function renderStage() {
+  var stage = document.getElementById("stage");
+  var scene = findScene(activeSceneId);
+  var existingImg = stage.querySelector("img");
+  if (existingImg) existingImg.remove();
+  var existingLoopImg = document.getElementById("stageImgLoop");
+  if (existingLoopImg) existingLoopImg.remove();
+  var hsLayer = document.getElementById("hsLayer");
+  hsLayer.innerHTML = "";
+  view.offset = 0;
+  view.offsetY = 0;
+  view.loop = !!(scene && scene.loop);
+  if (!scene) {
+    document.getElementById("editHint").textContent = "Carica almeno una scena per iniziare.";
+    renderHotspotList();
+    return;
+  }
+  var img = document.createElement("img");
+  img.draggable = false;
+  img.onload = recomputeBounds;
+  img.src = scene.image_url;
+  stage.insertBefore(img, hsLayer);
+  if (img.complete) recomputeBounds();
+  document.getElementById("editHint").textContent =
+    "Trascina la foto per scorrerla. Clicca (senza trascinare) per aggiungere un hotspot verso un'altra stanza.";
+  renderHotspotList();
+}
+
+function activateScene(id) {
+  activeSceneId = id;
+  renderSceneList();
+  renderStage();
+}
+
+function removeScene(id) {
+  if (!confirm("Eliminare questa scena? Verranno rimossi anche gli hotspot che la usano. Ricordati di premere \"Salva tour\" dopo.")) return;
+  tour.scenes.forEach(function (s) { s.hotspots = (s.hotspots || []).filter(function (h) { return h.target_scene_id !== id; }); });
+  tour.scenes = tour.scenes.filter(function (s) { return s.id !== id; });
+  if (activeSceneId === id) activeSceneId = tour.scenes[0] ? tour.scenes[0].id : null;
+  renderSceneList();
+  renderStage();
+}
+
+async function addScene() {
+  var title = document.getElementById("newSceneTitle").value.trim();
+  var file = document.getElementById("newSceneFile").files[0];
+  if (!title) { alert("Dai un nome alla stanza."); return; }
+  if (!file) { alert("Carica una foto panoramica."); return; }
+  if (!opportunityId) { alert("Manca opportunity_id nell'URL."); return; }
+  if (!supabaseClient) { alert("Impossibile connettersi a Supabase: verifica che ../js/config.js sia raggiungibile da questa pagina."); return; }
+
+  var id = slugify(title) + "-" + Date.now().toString(36);
+  var path = opportunityId + "/" + id + ".jpg";
+  setStatus("Caricamento immagine...", "ok");
+  var upload = await supabaseClient.storage.from(BUCKET).upload(path, file, { contentType: file.type || "image/jpeg" });
+  if (upload.error) { setStatus("Errore upload: " + upload.error.message, "err"); return; }
+  var pub = supabaseClient.storage.from(BUCKET).getPublicUrl(path);
+
+  var isLoop = document.getElementById("newSceneLoop").checked;
+  var scene = { id: id, title: title, image_url: pub.data.publicUrl, loop: isLoop, hotspots: [] };
+  tour.scenes.push(scene);
+  document.getElementById("newSceneTitle").value = "";
+  document.getElementById("newSceneFile").value = "";
+  document.getElementById("newSceneLoop").checked = false;
+  setStatus("Scena aggiunta — ricordati di premere \"Salva tour su IMMONOVA\".", "ok");
+  activateScene(id);
+}
+
+/* ===================== Composizione da più foto =====================
+ * Unisce 2+ panoramiche parziali in una sola immagine continua, sfumando
+ * (dissolvenza) la zona di sovrapposizione tra una foto e la successiva
+ * invece di un taglio netto -- non è un vero "stitching" con riconoscimento
+ * automatico dei punti in comune (quello ha dato risultati pessimi in
+ * passato, effetto "caleidoscopio"): qui la sovrapposizione è quella che
+ * l'utente ha fotografato apposta (ruotando con un margine tra uno scatto
+ * e l'altro) e la percentuale di sfumatura è regolabile a vista nell'anteprima,
+ * con controllo umano invece che un algoritmo automatico che può sbagliare.
+ * Se "chiudi il cerchio" è selezionato, sfuma anche l'ultima foto sulla prima,
+ * creando un giro a 360° pieno che si può ripetere all'infinito (loop:true).
+ */
+var composedCanvas = null; // canvas a piena risoluzione dell'ultima anteprima generata
+
+function loadImageFile(file) {
+  return new Promise(function (resolve, reject) {
+    var img = new Image();
+    img.onload = function () { resolve(img); };
+    img.onerror = reject;
+    img.src = URL.createObjectURL(file);
+  });
+}
+
+function makeAlphaStrip(sourceCanvas, sx, sw, h, fadeIn) {
+  // ritaglia una striscia larga sw da sourceCanvas (a partire da sx) e le applica
+  // una sfumatura alpha lineare: fadeIn=true va da trasparente a opaca (sinistra->destra),
+  // fadeIn=false va da opaca a trasparente.
+  var strip = document.createElement("canvas");
+  strip.width = Math.max(1, Math.round(sw));
+  strip.height = Math.round(h);
+  var sctx = strip.getContext("2d");
+  sctx.drawImage(sourceCanvas, sx, 0, sw, h, 0, 0, strip.width, strip.height);
+  sctx.globalCompositeOperation = "destination-in";
+  var grad = sctx.createLinearGradient(0, 0, strip.width, 0);
+  if (fadeIn) {
+    grad.addColorStop(0, "rgba(0,0,0,0)");
+    grad.addColorStop(1, "rgba(0,0,0,1)");
+  } else {
+    grad.addColorStop(0, "rgba(0,0,0,1)");
+    grad.addColorStop(1, "rgba(0,0,0,0)");
+  }
+  sctx.fillStyle = grad;
+  sctx.fillRect(0, 0, strip.width, strip.height);
+  return strip;
+}
+
+function composeImages(images, overlapPct, closeLoop) {
+  var H = Math.max.apply(null, images.map(function (im) { return im.naturalHeight; }));
+  var scaledW = images.map(function (im) { return H * (im.naturalWidth / im.naturalHeight); });
+
+  var canvas = document.createElement("canvas");
+  var ctx;
+  var cursor = 0;
+
+  // prima passata: calcola la larghezza totale della catena (senza il giro finale)
+  var widths = [scaledW[0]];
+  for (var i = 1; i < images.length; i++) {
+    var ov = overlapPct * Math.min(scaledW[i - 1], scaledW[i]);
+    widths.push(scaledW[i] - ov);
+  }
+  var totalW = widths.reduce(function (a, b) { return a + b; }, 0);
+
+  canvas.width = Math.round(totalW);
+  canvas.height = Math.round(H);
+  ctx = canvas.getContext("2d");
+
+  // immagine 0: piena, opaca
+  ctx.drawImage(images[0], 0, 0, scaledW[0], H);
+  cursor = scaledW[0];
+
+  for (var j = 1; j < images.length; j++) {
+    var ovPx = overlapPct * Math.min(scaledW[j - 1], scaledW[j]);
+    var xPos = cursor - ovPx;
+
+    // striscia di ingresso dell'immagine j (i suoi primi ovPx px), sfumata da 0 a 1
+    var tmpFull = document.createElement("canvas");
+    tmpFull.width = Math.round(scaledW[j]);
+    tmpFull.height = Math.round(H);
+    tmpFull.getContext("2d").drawImage(images[j], 0, 0, scaledW[j], H);
+    var edge = makeAlphaStrip(tmpFull, 0, ovPx, H, true);
+    ctx.drawImage(edge, xPos, 0);
+
+    // resto dell'immagine j, opaco
+    ctx.drawImage(tmpFull, ovPx, 0, scaledW[j] - ovPx, H, xPos + ovPx, 0, scaledW[j] - ovPx, H);
+    cursor = xPos + scaledW[j];
+  }
+
+  if (closeLoop && images.length >= 2) {
+    var ovLoop = overlapPct * Math.min(scaledW[0], scaledW[images.length - 1]);
+    ovLoop = Math.min(ovLoop, canvas.width * 0.4);
+    var headCopy = makeAlphaStrip(canvas, 0, ovLoop, H, true);
+    ctx.drawImage(headCopy, canvas.width - ovLoop, 0);
+  }
+
+  return canvas;
+}
+
+async function runComposePreview() {
+  var files = document.getElementById("composeFiles").files;
+  var status = document.getElementById("composeStatus");
+  if (files.length < 2) { status.textContent = "Seleziona almeno 2 foto."; status.style.color = "#b23"; return; }
+  status.textContent = "Composizione in corso...";
+  status.style.color = "#666";
+  try {
+    var images = [];
+    for (var i = 0; i < files.length; i++) images.push(await loadImageFile(files[i]));
+    var overlapPct = clamp(parseFloat(document.getElementById("composeOverlap").value) || 18, 5, 40) / 100;
+    var closeLoop = document.getElementById("composeLoop").checked;
+    composedCanvas = composeImages(images, overlapPct, closeLoop);
+
+    var preview = document.getElementById("composePreview");
+    preview.style.display = "block";
+    var pctx = preview.getContext("2d");
+    var scale = preview.clientHeight / composedCanvas.height || 1;
+    preview.width = composedCanvas.width * scale;
+    preview.height = preview.clientHeight;
+    pctx.drawImage(composedCanvas, 0, 0, preview.width, preview.height);
+
+    document.getElementById("composeUseBtn").disabled = false;
+    status.textContent = "Anteprima pronta (" + composedCanvas.width + "×" + composedCanvas.height + "px). Regola la sovrapposizione e rigenera se la sfumatura non ti convince.";
+    status.style.color = "#1a7a3c";
+  } catch (err) {
+    status.textContent = "Errore composizione: " + (err && err.message ? err.message : err);
+    status.style.color = "#b23";
+  }
+}
+
+async function useComposedScene() {
+  var title = document.getElementById("composeTitle").value.trim();
+  if (!title) { alert("Dai un nome alla stanza."); return; }
+  if (!composedCanvas) { alert("Genera prima l'anteprima."); return; }
+  if (!opportunityId) { alert("Manca opportunity_id nell'URL."); return; }
+  if (!supabaseClient) { alert("Impossibile connettersi a Supabase."); return; }
+
+  var status = document.getElementById("composeStatus");
+  status.textContent = "Caricamento composizione...";
+  status.style.color = "#666";
+
+  composedCanvas.toBlob(async function (blob) {
+    if (!blob) { status.textContent = "Errore: impossibile generare l'immagine."; status.style.color = "#b23"; return; }
+    var id = slugify(title) + "-" + Date.now().toString(36);
+    var path = opportunityId + "/" + id + ".jpg";
+    var upload = await supabaseClient.storage.from(BUCKET).upload(path, blob, { contentType: "image/jpeg" });
+    if (upload.error) { status.textContent = "Errore upload: " + upload.error.message; status.style.color = "#b23"; return; }
+    var pub = supabaseClient.storage.from(BUCKET).getPublicUrl(path);
+
+    var scene = {
+      id: id,
+      title: title,
+      image_url: pub.data.publicUrl,
+      loop: document.getElementById("composeLoop").checked,
+      hotspots: [],
+    };
+    tour.scenes.push(scene);
+
+    document.getElementById("composeFiles").value = "";
+    document.getElementById("composeTitle").value = "";
+    document.getElementById("composePreview").style.display = "none";
+    document.getElementById("composeUseBtn").disabled = true;
+    composedCanvas = null;
+
+    status.textContent = "Scena composta aggiunta — ricordati di premere \"Salva tour su IMMONOVA\".";
+    status.style.color = "#1a7a3c";
+    activateScene(id);
+  }, "image/jpeg", 0.92);
+}
+
+document.getElementById("composePreviewBtn").onclick = runComposePreview;
+document.getElementById("composeUseBtn").onclick = useComposedScene;
+
+/* Trascinamento sullo stage: stessa logica del viewer pubblico. Un click che
+   non ha trascinato (spostamento sotto una piccola soglia) apre invece la
+   creazione di un hotspot nel punto cliccato. */
+var stageEl = document.getElementById("stage");
+var dragging = false, dragStartX = 0, dragStartY = 0, offsetAtStart = 0, offsetYAtStart = 0, movedPx = 0;
+
+stageEl.addEventListener("pointerdown", function (e) {
+  var scene = findScene(activeSceneId);
+  if (!scene || !scene.image_url) return;
+  dragging = true;
+  movedPx = 0;
+  dragStartX = e.clientX;
+  dragStartY = e.clientY;
+  offsetAtStart = view.offset;
+  offsetYAtStart = view.offsetY;
+  if (stageEl.setPointerCapture) stageEl.setPointerCapture(e.pointerId);
+});
+stageEl.addEventListener("pointermove", function (e) {
+  if (!dragging) return;
+  var dx = e.clientX - dragStartX;
+  var dy = e.clientY - dragStartY;
+  movedPx = Math.max(Math.abs(dx), Math.abs(dy));
+  view.offset = clamp(offsetAtStart + dx, view.minOffset, view.maxOffset);
+  view.offsetY = clamp(offsetYAtStart + dy, view.minOffsetY, view.maxOffsetY);
+  applyStageTransform();
+  renderStageHotspots();
+});
+stageEl.addEventListener("pointerup", function (e) {
+  dragging = false;
+  if (movedPx > 6) return; // era un trascinamento, non un click per hotspot
+  var scene = findScene(activeSceneId);
+  if (!scene || !scene.image_url) return;
+  if (tour.scenes.length < 2) { alert("Aggiungi almeno una seconda scena prima di creare un collegamento."); return; }
+  var rect = stageEl.getBoundingClientRect();
+  var clickXOnImage = view.loop
+    ? mod((e.clientX - rect.left) - view.offset, view.imgW)
+    : (e.clientX - rect.left) - view.offset;
+  var xPct = view.loop ? (clickXOnImage / view.imgW) * 100 : clamp((clickXOnImage / view.imgW) * 100, 0, 100);
+  var others = tour.scenes.filter(function (s) { return s.id !== activeSceneId; });
+  var list = others.map(function (s, i) { return (i + 1) + ") " + s.title; }).join("\n");
+  var choice = prompt("A quale stanza porta questo punto?\n" + list + "\n\nScrivi il numero:");
+  var idx = parseInt(choice, 10) - 1;
+  if (!others[idx]) return;
+  var label = prompt("Testo del collegamento (es. \"Vai al soggiorno\"):", "Vai a " + others[idx].title) || ("Vai a " + others[idx].title);
+  scene.hotspots = scene.hotspots || [];
+  scene.hotspots.push({ x_pct: xPct, target_scene_id: others[idx].id, text: label });
+  renderStageHotspots();
+  renderHotspotList();
+});
+
+async function saveTour() {
+  if (!opportunityId) { alert("Manca opportunity_id nell'URL."); return; }
+  if (!supabaseClient) { alert("Impossibile connettersi a Supabase: verifica che ../js/config.js sia raggiungibile da questa pagina."); return; }
+
+  setStatus("Salvataggio...", "ok");
+  var update = await supabaseClient
+    .from("opportunities")
+    .update({
+      virtual_tour_360: tour,
+      virtual_tour_360_published: tour.scenes.length > 0,
+      virtual_tour_360_updated_at: new Date().toISOString(),
+    })
+    .eq("id", opportunityId);
+  if (update.error) { setStatus("Errore salvataggio: " + update.error.message, "err"); return; }
+  setStatus(tour.scenes.length ? "Tour salvato e pubblicato ✓" : "Tour svuotato e salvato ✓", "ok");
+}
+
+async function clearTour() {
+  if (!confirm("Svuotare completamente il virtual tour? Tutte le scene verranno rimosse e il salvataggio sarà immediato.")) return;
+  tour = { scenes: [] };
+  activeSceneId = null;
+  renderSceneList();
+  renderStage();
+  await saveTour();
+}
+
+function setStatus(msg, cls) {
+  var el = document.getElementById("status");
+  el.textContent = msg;
+  el.className = "status " + cls;
+}
+
+async function loadExisting() {
+  if (!opportunityId || !supabaseClient) return;
+  var res = await supabaseClient.from("opportunities").select("virtual_tour_360").eq("id", opportunityId).maybeSingle();
+  if (res.data && res.data.virtual_tour_360 && Array.isArray(res.data.virtual_tour_360.scenes)) {
+    tour = res.data.virtual_tour_360;
+  } else {
+    tour = { scenes: [] };
+  }
+  activeSceneId = tour.scenes.length ? tour.scenes[0].id : null;
+  renderSceneList();
+  renderStage();
+  setStatus("", "ok");
+}
+
+document.getElementById("addSceneBtn").onclick = addScene;
+document.getElementById("saveBtn").onclick = saveTour;
+document.getElementById("clearTourBtn").onclick = clearTour;
+document.getElementById("reloadBtn").onclick = loadExisting;
+window.addEventListener("resize", recomputeBounds);
+loadExisting();
+</script>
+</body>
+</html>
