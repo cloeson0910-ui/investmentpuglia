@@ -5,7 +5,7 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Proposta | IMMONOVA Admin</title>
+<title>Proposta | Investments Puglia Admin</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{width:100%;min-height:100%}
@@ -189,8 +189,8 @@ input[type=file].hidden-input{display:none}
   <div id="stateBox" class="loading-state">Caricamento proposta…</div>
 
   <div class="panel" id="docPanel" style="display:none">
-    <div class="letterhead">IMMONOVA</div>
-    <div class="sub">OFF MARKET · CONSULTING</div>
+    <div class="letterhead">Investments Puglia</div>
+    <div class="sub">REAL ESTATE INVESTMENTS</div>
     <div class="doc-title" id="docTitle"></div>
     <div class="doc-meta" id="docMeta"></div>
     <div class="doc-body" id="docBody"></div>
@@ -436,7 +436,7 @@ async function loadOffer(){
     '<div class="sign-col">' + buyerSigHTML + '<div class="sign-line">Firma del Proponente/Acquirente' + (o.buyer_signed_at ? " — " + escapeHTML(fmtDate(o.buyer_signed_at)) : "") + '</div></div>' +
     '<div class="sign-col">' + sellerSigHTML + '<div class="sign-line">Firma del Venditore/Proprietario (per accettazione)' + (o.seller_signed_at ? " — " + escapeHTML(fmtDate(o.seller_signed_at)) : "") + '</div></div>';
 
-  document.title = (isCounter ? "Controfferta" : "Proposta") + " — " + propertyTitle + " | IMMONOVA Admin";
+  document.title = (isCounter ? "Controfferta" : "Proposta") + " — " + propertyTitle + " | Investments Puglia Admin";
 
   currentOfferId = o.id;
   currentDocTitle = (isCounter ? "Controfferta" : "Proposta") + " — " + propertyTitle;
@@ -846,7 +846,7 @@ document.getElementById("deleteOfferBtn").addEventListener("click", async functi
    spaziature rotte (difetto noto di quella tecnica coi web font) e l'header si sovrapponeva
    al contenuto dalla pagina 2 in poi. Sostituita: qui il PDF è scritto direttamente con le
    API testo di jsPDF (nessuno screenshot del DOM) — testo nitido, selezionabile, e paginazione
-   con logo IMMONOVA e piè di pagina ridisegnati in modo pulito su ogni pagina. */
+   con logo Investments Puglia e piè di pagina ridisegnati in modo pulito su ogni pagina. */
 var currentOfferId = null;
 var currentDocTitle = "";
 var currentOfferData = null;
@@ -870,10 +870,10 @@ function drawPdfHeaderOnPage(doc, pageWidth){
   doc.setFont("helvetica", "normal");
   doc.setFontSize(16);
   doc.setTextColor.apply(doc, PDF_GOLD);
-  doc.text("IMMONOVA", pageWidth / 2, 36, { align: "center" });
+  doc.text("Investments Puglia", pageWidth / 2, 36, { align: "center" });
   doc.setFontSize(8);
   doc.setTextColor.apply(doc, PDF_GOLD_SOFT);
-  doc.text("OFF MARKET  ·  CONSULTING", pageWidth / 2, 50, { align: "center" });
+  doc.text("REAL ESTATE INVESTMENTS", pageWidth / 2, 50, { align: "center" });
   doc.setDrawColor.apply(doc, PDF_GOLD);
   doc.setLineWidth(0.6);
   doc.line(PDF_MARGIN_LEFT, 62, pageWidth - PDF_MARGIN_RIGHT, 62);
@@ -1121,7 +1121,7 @@ function buildOfferPdf(o, opp, propertyTitle, propertyAddress, isCounter){
 
 /* ====================== Allegare la scansione firmata al PDF ufficiale ======================
    Prima la scansione/foto caricata (signed_documents) restava SEPARATA dal PDF ufficiale a
-   colori con intestazione IMMONOVA -- chi riceveva il PDF ufficiale non vedeva mai la firma
+   colori con intestazione Investments Puglia -- chi riceveva il PDF ufficiale non vedeva mai la firma
    vera. Ora, ogni volta che si rigenera il PDF (pulsante "Genera PDF" / "Invia al proponente"),
    le scansioni caricate come IMMAGINE (foto da smartphone o da PC) vengono aggiunte in coda
    come pagine extra "ALLEGATO", cosi' il PDF che parte è uno solo, completo, con la prova della
@@ -1281,7 +1281,7 @@ async function generatePdfAndShareLink(awaitPublish){
 
     linkBox.className = "pdf-link-box visible";
     linkBox.style.color = "#4f7f45";
-    linkBox.innerHTML = "PDF generato correttamente — logo IMMONOVA su ogni pagina" +
+    linkBox.innerHTML = "PDF generato correttamente — logo Investments Puglia su ogni pagina" +
       (appendedScanCount ? " (+ " + appendedScanCount + " pagina" + (appendedScanCount > 1 ? "e" : "") + " allegata" + (appendedScanCount > 1 ? "e" : "") + " con la proposta firmata)." : ".") + "<br>" +
       '<a href="' + publicUrl + '" target="_blank" rel="noopener">Apri il PDF direttamente</a>' +
       ' &nbsp;·&nbsp; ' +
@@ -1425,7 +1425,7 @@ async function doSendToBuyer(){
       var waPhone = normalizeItalianPhoneForWhatsapp(currentOfferData.buyer_phone);
       if(waPhone){
         var buyerFullName = [currentOfferData.buyer_first_name, currentOfferData.buyer_last_name].filter(Boolean).join(" ");
-        var waText = "Gentile " + (buyerFullName || "Cliente") + ", ecco il link per consultare/firmare la Sua proposta IMMONOVA: " + shareUrlToSend;
+        var waText = "Gentile " + (buyerFullName || "Cliente") + ", ecco il link per consultare/firmare la Sua proposta Investments Puglia: " + shareUrlToSend;
         window.open("https://wa.me/" + waPhone + "?text=" + encodeURIComponent(waText), "_blank");
       }
     }
@@ -1453,15 +1453,15 @@ function offerPreviewImmonovaEmailHtml(title, innerHtml){
     + '<div style="background:#ffffff;padding:40px 20px;font-family:\'Avenir Next\',\'Helvetica Neue\',Arial,sans-serif;">'
       + '<div style="max-width:560px;margin:0 auto;background:#ffffff;border:1px solid rgba(58,58,58,.25);">'
         + '<div style="padding:36px 40px 24px;text-align:center;border-bottom:1px solid rgba(58,58,58,.15);">'
-          + '<div style="font-size:24px;font-weight:600;letter-spacing:.35em;color:var(--c-5b461d);">IMMONOVA</div>'
-          + '<div style="margin-top:8px;font-size:10px;font-weight:700;letter-spacing:.2em;color:var(--c-5b471f);text-transform:uppercase;">Off Market &middot; Consulting</div>'
+          + '<div style="font-size:24px;font-weight:600;letter-spacing:.35em;color:var(--c-5b461d);">Investments Puglia</div>'
+          + '<div style="margin-top:8px;font-size:10px;font-weight:700;letter-spacing:.2em;color:var(--c-5b471f);text-transform:uppercase;">Real Estate Investments</div>'
         + '</div>'
         + '<div style="padding:36px 40px;">'
           + '<h1 style="margin:0 0 20px;font-size:19px;font-weight:400;color:var(--c-5b461d);">'+title+'</h1>'
           + innerHtml
         + '</div>'
         + '<div style="padding:24px 40px;border-top:1px solid rgba(58,58,58,.15);text-align:center;">'
-          + '<div style="font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--c-4f4125);">IMMONOVA &middot; Off Market Consulting</div>'
+          + '<div style="font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--c-4f4125);">Investments Puglia</div>'
         + '</div>'
       + '</div>'
     + '</div>';
@@ -1548,7 +1548,7 @@ function openOfferSendPreview(mode){
     var pdfIncludesLatestScan = hasPdf && hasSigned && pdfLikelyIncludesScans(o);
     if(hasSigned && hasPdf && pdfIncludesLatestScan){
       attachNoteEl.className = "offer-preview-attach ok";
-      attachNoteEl.textContent = "Aprendo il link, il venditore vedrà il PDF ufficiale IMMONOVA con la scansione della firma già allegata come pagina in fondo (generato dopo l'ultimo caricamento).";
+      attachNoteEl.textContent = "Aprendo il link, il venditore vedrà il PDF ufficiale Investments Puglia con la scansione della firma già allegata come pagina in fondo (generato dopo l'ultimo caricamento).";
     }else if(hasSigned && hasPdf){
       attachNoteEl.className = "offer-preview-attach warn";
       attachNoteEl.textContent = "Il PDF ufficiale generato è precedente all'ultima scansione caricata, quindi non la contiene ancora — il venditore vedrà comunque la scansione come azione principale (link separato), ma se vuoi un unico PDF con tutto dentro premi di nuovo \"Genera PDF\" prima di inviare.";

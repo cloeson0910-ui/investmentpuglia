@@ -5,7 +5,7 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Relazione di Valutazione | IMMONOVA</title>
+<title>Relazione di Valutazione | Investments Puglia</title>
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -392,8 +392,8 @@ async function loadAndRender(){
 
   // Copertina
   html += '<div class="cover">'
-    + '<div class="cover-logo">IMMONOVA</div>'
-    + '<div class="cover-sub">Off Market · Consulting</div>'
+    + '<div class="cover-logo">Investments Puglia</div>'
+    + '<div class="cover-sub">Real Estate Investments</div>'
     + '<div class="cover-kicker">Relazione di Valutazione Immobiliare</div>'
     + '<div class="cover-title">' + escapeHTML(v.property_title || (v.category || "Immobile") + ", " + (v.municipality || "")) + '</div>'
     + '<div class="cover-meta">' + escapeHTML(propertyMeta) + (v.created_at ? ' · Preparata il ' + escapeHTML(formatDate(v.created_at)) : '') + '</div>'
@@ -545,10 +545,10 @@ async function loadAndRender(){
   var hasComparativo = v.valuation_comparativo_min != null;
   html += '<div class="section">'
     + '<div class="section-kicker">5. Metodo Comparativo</div>'
-    + '<p class="method-text">Confronto con l\'offerta immobiliare rilevabile nella stessa zona: opportunità IMMONOVA pubblicate, dati di mercato pubblici, comparabili individuati tramite ricerca, annunci in vendita sui portali immobiliari e compravendite reali registrate.</p>';
+    + '<p class="method-text">Confronto con l\'offerta immobiliare rilevabile nella stessa zona: opportunità Investments Puglia pubblicate, dati di mercato pubblici, comparabili individuati tramite ricerca, annunci in vendita sui portali immobiliari e compravendite reali registrate.</p>';
   var rmk = snap.real_market || null;
 
-  var allComps = internalComps.map(function(c){ return { location: c.title || "Opportunità IMMONOVA", size_sqm: c.size_sqm || null, price_per_sqm: c.pricePerSqm, source: "IMMONOVA" }; })
+  var allComps = internalComps.map(function(c){ return { location: c.title || "Opportunità Investments Puglia", size_sqm: c.size_sqm || null, price_per_sqm: c.pricePerSqm, source: "Investments Puglia" }; })
     .concat(aiComps.map(function(c){ return { location: c.title || c.location, size_sqm: c.size_sqm || null, price_per_sqm: c.price_per_sqm, source: c.source || "Ricerca web" }; }));
 
   if(allComps.length){
@@ -872,7 +872,7 @@ async function loadAndRender(){
       + '</div>';
   }
 
-  html += '<div class="footer-note">IMMONOVA · Off Market Consulting</div>';
+  html += '<div class="footer-note">Investments Puglia</div>';
 
   pageContent.innerHTML = html;
 

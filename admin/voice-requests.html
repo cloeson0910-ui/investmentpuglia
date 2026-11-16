@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="../css/immonova-text-theme.css">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Messaggi vocali | IMMONOVA Admin</title>
+<title>Messaggi vocali | Investments Puglia Admin</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{width:100%;min-height:100%}
@@ -56,8 +56,8 @@ audio{width:100%;margin-top:14px}
 
 <header class="header">
   <a href="../index.html" class="logo">
-    <div class="logo-main">IMMONOVA</div>
-    <div class="logo-sub">OFF MARKET • CONSULTING</div>
+    <div class="logo-main">Investments Puglia</div>
+    <div class="logo-sub">REAL ESTATE INVESTMENTS</div>
   </a>
   <div class="header-actions">
     <a href="dashboard.html">Dashboard</a>
@@ -68,7 +68,7 @@ audio{width:100%;margin-top:14px}
 <div class="container">
   <div class="kicker">Comunicazioni interne</div>
   <h1 class="title">Messaggi vocali</h1>
-  <p class="subtitle" id="subtitle">Messaggi vocali di richiesta inviati a tutti i collaboratori IMMONOVA.</p>
+  <p class="subtitle" id="subtitle">Messaggi vocali di richiesta inviati a tutti i collaboratori Investments Puglia.</p>
 
   <div class="card" id="pushCard">
     <div class="section-title">Notifiche su questo dispositivo</div>
@@ -244,7 +244,7 @@ async function removeMsg(id, path){
 }
 
 
-/* ===== Notifiche push ai collaboratori (app IMMONOVA installata) ===== */
+/* ===== Notifiche push ai collaboratori (app Investments Puglia installata) ===== */
 function pushStatus(msg, kind){ const el=$("pushStatus"); el.textContent=msg||""; el.className="status"+(kind?" "+kind:""); }
 function isStandalone(){ return (window.matchMedia && matchMedia("(display-mode: standalone)").matches) || navigator.standalone === true; }
 function isIOS(){ return /iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.platform==="MacIntel" && navigator.maxTouchPoints>1); }
@@ -259,7 +259,7 @@ async function refreshPushUi(){
   if(!("serviceWorker" in navigator) || !("PushManager" in window)){
     $("pushOnBtn").classList.add("hidden");
     $("pushInfo").textContent = isIOS() && !isStandalone()
-      ? "Su iPhone le notifiche funzionano solo dall'app: in Safari tocca Condividi → Aggiungi alla schermata Home, apri IMMONOVA dall'icona, fai login e torna qui."
+      ? "Su iPhone le notifiche funzionano solo dall'app: in Safari tocca Condividi → Aggiungi alla schermata Home, apri Investments Puglia dall'icona, fai login e torna qui."
       : "Questo browser non supporta le notifiche push.";
     return;
   }
@@ -315,7 +315,7 @@ async function init(){
   isAdmin = !!(currentProfile && currentProfile.role === "admin");
   if(currentProfile){
     $("composeCard").classList.remove("hidden");
-    $("subtitle").textContent = "Registra o carica un messaggio vocale di richiesta: arriva per email a tutti i collaboratori IMMONOVA, con l'audio in allegato, e resta ascoltabile qui.";
+    $("subtitle").textContent = "Registra o carica un messaggio vocale di richiesta: arriva per email a tutti i collaboratori Investments Puglia, con l'audio in allegato, e resta ascoltabile qui.";
   }
   $("recBtn").addEventListener("click", startRecording);
   $("stopBtn").addEventListener("click", stopRecording);

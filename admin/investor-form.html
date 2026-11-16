@@ -5,7 +5,7 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nuovo Contatto | IMMONOVA Admin</title>
+<title>Nuovo Contatto | Investments Puglia Admin</title>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 
@@ -324,8 +324,8 @@ textarea{
 
 <header class="header">
   <a href="../index.html" class="logo">
-    <div class="logo-main">IMMONOVA</div>
-    <div class="logo-sub">OFF MARKET • CONSULTING</div>
+    <div class="logo-main">Investments Puglia</div>
+    <div class="logo-sub">REAL ESTATE INVESTMENTS</div>
   </a>
 
   <div class="header-actions">
@@ -698,7 +698,7 @@ async function loadTranslatedStrings(lang){
     body:{
       language: lang,
       source_language: "it",
-      context: "IMMONOVA luxury real estate investment website. Admin form for creating/editing an investor CRM profile: personal data, contacts, investment profile, budget, geographic areas, categories, internal notes.",
+      context: "Investments Puglia luxury real estate investment website. Admin form for creating/editing an investor CRM profile: personal data, contacts, investment profile, budget, geographic areas, categories, internal notes.",
       texts: texts
     }
   });
@@ -1368,7 +1368,7 @@ async function loadInvestor(){
   if(!investorId) return;
 
   pageTitle.textContent = T.title_edit;
-  document.title = "Modifica Contatto | IMMONOVA Admin";
+  document.title = "Modifica Contatto | Investments Puglia Admin";
   saveBtn.textContent = T.btn_update;
 
   setProgress(T.msg_loading_investor, 25, "");
@@ -1404,7 +1404,7 @@ async function loadInvestor(){
   var fullNameForTitle = [data.first_name, data.last_name].filter(Boolean).join(" ");
   if(fullNameForTitle){
     pageTitle.textContent = T.title_edit + " — " + fullNameForTitle;
-    document.title = fullNameForTitle + " | Modifica Contatto | IMMONOVA Admin";
+    document.title = fullNameForTitle + " | Modifica Contatto | Investments Puglia Admin";
   }
 
   document.getElementById("first_name").value = data.first_name || "";

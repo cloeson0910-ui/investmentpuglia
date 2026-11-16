@@ -5,7 +5,7 @@
 
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>IMMONOVA Admin | Fonti Dati</title>
+<title>Investments Puglia Admin | Fonti Dati</title>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="../config.js"></script>
 <style>
@@ -13,10 +13,10 @@
 </style>
 </head>
 <body>
-<header><div><div class="logo">IMMONOVA</div><div class="mini">OFF MARKET • CONSULTING</div></div><nav><a href="dashboard.html" data-i18n="nav_dashboard">Dashboard</a><a href="opportunities.html" data-i18n="nav_opportunities">Immobili</a><a href="opportunity-form.html" data-i18n="nav_new_proposal">Nuova Proposta</a><a href="users.html" data-i18n="nav_users">Users</a><button class="btn" type="button" id="logoutBtn" data-i18n="logout">Logout</button></nav></header>
+<header><div><div class="logo">Investments Puglia</div><div class="mini">REAL ESTATE INVESTMENTS</div></div><nav><a href="dashboard.html" data-i18n="nav_dashboard">Dashboard</a><a href="opportunities.html" data-i18n="nav_opportunities">Immobili</a><a href="opportunity-form.html" data-i18n="nav_new_proposal">Nuova Proposta</a><a href="users.html" data-i18n="nav_users">Users</a><button class="btn" type="button" id="logoutBtn" data-i18n="logout">Logout</button></nav></header>
 <main>
 <div class="banner" id="errorBox"></div>
-<section class="hero"><div><h1 data-i18n="title">Fonti Dati Verificate</h1><p class="subtitle" data-i18n="subtitle">Catalogo operativo delle fonti IMMONOVA. Le fonti verificate e abilitate saranno usate dal Discovery Engine come base primaria.</p></div><button class="btn primary" type="button" id="newBtn" data-i18n="btn_new_source">Nuova Fonte</button></section>
+<section class="hero"><div><h1 data-i18n="title">Fonti Dati Verificate</h1><p class="subtitle" data-i18n="subtitle">Catalogo operativo delle fonti Investments Puglia. Le fonti verificate e abilitate saranno usate dal Discovery Engine come base primaria.</p></div><button class="btn primary" type="button" id="newBtn" data-i18n="btn_new_source">Nuova Fonte</button></section>
 <section class="grid"><aside class="card"><h2 id="formTitle" data-i18n="form_title_new">Nuova Fonte</h2><input type="hidden" id="sourceId" />
 <div class="row"><div><label data-i18n="label_category">Categoria</label><select id="category"><option value="tourism">Tourism</option><option value="transport">Transport</option><option value="heritage">Heritage</option><option value="hospitality">Hospitality / Hotel</option><option value="luxury_hospitality">Luxury Hospitality</option><option value="restaurants">Restaurants</option><option value="real_estate">Real Estate</option><option value="demography">Demography</option><option value="climate">Climate</option><option value="events">Events</option><option value="market">Market</option></select></div><div><label data-i18n="label_source_type">Tipo Fonte</label><select id="source_type"><option value="official" data-i18n="opt_official">Official</option><option value="institutional" data-i18n="opt_institutional">Institutional</option><option value="market_provider" data-i18n="opt_market_provider">Market Provider</option><option value="open_data" data-i18n="opt_open_data">Open Data</option><option value="commercial" data-i18n="opt_commercial">Commercial API</option><option value="secondary" data-i18n="opt_secondary">Secondary / Support</option></select></div></div>
 <label data-i18n="label_provider_name">Nome provider / documento</label><input id="provider_name" data-i18n-placeholder="ph_provider_name" placeholder="Es. Provincia Lecce - Tabella 15 flussi turistici" />
@@ -44,7 +44,7 @@ const FORM_IDS=['sourceId','category','source_type','provider_name','endpoint','
 var UI_STRINGS = {
   nav_dashboard:"Dashboard", nav_opportunities:"Immobili", nav_new_proposal:"Nuova Proposta", nav_users:"Users", logout:"Logout",
   title:"Fonti Dati Verificate",
-  subtitle:"Catalogo operativo delle fonti IMMONOVA. Le fonti verificate e abilitate saranno usate dal Discovery Engine come base primaria.",
+  subtitle:"Catalogo operativo delle fonti Investments Puglia. Le fonti verificate e abilitate saranno usate dal Discovery Engine come base primaria.",
   btn_new_source:"Nuova Fonte", form_title_new:"Nuova Fonte", form_title_edit:"Modifica Fonte",
   label_category:"Categoria", label_source_type:"Tipo Fonte",
   opt_official:"Official", opt_institutional:"Institutional", opt_market_provider:"Market Provider",
@@ -109,7 +109,7 @@ async function loadTranslatedStrings(lang){
     body:{
       language: lang,
       source_language: "it",
-      context: "IMMONOVA luxury real estate investment website. Admin page for managing verified data sources used by the territorial Discovery Engine (form fields, table, status badges).",
+      context: "Investments Puglia luxury real estate investment website. Admin page for managing verified data sources used by the territorial Discovery Engine (form fields, table, status badges).",
       texts: texts
     }
   });
@@ -162,7 +162,7 @@ async function loadUserLanguage(){
 
 function showError(msg){const b=$('errorBox');b.textContent=msg;b.style.display='block';console.error(msg)}
 function clearError(){const b=$('errorBox');b.textContent='';b.style.display='none'}
-function toast(msg){const t=$('toast');t.textContent=msg;t.style.display='block';console.log('[IMMONOVA data-sources]',msg);setTimeout(()=>t.style.display='none',6500)}
+function toast(msg){const t=$('toast');t.textContent=msg;t.style.display='block';console.log('[Investments Puglia data-sources]',msg);setTimeout(()=>t.style.display='none',6500)}
 function readConfig(){
  if(window.supabaseClient) return window.supabaseClient;
  const url='https://ksfxfysvpftldthahzte.supabase.co';

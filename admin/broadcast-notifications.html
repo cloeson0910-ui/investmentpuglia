@@ -5,7 +5,7 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Notifiche broadcast | IMMONOVA Admin</title>
+<title>Notifiche broadcast | Investments Puglia Admin</title>
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -62,7 +62,7 @@ textarea{resize:vertical;min-height:110px;line-height:1.5}
 <body>
 
 <header class="header">
-<div class="logo">IMMONOVA</div>
+<div class="logo">Investments Puglia</div>
 <div class="header-actions">
 <a href="dashboard.html">Dashboard</a>
 <a href="site-settings.html">Impostazioni sito</a>
@@ -87,12 +87,12 @@ Invia una notifica push a tutti gli utenti che hanno installato l'app e attivato
 
 <div class="field">
 <label>Titolo notifica</label>
-<input type="text" id="notifTitle" maxlength="60" placeholder="Es. IMMONOVA">
+<input type="text" id="notifTitle" maxlength="60" placeholder="Es. Investments Puglia">
 </div>
 
 <div class="field">
 <label>Messaggio</label>
-<textarea id="notifBody" maxlength="180" placeholder="Es. Buone feste da tutto il team IMMONOVA!"></textarea>
+<textarea id="notifBody" maxlength="180" placeholder="Es. Buone feste da tutto il team Investments Puglia!"></textarea>
 <div class="char-count" id="charCount">0 / 180</div>
 </div>
 
@@ -105,7 +105,7 @@ Invia una notifica push a tutti gli utenti che hanno installato l'app e attivato
 <div class="field">
 <label>Anteprima</label>
 <div class="preview">
-<div class="preview-title" id="previewTitle">IMMONOVA</div>
+<div class="preview-title" id="previewTitle">Investments Puglia</div>
 <div class="preview-body" id="previewBody">Il testo del messaggio comparirà qui.</div>
 </div>
 </div>
@@ -203,7 +203,7 @@ async function loadAudienceCount(){
 }
 
 function updatePreview(){
-  var title = document.getElementById("notifTitle").value.trim() || "IMMONOVA";
+  var title = document.getElementById("notifTitle").value.trim() || "Investments Puglia";
   var body = document.getElementById("notifBody").value.trim() || "Il testo del messaggio comparirà qui.";
   document.getElementById("previewTitle").textContent = title;
   document.getElementById("previewBody").textContent = body;
@@ -236,7 +236,7 @@ document.getElementById("cancelSendBtn").addEventListener("click", function(){
 });
 
 document.getElementById("confirmSendBtn").addEventListener("click", async function(){
-  var title = document.getElementById("notifTitle").value.trim() || "IMMONOVA";
+  var title = document.getElementById("notifTitle").value.trim() || "Investments Puglia";
   var bodyText = document.getElementById("notifBody").value.trim();
   var url = document.getElementById("notifUrl").value.trim() || "/index.html";
 

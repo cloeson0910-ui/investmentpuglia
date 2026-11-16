@@ -5,7 +5,7 @@
 
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>IMMONOVA Admin | Foto Destinazioni</title>
+<title>Investments Puglia Admin | Foto Destinazioni</title>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="../config.js"></script>
 <style>
@@ -24,7 +24,7 @@
 </style>
 </head>
 <body>
-<header><div><div class="logo">IMMONOVA</div><div class="mini">OFF MARKET • CONSULTING</div></div><nav><a href="dashboard.html" data-i18n="nav_dashboard">Dashboard</a><a href="opportunities.html" data-i18n="nav_opportunities">Immobili</a><a href="data-sources.html" data-i18n="nav_data_sources">Fonti Dati</a><a href="manual-overrides.html" data-i18n="nav_manual_overrides">Dati Verificati</a><a href="destination-photos.html" data-i18n="nav_destination_photos">Foto Destinazioni</a><button class="btn" type="button" id="logoutBtn" data-i18n="logout">Logout</button></nav></header>
+<header><div><div class="logo">Investments Puglia</div><div class="mini">REAL ESTATE INVESTMENTS</div></div><nav><a href="dashboard.html" data-i18n="nav_dashboard">Dashboard</a><a href="opportunities.html" data-i18n="nav_opportunities">Immobili</a><a href="data-sources.html" data-i18n="nav_data_sources">Fonti Dati</a><a href="manual-overrides.html" data-i18n="nav_manual_overrides">Dati Verificati</a><a href="destination-photos.html" data-i18n="nav_destination_photos">Foto Destinazioni</a><button class="btn" type="button" id="logoutBtn" data-i18n="logout">Logout</button></nav></header>
 <main>
 <div class="banner" id="errorBox"></div>
 <section class="hero"><div><h1 data-i18n="title">Foto Destinazioni</h1><p class="subtitle" data-i18n="subtitle">Una foto per comune (o provincia/regione come fallback) usata nelle pagine divisorie dei dossier stampabili. Solo materiale di cui hai i diritti d'uso — nessuna immagine viene mai presa automaticamente da internet.</p></div><button class="btn primary" type="button" id="newBtn" data-i18n="btn_new_photo">Nuova Foto</button></section>
@@ -53,12 +53,12 @@
     <div class="upload-label" id="uploadLabel" data-i18n="upload_label_default">Clicca per scegliere un'immagine, oppure trascinala qui<br>JPG, PNG, WEBP o GIF · max 40 MB (alta risoluzione da stampa)</div>
   </div>
   <div class="progress-bar" id="progressBar"><div class="fill" id="progressFill"></div></div>
-  <p class="hint" data-i18n="hint_upload_storage">Il file viene caricato nello storage IMMONOVA e l'URL pubblico viene compilato automaticamente qui sotto.</p>
+  <p class="hint" data-i18n="hint_upload_storage">Il file viene caricato nello storage Investments Puglia e l'URL pubblico viene compilato automaticamente qui sotto.</p>
 </div>
 
 <label data-i18n="label_preview">Anteprima</label>
 <div class="photo-card" style="margin-bottom:4px"><img id="previewImg" src="" alt="" onerror="this.style.opacity=0.15"/></div>
-<label data-i18n="label_credit">Credito / licenza</label><input id="credit" data-i18n-placeholder="ph_credit" placeholder="Es. Foto IMMONOVA, oppure Foto: Nome / licenza commerciale" />
+<label data-i18n="label_credit">Credito / licenza</label><input id="credit" data-i18n-placeholder="ph_credit" placeholder="Es. Foto Investments Puglia, oppure Foto: Nome / licenza commerciale" />
 <label data-i18n="label_note">Nota interna</label><textarea id="caption" data-i18n-placeholder="ph_optional" placeholder="Facoltativa"></textarea>
 <label data-i18n="label_status">Stato</label>
 <select id="active" style="width:100%;border:1px solid rgba(58,58,58,.26);border-radius:14px;padding:12px 13px;background:rgba(255,255,255,.68);color:var(--c-18130b);font:inherit"><option value="true" data-i18n="opt_active">Attiva</option><option value="false" data-i18n="opt_disabled">Disattivata</option></select>
@@ -106,9 +106,9 @@ var UI_STRINGS = {
   label_photo_url:"URL foto", label_local_file:"File locale",
   upload_label_default:"Clicca per scegliere un\u2019immagine, oppure trascinala qui<br>JPG, PNG, WEBP o GIF · max 40 MB (alta risoluzione da stampa)",
   upload_label_default_short:"Clicca per scegliere un\u2019immagine, oppure trascinala qui<br>JPG, PNG, WEBP o GIF · max 40 MB",
-  hint_upload_storage:"Il file viene caricato nello storage IMMONOVA e l'URL pubblico viene compilato automaticamente qui sotto.",
+  hint_upload_storage:"Il file viene caricato nello storage Investments Puglia e l'URL pubblico viene compilato automaticamente qui sotto.",
   label_preview:"Anteprima", label_credit:"Credito / licenza",
-  ph_credit:"Es. Foto IMMONOVA, oppure Foto: Nome / licenza commerciale",
+  ph_credit:"Es. Foto Investments Puglia, oppure Foto: Nome / licenza commerciale",
   label_note:"Nota interna", ph_optional:"Facoltativa",
   label_status:"Stato", opt_active:"Attiva", opt_disabled:"Disattivata",
   btn_save_photo:"Salva foto", btn_clear:"Pulisci",
@@ -157,7 +157,7 @@ async function loadTranslatedStrings(lang){
     body:{
       language: lang,
       source_language: "it",
-      context: "IMMONOVA luxury real estate investment website. Admin page for managing destination photos used in printable dossier divider pages (upload form, gallery, status badges).",
+      context: "Investments Puglia luxury real estate investment website. Admin page for managing destination photos used in printable dossier divider pages (upload form, gallery, status badges).",
       texts: texts
     }
   });

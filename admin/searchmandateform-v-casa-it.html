@@ -5,7 +5,7 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mandato di Ricerca | IMMONOVA Admin</title>
+<title>Mandato di Ricerca | Investments Puglia Admin</title>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 
@@ -198,8 +198,8 @@ textarea{min-height:110px;resize:vertical;line-height:1.7}
 
 <header class="header">
   <a href="../index.html" class="logo">
-    <div class="logo-main">IMMONOVA</div>
-    <div class="logo-sub">OFF MARKET • CONSULTING</div>
+    <div class="logo-main">Investments Puglia</div>
+    <div class="logo-sub">REAL ESTATE INVESTMENTS</div>
   </a>
   <div class="header-actions">
     <a href="dashboard.html" data-i18n="nav_dashboard">Dashboard</a>
@@ -484,7 +484,7 @@ async function loadTranslatedStrings(lang){
     body:{
       language: lang,
       source_language: "it",
-      context: "IMMONOVA luxury real estate investment website. Admin form to register a client's property search mandate: budget, size, rooms, features (garden, pool, garage, sea view).",
+      context: "Investments Puglia luxury real estate investment website. Admin form to register a client's property search mandate: budget, size, rooms, features (garden, pool, garage, sea view).",
       texts: texts
     }
   });
@@ -951,7 +951,7 @@ async function loadMandateForEdit(){
   if(!mandateId) return;
 
   document.querySelector(".title").textContent = T.title_edit;
-  document.title = "Modifica Mandato di Ricerca | IMMONOVA Admin";
+  document.title = "Modifica Mandato di Ricerca | Investments Puglia Admin";
   saveBtn.textContent = T.btn_update;
 
   var result = await client.from("immonova_search_mandates").select("*").eq("id", mandateId).single();

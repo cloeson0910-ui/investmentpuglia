@@ -5,7 +5,7 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Documenti | IMMONOVA Admin</title>
+<title>Documenti | Investments Puglia Admin</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{width:100%;min-height:100%}
@@ -240,7 +240,7 @@ button, .btn{cursor:pointer;font-family:inherit}
       <div class="doc-card">
         <div class="dc-icon">🔒</div>
         <div class="dc-title">NDA — Accordo di Riservatezza</div>
-        <div class="dc-note">Impegno formale di IMMONOVA: trattamento riservato dei dati del cliente, divulgazione limitata allo staff interno e a investitori verificati.</div>
+        <div class="dc-note">Impegno formale di Investments Puglia: trattamento riservato dei dati del cliente, divulgazione limitata allo staff interno e a investitori verificati.</div>
         <button type="button" class="btn" id="openNdaBtn">Genera NDA</button>
       </div>
 
@@ -261,7 +261,7 @@ button, .btn{cursor:pointer;font-family:inherit}
       <div class="doc-card">
         <div class="dc-icon">🧾</div>
         <div class="dc-title">Riconoscimento Onorario di Consulenza</div>
-        <div class="dc-note">Riconoscimento formale dell'onorario di consulenza dovuto a IMMONOVA sull'opportunità collegata. L'importo è normalmente già fissato nel mandato di vendita/ricerca: se quel documento non esiste, qui puoi inserirlo manualmente.</div>
+        <div class="dc-note">Riconoscimento formale dell'onorario di consulenza dovuto a Investments Puglia sull'opportunità collegata. L'importo è normalmente già fissato nel mandato di vendita/ricerca: se quel documento non esiste, qui puoi inserirlo manualmente.</div>
         <button type="button" class="btn" id="openOnorarioBtn">Genera Riconoscimento</button>
       </div>
 
@@ -302,7 +302,7 @@ button, .btn{cursor:pointer;font-family:inherit}
     <button type="button" class="gen-close" id="genCloseBtn">✕</button>
     <div class="gen-letterhead-row">
       <div>
-        <svg class="gen-letterhead-logo" viewBox="0 0 1120 135" xmlns="http://www.w3.org/2000/svg" aria-label="IMMONOVA">
+        <svg class="gen-letterhead-logo" viewBox="0 0 1120 135" xmlns="http://www.w3.org/2000/svg" aria-label="Investments Puglia">
           <defs><linearGradient id="genGoldGradient" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#323232"/><stop offset="42%" stop-color="#474747"/><stop offset="58%" stop-color="#ababab"/><stop offset="100%" stop-color="#3a3a3a"/></linearGradient></defs>
           <rect class="lh-i" x="35" y="20" width="5" height="95" rx="2.5"/>
           <path class="lh-fill" d="M105 115 L105 20 L155 115 L205 20 L205 115" />
@@ -313,10 +313,10 @@ button, .btn{cursor:pointer;font-family:inherit}
           <path class="lh-fill" d="M810 20 L860 115 L910 20" />
           <path class="lh-fill" d="M915 115 L965 20 L1015 115" />
         </svg>
-        <div class="gen-letterhead-payoff">Off Market · Consulting</div>
+        <div class="gen-letterhead-payoff">Real Estate Investments</div>
       </div>
       <div class="gen-letterhead-legal">
-        <strong>IMMONOVA S.r.l.</strong><br>
+        <strong>Investments Puglia S.r.l.</strong><br>
         Via Emilio Fai di Bruno, 00195 Roma (RM)<br>
         P.IVA 18585831003<br>
         amministrazione@investmentspuglia.it
@@ -341,7 +341,7 @@ button, .btn{cursor:pointer;font-family:inherit}
         <div class="gen-sign-col">
           <canvas class="gen-sig-canvas" id="genSigAgentCanvas"></canvas>
           <button type="button" class="gen-sig-clear" id="genSigAgentClear">Cancella firma</button>
-          <div class="gen-sign-who">Per IMMONOVA S.r.l.</div>
+          <div class="gen-sign-who">Per Investments Puglia S.r.l.</div>
         </div>
       </div>
     </div>
@@ -369,7 +369,7 @@ function updateGenSaveBtnLabel(){
 }
 
 /* ================================ Pad firma touch (iPad/cellulare/mouse) ================================
-   Due firme indipendenti (Cliente / IMMONOVA) disegnabili col dito o col mouse direttamente sul
+   Due firme indipendenti (Cliente / Investments Puglia) disegnabili col dito o col mouse direttamente sul
    documento prima di registrarlo o stamparlo. In stampa dal vivo (window.print()) il canvas viene
    stampato cosi' com'e' -- ma lo snapshot salvato in DB (genSaveBtn) e una ristampa successiva
    (printSavedDocument) non possono contenere un <canvas> vivo, quindi la firma va cristallizzata
@@ -641,7 +641,7 @@ async function loadClientOpportunities(investorId){
 
   oppHint.textContent = list.length
     ? "Trovate " + list.length + " opportunità collegate a questo cliente: selezionane una per precompilare il documento, oppure lascia \"nessuna\"."
-    : "Nessuna opportunità risulta collegata a questo cliente su IMMONOVA (né come venditore né come proponente). Se serve, potrai comunque descrivere l'immobile a mano nel documento.";
+    : "Nessuna opportunità risulta collegata a questo cliente su Investments Puglia (né come venditore né come proponente). Se serve, potrai comunque descrivere l'immobile a mano nel documento.";
 }
 
 document.getElementById("oppSelect").addEventListener("change", function(){
@@ -798,19 +798,19 @@ function signFooterStaticHTML(luogo, dataStr, clientName, signatures){
     + 'Luogo: <strong>' + escapeHTML(luogo || "Roma") + '</strong> — Data: <strong>' + escapeHTML(dataStr || todayIt()) + '</strong>'
     + '<div style="display:flex;justify-content:space-between;gap:40px;margin-top:56px">'
     + '<div style="flex:1;text-align:center">' + signBlock(sig.client) + '<div style="font-size:11.5px;color:var(--c-5c4a20);line-height:1.5">Il Cliente<br><strong>' + escapeHTML(clientName || "") + '</strong></div></div>'
-    + '<div style="flex:1;text-align:center">' + signBlock(sig.agent) + '<div style="font-size:11.5px;color:var(--c-5c4a20);line-height:1.5">Per IMMONOVA S.r.l.</div></div>'
+    + '<div style="flex:1;text-align:center">' + signBlock(sig.agent) + '<div style="font-size:11.5px;color:var(--c-5c4a20);line-height:1.5">Per Investments Puglia S.r.l.</div></div>'
     + '</div></div>';
 }
 
 function letterheadHTML(){
   return '<div class="lh-row" style="display:flex;justify-content:space-between;align-items:flex-start;gap:24px;margin-bottom:24px;padding-bottom:18px;border-bottom:1px solid rgba(58,58,58,.25)">'
-    + '<div><svg width="150" viewBox="0 0 1120 135" xmlns="http://www.w3.org/2000/svg" aria-label="IMMONOVA">'
+    + '<div><svg width="150" viewBox="0 0 1120 135" xmlns="http://www.w3.org/2000/svg" aria-label="Investments Puglia">'
     + '<defs><linearGradient id="printGoldGradient" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#323232"/><stop offset="42%" stop-color="#474747"/><stop offset="58%" stop-color="#ababab"/><stop offset="100%" stop-color="#3a3a3a"/></linearGradient></defs>'
     + '<g fill="none" stroke="url(#printGoldGradient)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">'
     + '<path d="M105 115 L105 20 L155 115 L205 20 L205 115" /><path d="M265 115 L265 20 L315 115 L365 20 L365 115" /><ellipse cx="465" cy="67.5" rx="48" ry="48" /><path d="M555 115 L555 20 L635 115 L635 20" /><ellipse cx="735" cy="67.5" rx="48" ry="48" /><path d="M810 20 L860 115 L910 20" /><path d="M915 115 L965 20 L1015 115" />'
     + '</g><rect x="35" y="20" width="5" height="95" rx="2.5" fill="url(#printGoldGradient)"/></svg>'
-    + '<div style="margin-top:6px;font-size:8.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--c-4f4125)">Off Market · Consulting</div></div>'
-    + '<div style="text-align:right;font-size:10.5px;line-height:1.6;color:var(--c-5c4a20)"><strong style="color:var(--c-4a3c1f);font-weight:600">IMMONOVA S.r.l.</strong><br>Via Emilio Fai di Bruno, 00195 Roma (RM)<br>P.IVA 18585831003<br>amministrazione@investmentspuglia.it</div>'
+    + '<div style="margin-top:6px;font-size:8.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--c-4f4125)">Real Estate Investments</div></div>'
+    + '<div style="text-align:right;font-size:10.5px;line-height:1.6;color:var(--c-5c4a20)"><strong style="color:var(--c-4a3c1f);font-weight:600">Investments Puglia S.r.l.</strong><br>Via Emilio Fai di Bruno, 00195 Roma (RM)<br>P.IVA 18585831003<br>amministrazione@investmentspuglia.it</div>'
     + '</div>';
 }
 
@@ -880,9 +880,9 @@ const genDocBody = document.getElementById("genDocBody");
 const genFormFields = document.getElementById("genFormFields");
 
 function ndaBodyHTML(){
-  return '<p>Il presente documento formalizza l\'impegno di <strong>IMMONOVA S.r.l.</strong> (di seguito "IMMONOVA") nei confronti di <strong>' + escapeHTML(fullName(selectedClient)) + '</strong>' + clientLegalIdentityHTML() + ' (di seguito "il Cliente") in merito al trattamento strettamente riservato dei dati e delle informazioni condivise nell\'ambito del rapporto professionale in corso.</p>'
-    + '<h4>1. Riservatezza dei dati</h4><p>IMMONOVA garantisce che tutti i dati personali, finanziari, patrimoniali e di qualsiasi altra natura forniti dal Cliente saranno trattati con la massima riservatezza, in conformità al Regolamento (UE) 2016/679 (GDPR) e alla normativa italiana applicabile.</p>'
-    + '<h4>2. Limitazione della divulgazione</h4><p>Le informazioni fornite dal Cliente non saranno in alcun modo divulgate, cedute o rese accessibili a terzi, fatta eccezione esclusivamente per: il personale interno di IMMONOVA direttamente coinvolto nella gestione della pratica, tenuto anch\'esso al medesimo obbligo di riservatezza; e investitori o controparti verificate da IMMONOVA, e solo nella misura strettamente necessaria a valutare una concreta opportunità di investimento o acquisto, previa adeguata verifica della loro affidabilità e serietà.</p>'
+  return '<p>Il presente documento formalizza l\'impegno di <strong>Investments Puglia S.r.l.</strong> (di seguito "Investments Puglia") nei confronti di <strong>' + escapeHTML(fullName(selectedClient)) + '</strong>' + clientLegalIdentityHTML() + ' (di seguito "il Cliente") in merito al trattamento strettamente riservato dei dati e delle informazioni condivise nell\'ambito del rapporto professionale in corso.</p>'
+    + '<h4>1. Riservatezza dei dati</h4><p>Investments Puglia garantisce che tutti i dati personali, finanziari, patrimoniali e di qualsiasi altra natura forniti dal Cliente saranno trattati con la massima riservatezza, in conformità al Regolamento (UE) 2016/679 (GDPR) e alla normativa italiana applicabile.</p>'
+    + '<h4>2. Limitazione della divulgazione</h4><p>Le informazioni fornite dal Cliente non saranno in alcun modo divulgate, cedute o rese accessibili a terzi, fatta eccezione esclusivamente per: il personale interno di Investments Puglia direttamente coinvolto nella gestione della pratica, tenuto anch\'esso al medesimo obbligo di riservatezza; e investitori o controparti verificate da Investments Puglia, e solo nella misura strettamente necessaria a valutare una concreta opportunità di investimento o acquisto, previa adeguata verifica della loro affidabilità e serietà.</p>'
     + '<h4>3. Finalità del trattamento</h4><p>I dati saranno utilizzati esclusivamente per le finalità connesse all\'incarico conferito (valutazione, commercializzazione, acquisizione dell\'immobile) e non per scopi ulteriori senza il consenso esplicito del Cliente.</p>'
     + '<h4>4. Durata</h4><p>Il presente impegno di riservatezza rimane valido per tutta la durata del rapporto professionale con il Cliente e per i cinque anni successivi alla sua eventuale cessazione.</p>';
 }
@@ -982,7 +982,7 @@ function incaricoBodyHTML(f){
     : f.rinnovo === "rinnovo_senza_esclusiva" ? "si intenderà tacitamente rinnovato, senza esclusiva, per un pari periodo di tempo, e per una sola volta, salvo disdetta tramite lettera raccomandata A/R (o PEC) che dovrà pervenire all'Agente almeno 20 giorni prima della naturale scadenza"
     : "si intenderà cessato a tutti gli effetti";
 
-  var html = '<p>Il sottoscritto <strong>' + escapeHTML(fullName(selectedClient)) + '</strong>' + natoText + clientLegalIdentityHTML() + rilascioText + incQualitaText(f) + ' (in seguito "il Venditore"), che si impegna a fornire tutta la documentazione necessaria e idonea al trasferimento dell\'immobile, conferisce a <strong>IMMONOVA S.r.l.</strong> (in seguito "l\'Agente"), con facoltà di avvalersi della submediazione e/o collaborazione di mediatori, società di mediazione e/o consulenti con i quali riterrà più opportuno collaborare, senza oneri aggiuntivi a carico del Venditore, INCARICO DI MEDIAZIONE per promuovere la vendita ' + tipoProprietaLabel + ' dell\'immobile sito nel Comune di ' + escapeHTML(f.comune || "—") + ', Via ' + escapeHTML(f.via || "—") + ' n. ' + escapeHTML(f.civico || "—") + ', destinazione d\'uso ' + escapeHTML(f.destinazione || "—") + (f.composizione ? (', composto da ' + escapeHTML(f.composizione)) : "") + (f.piano ? (', piano ' + escapeHTML(f.piano)) : "") + (f.interno ? (' interno ' + escapeHTML(f.interno)) : "") + (f.accessori ? (', accessori ' + escapeHTML(f.accessori)) : "") + (f.datiCatastali ? ('; dati catastali: ' + escapeHTML(f.datiCatastali)) : "") + ' (in seguito, "l\'Immobile"), attualmente ' + statoText + '.</p>'
+  var html = '<p>Il sottoscritto <strong>' + escapeHTML(fullName(selectedClient)) + '</strong>' + natoText + clientLegalIdentityHTML() + rilascioText + incQualitaText(f) + ' (in seguito "il Venditore"), che si impegna a fornire tutta la documentazione necessaria e idonea al trasferimento dell\'immobile, conferisce a <strong>Investments Puglia S.r.l.</strong> (in seguito "l\'Agente"), con facoltà di avvalersi della submediazione e/o collaborazione di mediatori, società di mediazione e/o consulenti con i quali riterrà più opportuno collaborare, senza oneri aggiuntivi a carico del Venditore, INCARICO DI MEDIAZIONE per promuovere la vendita ' + tipoProprietaLabel + ' dell\'immobile sito nel Comune di ' + escapeHTML(f.comune || "—") + ', Via ' + escapeHTML(f.via || "—") + ' n. ' + escapeHTML(f.civico || "—") + ', destinazione d\'uso ' + escapeHTML(f.destinazione || "—") + (f.composizione ? (', composto da ' + escapeHTML(f.composizione)) : "") + (f.piano ? (', piano ' + escapeHTML(f.piano)) : "") + (f.interno ? (' interno ' + escapeHTML(f.interno)) : "") + (f.accessori ? (', accessori ' + escapeHTML(f.accessori)) : "") + (f.datiCatastali ? ('; dati catastali: ' + escapeHTML(f.datiCatastali)) : "") + ' (in seguito, "l\'Immobile"), attualmente ' + statoText + '.</p>'
 
     + '<h4>1. Dichiarazioni del Venditore</h4>'
     + '<p>Il Venditore dichiara che l\'Immobile: è pervenuto allo stesso per ' + provenienzaLabel + '; è ' + pienaProprietaText + '; ' + edilizioText + ' alle norme edilizie ed urbanistiche e ' + agibilitaText + ' di agibilità; la planimetria depositata in catasto ' + planimetriaText + ' esattamente allo stato di fatto; è dotato di impianti ' + impiantiText + ' alle normative vigenti; è ' + certEnergeticaText + '; è ' + gravamiText + '.</p>'
@@ -1134,10 +1134,10 @@ function onorarioBodyHTML(f){
   var importoText = f.importoTipo === "percentuale"
     ? (f.importoValore ? f.importoValore + "% del prezzo di vendita/acquisto definitivo" : "da definire")
     : (f.importoValore ? "€ " + Number(f.importoValore).toLocaleString("it-IT") + " (importo fisso)" : "da definire");
-  return '<p>Con il presente documento, <strong>' + escapeHTML(fullName(selectedClient)) + '</strong>' + clientLegalIdentityHTML() + ' (di seguito "il Cliente") riconosce e conferma quanto segue in merito all\'attività di consulenza svolta da <strong>IMMONOVA S.r.l.</strong> (di seguito "IMMONOVA") relativamente all\'opportunità di seguito indicata.</p>'
+  return '<p>Con il presente documento, <strong>' + escapeHTML(fullName(selectedClient)) + '</strong>' + clientLegalIdentityHTML() + ' (di seguito "il Cliente") riconosce e conferma quanto segue in merito all\'attività di consulenza svolta da <strong>Investments Puglia S.r.l.</strong> (di seguito "Investments Puglia") relativamente all\'opportunità di seguito indicata.</p>'
     + '<h4>1. Opportunità/immobile di riferimento</h4><p>' + escapeHTML(immobileText) + '</p>'
     + '<h4>2. Onorario di consulenza riconosciuto</h4><p>' + escapeHTML(importoText) + '.</p>'
-    + '<h4>3. Origine dell\'importo</h4><p>' + (f.daMandato ? 'L\'importo sopra indicato è quello già stabilito nel mandato di vendita/ricerca sottoscritto dal Cliente con IMMONOVA, qui richiamato e confermato.' : 'In assenza, alla data odierna, di un mandato di vendita/ricerca già sottoscritto che fissi tale importo, il Cliente e IMMONOVA concordano e riconoscono qui direttamente i termini economici sopra indicati.') + '</p>'
+    + '<h4>3. Origine dell\'importo</h4><p>' + (f.daMandato ? 'L\'importo sopra indicato è quello già stabilito nel mandato di vendita/ricerca sottoscritto dal Cliente con Investments Puglia, qui richiamato e confermato.' : 'In assenza, alla data odierna, di un mandato di vendita/ricerca già sottoscritto che fissi tale importo, il Cliente e Investments Puglia concordano e riconoscono qui direttamente i termini economici sopra indicati.') + '</p>'
     + '<h4>4. Modalità di corresponsione</h4><p>' + escapeHTML(f.modalita || "Da definire tra le parti, salvo diverso accordo scritto successivo.") + '</p>'
     + (f.note ? '<h4>5. Note aggiuntive</h4><p>' + escapeHTML(f.note) + '</p>' : "");
 }
@@ -1201,7 +1201,7 @@ document.getElementById("genEmailBtn").addEventListener("click", function(){
   var email = (selectedClient.email || "").trim();
   if(!email){ alert("Il contatto selezionato non ha un'email salvata: aggiungila nella scheda contatto oppure invia manualmente."); return; }
   var title = genDocLabel();
-  var subject = title + " — IMMONOVA S.r.l.";
+  var subject = title + " — Investments Puglia S.r.l.";
   var body = "Buongiorno " + fullName(selectedClient) + ",\n\n"
     + "in allegato trova il documento \"" + title + "\" firmato in data odierna.\n\n"
     + "(Nota per chi invia: salva prima il PDF con \"Stampa / Salva PDF\" — su iPad/iPhone: Stampa → Salva su File — poi allega quel file a questa email prima di inviarla.)\n\n"
@@ -1213,7 +1213,7 @@ document.getElementById("genWhatsappBtn").addEventListener("click", function(){
   var phone = (selectedClient.phone || "").replace(/[^0-9+]/g, "");
   if(!phone){ alert("Il contatto selezionato non ha un numero di telefono salvato: aggiungilo nella scheda contatto oppure invia manualmente."); return; }
   var title = genDocLabel();
-  var text = "Buongiorno " + fullName(selectedClient) + ", le invio il documento \"" + title + "\" firmato — IMMONOVA S.r.l. (il PDF va allegato manualmente: salvalo prima con \"Stampa / Salva PDF\").";
+  var text = "Buongiorno " + fullName(selectedClient) + ", le invio il documento \"" + title + "\" firmato — Investments Puglia S.r.l. (il PDF va allegato manualmente: salvalo prima con \"Stampa / Salva PDF\").";
   window.open("https://wa.me/" + encodeURIComponent(phone.replace(/^\+/, "")) + "?text=" + encodeURIComponent(text), "_blank");
 });
 

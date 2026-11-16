@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="../css/immonova-text-theme.css">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mandato a vendere | IMMONOVA Admin</title>
+<title>Mandato a vendere | Investments Puglia Admin</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{width:100%;min-height:100%}
@@ -82,7 +82,7 @@ textarea{min-height:80px;resize:vertical}
 <body>
 
 <header class="header">
-  <a href="../index.html" class="logo"><div class="logo-main">IMMONOVA</div><div class="logo-sub">OFF MARKET • CONSULTING</div></a>
+  <a href="../index.html" class="logo"><div class="logo-main">Investments Puglia</div><div class="logo-sub">REAL ESTATE INVESTMENTS</div></a>
   <div class="header-actions">
     <a href="#" id="backLink">← Acquisizione</a>
     <a href="dashboard.html">Dashboard</a>
@@ -127,8 +127,8 @@ textarea{min-height:80px;resize:vertical}
 
   <div class="card no-print">
     <div class="section-title">Tipo di pubblicazione</div>
-    <label class="radio-card"><input type="radio" name="pub" value="tutti" checked><div><b>Tutti i canali</b><span>Portali immobiliari italiani ed esteri, sito e canali social IMMONOVA, rete di investitori e partner.</span></div></label>
-    <label class="radio-card"><input type="radio" name="pub" value="esteri"><div><b>Solo canali esteri</b><span>Nessuna pubblicazione su portali italiani: solo portali e reti internazionali, sito IMMONOVA in lingua straniera e investitori esteri.</span></div></label>
+    <label class="radio-card"><input type="radio" name="pub" value="tutti" checked><div><b>Tutti i canali</b><span>Portali immobiliari italiani ed esteri, sito e canali social Investments Puglia, rete di investitori e partner.</span></div></label>
+    <label class="radio-card"><input type="radio" name="pub" value="esteri"><div><b>Solo canali esteri</b><span>Nessuna pubblicazione su portali italiani: solo portali e reti internazionali, sito Investments Puglia in lingua straniera e investitori esteri.</span></div></label>
     <label class="radio-card"><input type="radio" name="pub" value="off_market"><div><b>Off market</b><span>Nessuna pubblicazione pubblica: presentazione riservata a investitori e acquirenti selezionati, dati identificativi solo dopo accordo di riservatezza.</span></div></label>
   </div>
 
@@ -142,7 +142,7 @@ textarea{min-height:80px;resize:vertical}
       <div><label>Durata (mesi)</label><input type="number" id="duration" value="6" min="1"></div>
       <div><label>Preavviso di recesso (giorni)</label><input type="number" id="notice" value="30" min="0"></div>
       <div><label>Luogo di sottoscrizione</label><input type="text" id="place"></div>
-      <div class="full"><label class="chk"><input type="checkbox" id="outside" checked> Firmato fuori dagli uffici IMMONOVA (es. presso l'immobile o a casa del proprietario)</label></div>
+      <div class="full"><label class="chk"><input type="checkbox" id="outside" checked> Firmato fuori dagli uffici Investments Puglia (es. presso l'immobile o a casa del proprietario)</label></div>
       <div class="full"><label>Condizioni particolari (facoltative)</label><textarea id="special" placeholder="Es. visite solo su appuntamento con preavviso di 48 ore; immobile libero al rogito…"></textarea></div>
     </div>
   </div>
@@ -219,7 +219,7 @@ function ownerName(o){ return [o.first_name, o.last_name].filter(Boolean).join("
 /* ---------- firme ---------- */
 function renderPads(){
   const list = signerList().map(x => ({ key:"owner_" + x.i, label: ownerName(x.o) + " — " + (x.i === 0 ? "Proprietario" : "Comproprietario") }));
-  list.push({ key:"immonova", label:"IMMONOVA S.R.L. — il Consulente" });
+  list.push({ key:"immonova", label:"Investments Puglia S.R.L. — il Consulente" });
   $("pads").innerHTML = list.map(p => '<div class="pad-wrap"><div class="pad-top"><span>' + esc(p.label) + '</span><button class="link-btn" type="button" data-clear="' + p.key + '">Cancella</button></div><canvas data-key="' + p.key + '"></canvas></div>').join("");
   $("pads").querySelectorAll("canvas").forEach(setupPad);
   $("pads").querySelectorAll("[data-clear]").forEach(b => b.addEventListener("click", () => { delete signatures[b.dataset.clear]; renderPads(); renderDoc(); }));
@@ -260,16 +260,16 @@ function renderDoc(){
   }[pub];
 
   const sigBox = (key, label) => '<div class="sig">' + (signatures[key] ? '<img src="' + signatures[key] + '">' : '<div class="ph"></div>') + esc(label) + '</div>';
-  const sigs = signers.map(x => sigBox("owner_" + x.i, ownerName(x.o))).join("") + sigBox("immonova", "IMMONOVA S.R.L. — il Consulente");
+  const sigs = signers.map(x => sigBox("owner_" + x.i, ownerName(x.o))).join("") + sigBox("immonova", "Investments Puglia S.R.L. — il Consulente");
   const place = val("place"), today = new Date().toLocaleDateString("it-IT");
 
   $("doc").innerHTML =
-    '<div class="d-head"><div class="d-wm">IMMONOVA</div><div class="d-rule"></div><div class="d-tag">OFF MARKET · CONSULTING</div>' +
+    '<div class="d-head"><div class="d-wm">Investments Puglia</div><div class="d-rule"></div><div class="d-tag">REAL ESTATE INVESTMENTS</div>' +
     '<h1>MANDATO A VENDERE</h1><div class="d-sub">Incarico di consulenza e assistenza alla vendita' + (excl ? ' — in esclusiva' : ' — non in esclusiva') + '</div></div>' +
 
     '<h3>Parti</h3><p>' + (multiOwner ? 'I sottoscritti proprietari' : 'Il/La sottoscritto/a proprietario/a') + ' (di seguito, ' + (multiOwner ? 'congiuntamente, ' : '') + 'il "Venditore"):</p>' + parties +
     (proxy ? '<p class="left">I proprietari non firmatari sono rappresentati dal/dai firmatario/i in forza di: ' + blank(val("proxyRef"), 80) + ', che si allega al presente mandato.</p>' : '') +
-    '<p>e <b>IMMONOVA S.R.L.</b> (di seguito, il "Consulente"),</p><p>convengono quanto segue.</p>' +
+    '<p>e <b>Investments Puglia S.R.L.</b> (di seguito, il "Consulente"),</p><p>convengono quanto segue.</p>' +
 
     '<h3>Art. 1 — Immobile</h3><p>Oggetto del mandato è l\'immobile ' + (val("p_type") ? 'a uso ' + esc(val("p_type")) + ' ' : '') + 'sito in ' + blank(val("p_address"), 60) + ', ' + blank(val("p_municipality"), 30) + (val("p_province") ? ' (' + esc(val("p_province")) + ')' : '') +
     ', identificato catastalmente: ' + blank(val("p_cadastral"), 60) + '. ' +
@@ -335,7 +335,7 @@ function collect(status){
 async function save(status){
   if(status === "firmato"){
     const missing = signerList().filter(x => !signatures["owner_" + x.i]).map(x => ownerName(x.o));
-    if(!signatures.immonova) missing.push("IMMONOVA");
+    if(!signatures.immonova) missing.push("Investments Puglia");
     if(!val("fee")) { setStatus("Scrivi il compenso della consulenza prima di firmare.", "err"); return; }
     if(missing.length){ setStatus("Mancano le firme di: " + missing.join(", "), "err"); return; }
   }

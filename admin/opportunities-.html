@@ -5,7 +5,7 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gestisci Proposte | IMMONOVA</title>
+<title>Gestisci Proposte | Investments Puglia</title>
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -438,8 +438,8 @@ width:100%;
 <header class="header">
 
 <a href="../index.html" class="logo">
-  <div class="logo-main">IMMONOVA</div>
-  <div class="logo-sub">OFF MARKET • CONSULTING</div>
+  <div class="logo-main">Investments Puglia</div>
+  <div class="logo-sub">REAL ESTATE INVESTMENTS</div>
 </a>
 
 <div class="header-actions">
@@ -567,7 +567,7 @@ var UI_STRINGS = {
   title:"Proposte",
   loading_area:"Caricamento area riservata...",
   subtitle_admin:"Gestisci tutte le proposte ricevute. Puoi valutarle, approvarle, rifiutarle, pubblicarle o sospenderle.",
-  subtitle_user:"Qui puoi vedere e gestire solo le tue proposte. La pubblicazione è riservata agli admin IMMONOVA.",
+  subtitle_user:"Qui puoi vedere e gestire solo le tue proposte. La pubblicazione è riservata agli admin Investments Puglia.",
   search_placeholder:"Cerca per titolo, categoria, location o stato...",
   filter_all_review:"Tutti gli stati revisione", filter_all_commercial:"Tutti gli stati commerciali", filter_my_opportunities:"Solo le mie", filter_all_owners:"Tutti i collaboratori",
   status_da_verificare:"Da verificare", status_da_revisionare:"Da revisionare", status_approvato:"Approvato", status_rifiutato:"Rifiutato",
@@ -630,7 +630,7 @@ async function loadTranslatedStrings(lang){
     body:{
       language: lang,
       source_language: "it",
-      context: "IMMONOVA luxury real estate investment website. This is the admin opportunities/proposals management table: navigation, filters, table headers, status badges, action buttons, document checklist labels.",
+      context: "Investments Puglia luxury real estate investment website. This is the admin opportunities/proposals management table: navigation, filters, table headers, status badges, action buttons, document checklist labels.",
       texts: texts
     }
   });
@@ -911,12 +911,12 @@ async function attachLinkedEvents(){
 /* ---- Dossier AI salvati (bucket dossier-pdfs, cartella opportunity-<id>/): legge dal nome
    del file lingua e logo usato. Usato da Data Room (allegato EN) e tabella Proposte. ---- */
 function parseDossierFile(name){
-  var m = String(name||"").match(/_dossier_(IMMONOVA-only|COBRAND-IMMONOVA-[a-z0-9-]+|PARTNER-[a-z0-9-]+|IMMONOVA)_.*_([a-z]{2})\.pdf$/);
+  var m = String(name||"").match(/_dossier_(Investments Puglia-only|COBRAND-Investments Puglia-[a-z0-9-]+|PARTNER-[a-z0-9-]+|Investments Puglia)_.*_([a-z]{2})\.pdf$/);
   if(!m) return null;
   var tag = m[1], kind, partner = "";
-  if(tag === "IMMONOVA-only") kind = "immonova";
-  else if(tag === "IMMONOVA") kind = "legacy";
-  else if(tag.indexOf("COBRAND-IMMONOVA-") === 0){ kind = "cobrand"; partner = tag.slice(17); }
+  if(tag === "Investments Puglia-only") kind = "immonova";
+  else if(tag === "Investments Puglia") kind = "legacy";
+  else if(tag.indexOf("COBRAND-Investments Puglia-") === 0){ kind = "cobrand"; partner = tag.slice(17); }
   else { kind = "partner"; partner = tag.slice(8); }
   var ts = Number((String(name).match(/^(\d{10,})_/) || [])[1]) || 0;
   return { name:name, kind:kind, partnerSlug:partner, lang:m[2], ts:ts };
@@ -945,10 +945,10 @@ function renderDossierLogo(item){
   var en = list.find(function(x){ return x.lang === "en"; });
   var ref = en || list[0];
   var label, cls = ref.kind;
-  if(ref.kind === "immonova") label = "IMMONOVA";
-  else if(ref.kind === "cobrand") label = "Co-brand IMMONOVA + " + partnerLabelFromSlug(item, ref.partnerSlug);
+  if(ref.kind === "immonova") label = "Investments Puglia";
+  else if(ref.kind === "cobrand") label = "Co-brand Investments Puglia + " + partnerLabelFromSlug(item, ref.partnerSlug);
   else if(ref.kind === "partner") label = "Partner: " + partnerLabelFromSlug(item, ref.partnerSlug);
-  else label = item.dossier_partner_logo_url ? "IMMONOVA? (da rigenerare)" : "IMMONOVA";
+  else label = item.dossier_partner_logo_url ? "Investments Puglia? (da rigenerare)" : "Investments Puglia";
   var title = ref.kind === "legacy" ? "PDF salvato prima del tracciamento del logo: rigeneralo per avere la conferma." : "";
   var d = ref.created_at ? new Date(ref.created_at).toLocaleDateString("it-IT") : "";
   var langs = Array.from(new Set(list.map(function(x){ return x.lang.toUpperCase(); }))).join(" · ");

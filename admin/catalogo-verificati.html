@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Catalogo Immobili Verificati — IMMONOVA</title>
+<title>Catalogo Immobili Verificati — Investments Puglia</title>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="../js/config.js"></script>
 <style>
@@ -408,7 +408,7 @@ async function loadTranslatedStrings(lang){
   var keys = Object.keys(UI_STRINGS);
   var texts = keys.map(function(k){ return UI_STRINGS[k]; });
   var translated = await translateTextsSafe(lang, keys, texts, UI_STRINGS,
-    "IMMONOVA luxury real estate investment website. This is a printable one-sheet catalogue of verified available properties: page title, toolbar labels, property badges (sea view, pool, garden...), footer legal note.");
+    "Investments Puglia luxury real estate investment website. This is a printable one-sheet catalogue of verified available properties: page title, toolbar labels, property badges (sea view, pool, garden...), footer legal note.");
   try{ localStorage.setItem(cacheKey, JSON.stringify(translated)); }catch(e){}
   return translated;
 }
@@ -500,7 +500,7 @@ function buildSheet(items, pageNum, totalPages){
   return `
     <div class="sheet">
       <div class="sheet-header">
-        <div class="brand">IMMONOVA<small>OFF MARKET • CONSULTING</small></div>
+        <div class="brand">Investments Puglia<small>REAL ESTATE INVESTMENTS</small></div>
         <div class="sheet-title">
           <div class="t1">${escapeHTML(T.sheet_title)}</div>
           <div class="t2">${today}${totalPages > 1 ? ` — ${escapeHTML(T.page_of)} ${pageNum}/${totalPages}` : ""}</div>
@@ -509,7 +509,7 @@ function buildSheet(items, pageNum, totalPages){
       <div class="grid">${cards}</div>
       <div class="sheet-footer">
         <span>${escapeHTML(T.footer_note)}</span>
-        <span class="brand-mini">IMMONOVA</span>
+        <span class="brand-mini">Investments Puglia</span>
       </div>
     </div>
   `;

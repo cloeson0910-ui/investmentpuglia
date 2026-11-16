@@ -5,7 +5,7 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Calendario Claudio Romano | IMMONOVA Admin</title>
+<title>Calendario Claudio Romano | Investments Puglia Admin</title>
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -259,7 +259,7 @@ font-family:inherit;
 <body>
 
 <header class="header">
-<div class="logo">IMMONOVA</div>
+<div class="logo">Investments Puglia</div>
 <div class="header-actions">
 <a href="../collaboratore.html" class="mobile-quick-back" style="display:none">&larr; Funzioni rapide</a>
 <a href="dashboard.html" data-i18n="nav_dashboard">Dashboard</a>
@@ -477,10 +477,10 @@ var UI_STRINGS = {
   confirm_delete_event:"Eliminare definitivamente questo appuntamento? Verrà rimosso anche dal calendario iCloud.",
   msg_deleting:"Eliminazione in corso...", msg_deleted:"Appuntamento eliminato.",
   msg_updating:"Aggiornamento appuntamento...", msg_updated_full:"Appuntamento aggiornato e sincronizzato con iCloud.",
-  msg_updated_no_sync:"Appuntamento aggiornato su IMMONOVA. Sincronizzazione iCloud non riuscita: ",
+  msg_updated_no_sync:"Appuntamento aggiornato su Investments Puglia. Sincronizzazione iCloud non riuscita: ",
   msg_saving:"Salvataggio appuntamento...", msg_syncing:"Sincronizzazione con iCloud...",
   msg_saved_full:"Appuntamento fissato e sincronizzato con iCloud.",
-  msg_saved_no_sync:"Appuntamento fissato su IMMONOVA. Sincronizzazione con iCloud non riuscita (comparirà comunque qui): ",
+  msg_saved_no_sync:"Appuntamento fissato su Investments Puglia. Sincronizzazione con iCloud non riuscita (comparirà comunque qui): ",
   msg_slot_taken:"Questo spazio non è più libero, aggiorna la pagina.",
   occupied_label:"Occupato",
   label_calendar_owner:"Calendario di", opt_my_calendar:"Il mio calendario",
@@ -527,7 +527,7 @@ async function loadTranslatedStrings(lang){
     body:{
       language: lang,
       source_language: "it",
-      context: "IMMONOVA luxury real estate investment website. Shared calendar admin page: booking appointments (call, meeting, site visit) with the company owner, showing busy/free time slots.",
+      context: "Investments Puglia luxury real estate investment website. Shared calendar admin page: booking appointments (call, meeting, site visit) with the company owner, showing busy/free time slots.",
       texts: texts
     }
   });
@@ -982,7 +982,7 @@ function renderWeekView(){
       /* Titolo reale dell'evento importato da iCloud (colonna "title" su
          immonova_calendar_busy_blocks) al posto del riquadro "occupato" senza testo. Non
          cliccabile: è un evento del calendario personale di Claudio, non un appuntamento
-         IMMONOVA modificabile da qui. */
+         Investments Puglia modificabile da qui. */
       overlappingBusy.forEach(function(b){
         barsHtml += '<div class="week-event-bar busy" style="' + barStyle(b) + '"><div class="week-cell-note">' + escapeHTML(b.title || T.occupied_label) + '</div></div>';
       });
@@ -1414,7 +1414,7 @@ confirmBookBtn.addEventListener("click", async function(){
         var notifyResult = await client.functions.invoke("immonova-calendar-notify", {
           body:{
             user_ids: addedIds,
-            title:"IMMONOVA Calendario",
+            title:"Investments Puglia Calendario",
             body: collaboratorName + ": " + (title || eventTypeLabel(eventType)) + " (" + timeLabel + ")",
             url:"/admin/calendar.html"
           }

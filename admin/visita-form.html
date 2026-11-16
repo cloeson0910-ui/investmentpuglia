@@ -5,7 +5,7 @@
 
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Scheda Visita | IMMONOVA</title>
+<title>Scheda Visita | Investments Puglia</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{width:100%;min-height:100%}
@@ -92,7 +92,7 @@ body::after{content:"";position:fixed;inset:0;z-index:-1;background:repeating-li
 </head>
 <body>
 <header class="header">
-  <a class="logo" href="../index.html">IMMONOVA<small>OFF MARKET • CONSULTING</small></a>
+  <a class="logo" href="../index.html">Investments Puglia<small>REAL ESTATE INVESTMENTS</small></a>
   <div class="header-actions">
     <a href="dashboard.html">Dashboard</a>
     <a href="opportunities.html">Immobili</a>
@@ -182,7 +182,7 @@ function escapeHTML(v){
   return String(v==null?"":v).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;");
 }
 function clean(v){ v = (v==null?"":String(v)).trim(); return v || ""; }
-function getTitle(){ return clean(opportunity && opportunity.title) || "Immobile IMMONOVA"; }
+function getTitle(){ return clean(opportunity && opportunity.title) || "Immobile Investments Puglia"; }
 function getAddress(){
   var o = opportunity||{};
   return clean(o.formatted_address) || [o.address,o.locality,o.province].filter(Boolean).join(", ");
@@ -231,7 +231,7 @@ function renderSheet(){
       '<div class="sheet-cover">' +
         (cover ? '<img src="'+escapeHTML(cover)+'" alt="" crossorigin="anonymous">' : '') +
         '<div class="sheet-cover-text">' +
-          '<div class="sheet-brand">IMMONOVA — Off Market Consulting</div>' +
+          '<div class="sheet-brand">Investments Puglia</div>' +
           '<div class="sheet-title">'+escapeHTML(getTitle())+'</div>' +
           (addr ? '<div class="sheet-address">'+escapeHTML(addr)+'</div>' : '') +
         '</div>' +
@@ -267,12 +267,12 @@ function renderSheet(){
         '<div class="sheet-section-label">Consenso Privacy</div>' +
         '<div class="consent-box">' +
           '<input type="checkbox" id="privacyConsent">' +
-          '<label for="privacyConsent" class="txt">Dichiaro di aver ricevuto e compreso le informazioni relative al trattamento dei miei dati personali da parte di IMMONOVA ai sensi della normativa vigente in materia di protezione dei dati, e acconsento a che tali dati (compresi quelli qui raccolti in occasione della presente visita) siano trattati per le finalità connesse alla ricerca e mediazione immobiliare, incluso l\'eventuale contatto per proposte in linea con i miei interessi. Il consenso può essere revocato in qualsiasi momento contattando IMMONOVA.</label>' +
+          '<label for="privacyConsent" class="txt">Dichiaro di aver ricevuto e compreso le informazioni relative al trattamento dei miei dati personali da parte di Investments Puglia ai sensi della normativa vigente in materia di protezione dei dati, e acconsento a che tali dati (compresi quelli qui raccolti in occasione della presente visita) siano trattati per le finalità connesse alla ricerca e mediazione immobiliare, incluso l\'eventuale contatto per proposte in linea con i miei interessi. Il consenso può essere revocato in qualsiasi momento contattando Investments Puglia.</label>' +
         '</div>' +
         '<div class="sheet-section-label">Clausola di Esclusiva Post-Visita</div>' +
         '<div class="consent-box">' +
           '<input type="checkbox" id="exclusivityConsent">' +
-          '<label for="exclusivityConsent" class="txt">Il sottoscritto dichiara di aver visitato l\'immobile sopra descritto per il tramite e con l\'assistenza di IMMONOVA. Le parti convengono che, per i 24 (ventiquattro) mesi successivi alla data della presente visita, il sottoscritto non potrà concludere alcuna trattativa, proposta d\'acquisto o contratto avente ad oggetto tale immobile trattando direttamente con la proprietà o tramite soggetti terzi, aggirando così l\'intermediazione di IMMONOVA. In caso di violazione del presente impegno, il sottoscritto sarà tenuto a corrispondere a IMMONOVA, a titolo di provvigione, l\'importo che le sarebbe stato dovuto in caso di conclusione dell\'affare per il tramite dell\'agenzia, secondo le condizioni economiche ordinariamente applicate da IMMONOVA.</label>' +
+          '<label for="exclusivityConsent" class="txt">Il sottoscritto dichiara di aver visitato l\'immobile sopra descritto per il tramite e con l\'assistenza di Investments Puglia. Le parti convengono che, per i 24 (ventiquattro) mesi successivi alla data della presente visita, il sottoscritto non potrà concludere alcuna trattativa, proposta d\'acquisto o contratto avente ad oggetto tale immobile trattando direttamente con la proprietà o tramite soggetti terzi, aggirando così l\'intermediazione di Investments Puglia. In caso di violazione del presente impegno, il sottoscritto sarà tenuto a corrispondere a Investments Puglia, a titolo di provvigione, l\'importo che le sarebbe stato dovuto in caso di conclusione dell\'affare per il tramite dell\'agenzia, secondo le condizioni economiche ordinariamente applicate da Investments Puglia.</label>' +
         '</div>' +
         '<div class="sheet-section-label">Firma Cliente</div>' +
         '<div class="sign-panel">' +
@@ -286,7 +286,7 @@ function renderSheet(){
           '<button class="btn" id="submitVisitBtn" type="button">Genera scheda visita (PDF)</button>' +
         '</div>' +
       '</div>' +
-      '<div class="sheet-footer"><span>IMMONOVA</span><span>Documento riservato IMMONOVA</span></div>' +
+      '<div class="sheet-footer"><span>Investments Puglia</span><span>Documento riservato Investments Puglia</span></div>' +
     '</div>';
 
   if(hasCoords) loadMapImage();
@@ -532,7 +532,7 @@ async function submitVisit(){
   try{
     setStatus("Generazione PDF in corso...","");
     var pdfBlob = await generateVisitPdfBlob();
-    var filename = "visita_IMMONOVA_"+slugify(getTitle())+"_"+slugify(lastName||firstName)+".pdf";
+    var filename = "visita_InvestmentsPuglia_"+slugify(getTitle())+"_"+slugify(lastName||firstName)+".pdf";
     var path = "visits/opportunity-"+(opportunityId||"na")+"/"+Date.now()+"_"+filename;
     var upload = await client.storage.from("dossier-pdfs").upload(path, pdfBlob, {contentType:"application/pdf", upsert:true});
     if(upload.error) throw upload.error;
@@ -666,7 +666,7 @@ async function init(){
 }
 function pageTitleUpdate(){
   document.getElementById("pageTitle").textContent = "Scheda Visita — "+getTitle();
-  document.title = getTitle()+" — Scheda Visita IMMONOVA";
+  document.title = getTitle()+" — Scheda Visita Investments Puglia";
 }
 
 init();

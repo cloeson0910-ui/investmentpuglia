@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Servizi Esterni — IMMONOVA</title>
+<title>Servizi Esterni — Investments Puglia</title>
 <!--
   27/10/2026: pagina nuova, richiesta esplicita dell'utente per tenere traccia di tutti i
-  servizi esterni (pagamento/gratuiti) da cui dipende IMMONOVA. Stesso pattern di accesso di
+  servizi esterni (pagamento/gratuiti) da cui dipende Investments Puglia. Stesso pattern di accesso di
   access-logs.html: visibile solo a claudio.romano@bluewin.ch, perché contiene informazioni di
   spesa/pagamenti. Nessun dato sensibile nel database qui (tabella statica scritta nel codice),
   quindi basta il gate client-side, non serve RLS.
@@ -73,9 +73,9 @@ var ALLOWED_EMAIL = "claudio.romano@bluewin.ch";
 
 var DATA = {
   infra: [
-    {s:"Supabase", c:"paid", d:"Database, autenticazione utenti, storage file (immagini/PDF/visure), tutte le ~70 edge function (backend), realtime. <b>Costo stimato: Pro $25/mese</b> (base, include 100.000 invocazioni edge function/mese, 8GB database, 100GB storage, 250GB banda — oltre si paga a consumo) oppure <b>Team $599/mese</b> se avete bisogno di SSO/supporto prioritario/più collaboratori. <span class='note'>Verifica tu quale dei due piani è attivo nella dashboard Supabase → Billing.</span>", p:"Tutto il sito — è la spina dorsale di IMMONOVA."},
+    {s:"Supabase", c:"paid", d:"Database, autenticazione utenti, storage file (immagini/PDF/visure), tutte le ~70 edge function (backend), realtime. <b>Costo stimato: Pro $25/mese</b> (base, include 100.000 invocazioni edge function/mese, 8GB database, 100GB storage, 250GB banda — oltre si paga a consumo) oppure <b>Team $599/mese</b> se avete bisogno di SSO/supporto prioritario/più collaboratori. <span class='note'>Verifica tu quale dei due piani è attivo nella dashboard Supabase → Billing.</span>", p:"Tutto il sito — è la spina dorsale di Investments Puglia."},
     {s:"GitHub Pages", c:"free", d:"Hosting statico del frontend (le pagine HTML/CSS/JS che vedi nel browser).", p:"Tutto il sito pubblico e l'area riservata — i file .html sono serviti da qui."},
-    {s:"Resend", c:"paid", d:"Invio email transazionali (notifiche, codici OTP, inviti, conferme, comunicazioni bulk). Mittente verificato: noreply@immonova-consulting.com. <b>Costo stimato: Free fino a 3.000 email/mese (max 100/giorno)</b>, oltre serve il piano <b>Pro: 20$/mese per 50.000 email</b> o <b>35$/mese per 100.000 email</b> (extra a 0,90$ ogni 1.000 se superate).", p:"otp-generate, send-dossier-email, dossier-request-email, opportunity-preview-email, notify-new-opportunity, notify-admins-new-submission, notify-new-investor, notify-deleted-investor, notify-new-search-mandate, notify-opportunity-status-change, send-bulk-communication, send-offer-to-seller, send-offer-to-buyer, send-visit-email, send-acquisition-summary-email, dossier-followup-reminders, offer-expiry-reminders, e altre funzioni di notifica."},
+    {s:"Resend", c:"paid", d:"Invio email transazionali (notifiche, codici OTP, inviti, conferme, comunicazioni bulk). Mittente verificato: noreply@investmentspuglia.it. <b>Costo stimato: Free fino a 3.000 email/mese (max 100/giorno)</b>, oltre serve il piano <b>Pro: 20$/mese per 50.000 email</b> o <b>35$/mese per 100.000 email</b> (extra a 0,90$ ogni 1.000 se superate).", p:"otp-generate, send-dossier-email, dossier-request-email, opportunity-preview-email, notify-new-opportunity, notify-admins-new-submission, notify-new-investor, notify-deleted-investor, notify-new-search-mandate, notify-opportunity-status-change, send-bulk-communication, send-offer-to-seller, send-offer-to-buyer, send-visit-email, send-acquisition-summary-email, dossier-followup-reminders, offer-expiry-reminders, e altre funzioni di notifica."},
     {s:"Dominio investmentspuglia.it / .com", c:"paid", d:"Registrazione annuale del/dei domini del sito. <span class='note'>Costo tipico: 10-25€/anno per dominio .it o .com presso un registrar italiano — verifica l'importo esatto sulla tua fattura di rinnovo.</span>", p:"Tutto il sito — rinnovo annuale presso il registrar (verifica tu quale: es. Aruba, Register.it, GoDaddy...)."}
   ],
   ai: [
@@ -88,7 +88,7 @@ var DATA = {
     {s:"WAQI (World Air Quality Index)", c:"free", d:"Dati qualità dell'aria (piano gratuito).", p:"immonova-accessibility-engine / engine ambientali del dossier."},
     {s:"EEA (European Environment Agency)", c:"free", d:"Dati ufficiali qualità delle acque di balneazione (solo Europa).", p:"immonova-coastal-engine."},
     {s:"Cruscotto Italia / AgID", c:"free", d:"Dati demografici ufficiali governativi italiani.", p:"immonova-demographics-engine."},
-    {s:"Apple iCloud (CalDAV)", c:"free", d:"Sincronizzazione calendario con l'app Calendario di Apple — usa il tuo Apple ID personale, non un abbonamento separato pagato da IMMONOVA.", p:"icloud-calendar-sync, icloud-calendar-push, calendar.html."},
+    {s:"Apple iCloud (CalDAV)", c:"free", d:"Sincronizzazione calendario con l'app Calendario di Apple — usa il tuo Apple ID personale, non un abbonamento separato pagato da Investments Puglia.", p:"icloud-calendar-sync, icloud-calendar-push, calendar.html."},
     {s:"AeroDataBox (via RapidAPI)", c:"free", d:"Dati arrivi aeroportuali/jet privati per i dossier di investimento. Piano attivo nel codice: 'Basic' gratuito, 400 richieste/mese incluse. <span class='note'>Se un giorno servisse di più: i piani a pagamento RapidAPI per AeroDataBox partono generalmente da circa 10-25$/mese per qualche migliaio di richieste — controlla su rapidapi.com/aedbx-aedbx/api/aerodatabox prima di cambiare piano.</span>", p:"sync-aerodatabox-arrivals, discovery-air-traffic, ingest-air-traffic-snapshot. <span class='note'>Attenzione: se il traffico cresce, il piano gratuito potrebbe non bastare più — da monitorare.</span>"}
   ],
   social: [
@@ -140,7 +140,7 @@ function renderPage(){
     html += '<div class="card" id="card-'+sec.key+'"><h2>'+sec.title+'</h2><table><thead><tr><th style="width:16%">Servizio</th><th style="width:9%">Costo</th><th style="width:30%">A cosa serve</th><th>Dove/come viene usato</th></tr></thead><tbody id="tbl-'+sec.key+'"></tbody></table></div>';
   });
 
-  html += '<footer><p><strong>Nota su Stripe:</strong> è usato dal "Pannello Centrale" di Dominus Suite per gestire gli abbonamenti dei CLIENTI che pagano per avere il proprio sito (fork di IMMONOVA) — non è un costo che paghi tu per far funzionare investmentspuglia.it/.com, ma lo includo perché fa parte dell\'ecosistema.</p><p>Lista generata il 27/10/2026.</p></footer>';
+  html += '<footer><p><strong>Nota su Stripe:</strong> è usato dal "Pannello Centrale" di Dominus Suite per gestire gli abbonamenti dei CLIENTI che pagano per avere il proprio sito (fork di Investments Puglia) — non è un costo che paghi tu per far funzionare investmentspuglia.it/.com, ma lo includo perché fa parte dell\'ecosistema.</p><p>Lista generata il 27/10/2026.</p></footer>';
 
   document.getElementById("wrap").innerHTML = html;
 

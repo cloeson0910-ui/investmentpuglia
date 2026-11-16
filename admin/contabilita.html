@@ -5,7 +5,7 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>IMMONOVA | Contabilità</title>
+<title>Investments Puglia | Contabilità</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{width:100%;min-height:100%}
@@ -61,7 +61,7 @@ tr.total-row td{font-weight:600;border-top:2px solid rgba(58,58,58,.3)}
 </head>
 <body>
 <div class="header">
-  <a href="dashboard.html" class="brand">IMMONOVA</a>
+  <a href="dashboard.html" class="brand">Investments Puglia</a>
   <a href="dashboard.html" class="back-link">&larr; Torna alla Dashboard</a>
 </div>
 
@@ -188,7 +188,7 @@ tr.total-row td{font-weight:600;border-top:2px solid rgba(58,58,58,.3)}
     <div class="block-head">
       <div>
         <div class="block-title">Dati Azienda (Cedente/Prestatore in fattura)</div>
-        <div class="block-hint">Anagrafica fiscale di IMMONOVA S.R.L. richiesta dallo schema FatturaPA per generare fatture elettroniche valide. Va compilata una sola volta.</div>
+        <div class="block-hint">Anagrafica fiscale di Investments Puglia S.R.L. richiesta dallo schema FatturaPA per generare fatture elettroniche valide. Va compilata una sola volta.</div>
       </div>
     </div>
     <form class="inline-form" id="companyProfileForm">
@@ -639,7 +639,7 @@ tr.total-row td{font-weight:700;border-top:2px solid #ccc}
   <button onclick="window.print()">Stampa / Salva PDF</button>
 </div>
 <div class="doc">
-  <h1>${escapeHTML((companyProfile&&companyProfile.legal_name)||"IMMONOVA S.R.L.")}</h1>
+  <h1>${escapeHTML((companyProfile&&companyProfile.legal_name)||"Investments Puglia S.R.L.")}</h1>
   <div class="tag">Conto Economico per voce — ${escapeHTML(periodLabel())} — generato il ${new Date().toLocaleDateString("it-IT")}</div>
 
   <h2>Ricavi (fatture emesse)</h2>
@@ -668,7 +668,7 @@ tr.total-row td{font-weight:700;border-top:2px solid #ccc}
     <tr class="grand"><td>Saldo IVA${vatBalance>=0?" (da versare)":" (a credito)"}</td><td class="${vatBalance>=0?"neg":"pos"}">${eur(vatBalance)}</td></tr>
   </table>
 
-  <div class="disclaimer">Documento generato da IMMONOVA a supporto operativo interno, sulla base dei dati registrati in Contabilità per il periodo indicato. Non sostituisce il bilancio ufficiale né la consulenza di un commercialista: prima di versamenti, dichiarazioni o bilanci ufficiali, fai sempre verificare i numeri da un professionista abilitato.</div>
+  <div class="disclaimer">Documento generato da Investments Puglia a supporto operativo interno, sulla base dei dati registrati in Contabilità per il periodo indicato. Non sostituisce il bilancio ufficiale né la consulenza di un commercialista: prima di versamenti, dichiarazioni o bilanci ufficiali, fai sempre verificare i numeri da un professionista abilitato.</div>
 </div>
 </body></html>`;
 }
@@ -830,7 +830,7 @@ async function loadCompanyProfile(){
 document.getElementById("saveCompanyProfileBtn").addEventListener("click",async()=>{
   const payload={
     id:1,
-    legal_name:document.getElementById("cpLegalName").value||"IMMONOVA S.R.L.",
+    legal_name:document.getElementById("cpLegalName").value||"Investments Puglia S.R.L.",
     vat_number:document.getElementById("cpVatNumber").value||null,
     fiscal_code:document.getElementById("cpFiscalCode").value||null,
     regime_fiscale:document.getElementById("cpRegimeFiscale").value,
@@ -1086,7 +1086,7 @@ th{font-size:10px;text-transform:uppercase;color:var(--c-5b471f)}
   <button onclick="window.print()">Stampa / Salva PDF</button>
 </div>
 <div class="doc">
-  <h1>${escapeHTML((company&&company.legal_name)||"IMMONOVA S.R.L.")}</h1>
+  <h1>${escapeHTML((company&&company.legal_name)||"Investments Puglia S.R.L.")}</h1>
   <div class="tag">Fattura n. ${escapeHTML(invoice.invoice_number)} del ${new Date(invoice.invoice_date).toLocaleDateString("it-IT")} — copia di cortesia, non sostituisce il documento elettronico SDI</div>
   <div class="parties">
     <div class="party">
@@ -1116,13 +1116,13 @@ th{font-size:10px;text-transform:uppercase;color:var(--c-5b471f)}
     <div><span>IVA</span><span>${eur(invoice.vat_amount)}</span></div>
     <div class="grand"><span>Totale documento</span><span>${eur(invoice.amount_gross)}</span></div>
   </div>
-  <div class="status-note">Documento generato da IMMONOVA a scopo di anteprima/copia di cortesia. Il documento fiscalmente valido è l'XML FatturaPA trasmesso via SDI.</div>
+  <div class="status-note">Documento generato da Investments Puglia a scopo di anteprima/copia di cortesia. Il documento fiscalmente valido è l'XML FatturaPA trasmesso via SDI.</div>
 </div>
 ${"<"+"script>"}
 function sendCourtesyEmail(){
   const to=${JSON.stringify(invoice.client_email||"")};
-  const subject=${JSON.stringify("Copia di cortesia fattura "+invoice.invoice_number+" — "+((company&&company.legal_name)||"IMMONOVA S.R.L."))};
-  const body=${JSON.stringify("Buongiorno "+(invoice.client_name||"")+",\n\nin allegato la copia di cortesia della fattura n. "+invoice.invoice_number+" del "+new Date(invoice.invoice_date).toLocaleDateString("it-IT")+" (importo "+Number(invoice.amount_gross||0).toFixed(2)+" EUR).\n\nPer allegare il PDF: usa il pulsante \"Stampa / Salva PDF\" in questa pagina, salva il file, poi allegalo qui prima di inviare.\n\nCordiali saluti,\n"+((company&&company.legal_name)||"IMMONOVA S.R.L."))};
+  const subject=${JSON.stringify("Copia di cortesia fattura "+invoice.invoice_number+" — "+((company&&company.legal_name)||"Investments Puglia S.R.L."))};
+  const body=${JSON.stringify("Buongiorno "+(invoice.client_name||"")+",\n\nin allegato la copia di cortesia della fattura n. "+invoice.invoice_number+" del "+new Date(invoice.invoice_date).toLocaleDateString("it-IT")+" (importo "+Number(invoice.amount_gross||0).toFixed(2)+" EUR).\n\nPer allegare il PDF: usa il pulsante \"Stampa / Salva PDF\" in questa pagina, salva il file, poi allegalo qui prima di inviare.\n\nCordiali saluti,\n"+((company&&company.legal_name)||"Investments Puglia S.R.L."))};
   if(!to){ alert("Nessuna email cliente salvata su questa fattura: aggiorna il campo \\"Email cliente\\" in Fatture emesse e riapri l'anteprima."); return; }
   window.location.href="mailto:"+encodeURIComponent(to)+"?subject="+encodeURIComponent(subject)+"&body="+encodeURIComponent(body);
 }

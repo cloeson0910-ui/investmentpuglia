@@ -5,7 +5,7 @@
 
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>IMMONOVA Admin | Dati Verificati Manualmente</title>
+<title>Investments Puglia Admin | Dati Verificati Manualmente</title>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="../config.js"></script>
 <style>
@@ -13,7 +13,7 @@
 </style>
 </head>
 <body>
-<header><div><div class="logo">IMMONOVA</div><div class="mini">OFF MARKET • CONSULTING</div></div><nav><a href="dashboard.html" data-i18n="nav_dashboard">Dashboard</a><a href="opportunities.html" data-i18n="nav_opportunities">Immobili</a><a href="data-sources.html" data-i18n="nav_data_sources">Fonti Dati</a><a href="manual-overrides.html" data-i18n="nav_manual_overrides">Dati Verificati</a><button class="btn" type="button" id="logoutBtn" data-i18n="logout">Logout</button></nav></header>
+<header><div><div class="logo">Investments Puglia</div><div class="mini">REAL ESTATE INVESTMENTS</div></div><nav><a href="dashboard.html" data-i18n="nav_dashboard">Dashboard</a><a href="opportunities.html" data-i18n="nav_opportunities">Immobili</a><a href="data-sources.html" data-i18n="nav_data_sources">Fonti Dati</a><a href="manual-overrides.html" data-i18n="nav_manual_overrides">Dati Verificati</a><button class="btn" type="button" id="logoutBtn" data-i18n="logout">Logout</button></nav></header>
 <main>
 <div class="banner" id="errorBox"></div>
 <section class="hero"><div><h1 data-i18n="title">Dati Verificati Manualmente</h1><p class="subtitle" data-i18n="subtitle">Valori che hai controllato personalmente (OMI, portali, altre fonti non automatizzabili). Hanno sempre priorità sul Discovery Engine e sulle stime automatiche: se presenti, compaiono nel dossier al posto di "Non disponibile".</p></div><button class="btn primary" type="button" id="newBtn" data-i18n="btn_new_data">Nuovo Dato</button></section>
@@ -152,7 +152,7 @@ async function loadTranslatedStrings(lang){
     body:{
       language: lang,
       source_language: "it",
-      context: "IMMONOVA luxury real estate investment website. Admin page for manually verified data overrides (ADR, real estate market values) that take priority over automated estimates in the dossier.",
+      context: "Investments Puglia luxury real estate investment website. Admin page for manually verified data overrides (ADR, real estate market values) that take priority over automated estimates in the dossier.",
       texts: texts
     }
   });
@@ -206,7 +206,7 @@ async function loadUserLanguage(){
 
 function showError(msg){const b=$('errorBox');b.textContent=msg;b.style.display='block';console.error(msg)}
 function clearError(){const b=$('errorBox');b.textContent='';b.style.display='none'}
-function toast(msg){const t=$('toast');t.textContent=msg;t.style.display='block';console.log('[IMMONOVA manual-overrides]',msg);setTimeout(()=>t.style.display='none',6500)}
+function toast(msg){const t=$('toast');t.textContent=msg;t.style.display='block';console.log('[Investments Puglia manual-overrides]',msg);setTimeout(()=>t.style.display='none',6500)}
 function readConfig(){
  if(window.supabaseClient) return window.supabaseClient;
  const url='https://ksfxfysvpftldthahzte.supabase.co';

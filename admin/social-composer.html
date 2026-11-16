@@ -5,7 +5,7 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Post Social — IMMONOVA Admin</title>
+<title>Post Social — Investments Puglia Admin</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <!-- Caricati solo per rendere l'ANTEPRIMA nel browser fedele ai font usati
@@ -172,7 +172,7 @@ button:disabled{opacity:.45; cursor:not-allowed}
 <body>
 
 <header class="top">
-  <div class="brand">IMMONOVA · Post Social</div>
+  <div class="brand">Investments Puglia · Post Social</div>
   <a class="back" href="dashboard.html">&larr; Torna alla Dashboard</a>
 </header>
 
@@ -673,7 +673,7 @@ function toggleStickerBlock(){
   if(isImage) renderLiveStoryPreview();
 }
 
-// ---- Catalogo sticker: badge in stile IMMONOVA + un set di sticker
+// ---- Catalogo sticker: badge in stile Investments Puglia + un set di sticker
 // "faccina/emoji" divertenti (facce, frecce, ecc.) — mostrati come tile
 // visive cliccabili nel box, non come voci di una tendina testuale.
 const STICKER_BADGE_STYLE = {
@@ -682,7 +682,7 @@ const STICKER_BADGE_STYLE = {
   price_tag:      {bg:"#4d4d4d", color:"#151515", arrow:false, defaultText:"PREZZO SU RICHIESTA"},
   exclusive_badge:{bg:"#4d4d4d", color:"#151515", arrow:false, defaultText:"IN ESCLUSIVA"},
   sold_badge:     {bg:"#b3452f", color:"#ffffff", arrow:false, defaultText:"RISERVATO"},
-  logo_watermark: {bg:"rgba(21,21,21,.87)", color:"#4d4d4d", arrow:false, defaultText:"IMMONOVA"},
+  logo_watermark: {bg:"rgba(21,21,21,.87)", color:"#4d4d4d", arrow:false, defaultText:"Investments Puglia"},
 };
 const STICKER_CATALOG = [
   {key:"none", type:"none", label:"Nessuno"},
@@ -691,7 +691,7 @@ const STICKER_CATALOG = [
   {key:"price_tag", type:"price_tag", label:"Tag prezzo"},
   {key:"exclusive_badge", type:"exclusive_badge", label:"In esclusiva"},
   {key:"sold_badge", type:"sold_badge", label:"Riservato"},
-  {key:"logo_watermark", type:"logo_watermark", label:"Logo IMMONOVA"},
+  {key:"logo_watermark", type:"logo_watermark", label:"Logo Investments Puglia"},
   {key:"emoji_star", type:"emoji", emoji:"⭐", label:"Stella"},
   {key:"emoji_heart", type:"emoji", emoji:"❤️", label:"Cuore"},
   {key:"emoji_fire", type:"emoji", emoji:"🔥", label:"Fuoco"},
@@ -1134,7 +1134,7 @@ function buildFacebookPreview(p){
       <div class="fb-head">
         <div class="fb-avatar">IN</div>
         <div>
-          <div class="fb-name">IMMONOVA</div>
+          <div class="fb-name">Investments Puglia</div>
           <div class="fb-sub">${p.post_type === "story" ? "Storia · ora" : "Ora · 🌐"}</div>
         </div>
       </div>
@@ -1184,7 +1184,7 @@ function buildInstagramPreview(p){
       ? `background-image:url('${escapeHTML(p.image_url)}');background-size:cover;background-position:center;filter:${cssFilter}`
       : "background:#f0f0f0";
 
-    // Sticker ORIGINALE in stile IMMONOVA (non uno sticker ufficiale
+    // Sticker ORIGINALE in stile Investments Puglia (non uno sticker ufficiale
     // Instagram) — stessa posizione/logica del rendering reale lato
     // backend (vedi renderSticker() nell'Edge Function), posizionato
     // secondo sticker_x/sticker_y salvati.
@@ -1231,7 +1231,7 @@ function buildLinkedinPreview(p){
       <div class="li-head">
         <div class="li-avatar">IN</div>
         <div>
-          <div class="li-name">IMMONOVA</div>
+          <div class="li-name">Investments Puglia</div>
           <div class="li-sub">Pagina aziendale · Ora</div>
         </div>
       </div>
