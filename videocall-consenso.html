@@ -5,7 +5,7 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Consenso Videochiamata | IMMONOVA</title>
+<title>Consenso Videochiamata | Investments Puglia</title>
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -197,8 +197,8 @@ color:var(--c-4f4125);
 <body>
 
 <div class="header">
-  <div class="logo-main">IMMONOVA</div>
-  <div class="logo-sub">Off Market &middot; Consulting</div>
+  <div class="logo-main">Investments Puglia</div>
+  <div class="logo-sub">Real Estate Investments</div>
 </div>
 
 <div class="container">
@@ -213,24 +213,24 @@ const inviteToken = params.get("t");
 const FUNCTIONS_BASE = "https://ksfxfysvpftldthahzte.supabase.co/functions/v1";
 const ANON_KEY = "sb_publishable_5n0dMCTNkuFV3UdoZc7uNA_bp0qPQah";
 
-/* ---- Testi legali standard IMMONOVA: informativa privacy, liberatoria alla registrazione
+/* ---- Testi legali standard Investments Puglia: informativa privacy, liberatoria alla registrazione
    e accordo di riservatezza (NDA), mostrati per intero prima della firma. Questi testi sono
    una base di partenza ragionevole, non una consulenza legale: vanno fatti rivedere da un
    legale prima dell'uso reale, soprattutto per adattarli a giurisdizioni diverse dall'Italia. ---- */
 const DOCUMENTS = {
   privacy: {
     label: "Informativa Privacy",
-    text: `Ai sensi del Regolamento (UE) 2016/679 (GDPR), IMMONOVA S.R.L., in qualità di titolare del trattamento, La informa che i Suoi dati personali (nome, cognome, indirizzo email, immagine e voce raccolte durante la videochiamata) saranno trattati per le seguenti finalità: organizzazione e svolgimento della videochiamata, verifica dell'attività svolta dai collaboratori e dalle agenzie partner sugli immobili trattati, tutela in caso di controversie relative alla mediazione immobiliare.
+    text: `Ai sensi del Regolamento (UE) 2016/679 (GDPR), Investments Puglia S.R.L., in qualità di titolare del trattamento, La informa che i Suoi dati personali (nome, cognome, indirizzo email, immagine e voce raccolte durante la videochiamata) saranno trattati per le seguenti finalità: organizzazione e svolgimento della videochiamata, verifica dell'attività svolta dai collaboratori e dalle agenzie partner sugli immobili trattati, tutela in caso di controversie relative alla mediazione immobiliare.
 
-La base giuridica del trattamento è il consenso che Lei presta con la presente accettazione. I dati saranno conservati per il tempo necessario alle finalità sopra indicate e comunque non oltre i termini di legge applicabili ai rapporti di mediazione immobiliare. I dati non saranno comunicati a soggetti terzi estranei a IMMONOVA, salvo obblighi di legge.
+La base giuridica del trattamento è il consenso che Lei presta con la presente accettazione. I dati saranno conservati per il tempo necessario alle finalità sopra indicate e comunque non oltre i termini di legge applicabili ai rapporti di mediazione immobiliare. I dati non saranno comunicati a soggetti terzi estranei a Investments Puglia, salvo obblighi di legge.
 
-Lei ha diritto di accedere ai Suoi dati, chiederne la rettifica, la cancellazione, la limitazione del trattamento, nonché di opporsi al trattamento e proporre reclamo all'Autorità Garante per la protezione dei dati personali. Per esercitare tali diritti può scrivere a amministrazione@immonova-consulting.com.`
+Lei ha diritto di accedere ai Suoi dati, chiederne la rettifica, la cancellazione, la limitazione del trattamento, nonché di opporsi al trattamento e proporre reclamo all'Autorità Garante per la protezione dei dati personali. Per esercitare tali diritti può scrivere a amministrazione@investmentspuglia.it.`
   },
   liberatoria_registrazione: {
     label: "Liberatoria alla Registrazione",
-    text: `Con la presente Lei acconsente espressamente alla registrazione audio e video della videochiamata a cui sta per partecipare, organizzata da IMMONOVA S.R.L. o da un'agenzia partner operante sulla piattaforma IMMONOVA.
+    text: `Con la presente Lei acconsente espressamente alla registrazione audio e video della videochiamata a cui sta per partecipare, organizzata da Investments Puglia S.R.L. o da un'agenzia partner operante sulla piattaforma Investments Puglia.
 
-La registrazione ha lo scopo esclusivo di documentare l'attività di consulenza/mediazione svolta in relazione all'immobile o agli immobili oggetto della conversazione, e potrà essere utilizzata da IMMONOVA a fini probatori interni, anche in caso di controversie relative alla provvigione o all'attribuzione dell'attività tra collaboratori/agenzie.
+La registrazione ha lo scopo esclusivo di documentare l'attività di consulenza/mediazione svolta in relazione all'immobile o agli immobili oggetto della conversazione, e potrà essere utilizzata da Investments Puglia a fini probatori interni, anche in caso di controversie relative alla provvigione o all'attribuzione dell'attività tra collaboratori/agenzie.
 
 La registrazione non sarà diffusa pubblicamente, non sarà ceduta a terzi né utilizzata per finalità pubblicitarie senza Suo ulteriore ed esplicito consenso. Lei può revocare il consenso alla partecipazione in qualsiasi momento prima dell'inizio della registrazione, comunicandolo all'organizzatore; la revoca dopo l'inizio della videochiamata comporta l'uscita dalla stessa.`
   },
@@ -238,7 +238,7 @@ La registrazione non sarà diffusa pubblicamente, non sarà ceduta a terzi né u
     label: "Accordo di Riservatezza (NDA)",
     text: `Partecipando a questa videochiamata, Lei si impegna a mantenere riservate tutte le informazioni relative all'immobile/agli immobili discussi, ai dati di prezzo, alle condizioni di vendita, ai dati personali delle altre parti coinvolte e a qualunque altra informazione non pubblica condivisa durante la conversazione.
 
-Tali informazioni non potranno essere diffuse, comunicate a terzi o utilizzate per finalità diverse dalla valutazione dell'opportunità immobiliare presentata, senza il previo consenso scritto di IMMONOVA S.R.L. e/o dell'agenzia partner coinvolta.
+Tali informazioni non potranno essere diffuse, comunicate a terzi o utilizzate per finalità diverse dalla valutazione dell'opportunità immobiliare presentata, senza il previo consenso scritto di Investments Puglia S.R.L. e/o dell'agenzia partner coinvolta.
 
 Questo impegno di riservatezza resta valido anche dopo la conclusione della videochiamata e per l'intera durata della trattativa relativa all'immobile/agli immobili oggetto della conversazione.`
   }
@@ -306,7 +306,7 @@ function renderForm(data){
     '<div class="card">' +
       '<div class="call-title">' + escapeHTML(call.title) + '</div>' +
       '<div class="call-meta">' + escapeHTML(formatDate(call.scheduled_at)) + '</div>' +
-      '<div class="intro">Ciao ' + escapeHTML(participant.full_name) + ', prima di partecipare a questa videochiamata IMMONOVA ti chiediamo di leggere e accettare i seguenti documenti. La videochiamata potrà essere registrata come previsto dalla liberatoria qui sotto.</div>' +
+      '<div class="intro">Ciao ' + escapeHTML(participant.full_name) + ', prima di partecipare a questa videochiamata Investments Puglia ti chiediamo di leggere e accettare i seguenti documenti. La videochiamata potrà essere registrata come previsto dalla liberatoria qui sotto.</div>' +
     '</div>' +
     '<div class="card">' +
       docsHtml +

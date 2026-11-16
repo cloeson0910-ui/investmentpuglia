@@ -5,7 +5,7 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nuova Valutazione Immobiliare | IMMONOVA Admin</title>
+<title>Nuova Valutazione Immobiliare | Investments Puglia Admin</title>
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -162,8 +162,8 @@ textarea{min-height:100px;resize:vertical;line-height:1.6}
 
 <header class="header">
   <a href="../index.html" class="logo">
-    <div class="logo-main">IMMONOVA</div>
-    <div class="logo-sub">OFF MARKET • CONSULTING</div>
+    <div class="logo-main">Investments Puglia</div>
+    <div class="logo-sub">REAL ESTATE INVESTMENTS</div>
   </a>
   <div class="header-actions">
     <a href="dashboard.html" data-i18n="nav_dashboard">Dashboard</a>
@@ -182,7 +182,7 @@ textarea{min-height:100px;resize:vertical;line-height:1.6}
   </div>
 
   <p class="subtitle" data-i18n="subtitle">
-    Registra i dati del venditore e dell'immobile, con i dati catastali dalla visura. Il calcolo combina le opportunità IMMONOVA già pubblicate nella zona con i dati di mercato pubblici, con metodo comparativo.
+    Registra i dati del venditore e dell'immobile, con i dati catastali dalla visura. Il calcolo combina le opportunità Investments Puglia già pubblicate nella zona con i dati di mercato pubblici, con metodo comparativo.
   </p>
 
   <div id="importBanner" style="display:none;margin-bottom:22px;padding:16px 20px;border:1px solid rgba(58,58,58,.35);background:rgba(58,58,58,.10);font-size:13px;line-height:1.7;color:var(--c-5a4a2a)"></div>
@@ -458,7 +458,7 @@ var UI_STRINGS = {
   nav_dashboard:"Dashboard", nav_valuations:"Valutazioni", logout:"Logout",
   kicker:"Valutazione Immobiliare", title_new:"Nuova Valutazione", title_edit:"Modifica Valutazione",
   btn_back:"Vedi tutte le valutazioni",
-  subtitle:"Registra i dati del venditore e dell'immobile, con i dati catastali dalla visura. Il calcolo combina le opportunità IMMONOVA già pubblicate nella zona con i dati di mercato pubblici, con metodo comparativo.",
+  subtitle:"Registra i dati del venditore e dell'immobile, con i dati catastali dalla visura. Il calcolo combina le opportunità Investments Puglia già pubblicate nella zona con i dati di mercato pubblici, con metodo comparativo.",
   section_seller:"Venditore", label_first_name:"Nome", label_last_name:"Cognome", label_phone:"Telefono", label_email:"Email",
   section_property:"Immobile", label_property_title:"Titolo immobile", ph_property_title:"Es. Villa con giardino, Tricase",
   label_category:"Categoria", opt_select:"Seleziona",
@@ -494,13 +494,13 @@ var UI_STRINGS = {
   msg_required:"Nome, cognome venditore e comune dell'immobile sono obbligatori.",
   msg_calculating:"Calcolo in corso: opportunità comparabili e dati di mercato...",
   msg_calc_error:"Errore nel calcolo: ",
-  msg_no_comparables:"Nessuna opportunità IMMONOVA comparabile trovata in questa zona/categoria.",
+  msg_no_comparables:"Nessuna opportunità Investments Puglia comparabile trovata in questa zona/categoria.",
   msg_no_market_data:"Nessun dato di mercato pubblico disponibile per questa zona.",
   msg_no_data_at_all:"Impossibile calcolare una stima: né opportunità comparabili né dati di mercato pubblici disponibili per questa zona. Puoi comunque salvare la valutazione e completarla in seguito.",
   msg_saving:"Salvataggio valutazione...",
   msg_saved_success:"Valutazione salvata correttamente.",
   msg_save_error:"Errore durante il salvataggio: ",
-  detail_internal_prefix:"Opportunità IMMONOVA comparabili: ", detail_internal_none:"nessuna trovata",
+  detail_internal_prefix:"Opportunità Investments Puglia comparabili: ", detail_internal_none:"nessuna trovata",
   detail_market_prefix:"Dato di mercato pubblico (zona): ", detail_market_none:"non disponibile",
   detail_based_on:"Stima calcolata su superficie interna di ",
   import_banner_prefix:"Dati importati dall'acquisizione n. ",
@@ -528,7 +528,7 @@ async function loadTranslatedStrings(lang){
     body:{
       language: lang,
       source_language: "it",
-      context: "IMMONOVA luxury real estate investment website. Admin form to register a property valuation lead: seller, property details, cadastral data, comparative market estimate.",
+      context: "Investments Puglia luxury real estate investment website. Admin form to register a property valuation lead: seller, property details, cadastral data, comparative market estimate.",
       texts: texts
     }
   });
@@ -640,7 +640,7 @@ function weightedExtrasValue(pricePerSqm, garageSqm, gardenSqm){
   return garageValue + gardenValue;
 }
 
-/* ---- Comparabili interni: altre opportunita' IMMONOVA gia' pubblicate, stessa categoria,
+/* ---- Comparabili interni: altre opportunita' Investments Puglia gia' pubblicate, stessa categoria,
    stessa provincia (o comune se la provincia non e' compilata), con prezzo e superficie
    validi. Calcola prezzo/mq per ciascuna, poi la mediana (piu' robusta della media contro
    un singolo annuncio fuori scala). ---- */
@@ -651,7 +651,7 @@ function weightedExtrasValue(pricePerSqm, garageSqm, gardenSqm){
    Ora il comune ha SEMPRE priorita' assoluta: si allarga alla provincia SOLO se non c'e'
    proprio nessun comparabile nello stesso comune, e in quel caso il risultato viene segnato
    chiaramente come "a livello provinciale" (meno preciso), non spacciato per locale. ---- */
-/* ---- Comparabili interni IMMONOVA. Prima si cerca nello STESSO comune E con le stesse
+/* ---- Comparabili interni Investments Puglia. Prima si cerca nello STESSO comune E con le stesse
    caratteristiche di zona che spostano davvero il prezzo (vista mare, centro storico) -- una
    casa fronte mare non e' comparabile a una casa in terza fila anche se e' nello stesso paese.
    Solo se non ci sono abbastanza comparabili così stretti si allarga, prima togliendo il
@@ -908,7 +908,7 @@ calculateBtn.addEventListener("click", async function(){
     var aiResult = await findAiComparablesAndNarrative(category, municipality, province, region, internalSize, address, propertyCondition, isRented, currentAnnualRent, hasSeaView, hasHistoricCenter);
 
     /* ---- Metodo comparativo: pool unificato di tutte le fonti disponibili -- comparabili
-       interni IMMONOVA, dato di mercato pubblico (se abbastanza locale), comparabili trovati
+       interni Investments Puglia, dato di mercato pubblico (se abbastanza locale), comparabili trovati
        dall'AI. Piu' fonti concordano, piu' la stima e' solida. ---- */
     var pricesPerSqm = [];
     if(internalResult.pricePerSqm) pricesPerSqm.push(internalResult.pricePerSqm);
@@ -1054,7 +1054,7 @@ calculateBtn.addEventListener("click", async function(){
     var detailParts = [];
     var discardedCount = pricesPerSqm.length - trimmedPricesPerSqm.length;
     detailParts.push("<strong>Metodo comparativo:</strong> " + (hasComparativo ? formatEuro(comparativoMin) + " – " + formatEuro(comparativoMax) + " (" + trimmedPricesPerSqm.length + " fonti" + (discardedCount>0 ? ", " + discardedCount + " scartate come anomale" : "") + ")" : "non calcolabile"));
-    if(internalResult.geography_level === "province") detailParts.push("<em>Comparabili IMMONOVA: nessuno nello stesso comune, allargato a livello provinciale (meno preciso).</em>");
+    if(internalResult.geography_level === "province") detailParts.push("<em>Comparabili Investments Puglia: nessuno nello stesso comune, allargato a livello provinciale (meno preciso).</em>");
     detailParts.push("<strong>Metodo reddituale:</strong> " + (hasReddituale ? formatEuro(reddituraleMin) + " – " + formatEuro(reddituraleMax) : (isRented ? "canone non inserito" : "immobile non locato")));
     detailParts.push("<strong>Prezzo di immissione consigliato:</strong> " + formatEuro(suggestedListingPrice));
     if(aiResult.ai_disclaimer) detailParts.push("<em>" + escapeHTML(aiResult.ai_disclaimer) + "</em>");
@@ -1072,7 +1072,7 @@ async function loadValuationForEdit(){
   if(!valuationId) return;
 
   document.getElementById("pageTitle").textContent = T.title_edit;
-  document.title = "Modifica Valutazione | IMMONOVA Admin";
+  document.title = "Modifica Valutazione | Investments Puglia Admin";
   saveBtn.textContent = T.btn_update;
 
   var result = await client.from("immonova_property_valuations").select("*").eq("id", valuationId).single();

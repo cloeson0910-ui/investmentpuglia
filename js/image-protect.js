@@ -1,5 +1,5 @@
 /* ============================================================================
-   image-protect.js — IMMONOVA (sito pubblico)
+   image-protect.js — Investments Puglia (sito pubblico)
    Blocca il menu "Salva immagine" sul tasto destro e il trascinamento (drag&drop)
    per ogni <img> della pagina. Niente overlay/elemento sovrapposto: la versione
    precedente usava un rettangolo trasparente sopra ogni immagine, ma finiva

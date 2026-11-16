@@ -1,4 +1,4 @@
-/* IMMONOVA \u2014 Misura mq da planimetria (modulo condiviso).
+/* Investments Puglia \u2014 Misura mq da planimetria (modulo condiviso).
    Uso: FloorplanMeasure.open({ fields:{ principale:"internal_size", accessoria:"accessory_size", garage:"garage_sqm", giardino:"garden_sqm" }, imageSrc: (facoltativo) });
    - Carica PDF (prima pagina) o immagine.
    - Scala automatica dalla griglia blu "10 metri" delle planimetrie catastali AdE, oppure

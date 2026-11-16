@@ -27,13 +27,13 @@ fbq('track', 'PageView');
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>IMMONOVA Success Stories</title>
-<meta name="description" content="Operazioni immobiliari off-market concluse con successo da IMMONOVA: track record verificato di investimenti completati in hotel, ville, resort e altri asset selezionati." />
+<title>Investments Puglia Success Stories</title>
+<meta name="description" content="Operazioni immobiliari off-market concluse con successo da Investments Puglia: track record verificato di investimenti completati in hotel, ville, resort e altri asset selezionati." />
 <link rel="canonical" href="https://investmentspuglia.it/success-stories.html" />
 <meta property="og:type" content="website" />
-<meta property="og:site_name" content="IMMONOVA" />
-<meta property="og:title" content="IMMONOVA Success Stories" />
-<meta property="og:description" content="Track record verificato di investimenti immobiliari off-market completati da IMMONOVA." />
+<meta property="og:site_name" content="Investments Puglia" />
+<meta property="og:title" content="Investments Puglia Success Stories" />
+<meta property="og:description" content="Track record verificato di investimenti immobiliari off-market completati da Investments Puglia." />
 <meta property="og:url" content="https://investmentspuglia.it/success-stories.html" />
 <meta name="twitter:card" content="summary" />
 
@@ -377,7 +377,7 @@ body::after{
 @media(max-width:1150px){.hero{grid-template-columns:1fr}.grid{grid-template-columns:1fr 1fr}.stats{grid-template-columns:1fr 1fr 1fr}}
 @media(max-width:760px){.header{padding:28px 24px;flex-direction:column;gap:18px}.nav{justify-content:center}.container{padding:44px 22px 78px}.grid,.stats{grid-template-columns:1fr}.title{font-size:38px}.media{height:250px}.story-strip{grid-template-columns:1fr}}
 
-/* ---- Mobile hamburger menu (IMMONOVA standard) ---- */
+/* ---- Mobile hamburger menu (Investments Puglia standard) ---- */
 .nav-toggle{display:none;background:none;border:1px solid rgba(58,58,58,.35);color:var(--c-5b461d);font-size:22px;line-height:1;padding:8px 13px;cursor:pointer;font-family:inherit;flex-shrink:0}
 @media(max-width:900px){
   .header{position:relative;flex-wrap:nowrap}
@@ -409,7 +409,7 @@ body::after{
 
 <body>
 <header class="header">
-  <a href="index.html" class="logo">IMMONOVA</a>
+  <a href="index.html" class="logo">Investments Puglia</a>
   <button type="button" class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false">&#9776;</button>
   <nav class="nav">
     <a href="index.html">Home</a>
@@ -435,7 +435,7 @@ body::after{
   <section class="hero">
     <div>
       <div class="kicker">Track Record</div>
-      <h1 class="title">IMMONOVA Success Stories</h1>
+      <h1 class="title">Investments Puglia Success Stories</h1>
       <p class="subtitle">Operazioni concluse, asset valorizzati e percorsi off-market portati a termine. Nessun prezzo, nessun dato sensibile: solo il racconto visibile delle transazioni completate.</p>
     </div>
 
@@ -536,16 +536,16 @@ function timelineFor(item){
 }
 
 function liquidMarker(){
-  return '<div class="liquid-marker"><span class="marker-small">Verified</span><span class="marker-main">IMMONOVA</span><span class="marker-sub">Transaction</span></div>';
+  return '<div class="liquid-marker"><span class="marker-small">Verified</span><span class="marker-main">Investments Puglia</span><span class="marker-sub">Transaction</span></div>';
 }
 
 function mediaBlock(item){
   const img = cover(item);
   if(!img){
-    return '<div class="media"><div class="media-placeholder">IMMONOVA<br>Success Story</div><div class="tag">Success Story</div>'+liquidMarker()+'</div>';
+    return '<div class="media"><div class="media-placeholder">Investments Puglia<br>Success Story</div><div class="tag">Success Story</div>'+liquidMarker()+'</div>';
   }
 
-  return '<div class="media"><img src="'+esc(img)+'" alt="'+esc(item.title || "IMMONOVA Success Story")+'"><div class="tag">Success Story</div>'+liquidMarker()+'</div>';
+  return '<div class="media"><img src="'+esc(img)+'" alt="'+esc(item.title || "Investments Puglia Success Story")+'"><div class="tag">Success Story</div>'+liquidMarker()+'</div>';
 }
 
 function chips(item){
@@ -597,7 +597,7 @@ function render(){
 
   grid.innerHTML = data.map(function(item){
     const place = [item.location, item.category].filter(Boolean).join(" · ");
-    const desc = item.short_description || "Operazione IMMONOVA conclusa e trasformata in Success Story verificata.";
+    const desc = item.short_description || "Operazione Investments Puglia conclusa e trasformata in Success Story verificata.";
     const year = item.sold_at ? new Date(item.sold_at).getFullYear() : new Date(item.created_at || Date.now()).getFullYear();
     const timelineCount = timelineFor(item).length;
 
@@ -605,13 +605,13 @@ function render(){
       + mediaBlock(item)
       + '<div class="content">'
       + '<div class="story-date">'+esc(fmtDate(item.sold_at) || "Investment Completed")+'</div>'
-      + '<h2 class="story-title">'+esc(item.title || "IMMONOVA Success Story")+'</h2>'
+      + '<h2 class="story-title">'+esc(item.title || "Investments Puglia Success Story")+'</h2>'
       + '<div class="story-meta">'+esc(place || "Private Investment")+'</div>'
       + '<p class="story-desc">'+esc(desc)+'</p>'
       + chips(item)
       + '<div class="story-strip">'
       + '<div><div class="story-item-label">Status</div><div class="story-item-value">Investment Completed</div></div>'
-      + '<div><div class="story-item-label">Verified</div><div class="story-item-value">IMMONOVA Transaction</div></div>'
+      + '<div><div class="story-item-label">Verified</div><div class="story-item-value">Investments Puglia Transaction</div></div>'
       + '<div><div class="story-item-label">Year</div><div class="story-item-value">'+esc(year)+'</div></div>'
       + '<div><div class="story-item-label">Timeline</div><div class="story-item-value">'+esc(timelineCount || eventsFor(item).length || 1)+' step</div></div>'
       + '</div>'

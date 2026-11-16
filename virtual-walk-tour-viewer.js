@@ -1,5 +1,5 @@
 /**
- * IMMONOVA — Walk Tour — viewer pubblico
+ * Investments Puglia — Walk Tour — viewer pubblico
  * Nessuna fotosfera, nessuno stitching: ogni ambiente ha un set di foto normali
  * scattate girando su se stessi (di solito 4, un quarto di giro l'una dall'altra).
  *

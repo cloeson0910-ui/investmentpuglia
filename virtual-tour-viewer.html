@@ -5,7 +5,7 @@
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-  <title>Virtual Tour 3D | IMMONOVA</title>
+  <title>Virtual Tour 3D | Investments Puglia</title>
   <style>
     *{box-sizing:border-box}html,body{width:100%;height:100%;margin:0;overflow:hidden;background:#ffffff;font-family:"Avenir Next","Helvetica Neue",Arial,sans-serif;color:var(--c-46371a)}
     canvas{display:block;width:100%;height:100%;touch-action:none}
@@ -21,7 +21,7 @@
   <script type="importmap">{"imports":{"playcanvas":"https://cdn.jsdelivr.net/npm/playcanvas/+esm"}}</script>
 </head>
 <body>
-  <div class="brand">IMMONOVA · Virtual Tour</div>
+  <div class="brand">Investments Puglia · Virtual Tour</div>
   <div class="tools"><button type="button" id="resetBtn">Centra</button><button type="button" id="fullBtn">Schermo intero</button></div>
   <div class="help">Trascina per ruotare · rotella o gesto per avvicinarti · tasto destro per spostare</div>
   <div class="state" id="state"><div class="state-box"><div class="spinner" id="spinner"></div><div class="state-title" id="stateTitle">Caricamento tour 3D</div><div class="state-text" id="stateText">Preparazione dell’esperienza interattiva…</div></div></div>
@@ -54,7 +54,7 @@
     app.scene.ambientLight = new Color(1,1,1);
     window.addEventListener("resize", () => app.resizeCanvas());
 
-    const model = new Asset("IMMONOVA Virtual Tour", "gsplat", { url:modelUrl });
+    const model = new Asset("Investments Puglia Virtual Tour", "gsplat", { url:modelUrl });
     const loader = new AssetListLoader([model], app.assets);
     await new Promise((resolve, reject) => loader.load(resolve, reject)).catch(() => { fail("Non è stato possibile caricare il modello 3D."); throw new Error("Model load failed"); });
 

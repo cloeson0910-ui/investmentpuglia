@@ -1,5 +1,5 @@
 /* Investments Puglia - aspetto dell'area admin: sfondo bianco, niente motivo a triangoli,
-   logo Investments Puglia al posto della scritta IMMONOVA. Incluso in tutte le pagine admin. */
+   logo Investments Puglia al posto della scritta Investments Puglia. Incluso in tutte le pagine admin. */
 (function(){
   var LOGO = "/img/ip-logo.png";
   var css = "html,body{background:#ffffff !important}"
@@ -24,7 +24,7 @@
       if(el.querySelector("img.ip-logo-big")) return;
       el.innerHTML = '<img class="ip-logo-big" src="' + LOGO + '" alt="Investments Puglia">';
     });
-    if(/IMMONOVA/.test(document.title)) document.title = document.title.replace(/IMMONOVA/g, "Investments Puglia");
+    if(/Investments Puglia/.test(document.title)) document.title = document.title.replace(/Investments Puglia/g, "Investments Puglia");
   }
   if(document.readyState === "loading") document.addEventListener("DOMContentLoaded", apply); else apply();
   setTimeout(apply, 800);

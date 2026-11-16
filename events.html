@@ -27,13 +27,13 @@ fbq('track', 'PageView');
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Investment Events | IMMONOVA</title>
-<meta name="description" content="Eventi, selling party e operazioni concluse di IMMONOVA: party privati, closing party e vendite finalizzate nel mondo degli investimenti immobiliari off-market." />
+<title>Investment Events | Investments Puglia</title>
+<meta name="description" content="Eventi, selling party e operazioni concluse di Investments Puglia: party privati, closing party e vendite finalizzate nel mondo degli investimenti immobiliari off-market." />
 <link rel="canonical" href="https://investmentspuglia.it/events.html" />
 <meta property="og:type" content="website" />
-<meta property="og:site_name" content="IMMONOVA" />
-<meta property="og:title" content="Investment Events | IMMONOVA" />
-<meta property="og:description" content="Party privati, selling event e operazioni concluse nel network IMMONOVA." />
+<meta property="og:site_name" content="Investments Puglia" />
+<meta property="og:title" content="Investment Events | Investments Puglia" />
+<meta property="og:description" content="Party privati, selling event e operazioni concluse nel network Investments Puglia." />
 <meta property="og:url" content="https://investmentspuglia.it/events.html" />
 <meta name="twitter:card" content="summary" />
 <style>
@@ -56,7 +56,7 @@ body::after{content:"";position:fixed;inset:0;z-index:-1;background:repeating-li
 @media(max-width:1150px){.hero{grid-template-columns:1fr}.grid{grid-template-columns:1fr 1fr}.stats{grid-template-columns:1fr 1fr}}
 @media(max-width:720px){.header{padding:24px 22px;flex-direction:column;gap:18px}.logo{align-items:center}.logo-svg{width:250px}.container{padding:38px 22px 70px}.title{font-size:36px}.grid,.stats{grid-template-columns:1fr}.media{height:240px}.gallery{grid-template-columns:repeat(2,1fr)}.lightbox{padding:16px}.lightbox-frame{height:76vh}.lightbox-prev{left:8px}.lightbox-next{right:8px}}
 
-/* ---- Mobile hamburger menu (IMMONOVA standard) ---- */
+/* ---- Mobile hamburger menu (Investments Puglia standard) ---- */
 .nav-toggle{display:none;background:none;border:1px solid rgba(58,58,58,.35);color:var(--c-5b461d);font-size:22px;line-height:1;padding:8px 13px;cursor:pointer;font-family:inherit;flex-shrink:0}
 @media(max-width:900px){
   .header{position:relative;flex-wrap:nowrap}
@@ -98,7 +98,7 @@ body::after{content:"";position:fixed;inset:0;z-index:-1;background:repeating-li
 </head>
 <body>
 <header class="header">
-    <a href="index.html" class="logo">IMMONOVA</a>
+    <a href="index.html" class="logo">Investments Puglia</a>
     <button type="button" class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false">&#9776;</button>
   <nav class="nav">
       <a href="index.html" data-i18n="nav_home">Home</a>
@@ -121,12 +121,12 @@ body::after{content:"";position:fixed;inset:0;z-index:-1;background:repeating-li
   </header>
 <main class="container">
 <section class="hero">
-<div><div class="kicker">Investment Events</div><h1 class="title">Eventi & Vendite Concluse</h1><p class="subtitle">Una selezione di party privati, selling event e operazioni concluse: contenuti fotografici e video dedicati al network IMMONOVA e alle opportunità vendute.</p></div>
+<div><div class="kicker">Investment Events</div><h1 class="title">Eventi & Vendite Concluse</h1><p class="subtitle">Una selezione di party privati, selling event e operazioni concluse: contenuti fotografici e video dedicati al network Investments Puglia e alle opportunità vendute.</p></div>
 <div class="stats"><div class="stat"><div class="stat-label">Sold Party</div><div class="stat-value" id="soldCount">0</div></div><div class="stat"><div class="stat-label">Selling</div><div class="stat-value" id="sellingCount">0</div></div><div class="stat"><div class="stat-label">In Programma</div><div class="stat-value" id="upcomingCount">0</div></div><div class="stat"><div class="stat-label">Conclusi</div><div class="stat-value" id="pastCount">0</div></div></div>
 </section>
 <div id="status" class="status"></div>
 <div class="filters"><button class="filter-btn active" data-filter="">Tutti</button><button class="filter-btn" data-filter="upcoming_auto">Party in programma</button><button class="filter-btn" data-filter="past_auto">Party avvenuti</button><button class="filter-btn" data-filter="selling_party">Selling Party</button><button class="filter-btn" data-filter="closing_party">Closing Party</button></div>
-<section><div class="section-title" id="sectionTitle">Eventi IMMONOVA</div><div class="grid" id="eventsGrid"><div class="empty">Caricamento eventi...</div></div></section>
+<section><div class="section-title" id="sectionTitle">Eventi Investments Puglia</div><div class="grid" id="eventsGrid"><div class="empty">Caricamento eventi...</div></div></section>
 </main>
 <div class="lightbox" id="lightbox" aria-hidden="true"><button class="lightbox-close" type="button" onclick="closeLightbox()">Chiudi</button><button class="lightbox-prev" type="button" onclick="moveLightbox(-1)">‹</button><div class="lightbox-frame" id="lightboxFrame"></div><button class="lightbox-next" type="button" onclick="moveLightbox(1)">›</button><div class="lightbox-caption" id="lightboxCaption"></div></div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -144,25 +144,25 @@ function esc(v){return String(v??'').replaceAll('&','&amp;').replaceAll('<','&lt
 function fmtDate(v){if(!v)return '';try{return new Date(v+'T12:00:00').toLocaleDateString('it-IT',{day:'2-digit',month:'long',year:'numeric'})}catch(e){return v}}
 function setStatus(m,t){statusBox.className='status '+(t||'');statusBox.textContent=m||''}
 function isVideo(url,mime,type){return String(type||'').toLowerCase()==='video'||String(mime||url||'').toLowerCase().includes('video')||/\.(mp4|webm|mov|m4v)(\?.*)?$/i.test(String(url||''))}
-function markerHTML(){return '<div class="liquid-marker"><span class="sold">Sold by</span><span class="brand">IMMONOVA</span><span class="sub">Off Market • Consulting</span></div>'}
+function markerHTML(){return '<div class="liquid-marker"><span class="sold">Sold by</span><span class="brand">Investments Puglia</span><span class="sub">Real Estate Investments</span></div>'}
 function normalizeMedia(e){
   const rows = Array.isArray(e.immonova_event_media) ? e.immonova_event_media : [];
   const items = [];
   rows.forEach(function(m){
     const url = m.file_url || m.url || m.public_url || m.media_url || '';
-    if(url){items.push({url:url,mime:m.mime_type||'',type:m.media_type||'',caption:m.caption||e.title||'IMMONOVA Event'});}
+    if(url){items.push({url:url,mime:m.mime_type||'',type:m.media_type||'',caption:m.caption||e.title||'Investments Puglia Event'});}
   });
-  if(e.video_url) items.unshift({url:e.video_url,mime:'video',type:'video',caption:e.title||'IMMONOVA Event'});
-  if(e.cover_image) items.unshift({url:e.cover_image,mime:'image',type:'image',caption:e.title||'IMMONOVA Event'});
+  if(e.video_url) items.unshift({url:e.video_url,mime:'video',type:'video',caption:e.title||'Investments Puglia Event'});
+  if(e.cover_image) items.unshift({url:e.cover_image,mime:'image',type:'image',caption:e.title||'Investments Puglia Event'});
   const seen = new Set();
   return items.filter(function(item){if(seen.has(item.url))return false;seen.add(item.url);return true;});
 }
 function mediaNodeHTML(item, main){
-  if(!item || !item.url) return '<div class="media-placeholder">IMMONOVA Event</div>';
+  if(!item || !item.url) return '<div class="media-placeholder">Investments Puglia Event</div>';
   if(isVideo(item.url,item.mime,item.type)){
     return '<video '+(main?'muted playsinline':'muted playsinline')+' src="'+esc(item.url)+'"></video><div class="play-badge">▶</div>'+markerHTML();
   }
-  return '<img src="'+esc(item.url)+'" alt="'+esc(item.caption||'IMMONOVA Event')+'">'+markerHTML();
+  return '<img src="'+esc(item.url)+'" alt="'+esc(item.caption||'Investments Puglia Event')+'">'+markerHTML();
 }
 function eventDateOnly(e){
   return e && e.event_date ? new Date(e.event_date + "T23:59:59") : null;
@@ -216,13 +216,13 @@ function renderLightbox(){
   if(isVideo(item.url,item.mime,item.type)){
     frame.innerHTML = '<video controls autoplay playsinline src="'+esc(item.url)+'"></video>'+markerHTML();
   }else{
-    frame.innerHTML = '<img src="'+esc(item.url)+'" alt="'+esc(item.caption||'IMMONOVA Event')+'">'+markerHTML();
+    frame.innerHTML = '<img src="'+esc(item.url)+'" alt="'+esc(item.caption||'Investments Puglia Event')+'">'+markerHTML();
   }
-  caption.textContent = (item.caption || 'IMMONOVA Event') + ' · ' + (lightboxIndex + 1) + '/' + lightboxItems.length;
+  caption.textContent = (item.caption || 'Investments Puglia Event') + ' · ' + (lightboxIndex + 1) + '/' + lightboxItems.length;
 }
 function render(){
   let data=allEvents.filter(e=>!currentFilter||e.event_type===currentFilter||(currentFilter==='sold_party'&&e.event_type==='sold_event'));
-  document.getElementById('sectionTitle').textContent=currentFilter?(labels[currentFilter]||'Eventi'):'Eventi IMMONOVA';
+  document.getElementById('sectionTitle').textContent=currentFilter?(labels[currentFilter]||'Eventi'):'Eventi Investments Puglia';
   if(!data.length){grid.innerHTML='<div class="empty">Nessun evento pubblicato in questa categoria.</div>';return}
   grid.innerHTML=data.map(function(e,eventIndex){
     const media=normalizeMedia(e);

@@ -1,4 +1,4 @@
-/* IMMONOVA – Disclaimer sulle foto.
+/* Investments Puglia – Disclaimer sulle foto.
    I testi NON vengono mai bruciati nell'immagine: sono salvati sulla scheda e mostrati
    come fascia sovrapposta (sito pubblico, dossier, PDF).
    opportunities.photo_disclaimers = [{id, text}]

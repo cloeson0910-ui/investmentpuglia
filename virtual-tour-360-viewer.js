@@ -1,5 +1,5 @@
 /**
- * IMMONOVA — Virtual Tour — viewer pubblico
+ * Investments Puglia — Virtual Tour — viewer pubblico
  *
  * Le foto sono panoramiche "cilindriche" scattate con la modalità Panorama
  * NATIVA del telefono (non Fotosfera/Photo Sphere): coprono un arco orizzontale

@@ -27,13 +27,13 @@ fbq('track', 'PageView');
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>IMMONOVA | Success Story</title>
-<meta name="description" id="metaDescription" content="Storia di investimento off-market conclusa con successo da IMMONOVA: dettagli, timeline e risultati di una transazione immobiliare verificata." />
+<title>Investments Puglia | Success Story</title>
+<meta name="description" id="metaDescription" content="Storia di investimento off-market conclusa con successo da Investments Puglia: dettagli, timeline e risultati di una transazione immobiliare verificata." />
 <link rel="canonical" href="https://investmentspuglia.it/success-story.html" />
 <meta property="og:type" content="article" />
-<meta property="og:site_name" content="IMMONOVA" />
-<meta property="og:title" id="ogTitle" content="IMMONOVA Success Story" />
-<meta property="og:description" id="ogDescription" content="Storia di investimento off-market conclusa con successo da IMMONOVA." />
+<meta property="og:site_name" content="Investments Puglia" />
+<meta property="og:title" id="ogTitle" content="Investments Puglia Success Story" />
+<meta property="og:description" id="ogDescription" content="Storia di investimento off-market conclusa con successo da Investments Puglia." />
 <meta name="twitter:card" content="summary" />
 
 <style>
@@ -374,7 +374,7 @@ body::after{
 @media(max-width:1050px){.hero{grid-template-columns:1fr}.meta-grid{grid-template-columns:1fr 1fr}.events-grid,.gallery{grid-template-columns:1fr 1fr}}
 @media(max-width:720px){.header{padding:28px 24px;flex-direction:column;gap:18px}.nav{justify-content:center}.container{padding:44px 22px 78px}.meta-grid,.events-grid,.gallery{grid-template-columns:1fr}.timeline-item{grid-template-columns:1fr}.title{font-size:38px}}
 
-/* ---- Mobile hamburger menu (IMMONOVA standard) ---- */
+/* ---- Mobile hamburger menu (Investments Puglia standard) ---- */
 .nav-toggle{display:none;background:none;border:1px solid rgba(58,58,58,.35);color:var(--c-5b461d);font-size:22px;line-height:1;padding:8px 13px;cursor:pointer;font-family:inherit;flex-shrink:0}
 @media(max-width:900px){
   .header{position:relative;flex-wrap:nowrap}
@@ -406,7 +406,7 @@ body::after{
 
 <body>
 <header class="header">
-  <a href="index.html" class="logo">IMMONOVA</a>
+  <a href="index.html" class="logo">Investments Puglia</a>
   <button type="button" class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false">&#9776;</button>
   <nav class="nav">
     <a href="index.html">Home</a>
@@ -472,8 +472,8 @@ function setStatus(message,type){
    per l'indicizzazione dato che questa e' una pagina dinamica (stessa logica applicata anche
    in opportunity.html). Se qualcosa manca, resta il testo generico di fallback gia' nell'head. */
 function updatePageMeta(item){
-  const title = (item.title || "IMMONOVA Success Story") + " | IMMONOVA Success Story";
-  const desc = (item.short_description || "Operazione off-market conclusa con successo da IMMONOVA.").slice(0,160);
+  const title = (item.title || "Investments Puglia Success Story") + " | Investments Puglia Success Story";
+  const desc = (item.short_description || "Operazione off-market conclusa con successo da Investments Puglia.").slice(0,160);
 
   document.title = title;
   const metaDesc = document.getElementById("metaDescription");
@@ -518,7 +518,7 @@ function timelineFor(item){
     return {
       created_at:e.event_date || e.created_at,
       timeline_type:e.event_type,
-      title:eventLabels[e.event_type] || e.title || "Evento IMMONOVA",
+      title:eventLabels[e.event_type] || e.title || "Evento Investments Puglia",
       description:e.title || e.short_description || e.description || "",
       visibility:"public"
     };
@@ -528,7 +528,7 @@ function timelineFor(item){
     created_at:item.sold_at,
     timeline_type:"sold",
     title:"Investment Completed",
-    description:"Operazione conclusa e certificata come IMMONOVA Success Story.",
+    description:"Operazione conclusa e certificata come Investments Puglia Success Story.",
     visibility:"public"
   }] : [];
 
@@ -540,9 +540,9 @@ function timelineFor(item){
 function heroMedia(item){
   const img = cover(item);
   if(!img){
-    return '<div class="hero-media"><div class="placeholder">IMMONOVA<br>Verified Transaction</div><div class="marker"><small>Verified</small><strong>IMMONOVA</strong></div></div>';
+    return '<div class="hero-media"><div class="placeholder">Investments Puglia<br>Verified Transaction</div><div class="marker"><small>Verified</small><strong>Investments Puglia</strong></div></div>';
   }
-  return '<div class="hero-media"><img src="'+esc(img)+'" alt="'+esc(item.title || "Success Story")+'"><div class="marker"><small>Verified</small><strong>IMMONOVA</strong></div></div>';
+  return '<div class="hero-media"><img src="'+esc(img)+'" alt="'+esc(item.title || "Success Story")+'"><div class="marker"><small>Verified</small><strong>Investments Puglia</strong></div></div>';
 }
 
 function renderTimeline(item){
@@ -589,7 +589,7 @@ function renderEvents(item){
       + img
       + '<div class="event-body">'
       + '<div class="event-type">'+esc(eventLabels[e.event_type] || e.event_type || "Evento")+'</div>'
-      + '<div class="event-title">'+esc(e.title || "Evento IMMONOVA")+'</div>'
+      + '<div class="event-title">'+esc(e.title || "Evento Investments Puglia")+'</div>'
       + '<div class="event-desc">'+esc([fmtDate(e.event_date), e.location, e.venue].filter(Boolean).join(" · "))+'</div>'
       + '</div></article>';
   }).join("") + '</div>';
@@ -602,7 +602,7 @@ function renderGallery(item){
   }
 
   return '<div class="gallery">' + gallery.map(function(url){
-    return '<div class="gallery-item"><img src="'+esc(url)+'" alt="IMMONOVA Success Story"></div>';
+    return '<div class="gallery-item"><img src="'+esc(url)+'" alt="Investments Puglia Success Story"></div>';
   }).join("") + '</div>';
 }
 
@@ -611,12 +611,12 @@ function render(item){
 
   const year = item.sold_at ? new Date(item.sold_at).getFullYear() : new Date(item.created_at || Date.now()).getFullYear();
   const place = [item.location,item.category].filter(Boolean).join(" · ");
-  const intro = item.full_description || item.short_description || "Operazione off-market IMMONOVA conclusa con successo e trasformata in una Success Story verificata. I dati economici e le parti coinvolte restano riservati.";
+  const intro = item.full_description || item.short_description || "Operazione off-market Investments Puglia conclusa con successo e trasformata in una Success Story verificata. I dati economici e le parti coinvolte restano riservati.";
 
   pageContent.innerHTML =
     '<section class="hero">'
     + '<div>'
-    + '<div class="kicker">IMMONOVA Verified Transaction</div>'
+    + '<div class="kicker">Investments Puglia Verified Transaction</div>'
     + '<h1 class="title">'+esc(item.title || "Success Story")+'</h1>'
     + '<p class="subtitle">'+esc(intro)+'</p>'
     + '</div>'

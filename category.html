@@ -27,7 +27,7 @@ fbq('track', 'PageView');
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Opportunities | IMMONOVA</title>
+<title>Opportunities | Investments Puglia</title>
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -323,7 +323,7 @@ h1{
   }
 }
 
-/* ---- Mobile hamburger menu (IMMONOVA standard) ---- */
+/* ---- Mobile hamburger menu (Investments Puglia standard) ---- */
 .nav-toggle{display:none;background:none;border:1px solid rgba(58,58,58,.35);color:var(--c-5b461d);font-size:22px;line-height:1;padding:8px 13px;cursor:pointer;font-family:inherit;flex-shrink:0}
 @media(max-width:900px){
   .header{position:relative;flex-wrap:nowrap}
@@ -371,7 +371,7 @@ h1{
 <div class="page">
 
   <header class="header">
-    <a href="index.html" class="logo">IMMONOVA</a>
+    <a href="index.html" class="logo">Investments Puglia</a>
     <button type="button" class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false">&#9776;</button>
   <nav class="nav">
       <a href="index.html" data-i18n="nav_home">Home</a>
@@ -451,7 +451,7 @@ const STATIC_I18N = {
     reserved_value:"Valore riservato",
     request_access:"Richiedi accesso",
     view_opportunity:"Vedi opportunità",
-    placeholder:"IMMONOVA\nOFF MARKET\nCONSULTING"
+    placeholder:"Investments Puglia\nOFF MARKET\nCONSULTING"
   },
   en:{
     nav_categories:"Categories",
@@ -467,7 +467,7 @@ const STATIC_I18N = {
     reserved_value:"Reserved value",
     request_access:"Request Access",
     view_opportunity:"View Opportunity",
-    placeholder:"IMMONOVA\nOFF MARKET\nCONSULTING"
+    placeholder:"Investments Puglia\nOFF MARKET\nCONSULTING"
   },
   fr:{
     nav_categories:"Catégories",
@@ -483,7 +483,7 @@ const STATIC_I18N = {
     reserved_value:"Valeur réservée",
     request_access:"Demander l'accès",
     view_opportunity:"Voir l'opportunité",
-    placeholder:"IMMONOVA\nOFF MARKET\nCONSULTING"
+    placeholder:"Investments Puglia\nOFF MARKET\nCONSULTING"
   },
   de:{
     nav_categories:"Kategorien",
@@ -499,7 +499,7 @@ const STATIC_I18N = {
     reserved_value:"Wert auf Anfrage",
     request_access:"Zugang anfordern",
     view_opportunity:"Opportunity ansehen",
-    placeholder:"IMMONOVA\nOFF MARKET\nCONSULTING"
+    placeholder:"Investments Puglia\nOFF MARKET\nCONSULTING"
   },
   es:{
     nav_categories:"Categorías",
@@ -515,7 +515,7 @@ const STATIC_I18N = {
     reserved_value:"Valor reservado",
     request_access:"Solicitar acceso",
     view_opportunity:"Ver oportunidad",
-    placeholder:"IMMONOVA\nOFF MARKET\nCONSULTING"
+    placeholder:"Investments Puglia\nOFF MARKET\nCONSULTING"
   },
   ar:{
     nav_categories:"الفئات",
@@ -531,7 +531,7 @@ const STATIC_I18N = {
     reserved_value:"القيمة سرية",
     request_access:"طلب الوصول",
     view_opportunity:"عرض الفرصة",
-    placeholder:"IMMONOVA\nOFF MARKET\nCONSULTING"
+    placeholder:"Investments Puglia\nOFF MARKET\nCONSULTING"
   }
 };
 
@@ -592,7 +592,7 @@ function renderCover(item){
   if(item.cover_image){
     return `
       <div class="card-image">
-        <img src="${escapeHTML(item.cover_image)}" alt="${escapeHTML(item.title || "IMMONOVA Opportunity")}">
+        <img src="${escapeHTML(item.cover_image)}" alt="${escapeHTML(item.title || "Investments Puglia Opportunity")}">
       </div>
     `;
   }
@@ -638,7 +638,7 @@ async function translateCategoryItems(items, targetLang){
         body:{
           language: targetLang,
           source_language: "it",
-          context: "IMMONOVA luxury real estate investment website: opportunity listing titles and short descriptions shown on a category page.",
+          context: "Investments Puglia luxury real estate investment website: opportunity listing titles and short descriptions shown on a category page.",
           texts: texts
         }
       });

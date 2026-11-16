@@ -1,4 +1,4 @@
-// IMMONOVA — Service Worker
+// Investments Puglia — Service Worker
 // Due responsabilità: (1) rendere l'app installabile/utilizzabile offline in modo minimo,
 // (2) ricevere le notifiche push e mostrarle, gestire il tap sulla notifica.
 
@@ -44,10 +44,10 @@ self.addEventListener("push", (event) => {
   try {
     payload = event.data ? event.data.json() : {};
   } catch (e) {
-    payload = { title: "IMMONOVA", body: event.data ? event.data.text() : "" };
+    payload = { title: "Investments Puglia", body: event.data ? event.data.text() : "" };
   }
 
-  const title = payload.title || "IMMONOVA — Nuova opportunità";
+  const title = payload.title || "Investments Puglia — Nuova opportunità";
   const options = {
     body: payload.body || "È stata pubblicata una nuova opportunità off-market.",
     icon: "/icon-192-v2.png",

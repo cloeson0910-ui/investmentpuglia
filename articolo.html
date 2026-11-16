@@ -5,12 +5,12 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title id="pageTitle">Articolo | IMMONOVA</title>
-<meta name="description" id="pageDesc" content="Analisi e approfondimenti a cura di IMMONOVA.">
+<title id="pageTitle">Articolo | Investments Puglia</title>
+<meta name="description" id="pageDesc" content="Analisi e approfondimenti a cura di Investments Puglia.">
 <meta property="og:type" content="article">
-<meta property="og:site_name" content="IMMONOVA">
-<meta property="og:title" id="ogTitle" content="Articolo | IMMONOVA">
-<meta property="og:description" id="ogDesc" content="Analisi e approfondimenti a cura di IMMONOVA.">
+<meta property="og:site_name" content="Investments Puglia">
+<meta property="og:title" id="ogTitle" content="Articolo | Investments Puglia">
+<meta property="og:description" id="ogDesc" content="Analisi e approfondimenti a cura di Investments Puglia.">
 <meta name="twitter:card" content="summary">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -35,7 +35,7 @@ body::before{content:"";position:fixed;inset:0;z-index:-2;background:radial-grad
 <body>
 
 <header class="header">
-  <a href="index.html" class="logo">IMMONOVA</a>
+  <a href="index.html" class="logo">Investments Puglia</a>
   <a href="articoli.html" class="back">&larr; Notizie</a>
 </header>
 
@@ -79,9 +79,9 @@ async function load(){
     root.innerHTML = '<div class="empty">Articolo non trovato.</div>';
     return;
   }
-  document.title = data.title + " | IMMONOVA";
-  document.getElementById("pageTitle").textContent = data.title + " | IMMONOVA";
-  document.getElementById("ogTitle").setAttribute("content", data.title + " | IMMONOVA");
+  document.title = data.title + " | Investments Puglia";
+  document.getElementById("pageTitle").textContent = data.title + " | Investments Puglia";
+  document.getElementById("ogTitle").setAttribute("content", data.title + " | Investments Puglia");
   if(data.excerpt){
     document.getElementById("pageDesc").setAttribute("content", data.excerpt);
     document.getElementById("ogDesc").setAttribute("content", data.excerpt);
@@ -91,7 +91,7 @@ async function load(){
     <div class="article-date">${esc(fmtDate(data.published_at))}</div>
     <h1 class="article-title">${esc(data.title)}</h1>
     <div class="article-body">${bodyToParagraphs(data.body)}</div>
-    <div class="disclaimer">IMMONOVA affianca il cliente in ogni fase: dalla ricerca della soluzione più adatta alle sue esigenze.</div>
+    <div class="disclaimer">Investments Puglia affianca il cliente in ogni fase: dalla ricerca della soluzione più adatta alle sue esigenze.</div>
     ${sources.length ? `
     <div class="sources">
       <div class="sources-title">Fonti</div>

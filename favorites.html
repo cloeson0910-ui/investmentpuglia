@@ -27,7 +27,7 @@ fbq('track', 'PageView');
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>I miei Preferiti | IMMONOVA</title>
+<title>I miei Preferiti | Investments Puglia</title>
 <meta name="robots" content="noindex" />
 <link rel="manifest" href="/manifest.json" />
 <link rel="apple-touch-icon" href="/apple-touch-icon-v2.png" />
@@ -167,7 +167,7 @@ body::after{
   .container{padding:38px 22px 78px}
 }
 
-/* ---- Mobile hamburger menu (IMMONOVA standard) ---- */
+/* ---- Mobile hamburger menu (Investments Puglia standard) ---- */
 .nav-toggle{display:none;background:none;border:1px solid rgba(58,58,58,.35);color:var(--c-5b461d);font-size:22px;line-height:1;padding:8px 13px;cursor:pointer;font-family:inherit;flex-shrink:0}
 @media(max-width:900px){
   .header{position:relative;flex-wrap:nowrap}
@@ -197,7 +197,7 @@ body::after{
 <body>
 
 <header class="header">
-  <a href="index.html" class="logo">IMMONOVA</a>
+  <a href="index.html" class="logo">Investments Puglia</a>
   <button type="button" class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false">&#9776;</button>
   <nav class="nav" id="navArea">
     <a href="index.html">Home</a>
@@ -404,7 +404,7 @@ async function load(){
     : '<div class="grid">' + opportunities.map(function(o){
         var media = o.cover_image
           ? '<img src="' + escapeHTML(o.cover_image) + '" alt="' + escapeHTML(o.title) + '">'
-          : '<div class="card-placeholder">IMMONOVA</div>';
+          : '<div class="card-placeholder">Investments Puglia</div>';
 
         return '' +
           '<div class="card">' +

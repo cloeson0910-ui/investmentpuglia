@@ -1,8 +1,8 @@
 {
   "id": "/collaboratore.html",
-  "name": "IMMONOVA Collaboratori",
-  "short_name": "IMMONOVA Staff",
-  "description": "App interna per i collaboratori IMMONOVA — note vocali, visite, clienti",
+  "name": "Investments Puglia Collaboratori",
+  "short_name": "Investments Puglia Staff",
+  "description": "App interna per i collaboratori Investments Puglia — note vocali, visite, clienti",
   "start_url": "/collaboratore.html",
   "scope": "/",
   "display": "standalone",

@@ -27,7 +27,7 @@ fbq('track', 'PageView');
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Richiedi Dossier | IMMONOVA</title>
+<title>Richiedi Dossier | Investments Puglia</title>
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -271,7 +271,7 @@ button.primary:disabled{
 <body>
 
 <header class="header">
-  <a href="index.html" class="logo">IMMONOVA</a>
+  <a href="index.html" class="logo">Investments Puglia</a>
   <a href="opportunities.html" class="back">Opportunities</a>
 </header>
 
@@ -372,7 +372,7 @@ button.primary:disabled{
 </main>
 
 <footer class="footer">
-IMMONOVA · OFF MARKET CONSULTING
+Investments Puglia
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -393,11 +393,11 @@ const submitBtn = document.getElementById("submitBtn");
 const opportunityBox = document.getElementById("opportunityBox");
 
 const NDA_TEXT_SNAPSHOT = `
-IMMONOVA NDA V1.
+Investments Puglia NDA V1.
 L'utente dichiara di aver letto, compreso e accettato le condizioni di riservatezza pubblicate nella pagina nda.html.
 Le informazioni ricevute sono confidenziali e possono essere utilizzate esclusivamente per valutare una potenziale operazione di investimento.
 È vietata la divulgazione a terzi, la pubblicazione, la trasmissione o l'uso improprio delle informazioni ricevute.
-È vietato contattare direttamente proprietari, gestori, operatori o soggetti collegati all'opportunità senza preventiva autorizzazione scritta di IMMONOVA.
+È vietato contattare direttamente proprietari, gestori, operatori o soggetti collegati all'opportunità senza preventiva autorizzazione scritta di Investments Puglia.
 `;
 
 function escapeHTML(value){
@@ -550,13 +550,13 @@ form.addEventListener("submit", async (e) => {
     if(ndaAccepted){
       setStatus(`
         <strong>Richiesta inviata correttamente.</strong><br>
-        NDA accettato. Il team IMMONOVA potrà inviarti il dossier riservato relativo all'opportunità selezionata.
+        NDA accettato. Il team Investments Puglia potrà inviarti il dossier riservato relativo all'opportunità selezionata.
       `, "success");
     }else{
       setStatus(`
         <strong>Richiesta registrata.</strong><br>
         Non hai accettato l'NDA: il dossier non potrà essere inviato automaticamente.
-        Il team IMMONOVA potrà ricontattarti per completare la procedura.
+        Il team Investments Puglia potrà ricontattarti per completare la procedura.
       `, "success");
     }
 

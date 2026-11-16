@@ -5,7 +5,7 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Proposta d'Acquisto — IMMONOVA</title>
+<title>Proposta d'Acquisto — Investments Puglia</title>
 
 <!-- ATTENZIONE: questa è la vecchia copia duplicata del file, tenuta qui solo come rete di
      sicurezza per link vecchi che puntassero ancora a /admin/offer-share.html. La copia
@@ -15,14 +15,14 @@
      offer-public-actions, mai query dirette alla tabella bloccata dalle RLS) il 2026-09-14,
      dopo che un link vecchio già inviato puntava ancora qui alla versione rotta. -->
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="IMMONOVA">
-<meta property="og:title" content="Proposta d'Acquisto — IMMONOVA">
-<meta property="og:description" content="Documento immobiliare IMMONOVA — Off Market Consulting. Apri per visualizzare e scaricare il PDF.">
+<meta property="og:site_name" content="Investments Puglia">
+<meta property="og:title" content="Proposta d'Acquisto — Investments Puglia">
+<meta property="og:description" content="Documento immobiliare Investments Puglia. Apri per visualizzare e scaricare il PDF.">
 <meta property="og:image" content="https://investmentspuglia.it/immonova-logo-share-1200x630.png">
 <meta property="og:url" content="https://investmentspuglia.it/admin/offer-share.html">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Proposta d'Acquisto — IMMONOVA">
-<meta name="twitter:description" content="Documento immobiliare IMMONOVA — Off Market Consulting.">
+<meta name="twitter:title" content="Proposta d'Acquisto — Investments Puglia">
+<meta name="twitter:description" content="Documento immobiliare Investments Puglia.">
 <meta name="twitter:image" content="https://investmentspuglia.it/immonova-logo-share-1200x630.png">
 
 <style>
@@ -46,8 +46,8 @@ p{font-size:13.5px;line-height:1.7;color:var(--c-5a4a2a);margin-bottom:24px}
 <body>
 
 <div class="card">
-  <div class="letterhead">IMMONOVA</div>
-  <div class="sub">OFF MARKET · CONSULTING</div>
+  <div class="letterhead">Investments Puglia</div>
+  <div class="sub">REAL ESTATE INVESTMENTS</div>
   <h1 id="title">Documento immobiliare</h1>
   <p id="desc">Caricamento…</p>
   <div id="actionBox"></div>
@@ -79,7 +79,7 @@ p{font-size:13.5px;line-height:1.7;color:var(--c-5a4a2a);margin-bottom:24px}
 
   if(!offerId || !token){
     titleEl.textContent = "Link non valido";
-    descEl.textContent = "Manca il riferimento alla proposta. Se hai ricevuto questo link prima di un aggiornamento del sistema, chiedi a IMMONOVA di rimandartelo.";
+    descEl.textContent = "Manca il riferimento alla proposta. Se hai ricevuto questo link prima di un aggiornamento del sistema, chiedi a Investments Puglia di rimandartelo.";
     return;
   }
 
@@ -132,10 +132,10 @@ p{font-size:13.5px;line-height:1.7;color:var(--c-5a4a2a);margin-bottom:24px}
     descEl.textContent = "Documento pronto per la consultazione.";
     actionBox.innerHTML = '<a class="btn" href="' + signedUrl + '" target="_blank" rel="noopener">Apri / Scarica la proposta firmata</a>';
   }else if(pdfUrl){
-    descEl.textContent = "Documento IMMONOVA pronto per la consultazione.";
+    descEl.textContent = "Documento Investments Puglia pronto per la consultazione.";
     actionBox.innerHTML = '<a class="btn" href="' + pdfUrl + '" target="_blank" rel="noopener">Apri / Scarica il PDF</a>';
   }else{
-    descEl.textContent = "Documento IMMONOVA pronto per la consultazione.";
+    descEl.textContent = "Documento Investments Puglia pronto per la consultazione.";
     actionBox.innerHTML = '<span class="state error">PDF non ancora generato per questa proposta.</span>';
   }
 })();
