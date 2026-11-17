@@ -675,6 +675,15 @@ h1{
   letter-spacing:.16em;
 }
 .success-link:hover{background:#3a3a3a;color:var(--c-ffffff)}
+.gallery-count{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--c-5b461d);margin:-6px 0 14px;}
+.gallery-all-btn{margin-top:16px;background:none;border:1px solid rgba(58,58,58,.32);color:var(--c-5b461d);padding:12px 20px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;}
+.gallery-all-btn:hover{background:#3a3a3a;color:#fff;}
+.desc-clamp{display:-webkit-box;-webkit-line-clamp:5;-webkit-box-orient:vertical;overflow:hidden;}
+.desc-clamp.open{display:block;-webkit-line-clamp:unset;overflow:visible;}
+.desc-toggle{margin-top:14px;background:none;border:1px solid rgba(58,58,58,.32);color:var(--c-5b461d);padding:10px 18px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;}
+.desc-toggle:hover{background:#3a3a3a;color:#fff;}
+.agent-panel{align-self:start;position:sticky;top:20px;}
+.agent-panel .agent-contact{border-bottom:0;margin-bottom:0;padding-bottom:0;}
 .agent-contact{margin-bottom:26px;padding:0 0 22px;border-bottom:1px solid rgba(58,58,58,.16);}
 .agent-contact .agent-label{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--c-5b461d);margin-bottom:8px;}
 .agent-contact .agent-name{font-size:20px;font-weight:300;letter-spacing:.04em;color:var(--c-3f341e);margin-bottom:10px;}
@@ -1291,7 +1300,7 @@ function cover(data){
 function publicGallery(data){
   const gallery = normalizeGallery(data.gallery_images);
   const all = [data.cover_image].concat(gallery).filter(Boolean);
-  return [...new Set(all)].slice(0,6);
+  return [...new Set(all)];
 }
 
 function lockedGalleryCount(data){
@@ -1508,10 +1517,6 @@ async function renderOpportunity(data){
 
       <div class="hero-media">
         ${mainImage ? `<img src="${escapeHTML(mainImage)}" alt="${escapeHTML(title)}">${window.ImmonovaPhotoDisclaimers ? window.ImmonovaPhotoDisclaimers.bandHTML(data, mainImage) : ""}` : `<div class="media-placeholder">Investments Puglia<br>Opportunity</div>`}
-        <div class="lock-marker">
-          <small>${escapeHTML(dict("reserved_dossier_small"))}</small>
-          <strong>${escapeHTML(dict("full_details_by_request"))}</strong>
-        </div>
       </div>
     </section>
 
@@ -1519,8 +1524,8 @@ async function renderOpportunity(data){
       <div>
         <div class="panel">
           <h2 class="section-title">${escapeHTML(dict("overview"))}</h2>
-          <div class="text">${escapeHTML(offMarket ? dict("private_off_market") : (data.full_description || description || ""))}</div>
-          <div class="lock-box">${escapeHTML(dict("dossier_locked"))}</div>
+          <div class="text desc-clamp" id="descText">${escapeHTML(offMarket ? dict("private_off_market") : (data.full_description || description || ""))}</div>
+          <button type="button" class="desc-toggle" id="descToggle" hidden>Leggi tutta la descrizione &#9662;</button>
         </div>
 
         <div class="panel">
@@ -1540,14 +1545,15 @@ async function renderOpportunity(data){
 
         <div class="panel">
           <h2 class="section-title">${escapeHTML(dict("gallery"))}</h2>
+          ${gallery.length ? `<div class="gallery-count">${Math.min(6,gallery.length)} di ${gallery.length} foto</div>` : ""}
           <div class="gallery">
             ${
               gallery.length
-              ? gallery.map((url, idx) => `<div class="gallery-item" data-lightbox-index="${idx}"><img src="${escapeHTML(url)}" alt="${escapeHTML(title)}">${window.ImmonovaPhotoDisclaimers ? window.ImmonovaPhotoDisclaimers.bandHTML(data, url) : ""}</div>`).join("")
+              ? gallery.slice(0,6).map((url, idx) => `<div class="gallery-item" data-lightbox-index="${idx}"><img src="${escapeHTML(url)}" alt="${escapeHTML(title)}">${window.ImmonovaPhotoDisclaimers ? window.ImmonovaPhotoDisclaimers.bandHTML(data, url) : ""}</div>`).join("")
               : `<div class="gallery-item"><div class="gallery-locked">${escapeHTML(dict("gallery_preview_placeholder"))}</div></div>`
             }
-            <div class="gallery-item"><div class="gallery-locked">${lockedCount > 0 ? "+" + lockedCount + " " : ""}${escapeHTML(dict("gallery_locked"))}</div></div>
           </div>
+          ${gallery.length > 6 ? `<button type="button" class="gallery-all-btn" data-lightbox-index="0">Vedi tutte le ${gallery.length} foto a schermo intero</button>` : ""}
         </div>
 
         ${virtualTour360 ? `
@@ -1556,16 +1562,6 @@ async function renderOpportunity(data){
           <p class="text" style="margin-top:0">${escapeHTML(dict("virtual_tour_360_intro"))}</p>
           <div class="virtual-tour-public" id="tour360Container"></div>
         </div>` : ""}
-
-        <div class="panel">
-          <h2 class="section-title">${escapeHTML(dict("ai_analysis"))}</h2>
-          <div class="teaser-grid">
-            <div class="teaser-card"><div class="teaser-title">Market</div><div class="teaser-text">${escapeHTML(marketTeaserText(data))}</div></div>
-            <div class="teaser-card"><div class="teaser-title">Tourism</div><div class="teaser-text">${escapeHTML(tourismTeaserText(data))}</div></div>
-            <div class="teaser-card"><div class="teaser-title">ROI</div><div class="teaser-text">${escapeHTML(dict("roi_teaser"))}</div></div>
-          </div>
-          <div class="lock-box">${escapeHTML(dict("ai_locked"))}</div>
-        </div>
 
         <div class="panel">
           <h2 class="section-title">${escapeHTML(dict("events"))}</h2>
@@ -1595,9 +1591,8 @@ async function renderOpportunity(data){
         }
       </div>
 
-      <aside class="panel">
+      <aside class="panel agent-panel" id="agentPanel" hidden>
         <div id="agentContact" class="agent-contact" hidden></div>
-        ${renderInquiryForm(title)}
       </aside>
     </section>
 
@@ -1641,7 +1636,7 @@ async function renderOpportunity(data){
   const preferredLanguage = document.getElementById("preferred_language");
   if(preferredLanguage) preferredLanguage.value = currentLanguage;
 
-  document.getElementById("inquiryForm").addEventListener("submit", submitInquiry);
+  initDescriptionToggle();
 
   initFavoriteButton(data.id);
 }
@@ -1825,6 +1820,21 @@ async function loadOpportunity(){
    pagina (a differenza dell'installazione, tracciata una sola volta per dispositivo). Nessun
    dato personale: solo paese (best-effort, MAI bloccante) e id opportunità. */
 
+
+/* Descrizione: prime 5 righe, poi pulsante a tendina */
+function initDescriptionToggle(){
+  var t=document.getElementById("descText"), b=document.getElementById("descToggle");
+  if(!t||!b) return;
+  requestAnimationFrame(function(){
+    if(t.scrollHeight - t.clientHeight < 4){ t.classList.remove("desc-clamp"); return; }
+    b.hidden=false;
+    b.addEventListener("click",function(){
+      var open=t.classList.toggle("open");
+      b.innerHTML=open?"Chiudi descrizione &#9652;":"Leggi tutta la descrizione &#9662;";
+      if(!open) t.scrollIntoView({block:"nearest",behavior:"smooth"});
+    });
+  });
+}
 /* Contatto diretto dell'agente che segue l'immobile (nome, telefono, email in chiaro) */
 async function loadAgentContact(opportunityId){
   var box=document.getElementById("agentContact");
@@ -1840,6 +1850,7 @@ async function loadAgentContact(opportunityId){
     if(a.phone) html+='<a class="agent-line" href="https://wa.me/'+tel.replace("+","")+'" target="_blank" rel="noopener">WhatsApp</a>';
     if(a.email) html+='<a class="agent-line" href="mailto:'+escapeHTML(a.email)+'">&#9993;&nbsp; '+escapeHTML(a.email)+'</a>';
     box.innerHTML=html; box.hidden=false;
+    var pnl=document.getElementById("agentPanel"); if(pnl) pnl.hidden=false;
   }catch(e){ console.warn("Contatto agente non disponibile:", e); }
 }
 async function logOpportunityView(opportunityId){
