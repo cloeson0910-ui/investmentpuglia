@@ -1512,7 +1512,7 @@ button.danger{
 
   <nav class="nav">
     <a href="dashboard.html" data-i18n="nav_dashboard">Dashboard</a>
-    <a href="opportunities.html" data-i18n="nav_opportunities">Opportunità</a>
+    <a href="opportunities.html" data-i18n="nav_opportunities">Immobili</a>
     <a id="reportLink" href="#" data-i18n="nav_dossier_ia">Dossier IA</a>
     <button id="logoutBtn" data-i18n="logout">Logout</button>
   </nav>
@@ -3805,7 +3805,7 @@ function renderCadastralUnits(){
           '<label>Comune catastale<input type="text" class="cad-municipality" data-unit="' + u.id + '" value="' + escapeHTML(u.municipality || "") + '"></label>' +
           '<label>Categoria (es. A/2)<input type="text" class="cad-category" data-unit="' + u.id + '" value="' + escapeHTML(u.category || "") + '"></label>' +
           '<label>Rendita catastale (€)<input type="number" step="0.01" min="0" class="cad-income" data-unit="' + u.id + '" value="' + escapeHTML(u.income === "" ? "" : String(u.income)) + '"></label>' +
-          '<label>Superficie catastale (mq)<input type="number" step="1" min="0" class="cad-surface" data-unit="' + u.id + '" value="' + escapeHTML(u.surface === "" ? "" : String(u.surface)) + '"></label>' +
+          '<label>Superficie catastale (mq)<input type="number" step="any" min="0" class="cad-surface" data-unit="' + u.id + '" value="' + escapeHTML(u.surface === "" ? "" : String(u.surface)) + '"></label>' +
           '<label>Foglio<input type="text" class="cad-sheet" data-unit="' + u.id + '" value="' + escapeHTML(u.sheet || "") + '"></label>' +
           '<label>Particella / Mappale<input type="text" class="cad-parcel" data-unit="' + u.id + '" value="' + escapeHTML(u.parcel || "") + '"></label>' +
           '<label>Subalterno<input type="text" class="cad-subalterno" data-unit="' + u.id + '" value="' + escapeHTML(u.subalterno || "") + '"></label>' +
@@ -5050,7 +5050,7 @@ async function generateWatermarkPreview(){
 })();
 
 var UI_STRINGS = {
-  nav_dashboard:"Dashboard", nav_opportunities:"Opportunità", nav_dossier_ia:"Dossier IA", logout:"Logout",
+  nav_dashboard:"Dashboard", nav_opportunities:"Immobili", nav_dossier_ia:"Dossier IA", logout:"Logout",
   title:"Modifica Opportunità",
   intro:"Aggiorna i dati dell\u2019opportunità, arricchisci la scheda con IA, gestisci immagini, pubblicazione e messa in evidenza.",
   ai_title:"AI Assistant",
@@ -6395,5 +6395,16 @@ document.getElementById("logoutBtn").addEventListener("click", async function(){
 </script>
 
 <script src="/js/ip-brand.js?v=2"></script>
+
+<script>
+/* Se un campo non valido (anche nascosto) blocca il salvataggio, avvisa invece di non fare nulla */
+document.addEventListener("invalid",function(e){
+  var el=e.target; if(window.__invAlerted) return; window.__invAlerted=true; setTimeout(function(){window.__invAlerted=false;},800);
+  var box=el.closest("details,section,fieldset,.card,.section"); if(box&&box.tagName==="DETAILS") box.open=true;
+  var lab=(el.closest("label")||{}).innerText||el.getAttribute("placeholder")||el.id||el.name||"campo";
+  alert("Salvataggio bloccato: valore non valido nel campo \""+String(lab).trim().slice(0,60)+"\" (valore: "+el.value+").\n"+el.validationMessage);
+  try{el.scrollIntoView({block:"center"});}catch(_){}
+},true);
+</script>
 </body>
 </html>

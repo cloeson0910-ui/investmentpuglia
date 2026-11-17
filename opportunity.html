@@ -675,6 +675,11 @@ h1{
   letter-spacing:.16em;
 }
 .success-link:hover{background:#3a3a3a;color:var(--c-ffffff)}
+.agent-contact{margin-bottom:26px;padding:0 0 22px;border-bottom:1px solid rgba(58,58,58,.16);}
+.agent-contact .agent-label{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--c-5b461d);margin-bottom:8px;}
+.agent-contact .agent-name{font-size:20px;font-weight:300;letter-spacing:.04em;color:var(--c-3f341e);margin-bottom:10px;}
+.agent-contact .agent-line{display:block;font-size:15px;line-height:1.9;color:var(--c-3f341e);text-decoration:none;word-break:break-all;}
+.agent-contact .agent-line:hover{text-decoration:underline;}
 .form-title{
   font-size:24px;
   font-weight:300;
@@ -849,7 +854,7 @@ html[dir="rtl"] .data-grid{direction:rtl}
   <button type="button" class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false">&#9776;</button>
   <nav class="nav">
     <a href="index.html" data-i18n="nav_home">Home</a>
-    <a href="opportunities.html" data-i18n="nav_opportunities">Opportunities</a>
+    <a href="opportunities.html" data-i18n="nav_opportunities">Immobili</a>
     <a href="success-stories.html" data-i18n="nav_success_stories">Success Stories</a>
     <a href="off-market.html">Off Market</a>
     <details class="nav-dropdown">
@@ -964,7 +969,7 @@ let currentRequestTemplate = "";
 
 const UI_TRANSLATIONS = {
   it:{
-    nav_home:"Home", nav_opportunities:"Opportunità", nav_success_stories:"Success Stories", nav_events:"Eventi", nav_off_market:"Off Market", nav_join_us:"Lavora con Noi", nav_contact:"Contatti",
+    nav_home:"Home", nav_opportunities:"Immobili", nav_success_stories:"Success Stories", nav_events:"Eventi", nav_off_market:"Off Market", nav_join_us:"Lavora con Noi", nav_contact:"Contatti",
     loading_opportunity:"Caricamento opportunità...",
     no_opportunity:"Opportunità non selezionata.",
     unavailable:"Opportunità non disponibile.",
@@ -1059,7 +1064,7 @@ const UI_TRANSLATIONS = {
     amenity_has_habitability:"Agibilità"
   },
   en:{
-    nav_home:"Home", nav_opportunities:"Opportunities", nav_success_stories:"Success Stories", nav_events:"Events", nav_off_market:"Off Market", nav_join_us:"Join Us", nav_contact:"Contact",
+    nav_home:"Home", nav_opportunities:"Properties", nav_success_stories:"Success Stories", nav_events:"Events", nav_off_market:"Off Market", nav_join_us:"Join Us", nav_contact:"Contact",
     loading_opportunity:"Loading opportunity...",
     no_opportunity:"Opportunity not selected.",
     unavailable:"Opportunity unavailable.",
@@ -1591,6 +1596,7 @@ async function renderOpportunity(data){
       </div>
 
       <aside class="panel">
+        <div id="agentContact" class="agent-contact" hidden></div>
         ${renderInquiryForm(title)}
       </aside>
     </section>
@@ -1811,12 +1817,31 @@ async function loadOpportunity(){
   currentOpportunity = data;
   data.__dossier_data = await loadSafeDossierMetrics(id);
   await renderOpportunity(data);
+  loadAgentContact(data.id);
   logOpportunityView(data.id);
 }
 
 /* Registra una visualizzazione anonima di questa opportunità -- una riga per ogni caricamento
    pagina (a differenza dell'installazione, tracciata una sola volta per dispositivo). Nessun
    dato personale: solo paese (best-effort, MAI bloccante) e id opportunità. */
+
+/* Contatto diretto dell'agente che segue l'immobile (nome, telefono, email in chiaro) */
+async function loadAgentContact(opportunityId){
+  var box=document.getElementById("agentContact");
+  if(!box) return;
+  try{
+    var res=await client.rpc("get_opportunity_agent",{p_opportunity_id:Number(opportunityId)});
+    var a=res.data && res.data[0];
+    if(res.error || !a || (!a.phone && !a.email)) return;
+    var tel=(a.phone||"").replace(/[^+\d]/g,"");
+    var html='<div class="agent-label">Il tuo agente</div>';
+    if(a.full_name) html+='<div class="agent-name">'+escapeHTML(a.full_name)+'</div>';
+    if(a.phone) html+='<a class="agent-line" href="tel:'+tel+'">&#9742;&nbsp; '+escapeHTML(a.phone)+'</a>';
+    if(a.phone) html+='<a class="agent-line" href="https://wa.me/'+tel.replace("+","")+'" target="_blank" rel="noopener">WhatsApp</a>';
+    if(a.email) html+='<a class="agent-line" href="mailto:'+escapeHTML(a.email)+'">&#9993;&nbsp; '+escapeHTML(a.email)+'</a>';
+    box.innerHTML=html; box.hidden=false;
+  }catch(e){ console.warn("Contatto agente non disponibile:", e); }
+}
 async function logOpportunityView(opportunityId){
   var country = null;
   try{
