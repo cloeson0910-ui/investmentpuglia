@@ -26,6 +26,7 @@ var OWNER_ONLY_PAGES = [
   "ads-manager.html",
   "settings.html",
   "statistics.html",
+  "portali.html",
   "meta-ads-planner.html",
   "site-settings.html",
   "broadcast-notifications.html",
