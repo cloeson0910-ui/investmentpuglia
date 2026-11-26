@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<link rel="stylesheet" href="../css/immonova-text-theme.css">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portali | Investments Puglia Admin</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:100%;min-height:100%}
+body{
+  background:#ffffff;
+  font-family:"Avenir Next","Helvetica Neue",Arial,sans-serif;
+  color:var(--c-46371a);
+}
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-2;
+  background:
+    radial-gradient(circle at center,rgba(255,255,255,.72) 0%,rgba(255,255,255,.34) 38%,rgba(255,255,255,.06) 72%),
+    #ffffff;
+}
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  background:
+    repeating-linear-gradient(60deg,transparent 0 86px,rgba(68,68,68,.23) 87px,transparent 90px),
+    repeating-linear-gradient(-60deg,transparent 0 86px,rgba(68,68,68,.22) 87px,transparent 90px),
+    repeating-linear-gradient(0deg,transparent 0 148px,rgba(68,68,68,.13) 149px,transparent 152px);
+  background-size:230px 199px;
+  opacity:.30;
+}
+.page{max-width:1300px;margin:0 auto;padding:42px 24px 80px}
+.header{display:flex;justify-content:space-between;align-items:center;margin-bottom:44px;flex-wrap:wrap;gap:18px}
+.logo{font-size:24px;font-weight:300;letter-spacing:.35em;color:var(--c-5b471f);text-decoration:none}
+.nav{display:flex;gap:14px;flex-wrap:wrap}
+.nav a{padding:11px 20px;border:1px solid rgba(59,59,59,.42);background:rgba(255,255,255,.22);color:var(--c-5b471f);text-decoration:none;text-transform:uppercase;font-size:10px;letter-spacing:.18em}
+h1{font-size:32px;font-weight:200;letter-spacing:.08em;color:var(--c-5b471f);margin-bottom:8px;text-transform:uppercase}
+.intro{font-size:13px;line-height:1.8;color:var(--c-4f4125);margin-bottom:36px}
+.status{margin-bottom:20px;font-size:13px}
+.error{color:var(--c-561a1a)}
+
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-bottom:40px}
+.card{padding:22px;border:1px solid rgba(59,59,59,.20);background:rgba(255,255,255,.20);min-height:110px;display:flex;flex-direction:column;justify-content:space-between}
+.card-label{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--c-4f4125);line-height:1.5}
+.card-value{font-size:38px;font-weight:200;color:var(--c-5b471f);margin-top:8px}
+.card-note{font-size:10.5px;color:var(--c-5b471f);margin-top:6px}
+
+.section{margin-bottom:44px}
+.section-title{font-size:14px;letter-spacing:.20em;text-transform:uppercase;color:var(--c-5b471f);margin-bottom:18px;padding-bottom:10px;border-bottom:1px solid rgba(59,59,59,.18)}
+
+.panel{padding:26px;border:1px solid rgba(59,59,59,.18);background:rgba(255,255,255,.16)}
+.two-col{display:grid;grid-template-columns:1.3fr 1fr;gap:20px}
+
+.bar-chart{display:flex;align-items:flex-end;gap:6px;height:160px;margin-top:20px;padding:0 4px}
+.bar-col{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%}
+.bar-col .bar{width:100%;background:linear-gradient(180deg,#474747,#323232);min-height:2px}
+.bar-col .bar-val{font-size:9px;color:var(--c-5b471f);font-weight:600;margin-bottom:3px}
+.bar-col .bar-label{font-size:8.5px;color:var(--c-4f4125);margin-top:6px;letter-spacing:.03em;text-align:center}
+
+.country-list{display:flex;flex-direction:column;gap:8px}
+.country-row{display:flex;align-items:center;gap:12px;font-size:12.5px}
+.country-name{width:120px;flex-shrink:0;color:var(--c-46371a)}
+.country-track{flex:1;height:10px;background:rgba(59,59,59,.10);border:1px solid rgba(59,59,59,.15)}
+.country-fill{height:100%;background:#3b3b3b}
+.country-count{width:36px;text-align:right;color:var(--c-5b471f);font-weight:600;flex-shrink:0}
+
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+th,td{padding:10px 12px;text-align:left;border-bottom:1px solid rgba(59,59,59,.14)}
+th{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--c-5b471f);font-weight:600}
+td{color:var(--c-46371a)}
+.empty-row td{text-align:center;color:var(--c-4f4125);padding:24px}
+
+.rank{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border:1px solid rgba(59,59,59,.30);color:var(--c-5b471f);font-size:10px;margin-right:8px}
+
+@media(max-width:900px){
+  .cards{grid-template-columns:1fr 1fr}
+  .two-col{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  .cards{grid-template-columns:1fr}
+}
+
+.pl{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px}
+.pc{border:1px solid rgba(59,59,59,.18);background:rgba(255,255,255,.35);padding:18px;display:flex;flex-direction:column;gap:8px}
+.pc.on{border-color:#a58139;box-shadow:0 0 0 1px rgba(165,129,57,.35) inset}
+.ph{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.pn{font-size:16px;color:var(--c-5b471f)}
+.sw{display:flex;align-items:center;gap:6px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
+.pc label.l{font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--c-4f4125);margin-top:4px}
+.pc input.f,.pc textarea.f{width:100%;padding:9px 10px;border:1px solid rgba(59,59,59,.2);background:rgba(255,255,255,.7);font-family:inherit;font-size:13px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.feed{font-size:11px;word-break:break-all;background:rgba(165,129,57,.08);border:1px dashed rgba(165,129,57,.4);padding:8px}
+.row{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+.b{padding:9px 12px;border:1px solid rgba(165,129,57,.45);background:rgba(255,255,255,.5);color:var(--c-5b471f);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;font-family:inherit}
+.b.gold{background:#a58139;color:#fffaf0;border-color:#a58139}
+.note{font-size:11.5px;color:var(--c-4f4125);line-height:1.5}
+.grp{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--c-5b471f);margin:26px 0 12px}
+@media(max-width:600px){.two{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="page">
+<header class="header">
+  <a href="dashboard.html" class="logo">Investments Puglia</a>
+  <nav class="nav"><a href="dashboard.html">Dashboard</a><a href="opportunities.html">Gestisci Proposte</a></nav>
+</header>
+<h1>Portali</h1>
+<p class="intro">Collega l'account agenzia che ha il contratto con ogni portale. Quando un portale è <b>attivo</b>, ogni immobile <b>pubblicato</b> su Investments Puglia con quel portale spuntato nella scheda ("Portali su cui è consentita la pubblicazione") viene inviato in automatico tramite il suo <b>link di importazione</b>. Se togli la spunta, lo vendi o lo ritiri, viene tolto in automatico. Dati visibili solo al titolare.</p>
+<div id="status" class="status"></div>
+<div id="wrap"><div class="note">Caricamento…</div></div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../js/config.js"></script>
+<script>
+var client = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+var FEED = "https://bpzzmitmbavcmcasswbu.supabase.co/functions/v1/ip-portal-feed";
+var GROUPS = { national:["immobiliare_it","casa_it","idealista_it","subito_it","wikicasa_it","tecnocasa_it","bakeca_immobiliare_it"] };
+var rows = [], counts = {};
+function esc(v){ return String(v == null ? "" : v).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;"); }
+function setStatus(m, t){ var b = document.getElementById("status"); b.textContent = m || ""; b.className = "status " + (t || ""); }
+function fmt(v){ try{ return new Date(v).toLocaleString("it-IT", { day:"2-digit", month:"short", hour:"2-digit", minute:"2-digit" }); }catch(e){ return v; } }
+function feedUrl(r){ return FEED + "?portal=" + encodeURIComponent(r.portal_id) + "&t=" + r.feed_token; }
+function card(r){
+  var n = counts[r.portal_id] || 0;
+  return '<div class="pc' + (r.active ? ' on' : '') + '" id="pc_' + r.portal_id + '">' +
+    '<div class="ph"><div class="pn">' + esc(r.label) + '</div><label class="sw"><input type="checkbox" data-k="active"' + (r.active ? ' checked' : '') + '> Attivo</label></div>' +
+    '<div class="note"><b>' + n + '</b> immobili pubblicati con questo portale spuntato' + (r.last_fetch_at ? ' · ultima lettura del portale: ' + esc(fmt(r.last_fetch_at)) + ' (' + (r.last_fetch_count || 0) + ' annunci)' : ' · il portale non ha ancora letto il feed') + '</div>' +
+    '<div class="two"><div><label class="l">Codice agenzia / ID cliente</label><input class="f" data-k="agency_code" value="' + esc(r.agency_code) + '"></div>' +
+    '<div><label class="l">Chiave API / token</label><input class="f" data-k="api_key" value="' + esc(r.api_key) + '"></div></div>' +
+    '<div class="two"><div><label class="l">Utente account agenzia</label><input class="f" data-k="account_user" autocomplete="off" value="' + esc(r.account_user) + '"></div>' +
+    '<div><label class="l">Password account agenzia</label><input class="f" type="password" data-k="account_password" autocomplete="new-password" value="' + esc(r.account_password) + '"></div></div>' +
+    '<div class="two"><div><label class="l">Server FTP (se richiesto)</label><input class="f" data-k="ftp_host" value="' + esc(r.ftp_host) + '"></div>' +
+    '<div><label class="l">Email referente portale</label><input class="f" data-k="contact_email" value="' + esc(r.contact_email) + '"></div></div>' +
+    '<label class="l">Note</label><textarea class="f" rows="2" data-k="notes">' + esc(r.notes) + '</textarea>' +
+    '<label class="l">Link di importazione da dare al portale</label><div class="feed">' + esc(feedUrl(r)) + '</div>' +
+    '<div class="row"><button class="b gold" onclick="save(\'' + r.portal_id + '\')">Salva</button>' +
+    '<button class="b" onclick="copyFeed(\'' + r.portal_id + '\', this)">Copia link</button>' +
+    '<a class="b" href="' + esc(feedUrl(r)) + '" target="_blank" rel="noopener">Anteprima annunci</a></div></div>';
+}
+function render(){
+  var nat = rows.filter(function(r){ return GROUPS.national.indexOf(r.portal_id) >= 0; });
+  var intl = rows.filter(function(r){ return GROUPS.national.indexOf(r.portal_id) < 0; });
+  document.getElementById("wrap").innerHTML =
+    '<div class="grp">Portali nazionali</div><div class="pl">' + nat.map(card).join("") + '</div>' +
+    '<div class="grp">Portali internazionali</div><div class="pl">' + intl.map(card).join("") + '</div>';
+}
+async function save(id){
+  var el = document.getElementById("pc_" + id), patch = { updated_at: new Date().toISOString() };
+  el.querySelectorAll("[data-k]").forEach(function(i){ patch[i.getAttribute("data-k")] = i.type === "checkbox" ? i.checked : (i.value.trim() || null); });
+  var r = await client.from("ip_portal_accounts").update(patch).eq("portal_id", id);
+  if(r.error){ setStatus("Errore: " + r.error.message, "error"); return; }
+  var row = rows.find(function(x){ return x.portal_id === id; }); Object.assign(row, patch);
+  setStatus("Salvato: " + row.label + (row.active ? " (attivo)" : " (non attivo)"), "");
+  render();
+}
+function copyFeed(id, btn){
+  var r = rows.find(function(x){ return x.portal_id === id; }), u = feedUrl(r);
+  (navigator.clipboard ? navigator.clipboard.writeText(u) : Promise.reject()).then(function(){ btn.textContent = "Copiato ✓"; }, function(){ prompt("Copia il link:", u); });
+}
+(async function(){
+  var s = (await client.auth.getSession()).data.session;
+  if(!s){ location.href = "login.html"; return; }
+  var me = await client.from("profiles").select("is_platform_owner").eq("id", s.user.id).maybeSingle();
+  if(!me.data || !me.data.is_platform_owner){ document.getElementById("wrap").innerHTML = ""; setStatus("Pagina riservata al titolare.", "error"); return; }
+  var r = await client.from("ip_portal_accounts").select("*").order("label");
+  if(r.error){ document.getElementById("wrap").innerHTML = ""; setStatus(/ip_portal_accounts/.test(r.error.message) ? "Esegui prima il file portali-investments-puglia.sql in Supabase." : r.error.message, "error"); return; }
+  rows = r.data || [];
+  var o = await client.from("opportunities").select("publication_portals").eq("published", true);
+  (o.data || []).forEach(function(x){ (Array.isArray(x.publication_portals) ? x.publication_portals : []).forEach(function(p){ counts[p] = (counts[p] || 0) + 1; }); });
+  render();
+})();
+</script>
+<script src="../js/ip-brand.js?v=2"></script>
+</body>
+</html>
