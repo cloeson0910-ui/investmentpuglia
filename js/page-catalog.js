@@ -78,7 +78,6 @@ var PAGE_CATALOG = [
   {section:"Gestione", key:"responsive-preview.html", label:"Anteprima Responsive", i18nKey:"nav_responsive_preview"},
   {section:"Owner", key:"site-settings.html", label:"Impostazioni Sito", i18nKey:"nav_site_settings", family:"Sito"},
   {section:"Owner", key:"broadcast-notifications.html", label:"Notifiche Broadcast", i18nKey:"nav_broadcast_notifications", family:"Marketing"},
-  {section:"Owner", key:"articoli.html", label:"Articoli / Blog Sito", i18nKey:"nav_blog_articles", family:"Sito"},
   {section:"Owner", key:"team-admin.html", label:"Team", i18nKey:"nav_team", family:"Sito"},
   {section:"Owner", key:"email-composer.html", label:"Comunicazioni", i18nKey:"nav_communications", family:"Marketing"},
   {section:"Owner", key:"contabilita.html", label:"Contabilità", i18nKey:"nav_contabilita", family:"Amministrazione"},
