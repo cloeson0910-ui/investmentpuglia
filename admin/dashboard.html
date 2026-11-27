@@ -530,7 +530,7 @@ body::after{
   <div id="blogReminderBanner" style="display:none;background:#ffffff;border:1px solid #9c9c9c;color:var(--c-7a4d00);border-radius:8px;padding:12px 16px;margin:0 0 16px 0;display:none;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;">
     <span id="blogReminderText" style="font-size:14px;"></span>
     <div style="display:flex;gap:8px;">
-      <a href="articoli.html" class="btn" style="white-space:nowrap;" data-i18n="btn_write_article">Scrivi articolo</a>
+      
       <button type="button" onclick="dismissBlogReminder()" style="background:none;border:none;color:var(--c-7a4d00);text-decoration:underline;cursor:pointer;font-size:13px;" data-i18n="btn_remind_later">Ricordamelo tra qualche giorno</button>
     </div>
   </div>
@@ -1314,6 +1314,7 @@ function dismissBlogReminder(){
 }
 
 async function checkBlogReminderSilently(){
+  return; /* Investments Puglia non ha il blog: nessun promemoria articoli */
   /* FIX 25/10/2026: il promemoria "scrivi un articolo" deve comparire SOLO a te
      (is_platform_owner) -- prima era visibile a chiunque aprisse dashboard.html, master e
      collaboratori inclusi, cosa che non ha senso dato che decidi tu quando pubblicare sul blog
